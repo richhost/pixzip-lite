@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.svelte-compare-image-container:focus-within {
+	outline-width: 0 !important;
+}
