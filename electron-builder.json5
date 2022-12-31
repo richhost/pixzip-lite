@@ -3,13 +3,14 @@
  */
 {
   "appId": "dev.uimo.pxloss",
+  "productName": "像素丢失",
   "asar": true,
-  "icon": "public/favicon.ico",
   "directories": {
     "output": "release/${version}",
   },
   "files": ["dist-electron", "dist"],
   "mac": {
+    "icon": "public/icons/win/favicon.png",
     "target": [
       {
         target: "dmg",
@@ -19,6 +20,7 @@
     "artifactName": "${productName}_${version}.${ext}",
   },
   "win": {
+    "icon": "public/icons/win/favicon.ico",
     "target": [
       {
         "target": "nsis",

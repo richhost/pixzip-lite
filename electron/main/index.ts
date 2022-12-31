@@ -28,7 +28,7 @@ const indexHtml = join(process.env.DIST, "index.html");
 
 function createWindow() {
   win = new BrowserWindow({
-    title: "像素流失",
+    title: "像素丢失",
     width: 880,
     height: 580,
     minWidth: 880,
