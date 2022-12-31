@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @font-face {
+//   font-family: Emoji;
+//   src: local("Apple Color Emojiji"), local("Segoe UI Emoji"),
+//     local("Segoe UI Symbol"), local("Noto Color Emoji");
+//   unicode-range: U+1F000-1F644, U+203C-3299;
+// }
+
+@font-face {
+  font-family: "Smiley Sans";
+  src: url("/fonts/SmileySans-Oblique.ttf.woff2");
+}
+
+@layer base {
+  :root {
+    /* font-family: "Inter", system-ui, —apple-system, Segoe UI, Rototo, Emoji,
+      Helvetica, Arial, sans-serif; */
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+* {
+  user-select: none;
+}
+
+.window-drag {
+  -webkit-app-region: drag;
+}
+
+.recovery-drag {
+  -webkit-app-region: no-drag;
+}
+
+.scroll {
+  overflow-y: auto;
+  /* scrollbar-gutter: stable; */
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.arco-slider-marks-text {
+  font-size: 12px;
+}
+.arco-tooltip-content-inner {
+  font-size: 12px;
+}
+.arco-form-item {
+  margin-block-end: 8px;
+}
+
+.file-list {
+  padding-inline: 12px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  .filename {
+    flex-grow: 1;
+    padding-inline-end: 10px;
+  }
+
+  .oldsize-wrap {
+    min-width: 100px;
+    padding-inline: 8px;
+  }
+
+  .compress-wrap {
+    min-width: 160px;
+    width: 20%;
+    padding-inline: 8px;
+  }
+}
