@@ -66,22 +66,22 @@ const Main: React.FC = () => {
         }
       ) => {
         if (data.status === "success") {
-          setFileStatusMap(
-            new Map(
-              fileStatusMap.set(data.path, {
+          setFileStatusMap((prev) => {
+            return new Map(
+              prev.set(data.path, {
                 status: data.status,
                 size: data.newSize,
               })
-            )
-          );
+            );
+          });
         } else {
-          setFileStatusMap(
-            new Map(
-              fileStatusMap.set(data.path, {
+          setFileStatusMap((prev) => {
+            return new Map(
+              prev.set(data.path, {
                 status: data.status,
               })
-            )
-          );
+            );
+          });
         }
       }
     );
