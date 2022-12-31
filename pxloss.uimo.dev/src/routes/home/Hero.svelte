@@ -10,7 +10,13 @@
 	<div class="w-full lg:w-2/5 text-center lg:text-left">
 		<h1 class="text-3xl lg:text-5xl font-bold">像素丢失</h1>
 		<h2 class="text-xl lg:text-3xl font-semibold mt-2 lg:mt-4">美观易用的开源图片压缩软件</h2>
-		<button class="mt-10 rounded border px-8 py-2 text-xl bg-blue-600 text-white">免费下载</button>
+
+		<a
+			class="mt-10 rounded px-8 py-2 text-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white inline-flex"
+			href="https://www.123pan.com/s/072SVv-Dl7cv"
+			target="_blank"
+			rel="noreferrer">免费下载</a
+		>
 		<p class="mt-2 text-sm text-zinc-700">支持 macOS 和 Windows 系统</p>
 	</div>
 
