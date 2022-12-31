@@ -1,5 +1,5 @@
 import { join } from "path";
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Menu } from "electron";
 import Bridge from "./bridge";
 
 // The built directory structure
@@ -67,4 +67,22 @@ app.on("activate", () => {
   } else {
     createWindow();
   }
+});
+
+const menu = Menu.buildFromTemplate([
+  {
+    label: "像素丢失",
+    submenu: [
+      {
+        label: "关于",
+        role: "about",
+      },
+    ],
+  },
+]);
+Menu.setApplicationMenu(menu);
+app.setAboutPanelOptions({
+  applicationName: "像素丢失",
+  applicationVersion: "1.0.0",
+  version: "",
 });

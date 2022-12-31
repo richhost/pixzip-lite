@@ -10,7 +10,7 @@
   },
   "files": ["dist-electron", "dist"],
   "mac": {
-    "icon": "public/icons/win/favicon.png",
+    "icon": "public/icons/mac/favicon.png",
     "target": [
       {
         target: "dmg",
