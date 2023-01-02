@@ -59,7 +59,7 @@ export const processCommon = async (
   file: SendFile,
   extension: string,
   data: Buffer,
-  config: UserConfig
+  config: IUserConfig
 ) => {
   // 获取文件名，不包含拓展名
   const filename = await Fs.filename(file.path);

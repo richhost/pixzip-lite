@@ -7,7 +7,7 @@ const lossApi = {
   "window:maximize": () => ipcRenderer.send("window:maximize"),
   isMacOS: process.platform === "darwin",
   "config:get": () => ipcRenderer.invoke("config:get"),
-  "config:set": (config: UserConfig) => ipcRenderer.send("config:set", config),
+  "config:set": (config: IUserConfig) => ipcRenderer.send("config:set", config),
   "file:add": (files: SendFile[]) => ipcRenderer.send("file:add", files),
   "file:clear": () => ipcRenderer.send("clear"),
   onCompress: (

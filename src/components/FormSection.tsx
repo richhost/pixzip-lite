@@ -37,14 +37,14 @@ export default function FromSection() {
   // 自定义路径
   const [outputPath, setOutputPath] = useState("");
   // 表单
-  const [form] = Form.useForm<UserConfig>();
+  const [form] = Form.useForm<IUserConfig>();
   // 是否显示自定义路径
   const [showSelectFolder, setShowSelectFolder] = useState(false);
 
   // 表单值改变
   const onChange = (
-    value: Partial<UserConfig>,
-    values: Partial<UserConfig>
+    value: Partial<IUserConfig>,
+    values: Partial<IUserConfig>
   ) => {
     if (value.outputOriginal !== undefined)
       setShowSelectFolder(!value.outputOriginal);
@@ -54,7 +54,7 @@ export default function FromSection() {
       ...values,
       outputPath,
     };
-    window.lossApi["config:set"](data as UserConfig);
+    window.lossApi["config:set"](data as IUserConfig);
   };
 
   // 打开文件夹的回调
@@ -68,7 +68,7 @@ export default function FromSection() {
         ...values,
         outputPath: filePath,
       };
-      window.lossApi["config:set"](data as UserConfig);
+      window.lossApi["config:set"](data as IUserConfig);
       setOutputPath(filePath);
     }
   };

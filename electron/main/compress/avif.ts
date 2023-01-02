@@ -2,7 +2,7 @@ import sharp from "sharp";
 import { compressEmitter } from "./emitter";
 import { processCommon } from "./utils";
 
-export const avif = (file: SendFile, config: UserConfig) => {
+export const avif = (file: SendFile, config: IUserConfig) => {
   sharp(file.path)
     .resize({
       width: config.width,

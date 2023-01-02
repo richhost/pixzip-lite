@@ -2,7 +2,7 @@ import sharp from "sharp";
 import { compressEmitter } from "./emitter";
 import { processCommon } from "./utils";
 
-export const jpg = (file: SendFile, config: UserConfig) => {
+export const jpg = (file: SendFile, config: IUserConfig) => {
   sharp(file.path)
     .resize({
       width: config.width,

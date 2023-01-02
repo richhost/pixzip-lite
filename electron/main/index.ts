@@ -1,6 +1,7 @@
-import { join } from "path";
+import { join } from "node:path";
 import { app, BrowserWindow, Menu } from "electron";
-import Bridge from "./bridge";
+import windowController from "./window-controller";
+import Compress from "./compress";
 
 // The built directory structure
 //
@@ -20,14 +21,12 @@ process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
 
 // Set application name for Windows 10+ notifications
 if (process.platform === "win32") app.setAppUserModelId(app.getName());
-
-let win: BrowserWindow | null = null;
 const preload = join(__dirname, "../preload/index.js");
-const url = process.env.VITE_DEV_SERVER_URL;
-const indexHtml = join(process.env.DIST, "index.html");
 
 function createWindow() {
-  win = new BrowserWindow({
+  const WINDOW_NAME = "main";
+
+  windowController.createWindow(WINDOW_NAME, {
     title: "像素丢失",
     width: 880,
     height: 580,
@@ -43,22 +42,16 @@ function createWindow() {
     },
   });
 
-  if (process.env.VITE_DEV_SERVER_URL) {
-    win.loadURL(url);
-    win.webContents.openDevTools();
-  } else {
-    win.loadFile(indexHtml);
-  }
+  windowController.loadWebContainer(WINDOW_NAME);
+  windowController.registerWindowEvent(WINDOW_NAME);
+  windowController.registerOpenFolder();
+  windowController.registerConfig();
 
-  new Bridge(win);
+  const window = windowController.getWindow(WINDOW_NAME);
+  if (window) new Compress(window);
 }
 
 app.whenReady().then(createWindow);
-
-app.on("window-all-closed", () => {
-  win = null;
-  if (process.platform !== "darwin") app.quit();
-});
 
 app.on("activate", () => {
   const allWindows = BrowserWindow.getAllWindows();
@@ -67,6 +60,11 @@ app.on("activate", () => {
   } else {
     createWindow();
   }
+});
+
+app.on("window-all-closed", () => {
+  windowController.clearAllWindows();
+  if (process.platform !== "darwin") app.quit();
 });
 
 const menu = Menu.buildFromTemplate([
