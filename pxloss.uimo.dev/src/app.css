@@ -5,3 +5,9 @@
 .svelte-compare-image-container:focus-within {
 	outline-width: 0 !important;
 }
+
+
+.slider-split-line {
+	--divider-width: 2px;
+	--default-handle-opacity: 0;
+}
