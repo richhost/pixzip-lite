@@ -5,7 +5,7 @@
   "appId": "dev.uimo.pxloss",
   "asar": true,
   "directories": {
-    "output": "release/${version}",
+    "output": "release",
   },
   "files": ["dist-electron", "dist"],
   "mac": {
@@ -16,7 +16,7 @@
         arch: ["x64", "arm64"],
       },
     ],
-    "artifactName": "${productName}_${version}.${ext}",
+    "artifactName": "${productName}_${version}-${os}-${arch}.${ext}",
   },
   "win": {
     "icon": "public/icons/win/favicon.ico",
@@ -26,7 +26,7 @@
         "arch": ["x64"],
       },
     ],
-    "artifactName": "${productName}_${version}.${ext}",
+    "artifactName": "${productName}_${version}-${os}-${arch}.${ext}",
   },
   "nsis": {
     "oneClick": false,

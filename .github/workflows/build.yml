@@ -1,0 +1,53 @@
+name: Build/release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Electron App
+        run: npm run build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cleanup artifacts for windows
+        if: matrix.os == 'windows-latest'
+        run: npx rimraf "release/!(*.exe)"
+
+      - name: Cleanup artifacts for macOS
+        if: matrix.os == 'macos-latest'
+        run: npx rimraf "release/!(*.dmg)"
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}
+          path: release
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: "release/**"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
