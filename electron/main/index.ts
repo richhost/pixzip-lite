@@ -13,11 +13,6 @@ import ipcManager from "./ipc-manager";
 // ├─┬ dist
 // │ └── index.html    > Electron-Renderer
 //
-process.env.DIST_ELECTRON = join(__dirname, "..");
-process.env.DIST = join(process.env.DIST_ELECTRON, "../dist");
-process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
-  ? join(process.env.DIST_ELECTRON, "../public")
-  : process.env.DIST;
 
 // Set application name for Windows 10+ notifications
 if (process.platform === "win32") app.setAppUserModelId(app.getName());
@@ -75,7 +70,7 @@ app.on("window-all-closed", () => {
 
 const menu = Menu.buildFromTemplate([
   {
-    label: "像素丢失",
+    label: app.getName(),
     submenu: [
       {
         label: "关于",
