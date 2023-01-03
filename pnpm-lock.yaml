@@ -23,7 +23,7 @@ specifiers:
   tailwindcss: ^3.2.4
   typescript: ^4.9.4
   vite: ^4.0.3
-  vite-electron-plugin: ^0.7.1
+  vite-electron-plugin: ^0.7.2
   vite-plugin-electron-renderer: ^0.11.3
 
 dependencies:
@@ -51,7 +51,7 @@ devDependencies:
   tailwindcss: 3.2.4_postcss@8.4.20
   typescript: 4.9.4
   vite: 4.0.3_dprl76twtlijnqpm3fdjsbkzqm
-  vite-electron-plugin: 0.7.1
+  vite-electron-plugin: 0.7.2
   vite-plugin-electron-renderer: 0.11.3
 
 packages:
@@ -3488,13 +3488,18 @@ packages:
     dev: true
     optional: true
 
-  /vite-electron-plugin/0.7.1:
-    resolution: {integrity: sha512-sS7oa/grQCvqyH7C7FrsIP2imXRuwLrT25w8OoHhs16ACUnoPLFPyM+HMLPk4CffXLFzaIB+93r4VcYxsmv9Pw==}
+  /vite-electron-plugin/0.7.2:
+    resolution: {integrity: sha512-vcgRWXyfQvUO0WxJEze3Crkk5nK5UEW2ItDaZ6KRczKsnbMVb+Y9sYWgy8Vu+kL+X5e3OZAlFEcARIf7XXEl2A==}
     peerDependencies:
+      acorn: '*'
       esbuild: '*'
+    peerDependenciesMeta:
+      acorn:
+        optional: true
     dependencies:
       fast-glob: 3.2.12
       notbundle: 0.3.3
+      vite-plugin-utils: 0.3.6
     transitivePeerDependencies:
       - '@swc/core'
     dev: true
@@ -3505,6 +3510,10 @@ packages:
       esbuild: '*'
     dependencies:
       lib-esm: 0.3.0
+    dev: true
+
+  /vite-plugin-utils/0.3.6:
+    resolution: {integrity: sha512-+tZdnTxrDdjPzrlPUyvm52SvOVRibDEnA9NdzQt85UoqXwLGJp4RAkT9fK11KdLMTdJlb9DxCvHrDfsn/lSKug==}
     dev: true
 
   /vite/4.0.3_dprl76twtlijnqpm3fdjsbkzqm:
