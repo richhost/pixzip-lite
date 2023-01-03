@@ -18,6 +18,7 @@
 			rel="noreferrer">免费下载</a
 		>
 		<p class="mt-2 text-sm text-zinc-700">支持 macOS 和 Windows 系统</p>
+		<p class="text-xs text-zinc-400 mt-2">版本 v1.0.1，更新日期：2023/01/03</p>
 	</div>
 
 	<img
