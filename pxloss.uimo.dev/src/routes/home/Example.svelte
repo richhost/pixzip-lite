@@ -95,6 +95,7 @@
 	.before,
 	.after {
 		margin: 0;
+		position: relative;
 	}
 
 	.before figcaption,

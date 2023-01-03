@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
-	import Nav from './Nav.svelte';
 
 	let show = false;
 
@@ -26,11 +25,9 @@
 </script>
 
 <section
-	class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 h-screen flex items-center justify-center gap-0 lg:gap-10 flex-col lg:flex-row min-h-[700px] relative"
+	class="max-w-7xl mx-auto py-16 px-5 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-12 place-items-center hero gap-10 lg:gap-10"
 >
-	<Nav />
-
-	<div class="w-full lg:w-2/5 text-center lg:text-left">
+	<div class="lg:col-span-5 flex flex-col items-center lg:items-start">
 		<h1 class="text-3xl lg:text-5xl font-bold">像素丢失</h1>
 		<h2 class="text-xl lg:text-3xl font-semibold mt-2 lg:mt-4">美观易用的开源图片压缩软件</h2>
 
@@ -71,8 +68,14 @@
 	</div>
 
 	<img
-		class="w-full drop-shadow-2xl lg:w-3/5 mt-10 lg:mt-0 rounded-lg"
+		class="lg:col-span-7 w-full md:w-4/5 lg:w-full drop-shadow-2xl"
 		src="/images/intro.webp"
 		alt=""
 	/>
 </section>
+
+<style>
+	.hero {
+		min-height: calc(100vh - 96px);
+	}
+</style>
