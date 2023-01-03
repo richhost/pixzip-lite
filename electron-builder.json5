@@ -8,6 +8,7 @@
     "output": "release",
   },
   "files": ["dist-electron", "dist"],
+  "artifactName": "pixel-loss_${version}-${os}-${arch}.${ext}",
   "mac": {
     "icon": "public/icons/mac/favicon.png",
     "target": [
@@ -16,7 +17,6 @@
         arch: ["x64", "arm64"],
       },
     ],
-    "artifactName": "${productName}_${version}-${os}-${arch}.${ext}",
   },
   "win": {
     "icon": "public/icons/win/favicon.ico",
@@ -26,7 +26,6 @@
         "arch": ["x64"],
       },
     ],
-    "artifactName": "${productName}_${version}-${os}-${arch}.${ext}",
   },
   "nsis": {
     "oneClick": false,
