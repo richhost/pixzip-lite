@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import { app, BrowserWindow, Menu } from "electron";
 import windowController from "./window-controller";
-import Compress from "./compress";
+import ipcManager from "./ipc-manager";
 
 // The built directory structure
 //
@@ -43,15 +43,21 @@ function createWindow() {
   });
 
   windowController.loadWebContainer(WINDOW_NAME);
-  windowController.registerWindowEvent(WINDOW_NAME);
-  windowController.registerOpenFolder();
-  windowController.registerConfig();
-
-  const window = windowController.getWindow(WINDOW_NAME);
-  if (window) new Compress(window);
+  // 针对 Windows 系统注册窗口最小化、最大化、关闭事件
+  ipcManager.windowsWindowController(WINDOW_NAME);
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+  // 选择保存文件夹
+  ipcManager.registerOpenFolder();
+  // 用户配置
+  ipcManager.registerConfig();
+  // 添加文件
+  ipcManager.registerAddFiles();
+  // 清空文件
+  ipcManager.registerClearFiles();
+});
 
 app.on("activate", () => {
   const allWindows = BrowserWindow.getAllWindows();
@@ -80,7 +86,7 @@ const menu = Menu.buildFromTemplate([
 ]);
 Menu.setApplicationMenu(menu);
 app.setAboutPanelOptions({
-  applicationName: "像素丢失",
-  applicationVersion: "1.0.0",
+  applicationName: app.getName(),
+  applicationVersion: app.getVersion(),
   version: "",
 });

@@ -1,11 +1,13 @@
-import { BrowserWindow, ipcMain } from "electron";
-import configInstance from "../config";
+import userConfig from "../config";
+import windowController from "../window-controller";
 import { avif } from "./avif";
 import { compressEmitter } from "./emitter";
 import { gif } from "./gif";
 import { jpg } from "./jpg";
 import { png } from "./png";
 import { webp } from "./webp";
+
+const WINDOW_NAME = "main";
 
 export type EmitData = {
   file: SendFile;
@@ -15,35 +17,38 @@ export type EmitData = {
 };
 
 class Compress {
-  private win: BrowserWindow;
-
+  // 文件列表
   private files: SendFile[] = [];
+  // 最大处理数量
   private max = 5;
-
+  // 是否正在处理
   private isProcess: boolean = false;
 
-  private handleAddFiles = (evt, files: SendFile[]) => {
-    this.files = [...this.files, ...files];
+  addFiles = (event, files: SendFile[]) => {
+    this.files.push(...files);
 
-    if (!this.isProcess) {
-      this.startProcess();
-    }
+    if (!this.isProcess) this.startProcess();
   };
 
-  // 开始处理
-  private startProcess = () => {
+  clearFiles = (event) => {
+    this.files = [];
+    this.isProcess = false;
+  };
+
+  private startProcess() {
     const length = this.files.length;
     const min = Math.min(this.max, length);
 
     for (let i = 0; i < min; i++) {
       const currentFile = this.files.shift();
       this.max--;
-      this.win.webContents.send("onCompress", {
+
+      this.send("onCompress", {
         ...currentFile,
         status: "processing",
       });
 
-      let format = configInstance.config.format;
+      let format = userConfig.config.format;
       if (format === "original") {
         const extension = currentFile.name
           .substring(currentFile.name.lastIndexOf(".") + 1)
@@ -53,50 +58,44 @@ class Compress {
 
       switch (format) {
         case "avif":
-          avif(currentFile, configInstance.config);
+          avif(currentFile, userConfig.config);
           break;
         case "jpg":
-          jpg(currentFile, configInstance.config);
+          jpg(currentFile, userConfig.config);
           break;
         case "png":
-          png(currentFile, configInstance.config);
+          png(currentFile, userConfig.config);
           break;
         case "webp":
-          webp(currentFile, configInstance.config);
+          webp(currentFile, userConfig.config);
           break;
         case "gif":
-          gif(currentFile, configInstance.config);
+          gif(currentFile, userConfig.config);
           break;
         default:
+          jpg(currentFile, userConfig.config);
           break;
       }
     }
-  };
-
-  // 清空文件
-  private handleFileClear() {
-    this.files = [];
-    this.isProcess = false;
   }
 
-  private setup() {
-    ipcMain.on("file:add", this.handleAddFiles);
-    ipcMain.on("file:clear", this.handleFileClear);
+  private send(eventName: string, data: any) {
+    const window = windowController.getWindow(WINDOW_NAME);
+    if (window) {
+      window.webContents.send(eventName, data);
+    }
+  }
 
+  constructor() {
     compressEmitter.on("compress", (data: EmitData) => {
       if (data.status === "success" || data.status === "failed") {
         this.max++;
         this.startProcess();
 
-        this.win.webContents.send("onCompress", data);
+        this.send("onCompress", data);
       }
     });
   }
-
-  constructor(win: BrowserWindow) {
-    this.win = win;
-    this.setup();
-  }
 }
 
-export default Compress;
+export default new Compress();

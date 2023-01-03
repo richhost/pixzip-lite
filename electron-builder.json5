@@ -3,7 +3,6 @@
  */
 {
   "appId": "dev.uimo.pxloss",
-  "productName": "像素丢失",
   "asar": true,
   "directories": {
     "output": "release/${version}",
