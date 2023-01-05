@@ -1,14 +1,14 @@
-import { filesStore, fileStatusStore } from "@/stores/file";
-import { useSetRecoilState } from "recoil";
+import { useSetAtom } from "jotai";
+import { filesAtom, fileStatusAtom } from "@/stores";
 
 export const useClearFile = () => {
-  const setFileMap = useSetRecoilState(fileStatusStore);
-  const setFiles = useSetRecoilState(filesStore);
+  const setFiles = useSetAtom(filesAtom);
+  const setFileStatusMap = useSetAtom(fileStatusAtom);
 
   const clearFile = () => {
     window.lossApi["file:clear"]();
     setFiles([]);
-    setFileMap(new Map());
+    setFileStatusMap(new Map());
   };
 
   return { clearFile };

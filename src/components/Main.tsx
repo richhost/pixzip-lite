@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { Spin } from "@arco-design/web-react";
 import { Clock3 } from "lucide-react";
+
+import { useAtom } from "jotai";
+import { fileStatusAtom } from "@/stores";
 import { prevent } from "@/utils/dom-event";
-import Empty from "./Empty";
 import { useAddFile } from "@/hooks/useAddFiles";
 import { bytes2MB, calcLossPercent } from "@/utils";
-import { useRecoilState } from "recoil";
-import { fileStatusStore } from "@/stores/file";
+
+import Empty from "./Empty";
 
 const Main: React.FC = () => {
   const { files, handleDragFile } = useAddFile();
-  const [fileStatusMap, setFileStatusMap] = useRecoilState(fileStatusStore);
+
+  const [fileStatusMap, setFileStatusMap] = useAtom(fileStatusAtom);
 
   const getStatus = (path: string, oldSize: number) => {
     const data = fileStatusMap.get(path);

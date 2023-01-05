@@ -1,6 +1,6 @@
-import { useRecoilState } from "recoil";
 import { useRef, DragEvent } from "react";
-import { filesStore, fileStatusStore } from "@/stores/file";
+import { useAtom } from "jotai";
+import { filesAtom, fileStatusAtom } from "@/stores";
 
 const isImage = (type: string): boolean => {
   const imgTypes =
@@ -10,8 +10,9 @@ const isImage = (type: string): boolean => {
 };
 
 export const useAddFile = () => {
-  const [fileMap, setFileMap] = useRecoilState(fileStatusStore);
-  const [files, setFiles] = useRecoilState(filesStore);
+  const [files, setFiles] = useAtom(filesAtom);
+  const [fileStatusMap, setFileStatusMap] = useAtom(fileStatusAtom);
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const addFiles = (files: FileList) => {
@@ -20,7 +21,7 @@ export const useAddFile = () => {
     for (let file of files) {
       const currentFile = file as unknown as SendFile;
 
-      if (isImage(currentFile.type) && !fileMap.has(currentFile.path)) {
+      if (isImage(currentFile.type) && !fileStatusMap.has(currentFile.path)) {
         canPush.push({
           name: currentFile.name,
           path: currentFile.path,
@@ -28,8 +29,8 @@ export const useAddFile = () => {
           size: currentFile.size,
         });
 
-        setFileMap(
-          new Map(fileMap.set(currentFile.path, { status: "waiting" }))
+        setFileStatusMap(
+          new Map(fileStatusMap.set(currentFile.path, { status: "waiting" }))
         );
       }
     }
