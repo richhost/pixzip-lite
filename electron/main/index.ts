@@ -67,6 +67,12 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
+// 防止重复启动
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+  app.quit();
+}
+
 const menu = Menu.buildFromTemplate([
   {
     label: app.getName(),

@@ -9,19 +9,16 @@ class Compress {
   private taskQueue: Queue<SendFile>;
   // 最大处理数量
   private max = 5;
-  // 是否正在处理
-  private isProcess: boolean = false;
 
   // 添加文件
   addFiles = (_, files: SendFile[]) => {
     this.taskQueue.enqueue(files);
-    if (!this.isProcess) this.startProcess();
+    this.startProcess();
   };
 
   // 清空文件
   clearFiles = (_) => {
     this.taskQueue.clear();
-    this.isProcess = false;
   };
 
   private startProcess() {

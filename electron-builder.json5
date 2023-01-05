@@ -10,7 +10,7 @@
   "files": ["dist-electron", "dist"],
   "artifactName": "pixel-loss_${version}-${os}-${arch}.${ext}",
   "mac": {
-    "icon": "public/icons/mac/favicon.png",
+    "icon": "public/icons/mac/favicon.icns",
     "target": [
       {
         target: "dmg",
