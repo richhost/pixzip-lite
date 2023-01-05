@@ -10,16 +10,14 @@ const lossApi = {
   "config:set": (config: IUserConfig) => ipcRenderer.send("config:set", config),
   "file:add": (files: SendFile[]) => ipcRenderer.send("file:add", files),
   "file:clear": () => ipcRenderer.send("clear"),
-  onCompress: (
-    cb: (
-      evt,
-      data: SendFile & {
-        status: "success" | "failed" | "waiting" | "process";
-        oldSize?: number;
-        newSize?: number;
-      }
-    ) => void
-  ) => ipcRenderer.on("onCompress", cb),
+  "compress:processing": (fn) => ipcRenderer.on("compress:processing", fn),
+  "compress:success": (fn) => ipcRenderer.on("compress:success", fn),
+  "compress:failed": (fn) => ipcRenderer.on("compress:failed", fn),
+  "compress:remove": () => {
+    ipcRenderer.removeAllListeners("compress:processing");
+    ipcRenderer.removeAllListeners("compress:success");
+    ipcRenderer.removeAllListeners("compress:failed");
+  },
 };
 
 contextBridge.exposeInMainWorld("lossApi", lossApi);

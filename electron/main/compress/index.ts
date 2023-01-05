@@ -1,100 +1,68 @@
-import userConfig from "../config";
+import { MAIN_WINDOW_NAME } from "../config";
 import windowController from "../window-controller";
-import { avif } from "./avif";
-import { compressEmitter } from "./emitter";
-import { gif } from "./gif";
-import { jpg } from "./jpg";
-import { png } from "./png";
-import { webp } from "./webp";
-
-const WINDOW_NAME = "main";
-
-export type EmitData = {
-  file: SendFile;
-  status: ProcessStatus;
-  oldSize?: number;
-  newSize?: number;
-};
+import Queue from "./utils/Queue";
+import { COMPRESS } from "../events";
+import { compressCore } from "./utils/core";
 
 class Compress {
-  // 文件列表
-  private files: SendFile[] = [];
+  // 任务队列
+  private taskQueue: Queue<SendFile>;
   // 最大处理数量
   private max = 5;
   // 是否正在处理
   private isProcess: boolean = false;
 
-  addFiles = (event, files: SendFile[]) => {
-    this.files.push(...files);
-
+  // 添加文件
+  addFiles = (_, files: SendFile[]) => {
+    this.taskQueue.enqueue(files);
     if (!this.isProcess) this.startProcess();
   };
 
-  clearFiles = (event) => {
-    this.files = [];
+  // 清空文件
+  clearFiles = (_) => {
+    this.taskQueue.clear();
     this.isProcess = false;
   };
 
   private startProcess() {
-    const length = this.files.length;
+    const length = this.taskQueue.toArray().length;
     const min = Math.min(this.max, length);
 
     for (let i = 0; i < min; i++) {
-      const currentFile = this.files.shift();
+      const currentFile = this.taskQueue.dequeue();
       this.max--;
 
-      this.send("onCompress", {
+      this.send(COMPRESS.PROCESSING, {
         ...currentFile,
-        status: "processing",
       });
 
-      let format = userConfig.config.format;
-      if (format === "original") {
-        const extension = currentFile.name
-          .substring(currentFile.name.lastIndexOf(".") + 1)
-          .toLocaleLowerCase();
-        format = extension as Format;
-      }
-
-      switch (format) {
-        case "avif":
-          avif(currentFile, userConfig.config);
-          break;
-        case "jpg":
-          jpg(currentFile, userConfig.config);
-          break;
-        case "png":
-          png(currentFile, userConfig.config);
-          break;
-        case "webp":
-          webp(currentFile, userConfig.config);
-          break;
-        case "gif":
-          gif(currentFile, userConfig.config);
-          break;
-        default:
-          jpg(currentFile, userConfig.config);
-          break;
-      }
+      compressCore(currentFile)
+        .then((data: { newSize: number }) => {
+          // 成功
+          this.max++;
+          this.startProcess();
+          this.send(COMPRESS.SUCCESS, { ...currentFile, ...data });
+        })
+        .catch(() => {
+          // 失败
+          this.max++;
+          this.startProcess();
+          this.send(COMPRESS.FAILED, currentFile);
+        });
     }
   }
 
+  // 给渲染进程发送消息
   private send(eventName: string, data: any) {
-    const window = windowController.getWindow(WINDOW_NAME);
+    const window = windowController.getWindow(MAIN_WINDOW_NAME);
     if (window) {
       window.webContents.send(eventName, data);
     }
   }
 
   constructor() {
-    compressEmitter.on("compress", (data: EmitData) => {
-      if (data.status === "success" || data.status === "failed") {
-        this.max++;
-        this.startProcess();
-
-        this.send("onCompress", data);
-      }
-    });
+    // 初始化任务队列
+    this.taskQueue = new Queue<SendFile>();
   }
 }
 

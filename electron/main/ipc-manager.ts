@@ -1,6 +1,6 @@
 import { dialog, ipcMain } from "electron";
 import windowController from "./window-controller";
-import userConfig from "./config";
+import userConfig from "./config/user-config";
 import compress from "./compress";
 
 class IPCManager {

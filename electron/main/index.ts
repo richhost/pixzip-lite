@@ -2,6 +2,7 @@ import { join } from "node:path";
 import { app, BrowserWindow, Menu } from "electron";
 import windowController from "./window-controller";
 import ipcManager from "./ipc-manager";
+import { MAIN_WINDOW_NAME } from "./config";
 
 // The built directory structure
 //
@@ -19,9 +20,7 @@ if (process.platform === "win32") app.setAppUserModelId(app.getName());
 const preload = join(__dirname, "../preload/index.js");
 
 function createWindow() {
-  const WINDOW_NAME = "main";
-
-  windowController.createWindow(WINDOW_NAME, {
+  windowController.createWindow(MAIN_WINDOW_NAME, {
     title: "像素丢失",
     width: 880,
     height: 580,
@@ -37,9 +36,9 @@ function createWindow() {
     },
   });
 
-  windowController.loadWebContainer(WINDOW_NAME);
+  windowController.loadWebContainer(MAIN_WINDOW_NAME);
   // 针对 Windows 系统注册窗口最小化、最大化、关闭事件
-  ipcManager.windowsWindowController(WINDOW_NAME);
+  ipcManager.windowsWindowController(MAIN_WINDOW_NAME);
 }
 
 app.whenReady().then(() => {

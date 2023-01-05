@@ -11,6 +11,10 @@ type LossAPI = {
   "file:add": (files: SendFile[]) => void;
   "file:clear": () => void;
   onCompress: Function;
+  "compress:processing": Function;
+  "compress:success": Function;
+  "compress:failed": Function;
+  "compress:remove": () => void;
 };
 
 interface Window {

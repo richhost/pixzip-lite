@@ -59,35 +59,34 @@ const Main: React.FC = () => {
     }
   };
 
+  const setStatusCommon = (
+    path: string,
+    status: ProcessStatus,
+    size?: number
+  ) => {
+    setFileStatusMap((prev) => {
+      return new Map(prev.set(path, { status, size }));
+    });
+  };
+
   useEffect(() => {
-    window.lossApi.onCompress(
-      (
-        evt: any,
-        data: SendFile & {
-          status: ProcessStatus;
-          newSize: number;
-        }
-      ) => {
-        if (data.status === "success") {
-          setFileStatusMap((prev) => {
-            return new Map(
-              prev.set(data.path, {
-                status: data.status,
-                size: data.newSize,
-              })
-            );
-          });
-        } else {
-          setFileStatusMap((prev) => {
-            return new Map(
-              prev.set(data.path, {
-                status: data.status,
-              })
-            );
-          });
-        }
+    window.lossApi["compress:processing"]((_: unknown, data: SendFile) => {
+      setStatusCommon(data.path, "processing");
+    });
+
+    window.lossApi["compress:failed"]((_: unknown, data: SendFile) => {
+      setStatusCommon(data.path, "failed");
+    });
+
+    window.lossApi["compress:success"](
+      (_: unknown, data: SendFile & { newSize: number }) => {
+        setStatusCommon(data.path, "success", data.newSize);
       }
     );
+
+    return () => {
+      window.lossApi["compress:remove"]();
+    };
   }, []);
 
   return (
