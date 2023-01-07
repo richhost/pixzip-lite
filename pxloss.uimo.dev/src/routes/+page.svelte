@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.css';
 
-	import Nav from './home/Nav.svelte';
 	import Hero from './home/Hero.svelte';
 	import Intro from './home/Intro.svelte';
 	import Example from './home/Example.svelte';
@@ -25,13 +24,12 @@
 	<meta property="twitter:description" content="美观易用的开源图片压缩软件" />
 </svelte:head>
 
-<Nav />
-<main>
+<div>
 	<Hero />
 	<Intro />
 	<Example />
 	<OpenSource />
 	<Thanks />
-</main>
+</div>
 
 <footer class="pt-16 pb-8 text-center text-xs text-zinc-400">©️ 2023 像素丢失</footer>
