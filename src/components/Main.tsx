@@ -92,7 +92,7 @@ const Main: React.FC = () => {
   return (
     <div
       className={
-        "flex flex-col w-full h-full scroll " +
+        "flex flex-col w-full h-full px-scrollbar " +
         (files.length > 0 ? "" : "items-center justify-center")
       }
       onDragOver={prevent}

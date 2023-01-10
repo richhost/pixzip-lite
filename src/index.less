@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// @font-face {
-//   font-family: Emoji;
-//   src: local("Apple Color Emojiji"), local("Segoe UI Emoji"),
-//     local("Segoe UI Symbol"), local("Noto Color Emoji");
-//   unicode-range: U+1F000-1F644, U+203C-3299;
-// }
-
 @font-face {
   font-family: "Smiley Sans";
   src: url("/fonts/SmileySans-Oblique.ttf.woff2");
@@ -16,8 +9,6 @@
 
 @layer base {
   :root {
-    /* font-family: "Inter", system-ui, —apple-system, Segoe UI, Rototo, Emoji,
-      Helvetica, Arial, sans-serif; */
     -webkit-font-smoothing: antialiased;
   }
 }
@@ -34,12 +25,28 @@
   -webkit-app-region: no-drag;
 }
 
-.scroll {
+.px-scrollbar {
   overflow-y: auto;
-  /* scrollbar-gutter: stable; */
-}
-.scroll::-webkit-scrollbar {
-  display: none;
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 5px hsla(0, 0%, 50%, 0);
+    border-radius: 20px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 0 5px hsla(0, 0%, 50%, 0.2);
+
+      &:hover {
+        box-shadow: inset 0 0 0 5px hsla(0, 0%, 50%, 0.4);
+      }
+    }
+  }
 }
 
 .arco-slider-marks-text {

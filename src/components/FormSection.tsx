@@ -74,7 +74,7 @@ export default function FromSection() {
   };
 
   return (
-    <section className="flex-1 px-4 scroll">
+    <section className="flex-1 px-4 px-scrollbar">
       <h1 className="text-xl font-medium mt-4 font-smiley-sans">像素丢失</h1>
       <h2 className="font-smiley-sans text-xs text-zinc-400 tracking-wider">
         Pixel Loss
