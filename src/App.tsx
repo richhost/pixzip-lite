@@ -1,10 +1,13 @@
 import Layout from "@/layout";
-import Main from "@/components/Main";
+import Aside from "@/layout/Aside";
+import SpaceComponent from "@/components/Space";
 
 function App() {
   return (
     <Layout>
-      <Main />
+      <Aside>
+        <SpaceComponent />
+      </Aside>
     </Layout>
   );
 }

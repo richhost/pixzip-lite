@@ -1,0 +1,50 @@
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/whiteA.css";
+@import "@radix-ui/colors/blackA.css";
+
+@import "@fontsource/inter/variable.css";
+
+@font-face {
+  font-family: "Smiley Sans";
+  src: url("/fonts/SmileySans-Oblique.ttf.woff2");
+}
+@font-face {
+  font-family: Emoji;
+  src: local("Apple Color Emojiji"), local("Segoe UI Emoji"),
+    local("Segoe UI Symbol"), local("Noto Color Emoji");
+  unicode-range: U+1F000-1F644, U+203C-3299;
+}
+
+* {
+  user-select: none;
+  cursor: default;
+}
+
+:root {
+  --w-aside: 240px;
+  --h-drag: 50px;
+
+  font-family: "InterVariable", system-ui, —apple-system, Segoe UI, Rototo,
+    Emoji, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+  color: var(--gray12);
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.drag-none {
+  -webkit-app-region: no-drag;
+}
+
+input[type="number"] {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}

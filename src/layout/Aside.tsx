@@ -1,14 +1,17 @@
-import TrafficLight from "@/components/TrafficLight";
-import FromSection from "@/components/FormSection";
+import React from "react";
+import "./aside.scss";
 
-export default function Aside() {
+type Props = {
+  children?: React.ReactNode;
+};
+
+const Aside: React.FC<Props> = ({ children }) => {
   return (
-    <aside className="w-60 flex flex-col h-screen border-r bg-slate-50">
-      <div className="h-[50px] window-drag flex-shrink-0">
-        <TrafficLight />
-      </div>
-
-      <FromSection />
+    <aside className="aside">
+      <div className="drag">Logo</div>
+      <div className="aside-body">{children}</div>
     </aside>
   );
-}
+};
+
+export default Aside;

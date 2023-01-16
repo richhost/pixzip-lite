@@ -18,3 +18,16 @@ interface IUserConfig {
   outputPath?: string;
   quality: number;
 }
+
+interface Space {
+  id: string;
+  name?: string;
+  icon: string;
+  width?: number;
+  height?: number;
+  suffix?: string;
+  format: Format;
+  quality: number;
+  outputOriginal: boolean;
+  outputPath?: string;
+}

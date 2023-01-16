@@ -1,8 +1,5 @@
 import React from "react";
-import Aside from "./Aside";
-import Header from "./Header";
-
-import "./style.less";
+import "./layout.scss";
 
 type Props = {
   children?: React.ReactNode;
@@ -10,11 +7,10 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="h-screen text-sm">
-      <Aside />
-      <Header />
-
-      <main id="main">{children}</main>
+    <div className="layout">
+      <header className="header drag">header</header>
+      {children}
+      <main className="main">main</main>
     </div>
   );
 };

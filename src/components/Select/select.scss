@@ -1,0 +1,76 @@
+.select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid var(--blackA6);
+  border-radius: 4px;
+  padding-inline: 8px;
+  transition: border 150ms ease-out;
+
+  &:hover {
+    &:hover,
+    &:focus-within {
+      border-color: var(--blackA10);
+    }
+
+    .select-icon {
+      color: var(--blackA10);
+    }
+  }
+}
+
+.select-icon {
+  display: flex;
+  align-items: center;
+  color: var(--blackA6);
+  transition: color 150ms ease-out;
+}
+
+.select-content {
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+}
+
+.select-scroll-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  background-color: white;
+  color: var(--blackA10);
+  cursor: default;
+}
+
+.select-viewport {
+  padding: 5px;
+}
+
+.select-item {
+  font-size: 13px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 0 35px 0 25px;
+  position: relative;
+  user-select: none;
+  border-radius: 4px;
+
+  &[data-highlighted] {
+    background-color: var(--blackA5);
+  }
+
+  .select-item-indicator {
+    position: absolute;
+    left: 0;
+    width: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

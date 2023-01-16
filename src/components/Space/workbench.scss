@@ -1,0 +1,64 @@
+.workbench {
+  .space-head {
+    border-radius: 8px;
+    margin-inline: 8px;
+    margin-block-end: 8px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+
+    &__icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-width: 2px;
+      border-style: dashed;
+      border-color: transparent;
+      border-radius: 8px;
+
+      &:hover {
+        border-color: var(--gray4);
+      }
+    }
+
+    &__input {
+      width: 100%;
+    }
+
+    &:hover,
+    &:focus-within {
+      background: var(--gray4);
+
+      .space-head__icon {
+        border-color: var(--gray8);
+      }
+    }
+  }
+
+  .space-list {
+    padding-inline: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+
+    .space-item {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--gray4);
+      border-radius: 8px;
+
+      &__active {
+        border-color: var(--red9);
+      }
+    }
+
+    .space-plus {
+      border-style: dashed;
+    }
+  }
+}

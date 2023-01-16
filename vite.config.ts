@@ -5,7 +5,6 @@ import react from "@vitejs/plugin-react-swc";
 import electron from "vite-electron-plugin";
 import { customStart, loadViteEnv } from "vite-electron-plugin/plugin";
 import renderer from "vite-plugin-electron-renderer";
-import vitePluginForArco from "@arco-plugins/vite-react";
 import pkg from "./package.json";
 
 rmSync(path.join(__dirname, "dist-electron"), { recursive: true, force: true });
@@ -23,7 +22,6 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    vitePluginForArco(),
     electron({
       include: ["electron"],
       transformOptions: {
@@ -60,7 +58,6 @@ export default defineConfig({
         };
       })()
     : undefined,
-  clearScreen: false,
 });
 
 function debounce<Fn extends (...args: any[]) => void>(

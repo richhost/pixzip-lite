@@ -1,0 +1,55 @@
+.configure {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+
+    label,
+    legend {
+      font-weight: 500;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+      height: 28px;
+      line-height: 28px;
+      padding-inline: 8px;
+      border: 1px solid var(--blackA6);
+      border-radius: 4px;
+      transition: border 150ms ease-out;
+
+      &:hover,
+      &:focus-within {
+        border-color: var(--blackA10);
+      }
+
+      &::placeholder {
+        color: var(--gray8);
+      }
+    }
+
+    .radio-group {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      label {
+        font-weight: 400;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+
+    input[type="radio"] {
+      all: revert;
+      margin: 0;
+      accent-color: var(--blackA10);
+    }
+  }
+}

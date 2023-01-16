@@ -1,0 +1,16 @@
+.icon-pane {
+  display: flex;
+  flex-wrap: wrap;
+
+  .icon {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+
+    &__active {
+      background-color: var(--gray4);
+    }
+  }
+}

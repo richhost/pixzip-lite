@@ -1,0 +1,20 @@
+.layout {
+  font-size: 13px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: var(--w-aside) 1fr;
+  grid-template-rows: var(--h-drag) 1fr;
+  grid-template-areas:
+    "aside header"
+    "aside main";
+
+  .header {
+    grid-area: header;
+  }
+  .aside {
+    grid-area: aside;
+  }
+  .main {
+    grid-area: main;
+  }
+}
