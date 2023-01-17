@@ -45,8 +45,8 @@ app.whenReady().then(() => {
   createWindow();
   // 选择保存文件夹
   ipcManager.registerOpenFolder();
-  // 用户配置
-  ipcManager.registerConfig();
+  // Space
+  ipcManager.registerSpace();
   // 添加文件
   ipcManager.registerAddFiles();
   // 清空文件

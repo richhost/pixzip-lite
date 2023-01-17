@@ -8,5 +8,5 @@ const initSpace: Space = {
   outputOriginal: true,
 };
 
-export const spacesAtom = atom<Space[]>([initSpace]);
+export const spacesAtom = atom<Space[]>([]);
 export const currentSpaceIdAtom = atom("1");

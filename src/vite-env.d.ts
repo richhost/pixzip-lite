@@ -6,8 +6,12 @@ type LossAPI = {
   "window:minimize": Function;
   "window:maximize": Function;
   isMacOS: boolean;
-  "config:get": () => Promise<IUserConfig>;
-  "config:set": (config: IUserConfig) => void;
+  "space:get": () => Promise<Space[]>;
+  "space:add": (data: Omit<Space, "id">) => Promise<Space>;
+  "space:path": (data: Space) => void;
+  "space:del": (id: string) => void;
+  "space:getCurrentId": () => Promise<string>;
+  "space:setCurrentId": (id: string) => void;
   "file:add": (files: SendFile[]) => void;
   "file:clear": () => void;
   onCompress: Function;

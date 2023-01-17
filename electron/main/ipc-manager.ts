@@ -1,7 +1,7 @@
 import { dialog, ipcMain } from "electron";
 import windowController from "./window-controller";
-import userConfig from "./config/user-config";
 import compress from "./compress";
+import db from "./db";
 
 class IPCManager {
   // Windows 窗口管理：关闭、最小化、最大化
@@ -35,20 +35,35 @@ class IPCManager {
     });
   }
 
-  // 注册用户配置事件
-  registerConfig() {
-    // 获取配置
-    ipcMain.handle("config:get", () => userConfig.config);
+  // Space
+  registerSpace() {
+    // get
+    ipcMain.handle("space:get", () => db.getSpace());
 
-    // 修改配置
-    ipcMain.on("config:set", (event, config: IUserConfig) => {
-      userConfig.config = config;
+    // add
+    ipcMain.handle("space:add", (event, data: Omit<Space, "id">) => {
+      db.add(data);
+    });
+
+    // del
+    ipcMain.on("space:del", (event, id: string) => {
+      db.del(id);
+    });
+
+    // path
+    ipcMain.on("space:patch", (event, data: Space) => {
+      db.patch(data);
+    });
+
+    // set current id
+    ipcMain.on("space:setCurrentId", (event, id: string) => {
+      db.setCurrentSpaceId(id);
     });
   }
 
   // 注册添加文件事件
   registerAddFiles() {
-    ipcMain.on("file:add", compress.addFiles);
+    // ipcMain.on("file:add", compress.addFiles);
   }
 
   // 清空文件

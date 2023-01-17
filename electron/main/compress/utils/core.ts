@@ -1,6 +1,6 @@
 import sharp, { FormatEnum } from "sharp";
 import Fs from "@supercharge/fs";
-import userConfig from "../../config/user-config";
+// import userConfig from "../../config/user-config";
 
 /**
  * 生成文件名，文件名、后缀、拓展名 e.g. picture-mini.avif
@@ -41,6 +41,7 @@ async function compressed(file: SendFile, newPath: string) {
  * @returns
  */
 function getFormatType(file: SendFile) {
+  return;
   let format = userConfig.config.format;
 
   const extension = file.name
@@ -86,6 +87,7 @@ function quality(format: Format, configQuality: number) {
  * @returns
  */
 export const compressCore = (file: SendFile) => {
+  return;
   return new Promise((resolve, reject) => {
     const { format, original } = getFormatType(file);
 
