@@ -15,6 +15,7 @@ class Db {
   }
 
   private defaultSpaceData: Omit<Space, "id"> = {
+    name: "Space 1",
     icon: "StarIcon",
     suffix: "-mini",
     format: "original",
@@ -59,13 +60,8 @@ class Db {
     this.db.set(CURRENT_SPACE_ID, this.currentSpaceId);
   };
 
-  patch = (data: Space) => {
-    this.spaces.forEach((element) => {
-      if (element.id === data.id) {
-        element = data;
-      }
-    });
-
+  patch = (data: Space[]) => {
+    this.spaces = data;
     this.db.set(SPACES, this.spaces);
   };
 

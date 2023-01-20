@@ -27,6 +27,10 @@
 
     &__input {
       width: 100%;
+
+      &::placeholder {
+        color: var(--gray8);
+      }
     }
 
     &:hover,

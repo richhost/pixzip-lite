@@ -5,16 +5,18 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/components/Popover";
 import Icon from "@/components/Icon";
 import IconPane from "@/components/IconPane";
 import "./workbench.scss";
+import { useSpace } from "@/hooks/useSpace";
 
 const Workbench: React.FC = () => {
   const [spaces, setSpaces] = useAtom(spacesAtom);
   const [currentId, setCurrentId] = useAtom(currentSpaceIdAtom);
+  const { changeSpaceName } = useSpace();
 
   const currentSpace = spaces.find((element) => element.id === currentId);
 
   function onSpaceNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
-    // TODO
+    changeSpaceName(value);
   }
 
   function onIconChange(icon: string) {

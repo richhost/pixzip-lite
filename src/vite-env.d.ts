@@ -8,7 +8,7 @@ type LossAPI = {
   isMacOS: boolean;
   "space:get": () => Promise<Space[]>;
   "space:add": (data: Omit<Space, "id">) => Promise<Space>;
-  "space:path": (data: Space) => void;
+  "space:patch": (data: Space[]) => void;
   "space:del": (id: string) => void;
   "space:getCurrentId": () => Promise<string>;
   "space:setCurrentId": (id: string) => void;

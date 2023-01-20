@@ -51,7 +51,7 @@ class IPCManager {
     });
 
     // path
-    ipcMain.on("space:patch", (event, data: Space) => {
+    ipcMain.on("space:patch", (event, data: Space[]) => {
       db.patch(data);
     });
 
@@ -59,6 +59,9 @@ class IPCManager {
     ipcMain.on("space:setCurrentId", (event, id: string) => {
       db.setCurrentSpaceId(id);
     });
+
+    // get current id
+    ipcMain.handle("space:getCurrentId", (event) => db.getCurrentSpaceId());
   }
 
   // 注册添加文件事件

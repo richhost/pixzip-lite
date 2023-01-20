@@ -1,8 +1,7 @@
-import { join } from "node:path";
 import { app, BrowserWindow, Menu } from "electron";
 import windowController from "./window-controller";
 import ipcManager from "./ipc-manager";
-import { MAIN_WINDOW_NAME } from "./config";
+import { MAIN_WINDOW_NAME, winOptions, macOptions } from "./config";
 
 // The built directory structure
 //
@@ -17,24 +16,10 @@ import { MAIN_WINDOW_NAME } from "./config";
 
 // Set application name for Windows 10+ notifications
 if (process.platform === "win32") app.setAppUserModelId(app.getName());
-const preload = join(__dirname, "../preload/index.js");
 
 function createWindow() {
-  windowController.createWindow(MAIN_WINDOW_NAME, {
-    title: "像素丢失",
-    width: 880,
-    height: 580,
-    minWidth: 880,
-    minHeight: 580,
-    titleBarStyle: "hidden",
-    trafficLightPosition: {
-      x: 20,
-      y: 20,
-    },
-    webPreferences: {
-      preload,
-    },
-  });
+  const options = process.platform === "darwin" ? macOptions : winOptions;
+  windowController.createWindow(MAIN_WINDOW_NAME, options);
 
   windowController.loadWebContainer(MAIN_WINDOW_NAME);
   // 针对 Windows 系统注册窗口最小化、最大化、关闭事件
