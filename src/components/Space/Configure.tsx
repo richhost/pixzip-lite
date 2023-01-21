@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React from "react";
 import Scrollbar from "@/components/Scrollbar";
 import { Select, SelectItem } from "@/components/Select";
 import { Slider } from "@/components/Slider";
+import { useSpace } from "@/hooks/useSpace";
 import "./configure.scss";
 
 const formatOption: { name: string; value: Format }[] = [
@@ -12,37 +13,8 @@ const formatOption: { name: string; value: Format }[] = [
   { name: "AVIF", value: "avif" },
 ];
 
-type FormValue = Omit<Space, "id" | "name" | "icon">;
-type Action = {
-  type: "update";
-  key: keyof FormValue;
-  vaule: FormValue[keyof FormValue];
-};
-
-const initState: FormValue = {
-  suffix: "-mini",
-  format: "original",
-  quality: 2,
-  outputOriginal: true,
-  outputPath: "",
-};
-
-const reducer = (state: FormValue, action: Action) => {
-  switch (action.type) {
-    case "update":
-      const newState = {
-        ...state,
-        [action.key]: action.vaule,
-      };
-
-      return newState;
-    default:
-      return state;
-  }
-};
-
 const Configure: React.FC = () => {
-  const [state, dispatch] = useReducer(reducer, initState);
+  const { currentSpace, changeOption, onOpenFolder } = useSpace();
 
   return (
     <Scrollbar>
@@ -53,13 +25,9 @@ const Configure: React.FC = () => {
             id="width"
             name="width"
             type="number"
-            value={state.width}
+            value={currentSpace?.width || ""}
             onChange={(e) => {
-              dispatch({
-                type: "update",
-                key: "width",
-                vaule: e.target.valueAsNumber,
-              });
+              changeOption({ key: "width", value: e.target.valueAsNumber });
             }}
             min={0}
             placeholder="自动"
@@ -72,13 +40,9 @@ const Configure: React.FC = () => {
             id="height"
             name="height"
             type="number"
-            value={state.height}
+            value={currentSpace?.height || ""}
             onChange={(e) => {
-              dispatch({
-                type: "update",
-                key: "height",
-                vaule: e.target.valueAsNumber,
-              });
+              changeOption({ key: "height", value: e.target.valueAsNumber });
             }}
             min={0}
             placeholder="自动"
@@ -91,13 +55,9 @@ const Configure: React.FC = () => {
             id="suffix"
             name="suffix"
             type="text"
-            value={state.suffix}
+            value={currentSpace?.suffix || ""}
             onChange={(e) =>
-              dispatch({
-                type: "update",
-                key: "suffix",
-                vaule: e.target.value,
-              })
+              changeOption({ key: "suffix", value: e.target.value })
             }
           />
         </div>
@@ -107,10 +67,9 @@ const Configure: React.FC = () => {
           <Select
             id="format"
             name="format"
-            defaultValue={initState.format}
-            value={state.format}
+            value={currentSpace?.format}
             onValueChange={(value) =>
-              dispatch({ type: "update", key: "format", vaule: value })
+              changeOption({ key: "format", value: value })
             }
           >
             {formatOption.map((element) => (
@@ -122,12 +81,12 @@ const Configure: React.FC = () => {
         </div>
 
         <div className="configure__item">
-          <label>压缩强度：{state.quality}</label>
+          <label>压缩强度：{currentSpace?.quality}</label>
           <Slider
             name="quality"
-            value={[state.quality]}
+            value={[currentSpace?.quality || 2]}
             onValueChange={(value) =>
-              dispatch({ type: "update", key: "quality", vaule: value[0] })
+              changeOption({ key: "quality", value: value[0] })
             }
             min={1}
             max={9}
@@ -142,12 +101,11 @@ const Configure: React.FC = () => {
                 type="radio"
                 name="outputOriginal"
                 value="true"
-                checked={state.outputOriginal === true}
+                checked={currentSpace?.outputOriginal === true}
                 onChange={() =>
-                  dispatch({
-                    type: "update",
+                  changeOption({
                     key: "outputOriginal",
-                    vaule: true,
+                    value: true,
                   })
                 }
               />
@@ -158,25 +116,26 @@ const Configure: React.FC = () => {
                 type="radio"
                 name="outputOriginal"
                 value="false"
-                checked={state.outputOriginal === false}
+                checked={currentSpace?.outputOriginal === false}
                 onChange={() =>
-                  dispatch({
-                    type: "update",
+                  changeOption({
                     key: "outputOriginal",
-                    vaule: false,
+                    value: false,
                   })
                 }
               />
               自定义
             </label>
           </div>
-          {state.outputOriginal === false && (
-            <input
-              type="text"
-              disabled
-              placeholder="点击设置文件夹"
-              value={state.outputPath}
-            />
+          {currentSpace && currentSpace.outputOriginal === false && (
+            <span onClick={onOpenFolder}>
+              <input
+                type="text"
+                disabled
+                placeholder="点击设置文件夹"
+                value={currentSpace.outputPath || ""}
+              />
+            </span>
           )}
         </div>
       </form>

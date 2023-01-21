@@ -1,26 +1,20 @@
 import React from "react";
-import { useAtom } from "jotai";
-import { currentSpaceIdAtom, spacesAtom } from "@/stores/space";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/Popover";
 import Icon from "@/components/Icon";
 import IconPane from "@/components/IconPane";
-import "./workbench.scss";
 import { useSpace } from "@/hooks/useSpace";
+import "./workbench.scss";
 
 const Workbench: React.FC = () => {
-  const [spaces, setSpaces] = useAtom(spacesAtom);
-  const [currentId, setCurrentId] = useAtom(currentSpaceIdAtom);
-  const { changeSpaceName } = useSpace();
-
-  const currentSpace = spaces.find((element) => element.id === currentId);
+  const { spaces, changeOption, currentSpace, currentId } = useSpace();
 
   function onSpaceNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
-    changeSpaceName(value);
+    changeOption({ key: "name", value: value });
   }
 
   function onIconChange(icon: string) {
-    // TODO
+    changeOption({ key: "icon", value: icon });
   }
 
   return (
@@ -58,6 +52,9 @@ const Workbench: React.FC = () => {
             <Icon name={element.icon} />
           </li>
         ))}
+        <li className="space-item space-plus">
+          <Icon name="PlusIcon" />
+        </li>
       </ul>
     </div>
   );
