@@ -2,6 +2,7 @@ import React from "react";
 import Scrollbar from "@/components/Scrollbar";
 import { Select, SelectItem } from "@/components/Select";
 import { Slider } from "@/components/Slider";
+import { Tooltip } from "@/components/Tooltip";
 import { useSpace } from "@/hooks/useSpace";
 import "./configure.scss";
 
@@ -128,14 +129,16 @@ const Configure: React.FC = () => {
             </label>
           </div>
           {currentSpace && currentSpace.outputOriginal === false && (
-            <span onClick={onOpenFolder}>
-              <input
-                type="text"
-                disabled
-                placeholder="点击设置文件夹"
-                value={currentSpace.outputPath || ""}
-              />
-            </span>
+            <Tooltip content={<>{currentSpace.outputPath}</>}>
+              <span onClick={onOpenFolder}>
+                <input
+                  type="text"
+                  disabled
+                  placeholder="点击设置文件夹"
+                  value={currentSpace.outputPath || ""}
+                />
+              </span>
+            </Tooltip>
           )}
         </div>
       </form>
