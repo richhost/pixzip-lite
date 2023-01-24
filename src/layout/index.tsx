@@ -6,13 +6,7 @@ type Props = {
 };
 
 const Layout: React.FC<Props> = ({ children }) => {
-  return (
-    <div className="layout">
-      <header className="header drag">header</header>
-      {children}
-      <main className="main">main</main>
-    </div>
-  );
+  return <div className="layout">{children}</div>;
 };
 
 export default Layout;

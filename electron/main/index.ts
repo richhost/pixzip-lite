@@ -22,8 +22,6 @@ function createWindow() {
   windowController.createWindow(MAIN_WINDOW_NAME, options);
 
   windowController.loadWebContainer(MAIN_WINDOW_NAME);
-  // 针对 Windows 系统注册窗口最小化、最大化、关闭事件
-  ipcManager.windowsWindowController(MAIN_WINDOW_NAME);
 }
 
 app.whenReady().then(() => {
@@ -36,6 +34,8 @@ app.whenReady().then(() => {
   ipcManager.registerAddFiles();
   // 清空文件
   ipcManager.registerClearFiles();
+  // 在文件夹中显示
+  ipcManager.showInFolder();
 });
 
 app.on("activate", () => {

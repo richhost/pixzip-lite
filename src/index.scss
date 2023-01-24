@@ -3,6 +3,7 @@
 @import "@radix-ui/colors/mauve.css";
 @import "@radix-ui/colors/whiteA.css";
 @import "@radix-ui/colors/blackA.css";
+@import "@radix-ui/colors/grass.css";
 
 @import "@fontsource/inter/variable.css";
 
@@ -31,6 +32,16 @@
   -webkit-font-smoothing: antialiased;
 
   color: var(--gray12);
+  background-color: var(--gray2);
+}
+
+body {
+  // background-image: linear-gradient(
+  //   to top,
+  //   #dad4ec 0%,
+  //   #dad4ec 1%,
+  //   #f3e7e9 100%
+  // );
 }
 
 .drag {

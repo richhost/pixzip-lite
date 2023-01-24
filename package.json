@@ -40,8 +40,9 @@
     "nanoid": "3.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-use": "^17.4.0",
     "sass": "^1.57.1",
-    "the-new-css-reset": "^1.8.2",
+    "the-new-css-reset": "^1.8.3",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-electron-plugin": "^0.7.4",
@@ -54,8 +55,6 @@
     "@supercharge/fs": "^3.4.0",
     "electron-store": "^8.1.0",
     "fs-extra": "^11.1.0",
-    "open-props": "^1.5.3",
-    "react-use": "^17.4.0",
     "sharp": "^0.31.3"
   }
 }

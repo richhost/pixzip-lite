@@ -1,6 +1,8 @@
-import { useRef, DragEvent } from "react";
-import { useAtom } from "jotai";
-import { filesAtom, fileStatusAtom } from "@/stores";
+import { useRef, DragEvent, useEffect } from "react";
+import { useAtom, useAtomValue } from "jotai";
+import { filesAtom } from "@/stores/file";
+import { currentSpaceIdAtom } from "@/stores/space";
+import produce from "immer";
 
 const isImage = (type: string): boolean => {
   const imgTypes =
@@ -9,45 +11,51 @@ const isImage = (type: string): boolean => {
   return imgTypes.includes(type);
 };
 
+type TheFile = File & { path: string };
+
 export const useAddFile = () => {
   const [files, setFiles] = useAtom(filesAtom);
-  const [fileStatusMap, setFileStatusMap] = useAtom(fileStatusAtom);
+  const currentSpaceId = useAtomValue(currentSpaceIdAtom);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const addFiles = (files: FileList) => {
-    const canPush: SendFile[] = [];
+  const addFiles = (theFiles: TheFile[]) => {
+    const data: SendFile[] = [];
 
-    for (let file of files) {
-      const currentFile = file as unknown as SendFile;
-
-      if (isImage(currentFile.type) && !fileStatusMap.has(currentFile.path)) {
-        canPush.push({
-          name: currentFile.name,
-          path: currentFile.path,
-          type: currentFile.type,
-          size: currentFile.size,
-        });
-
-        setFileStatusMap(
-          new Map(fileStatusMap.set(currentFile.path, { status: "waiting" }))
-        );
+    for (const file of theFiles) {
+      if (
+        isImage(file.type) &&
+        files.find((element) => element.path === file.path) === undefined
+      ) {
+        const temp: SendFile = {
+          path: file.path,
+          name: file.name,
+          type: file.type,
+          status: "waiting",
+          originalSize: file.size,
+          spaceId: currentSpaceId,
+        };
+        data.push(temp);
       }
     }
 
-    window.lossApi["file:add"](canPush);
-    setFiles((prev) => [...prev, ...canPush]);
+    const nextState = produce(files, (draft) => {
+      draft.push(...data);
+    });
+    setFiles(nextState);
+    window.lossApi["file:add"](data);
   };
 
   const handleInputAddFile = () => {
     const files = inputRef.current?.files;
     if (!files) return;
-    addFiles(files);
+    // addFiles(files);
+    // TODO
   };
 
   const handleDragFile = (evt: DragEvent<HTMLDivElement>) => {
     const files = evt.dataTransfer.files;
-    addFiles(files);
+    addFiles(files as unknown as TheFile[]);
   };
 
   const reCompress = () => {
@@ -56,5 +64,33 @@ export const useAddFile = () => {
     }
   };
 
-  return { files, inputRef, handleInputAddFile, handleDragFile, reCompress };
+  useEffect(() => {
+    window.lossApi["compress:success"]((_: unknown, file: SendFile) => {
+      setFiles((prevState) => {
+        const nextState = produce(prevState, (draft) => {
+          const index = draft.findIndex(
+            (element) => element.path === file.path
+          );
+          if (index > -1) {
+            draft[index].status = file.status;
+
+            if (file.status === "success") {
+              draft[index].compressedSize = file.compressedSize;
+              draft[index].outputPath = file.outputPath;
+            }
+          }
+        });
+
+        return nextState;
+      });
+    });
+  }, []);
+
+  return {
+    files,
+    inputRef,
+    handleInputAddFile,
+    handleDragFile,
+    reCompress,
+  };
 };

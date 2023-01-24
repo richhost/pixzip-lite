@@ -2,9 +2,6 @@ import { contextBridge, ipcRenderer } from "electron";
 
 const lossApi = {
   "dialog:openFolder": () => ipcRenderer.invoke("dialog:openFolder"),
-  // "window:close": () => ipcRenderer.send("window:close"),
-  // "window:minimize": () => ipcRenderer.send("window:minimize"),
-  // "window:maximize": () => ipcRenderer.send("window:maximize"),
   isMacOS: process.platform === "darwin",
   "space:get": () => ipcRenderer.invoke("space:get"),
   "space:add": () => ipcRenderer.invoke("space:add"),
@@ -14,6 +11,8 @@ const lossApi = {
   "space:getCurrentId": () => ipcRenderer.invoke("space:getCurrentId"),
   "file:add": (files: SendFile[]) => ipcRenderer.send("file:add", files),
   "file:clear": () => ipcRenderer.send("clear"),
+  "file:showInFolder": (path: string) =>
+    ipcRenderer.send("file:showInFolder", path),
   "compress:processing": (fn) => ipcRenderer.on("compress:processing", fn),
   "compress:success": (fn) => ipcRenderer.on("compress:success", fn),
   "compress:failed": (fn) => ipcRenderer.on("compress:failed", fn),

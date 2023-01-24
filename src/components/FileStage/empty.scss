@@ -1,0 +1,19 @@
+.file-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 400px;
+  }
+
+  div {
+    position: relative;
+    top: -60px;
+    text-align: center;
+    line-height: 1.75;
+    color: var(--gray9);
+  }
+}

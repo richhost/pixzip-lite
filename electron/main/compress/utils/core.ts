@@ -21,15 +21,13 @@ async function generateFilename(option: {
  * 比较两个文件的大小，true 说明压缩有效，false 说明压缩无效
  * @param oldPath string
  * @param newPath string
- * @returns boolean | { oldSize: number, newSize: number }
+ * @returns boolean | { compressedSize: number }
  */
-async function compressed(file: SendFile, newPath: string) {
-  const oldSize = file.size;
-  const newSize = await Fs.size(newPath);
-  if (oldSize > newSize) {
-    return {
-      newSize,
-    };
+async function compressed(file: TaskFile, newPath: string) {
+  const originalSize = file.originalSize;
+  const compressedSize = await Fs.size(newPath);
+  if (originalSize > compressedSize) {
+    return { compressedSize };
   } else {
     return false;
   }
@@ -40,9 +38,8 @@ async function compressed(file: SendFile, newPath: string) {
  * @param file
  * @returns
  */
-function getFormatType(file: SendFile) {
-  return;
-  let format = userConfig.config.format;
+function getFormatType(file: TaskFile) {
+  let format = file.config.format;
 
   const extension = file.name
     .substring(file.name.lastIndexOf(".") + 1)
@@ -86,8 +83,7 @@ function quality(format: Format, configQuality: number) {
  * @param file
  * @returns
  */
-export const compressCore = (file: SendFile) => {
-  return;
+export const compressCore = (file: TaskFile) => {
   return new Promise((resolve, reject) => {
     const { format, original } = getFormatType(file);
 
@@ -96,7 +92,7 @@ export const compressCore = (file: SendFile) => {
       animated = true;
     }
 
-    const config = userConfig.config;
+    const config = file.config;
 
     sharp(file.path, { animated })
       .resize({
@@ -129,27 +125,30 @@ export const compressCore = (file: SendFile) => {
           // 压缩失败，删除临时文件
           await Fs.remove(tempPath);
           reject(false);
-        }
-
-        // 压缩成功
-        let outputPath = "";
-        if (config.outputOriginal) {
-          // 保存到原文件夹
-          outputPath = await Fs.dirname(file.path);
         } else {
-          outputPath = config.outputPath;
-          if (!outputPath) outputPath = await Fs.dirname(file.path);
-        }
-        outputPath = outputPath + "/" + newFilename;
+          // 压缩成功
+          let outputPath = "";
+          if (config.outputOriginal) {
+            // 保存到原文件夹
+            outputPath = await Fs.dirname(file.path);
+          } else {
+            outputPath = config.outputPath;
+            if (!outputPath) outputPath = await Fs.dirname(file.path);
+          }
+          outputPath =
+            outputPath +
+            (process.platform === "win32" ? "\\" : "/") +
+            newFilename;
 
-        if (await Fs.exists(outputPath)) {
-          // 存在则删除文件
-          await Fs.remove(outputPath);
-        }
-        // 将临时文件移动到目标文件
-        await Fs.move(tempPath, outputPath);
+          if (await Fs.exists(outputPath)) {
+            // 存在则删除文件
+            await Fs.remove(outputPath);
+          }
+          // 将临时文件移动到目标文件
+          await Fs.move(tempPath, outputPath);
 
-        resolve(compressValid);
+          resolve({ compressedSize: compressValid.compressedSize, outputPath });
+        }
       })
       .catch(() => {
         reject(false);

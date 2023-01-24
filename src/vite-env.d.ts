@@ -14,6 +14,7 @@ type LossAPI = {
   "space:setCurrentId": (id: string) => void;
   "file:add": (files: SendFile[]) => void;
   "file:clear": () => void;
+  "file:showInFolder": (path: string) => void;
   onCompress: Function;
   "compress:processing": Function;
   "compress:success": Function;
