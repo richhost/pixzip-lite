@@ -1,12 +1,12 @@
 .file-empty {
-  height: 100%;
+  height: calc(100% - 8px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   img {
-    height: 400px;
+    max-height: 400px;
   }
 
   div {

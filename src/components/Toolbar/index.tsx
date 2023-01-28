@@ -4,7 +4,7 @@ import Icon from "../Icon";
 import "./toolbar.scss";
 
 const Toolbar: React.FC = () => {
-  const { inputRef, handleInputAddFile, again, clean } = useFile();
+  const { inputRef, handleInputAddFile, again, clear } = useFile();
 
   return (
     <div className="toolbar">
@@ -23,7 +23,7 @@ const Toolbar: React.FC = () => {
         <button className="drag-none" title="再次压缩" onClick={again}>
           <Icon name="ReloadIcon" />
         </button>
-        <button className="drag-none" title="清空列表" onClick={clean}>
+        <button className="drag-none" title="清空列表" onClick={clear}>
           <Icon name="EraserIcon" />
         </button>
       </div>

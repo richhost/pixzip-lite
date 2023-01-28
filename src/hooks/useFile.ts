@@ -11,7 +11,10 @@ const isImage = (type: string): boolean => {
   return imgTypes.includes(type);
 };
 
-type TheFile = File & { path: string };
+type TheFile = Omit<
+  SendFile,
+  "compressedSize" | "spaceId" | "outputPath" | "status"
+>;
 
 export const useFile = () => {
   const [files, setFiles] = useAtom(filesAtom);
@@ -21,7 +24,6 @@ export const useFile = () => {
 
   const addFiles = (theFiles: TheFile[]) => {
     const data: SendFile[] = [];
-
     for (const file of theFiles) {
       if (
         isImage(file.type) &&
@@ -32,7 +34,7 @@ export const useFile = () => {
           name: file.name,
           type: file.type,
           status: "waiting",
-          originalSize: file.size,
+          size: file.size,
           spaceId: currentSpaceId,
         };
         data.push(temp);
@@ -50,6 +52,7 @@ export const useFile = () => {
     const files = inputRef.current?.files;
     if (!files) return;
     addFiles(files as unknown as TheFile[]);
+    inputRef.current.value = "";
   };
 
   const handleDragFile = (evt: DragEvent<HTMLDivElement>) => {
@@ -84,15 +87,30 @@ export const useFile = () => {
       })
     );
     setFiles(nextState);
-    // addFiles()
+
+    let data: SendFile[] = [];
+    for (const element of nextState) {
+      if (element.spaceId === currentSpaceId) {
+        const temp: SendFile = {
+          name: element.name,
+          path: element.path,
+          size: element.size,
+          type: element.type,
+          spaceId: currentSpaceId,
+          status: element.status,
+        };
+        data.push(temp);
+      }
+    }
+    window.lossApi["file:add"](data);
   };
 
-  const clean = () => {
-    const nextState = produce(files, (draft) => {
-      draft.filter((element) => element.spaceId !== currentSpaceId);
-    });
+  const clear = () => {
+    const nextState = files.filter(
+      (element) => element.spaceId !== currentSpaceId
+    );
     setFiles(nextState);
-    window.lossApi["file:clean"](currentSpaceId);
+    window.lossApi["file:clear"](currentSpaceId);
   };
 
   useEffect(() => {
@@ -115,6 +133,6 @@ export const useFile = () => {
     handleInputAddFile,
     handleDragFile,
     again,
-    clean,
+    clear,
   };
 };

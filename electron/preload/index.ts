@@ -10,7 +10,7 @@ const lossApi = {
   "space:setCurrentId": () => ipcRenderer.send("space:setCurrentId"),
   "space:getCurrentId": () => ipcRenderer.invoke("space:getCurrentId"),
   "file:add": (files: SendFile[]) => ipcRenderer.send("file:add", files),
-  "file:clean": (spaceId: string) => ipcRenderer.send("file:clean", spaceId),
+  "file:clear": (spaceId: string) => ipcRenderer.send("file:clear", spaceId),
   "file:showInFolder": (path: string) =>
     ipcRenderer.send("file:showInFolder", path),
   "compress:processing": (fn) => ipcRenderer.on("compress:processing", fn),

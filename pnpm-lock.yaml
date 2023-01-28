@@ -16,11 +16,11 @@ specifiers:
   '@types/react-dom': ^18.0.10
   '@types/sharp': ^0.31.1
   '@vitejs/plugin-react-swc': ^3.0.1
-  electron: ^22.0.3
+  electron: ^22.1.0
   electron-builder: ^23.6.0
   electron-store: ^8.1.0
   fs-extra: ^11.1.0
-  immer: ^9.0.18
+  immer: ^9.0.19
   jotai: ^1.13.1
   lucide-react: ^0.105.0
   nanoid: 3.3.4
@@ -56,9 +56,9 @@ devDependencies:
   '@types/react-dom': 18.0.10
   '@types/sharp': 0.31.1
   '@vitejs/plugin-react-swc': 3.0.1_vite@4.0.4
-  electron: 22.0.3
+  electron: 22.1.0
   electron-builder: 23.6.0
-  immer: 9.0.18
+  immer: 9.0.19
   jotai: 1.13.1_react@18.2.0
   lucide-react: 0.105.0_react@18.2.0
   nanoid: 3.3.4
@@ -1806,8 +1806,8 @@ packages:
       type-fest: 2.19.0
     dev: false
 
-  /electron/22.0.3:
-    resolution: {integrity: sha512-eETrJTINTzlXgQrnJSrKiF2Xdt5EHpxZ6Kk+WUjFCE0zUztdVm+hrngUecqhj8TPFlYScTANzPwRwUIjOChl+g==}
+  /electron/22.1.0:
+    resolution: {integrity: sha512-wz5s4N6V7zyKm4YQmXJImFoxO1Doai32ShYm0FzOLPBMwLMdQBV+REY+j1opRx0KJ9xJEIdjYgcA8OSw6vx3pA==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
     requiresBuild: true
@@ -2238,8 +2238,8 @@ packages:
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
-  /immer/9.0.18:
-    resolution: {integrity: sha512-eAPNpsj7Ax1q6Y/3lm2PmlwRcFzpON7HSNQ3ru5WQH1/PSpnyed/HpNOELl2CxLKoj4r+bAHgdyKqW5gc2Se1A==}
+  /immer/9.0.19:
+    resolution: {integrity: sha512-eY+Y0qcsB4TZKwgQzLaE/lqYMlKhv5J9dyd2RhhtGhNo2njPXDqU9XPfcNfa3MIDsdtZt5KlkIsirlo4dHsWdQ==}
     dev: true
 
   /immutable/4.2.2:

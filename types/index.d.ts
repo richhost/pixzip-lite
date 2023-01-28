@@ -3,7 +3,7 @@ interface SendFile {
   name: string;
   type: string;
   status: ProcessStatus;
-  originalSize: number;
+  size: number;
   compressedSize?: number;
   spaceId: string;
   outputPath?: string;

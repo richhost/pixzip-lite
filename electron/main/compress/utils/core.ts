@@ -24,9 +24,9 @@ async function generateFilename(option: {
  * @returns boolean | { compressedSize: number }
  */
 async function compressed(file: TaskFile, newPath: string) {
-  const originalSize = file.originalSize;
+  const size = file.size;
   const compressedSize = await Fs.size(newPath);
-  if (originalSize > compressedSize) {
+  if (size > compressedSize) {
     return { compressedSize };
   } else {
     return false;

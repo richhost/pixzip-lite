@@ -24,8 +24,13 @@ class Compress {
 
   // 清空文件
   clearFiles = (_, spaceId: string) => {
-    // this.taskQueue.clear();
-    // TODO
+    const copy = this.taskQueue.toArray();
+    const after = copy.filter((element) => element.spaceId !== spaceId);
+    this.taskQueue.clear();
+    if (after.length) {
+      this.addFiles(_, after);
+      this.startProcess();
+    }
   };
 
   private startProcess() {

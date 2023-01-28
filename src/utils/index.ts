@@ -15,7 +15,7 @@ export const bytes2MB = (bytes: number) => {
  * @param oldSize
  * @param newSize
  */
-export const calcLossPercent = (oldSize: number, newSize: number) => {
-  const percent = ((oldSize - newSize) / oldSize) * 100;
+export const calcLossPercent = (size: number, compressedSize: number) => {
+  const percent = ((size - compressedSize) / size) * 100;
   return Math.round(percent) + "%";
 };

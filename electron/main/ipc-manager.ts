@@ -1,5 +1,4 @@
 import { dialog, ipcMain, shell } from "electron";
-import Fs from "@supercharge/fs";
 import compress from "./compress";
 import db from "./db";
 
@@ -51,7 +50,7 @@ class IPCManager {
 
   // 清空文件
   registerClearFiles() {
-    ipcMain.on("file:clean", compress.clearFiles);
+    ipcMain.on("file:clear", compress.clearFiles);
   }
 
   // show in folder

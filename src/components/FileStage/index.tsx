@@ -80,13 +80,11 @@ export default function FileStage() {
                     <Icon name="ExternalLinkIcon" />
                   </button>
                 )}
-                <span className="original-size">
-                  {bytes2MB(element.originalSize)}
-                </span>
+                <span className="original-size">{bytes2MB(element.size)}</span>
                 <span className="compress-result">
                   {FileStatus(
                     element.status,
-                    element.originalSize,
+                    element.size,
                     element.compressedSize
                   )}
                 </span>
