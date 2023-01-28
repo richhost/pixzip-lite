@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { useAddFile } from "@/hooks/useAddFiles";
+import { useFile } from "@/hooks/useFile";
 import { bytes2MB, calcLossPercent } from "@/utils";
 import Scrollbar from "@/components/Scrollbar";
 import Empty from "./Empty";
@@ -13,8 +13,10 @@ function FileStatus(
   compressedSize?: number
 ) {
   switch (status) {
+    case "waiting":
+      return <Icon name="ClockIcon" />;
     case "processing":
-      return <Icon name="clockIcon" />;
+      return <>正在压缩</>;
     case "failed":
       return <>无法压缩</>;
     case "success":
@@ -45,7 +47,7 @@ function FileStatus(
 }
 
 export default function FileStage() {
-  const { handleDragFile, files } = useAddFile();
+  const { handleDragFile, files } = useFile();
   const currentSpaceId = useAtomValue(currentSpaceIdAtom);
 
   const fileList = files.filter(
@@ -65,7 +67,7 @@ export default function FileStage() {
       >
         {fileList.length === 0 && <Empty />}
 
-        {fileList.length > 0 && (
+        <div>
           <ul className="file-list">
             {fileList.map((element) => (
               <li key={element.path} className="file-item">
@@ -91,7 +93,7 @@ export default function FileStage() {
               </li>
             ))}
           </ul>
-        )}
+        </div>
       </div>
     </Scrollbar>
   );

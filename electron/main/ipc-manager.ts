@@ -51,7 +51,7 @@ class IPCManager {
 
   // 清空文件
   registerClearFiles() {
-    ipcMain.on("file:clear", compress.clearFiles);
+    ipcMain.on("file:clean", compress.clearFiles);
   }
 
   // show in folder

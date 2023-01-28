@@ -2,12 +2,12 @@
   height: calc(100vh - var(--h-drag));
 
   .file-list {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 4px;
     padding: 4px;
     padding-inline-end: 8px;
+    padding-block-end: 6px;
   }
 
   .file-item {
@@ -51,19 +51,22 @@
 
     .compress-result {
       grid-area: result;
+      display: flex;
+      align-items: center;
     }
   }
 }
 
 .compress-success {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
   align-items: center;
+  gap: 4px;
 
   .down-icon {
     width: 15px;
     height: 15px;
     color: var(--grass8);
-    margin-inline-start: 48px;
-    margin-inline-end: 4px;
   }
 }

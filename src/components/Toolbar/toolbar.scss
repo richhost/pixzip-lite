@@ -1,0 +1,46 @@
+.toolbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.toolbar-btn-group {
+  display: flex;
+
+  button {
+    height: 30px;
+    width: 40px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+
+    &:hover {
+      background-color: var(--gray3);
+    }
+
+    &:active {
+      background-color: var(--gray4);
+    }
+  }
+
+  .add-img-btn {
+    height: 30px;
+    width: 40px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+
+    &:hover {
+      background-color: var(--gray3);
+    }
+
+    &:active {
+      background-color: var(--gray4);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  }
+}

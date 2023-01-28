@@ -13,7 +13,7 @@ type LossAPI = {
   "space:getCurrentId": () => Promise<string>;
   "space:setCurrentId": (id: string) => void;
   "file:add": (files: SendFile[]) => void;
-  "file:clear": () => void;
+  "file:clean": (spaceId: string) => void;
   "file:showInFolder": (path: string) => void;
   onCompress: Function;
   "compress:processing": Function;

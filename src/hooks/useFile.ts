@@ -13,7 +13,7 @@ const isImage = (type: string): boolean => {
 
 type TheFile = File & { path: string };
 
-export const useAddFile = () => {
+export const useFile = () => {
   const [files, setFiles] = useAtom(filesAtom);
   const currentSpaceId = useAtomValue(currentSpaceIdAtom);
 
@@ -49,8 +49,7 @@ export const useAddFile = () => {
   const handleInputAddFile = () => {
     const files = inputRef.current?.files;
     if (!files) return;
-    // addFiles(files);
-    // TODO
+    addFiles(files as unknown as TheFile[]);
   };
 
   const handleDragFile = (evt: DragEvent<HTMLDivElement>) => {
@@ -58,32 +57,56 @@ export const useAddFile = () => {
     addFiles(files as unknown as TheFile[]);
   };
 
-  const reCompress = () => {
-    if (files.length) {
-      window.lossApi["file:add"](files);
-    }
+  const changeStatus = (file: SendFile) => {
+    setFiles((prevState) => {
+      const nextState = produce(prevState, (draft) => {
+        const index = draft.findIndex((element) => element.path === file.path);
+        if (index > -1) {
+          draft[index].status = file.status;
+
+          if (file.status === "success") {
+            draft[index].compressedSize = file.compressedSize;
+            draft[index].outputPath = file.outputPath;
+          }
+        }
+      });
+
+      return nextState;
+    });
+  };
+
+  const again = () => {
+    const nextState = produce(files, (draft) =>
+      draft.forEach((element) => {
+        if (element.spaceId === currentSpaceId) {
+          element.status = "waiting";
+        }
+      })
+    );
+    setFiles(nextState);
+    // addFiles()
+  };
+
+  const clean = () => {
+    const nextState = produce(files, (draft) => {
+      draft.filter((element) => element.spaceId !== currentSpaceId);
+    });
+    setFiles(nextState);
+    window.lossApi["file:clean"](currentSpaceId);
   };
 
   useEffect(() => {
-    window.lossApi["compress:success"]((_: unknown, file: SendFile) => {
-      setFiles((prevState) => {
-        const nextState = produce(prevState, (draft) => {
-          const index = draft.findIndex(
-            (element) => element.path === file.path
-          );
-          if (index > -1) {
-            draft[index].status = file.status;
-
-            if (file.status === "success") {
-              draft[index].compressedSize = file.compressedSize;
-              draft[index].outputPath = file.outputPath;
-            }
-          }
-        });
-
-        return nextState;
-      });
+    window.lossApi["compress:processing"]((_: unknown, file: SendFile) => {
+      changeStatus(file);
     });
+    window.lossApi["compress:success"]((_: unknown, file: SendFile) => {
+      changeStatus(file);
+    });
+    window.lossApi["compress:failed"]((_: unknown, file: SendFile) => {
+      changeStatus(file);
+    });
+
+    return () => window.lossApi["compress:remove"]();
   }, []);
 
   return {
@@ -91,6 +114,7 @@ export const useAddFile = () => {
     inputRef,
     handleInputAddFile,
     handleDragFile,
-    reCompress,
+    again,
+    clean,
   };
 };
