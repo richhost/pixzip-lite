@@ -11,7 +11,6 @@ specifiers:
   '@radix-ui/react-slider': ^1.1.0
   '@radix-ui/react-tooltip': ^1.0.3
   '@supercharge/fs': ^3.4.0
-  '@types/fs-extra': ^11.0.1
   '@types/node': ^18.11.18
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
@@ -20,7 +19,6 @@ specifiers:
   electron: ^22.1.0
   electron-builder: ^23.6.0
   electron-store: ^8.1.0
-  fs-extra: ^11.1.0
   immer: ^9.0.19
   jotai: ^1.13.1
   lucide-react: ^0.105.0
@@ -40,7 +38,6 @@ specifiers:
 dependencies:
   '@supercharge/fs': 3.4.0
   electron-store: 8.1.0
-  fs-extra: 11.1.0
   sharp: 0.31.3
 
 devDependencies:
@@ -53,7 +50,6 @@ devDependencies:
   '@radix-ui/react-select': 1.2.0_5ndqzdd6t4rivxsukjv3i3ak2q
   '@radix-ui/react-slider': 1.1.0_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-tooltip': 1.0.3_5ndqzdd6t4rivxsukjv3i3ak2q
-  '@types/fs-extra': 11.0.1
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -1008,13 +1004,6 @@ packages:
       '@types/ms': 0.7.31
     dev: true
 
-  /@types/fs-extra/11.0.1:
-    resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
-    dependencies:
-      '@types/jsonfile': 6.1.1
-      '@types/node': 18.11.18
-    dev: true
-
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
@@ -1035,12 +1024,6 @@ packages:
 
   /@types/js-cookie/2.2.7:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
-    dev: true
-
-  /@types/jsonfile/6.1.1:
-    resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
-    dependencies:
-      '@types/node': 18.11.18
     dev: true
 
   /@types/keyv/3.1.4:
@@ -2052,15 +2035,6 @@ packages:
       jsonfile: 6.1.0
       universalify: 2.0.0
     dev: true
-
-  /fs-extra/11.1.0:
-    resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
-    engines: {node: '>=14.14'}
-    dependencies:
-      graceful-fs: 4.2.10
-      jsonfile: 6.1.0
-      universalify: 2.0.0
-    dev: false
 
   /fs-extra/8.1.0:
     resolution: {integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==}
