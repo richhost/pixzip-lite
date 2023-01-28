@@ -38,6 +38,7 @@ specifiers:
 dependencies:
   '@supercharge/fs': 3.4.0
   electron-store: 8.1.0
+  nanoid: 3.3.4
   sharp: 0.31.3
 
 devDependencies:
@@ -60,7 +61,6 @@ devDependencies:
   immer: 9.0.19
   jotai: 1.13.1_react@18.2.0
   lucide-react: 0.105.0_react@18.2.0
-  nanoid: 3.3.4
   open-props: 1.5.5
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2670,7 +2670,6 @@ packages:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: true
 
   /napi-build-utils/1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
