@@ -14,6 +14,14 @@ export const useSpace = () => {
   const [spaces, setSpaces] = useAtom(spacesAtom);
   const [currentId, setCurrentId] = useAtom(currentSpaceIdAtom);
 
+  const addSpace = (data: Space) => {
+    const nextState = produce(spaces, (draft) => {
+      draft.push(data);
+    });
+    setSpaces(nextState);
+    setCurrentId(data.id);
+  };
+
   const changeOption = (action: Action) => {
     const nextState = produce(spaces, (draft) => {
       const index = draft.findIndex((element) => element.id === currentId);
@@ -32,6 +40,11 @@ export const useSpace = () => {
 
   const currentSpace = spaces.find((element) => element.id === currentId);
 
+  const setCurrentSpace = (id: string) => {
+    window.lossApi["space:setCurrentId"](id);
+    setCurrentId(id);
+  };
+
   useDebounce(
     () => {
       window.lossApi["space:patch"](spaces);
@@ -42,7 +55,9 @@ export const useSpace = () => {
 
   return {
     spaces,
+    addSpace,
     currentSpace,
+    setCurrentSpace,
     changeOption,
     currentId,
     setCurrentId,

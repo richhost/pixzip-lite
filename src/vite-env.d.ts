@@ -7,7 +7,7 @@ type LossAPI = {
   "window:maximize": Function;
   isMacOS: boolean;
   "space:get": () => Promise<Space[]>;
-  "space:add": (data: Omit<Space, "id">) => Promise<Space>;
+  "space:add": (data?: Omit<Space, "id">) => Promise<Space>;
   "space:patch": (data: Space[]) => void;
   "space:del": (id: string) => void;
   "space:getCurrentId": () => Promise<string>;

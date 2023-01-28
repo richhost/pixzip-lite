@@ -9,8 +9,7 @@
     gap: 4px;
     font-weight: 500;
 
-    &__icon {
-      flex-shrink: 0;
+    &-icon {
       width: 28px;
       height: 28px;
       display: grid;
@@ -21,12 +20,14 @@
       border-radius: 8px;
 
       &:hover {
-        border-color: var(--gray4);
+        border-color: var(--gray7);
+        background-color: var(--gray6);
       }
     }
 
-    &__input {
+    &-input {
       width: 100%;
+      font-weight: 600;
 
       &::placeholder {
         color: var(--gray8);
@@ -34,10 +35,11 @@
     }
 
     &:hover,
-    &:focus-within {
-      background: var(--gray4);
+    &:focus-within,
+    &__active {
+      background: var(--gray3);
 
-      .space-head__icon {
+      .space-head-icon {
         border-color: var(--gray8);
       }
     }
@@ -57,7 +59,7 @@
       border-radius: 8px;
 
       &__active {
-        border-color: var(--red9);
+        border-color: var(--gray12);
       }
     }
 

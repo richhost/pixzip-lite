@@ -20,8 +20,8 @@ class IPCManager {
     ipcMain.handle("space:get", () => db.getSpace());
 
     // add
-    ipcMain.handle("space:add", (event, data: Omit<Space, "id">) => {
-      db.add(data);
+    ipcMain.handle("space:add", (event, data?: Omit<Space, "id">) => {
+      return db.add(data);
     });
 
     // del

@@ -42,9 +42,15 @@ class Db {
     this.db.set(CURRENT_SPACE_ID, currentId);
   }
 
-  add = (data: Omit<Space, "id">) => {
+  add = (data?: Omit<Space, "id">) => {
     const id = nanoid();
-    const space: Space = { id, ...data };
+    let space: Space;
+    if (data !== undefined) {
+      space = { id, ...data };
+    } else {
+      space = { id, ...this.defaultSpaceData, name: "" };
+    }
+
     this.spaces.push(space);
     this.currentSpaceId = id;
     this.db.set(SPACES, this.spaces);
