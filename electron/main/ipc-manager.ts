@@ -26,6 +26,7 @@ class IPCManager {
 
     // del
     ipcMain.on("space:del", (event, id: string) => {
+      compress.clearFiles("", id);
       db.del(id);
     });
 

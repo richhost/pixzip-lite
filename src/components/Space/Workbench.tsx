@@ -110,7 +110,7 @@ const Workbench: React.FC = () => {
       <AlertDialog
         open={delAlertDialogOpen}
         title="删除 Space"
-        description=""
+        description="进行中的任务不会被中止"
         onCancel={() => setDelAlertDialogOpen(false)}
         onAction={() => {
           delSpace(delId.current);

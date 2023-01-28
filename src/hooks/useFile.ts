@@ -24,11 +24,16 @@ export const useFile = () => {
 
   const addFiles = (theFiles: TheFile[]) => {
     const data: SendFile[] = [];
+
     for (const file of theFiles) {
-      if (
-        isImage(file.type) &&
-        files.find((element) => element.path === file.path) === undefined
-      ) {
+      const condition1 = isImage(file.type);
+      const condition2 =
+        files.find(
+          (element) =>
+            element.path === file.path && element.spaceId === currentSpaceId
+        ) === undefined;
+
+      if (condition1 && condition2) {
         const temp: SendFile = {
           path: file.path,
           name: file.name,
@@ -63,7 +68,10 @@ export const useFile = () => {
   const changeStatus = (file: SendFile) => {
     setFiles((prevState) => {
       const nextState = produce(prevState, (draft) => {
-        const index = draft.findIndex((element) => element.path === file.path);
+        const index = draft.findIndex(
+          (element) =>
+            element.path === file.path && element.spaceId === file.spaceId
+        );
         if (index > -1) {
           draft[index].status = file.status;
 
