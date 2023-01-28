@@ -14,7 +14,7 @@ const Aside: React.FC<Props> = ({ children }) => {
         {!isMacOS && (
           <div className="brand">
             <img
-              srcSet="/icons/win/logo.png 1x, /icons/win/logo@2x.png 2x, /icons/win/logo@3x.png 3x"
+              srcSet="./icons/win/logo.png 1x, ./icons/win/logo@2x.png 2x, ./icons/win/logo@3x.png 3x"
               alt="logo"
             />
             像素丢失
