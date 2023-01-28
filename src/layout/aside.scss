@@ -9,4 +9,16 @@
     grid-template-rows: min-content 1fr;
     height: calc(100vh - var(--h-drag));
   }
+
+  .brand {
+    padding-inline: 8px;
+    height: var(--h-drag);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img {
+      width: 20px;
+    }
+  }
 }
