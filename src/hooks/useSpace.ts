@@ -45,6 +45,12 @@ export const useSpace = () => {
     setCurrentId(id);
   };
 
+  const delSpace = (id: string) => {
+    window.lossApi["space:del"](id);
+    const nextState = spaces.filter((element) => element.id !== id);
+    setSpaces(nextState);
+  };
+
   useDebounce(
     () => {
       window.lossApi["space:patch"](spaces);
@@ -62,5 +68,6 @@ export const useSpace = () => {
     currentId,
     setCurrentId,
     onOpenFolder,
+    delSpace,
   };
 };

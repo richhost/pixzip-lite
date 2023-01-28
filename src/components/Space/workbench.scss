@@ -57,9 +57,40 @@
       place-items: center;
       border: 2px solid var(--gray4);
       border-radius: 8px;
+      position: relative;
 
       &__active {
         border-color: var(--gray12);
+      }
+
+      &:hover {
+        .del-space {
+          display: grid;
+        }
+      }
+
+      .del-space {
+        display: none;
+        z-index: 10;
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background-color: #fff;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid var(--gray6);
+        place-items: center;
+        transition: scale 0.2s var(--ease-5);
+
+        &-icon {
+          width: 8px;
+          height: 8px;
+        }
+
+        &:active {
+          scale: 1.1;
+        }
       }
     }
 
