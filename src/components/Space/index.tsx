@@ -12,7 +12,10 @@ const Space: React.FC = () => {
     window.lossApi["space:get"]().then((spaces) => {
       setSpaces(spaces);
     });
-    window.lossApi["space:getCurrentId"]().then((id) => setCurrentSpacesId(id));
+    window.lossApi["space:getCurrentId"]().then((id) => {
+      console.log("id: ", id);
+      setCurrentSpacesId(id);
+    });
   }, []);
 
   return (

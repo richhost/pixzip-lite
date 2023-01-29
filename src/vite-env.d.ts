@@ -9,7 +9,9 @@ type LossAPI = {
   "space:get": () => Promise<Space[]>;
   "space:add": (data?: Omit<Space, "id">) => Promise<Space>;
   "space:patch": (data: Space[]) => void;
-  "space:del": (id: string) => void;
+  "space:del": (
+    id: string
+  ) => Promise<{ currentSpaceId: string; spaces: Space[] }>;
   "space:getCurrentId": () => Promise<string>;
   "space:setCurrentId": (id: string) => void;
   "file:add": (files: SendFile[]) => void;

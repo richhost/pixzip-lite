@@ -46,11 +46,10 @@ export const useSpace = () => {
   };
 
   const delSpace = (id: string) => {
-    window.lossApi["space:del"](id);
-    const nextState = spaces.filter((element) => element.id !== id);
-    const currentId = nextState[nextState.length - 1].id;
-    setSpaces(nextState);
-    setCurrentSpace(currentId);
+    window.lossApi["space:del"](id).then(({ currentSpaceId, spaces }) => {
+      setCurrentId(currentSpaceId);
+      setSpaces(spaces);
+    });
   };
 
   useDebounce(

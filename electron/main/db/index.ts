@@ -64,6 +64,10 @@ class Db {
     this.currentSpaceId = this.spaces[this.spaces.length - 1].id;
     this.db.set(SPACES, this.spaces);
     this.db.set(CURRENT_SPACE_ID, this.currentSpaceId);
+    return {
+      spaces: this.spaces,
+      currentSpaceId: this.currentSpaceId,
+    };
   };
 
   patch = (data: Space[]) => {
@@ -77,10 +81,12 @@ class Db {
 
   setCurrentSpaceId = (id: string) => {
     this.currentSpaceId = id;
-    this.db.get(CURRENT_SPACE_ID, this.currentSpaceId);
+    this.db.set(CURRENT_SPACE_ID, this.currentSpaceId);
   };
 
   getCurrentSpaceId = () => {
+    console.log("------", this.currentSpaceId);
+    console.log("=================", this.spaces);
     return this.currentSpaceId;
   };
 

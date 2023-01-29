@@ -25,9 +25,9 @@ class IPCManager {
     });
 
     // del
-    ipcMain.on("space:del", (event, id: string) => {
+    ipcMain.handle("space:del", (event, id: string) => {
       compress.clearFiles("", id);
-      db.del(id);
+      return db.del(id);
     });
 
     // path
