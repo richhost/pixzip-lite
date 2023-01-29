@@ -6,7 +6,7 @@
 	<div class="max-w-5xl px-4 md:px-10 lg:px-20 mx-auto">
 		<H3 text="开源项目" />
 		<p class="text-center mt-4">
-			<strong class="font-bold underline underline-offset-4">像素丢失</strong
+			<strong class="font-bold">像素丢失</strong
 			>建立在已有的开源项目之上，在此鸣谢以下优秀的项目和贡献者！
 		</p>
 
@@ -30,7 +30,7 @@
 
 			<a
 				class="border border-white flex items-center gap-3 rounded p-2"
-				href="https://github.com/lucide-icons/lucide"
+				href="https://github.com/radix-ui"
 				target="_blank"
 				rel="noreferrer"
 			>
@@ -42,7 +42,7 @@
 						clip-rule="evenodd"
 					/>
 				</svg>
-				lucide-icons/lucide
+				radix-ui
 			</a>
 
 			<a

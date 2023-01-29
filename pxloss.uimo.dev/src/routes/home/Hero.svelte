@@ -28,13 +28,15 @@
 <div class="min-h-screen flex flex-col">
 	<Nav />
 	<div class="relative flex-1 flex items-center">
-		<div class="patterns" />
 		<section
 			class="max-w-7xl mx-auto py-16 px-5 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-12 place-items-center gap-10 lg:gap-10"
 		>
 			<div class="lg:col-span-5 flex flex-col items-center lg:items-start">
 				<h1 class="text-3xl lg:text-5xl font-bold">像素丢失</h1>
-				<h2 class="text-xl lg:text-3xl font-semibold mt-2 lg:mt-4">美观易用的开源图片压缩软件</h2>
+				<h2 class="text-xl lg:text-3xl font-semibold mt-2 lg:mt-10">现代 Web 应用的压图好手</h2>
+				<p class="mt-4 font-light text-sm lg:text-base">
+					支持 WebP、AVIF 格式输出，在不损失视觉质量的前提下，大幅度减小文件大小
+				</p>
 
 				<div
 					use:clickOutside={() => {
@@ -69,7 +71,7 @@
 					{/if}
 				</div>
 				<p class="mt-2 text-sm text-zinc-700">支持 macOS 和 Windows 系统</p>
-				<p class="text-xs text-zinc-400 mt-2">版本 v1.0.2，更新日期：2023/01/05</p>
+				<p class="text-xs text-zinc-400 mt-2">版本 v1.1.1，更新日期：2023/01/29</p>
 			</div>
 
 			<img
@@ -80,30 +82,3 @@
 		</section>
 	</div>
 </div>
-
-<style>
-	.patterns {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 180px;
-		background-color: #ffffff;
-		opacity: 0.8;
-		background-image: radial-gradient(#383ed3 0.55px, transparent 0.55px),
-			radial-gradient(#383ed3 0.55px, #ffffff 0.55px);
-		background-size: 22px 22px;
-		background-position: 0 0, 11px 11px;
-		z-index: -1;
-	}
-	.patterns::after {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 180px;
-		content: '';
-		opacity: 1;
-		background: linear-gradient(to bottom, transparent, #fff);
-	}
-</style>
