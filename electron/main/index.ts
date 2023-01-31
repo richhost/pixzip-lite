@@ -1,7 +1,7 @@
 import { app, BrowserWindow, Menu } from "electron";
 import windowController from "./window-controller";
-import ipcManager from "./ipc-manager";
 import { MAIN_WINDOW_NAME, winOptions, macOptions } from "./config";
+import registerIpc from "./ipc";
 
 // The built directory structure
 //
@@ -20,22 +20,12 @@ if (process.platform === "win32") app.setAppUserModelId(app.getName());
 function createWindow() {
   const options = process.platform === "darwin" ? macOptions : winOptions;
   windowController.createWindow(MAIN_WINDOW_NAME, options);
-
   windowController.loadWebContainer(MAIN_WINDOW_NAME);
 }
 
 app.whenReady().then(() => {
   createWindow();
-  // 选择保存文件夹
-  ipcManager.registerOpenFolder();
-  // Space
-  ipcManager.registerSpace();
-  // 添加文件
-  ipcManager.registerAddFiles();
-  // 清空文件
-  ipcManager.registerClearFiles();
-  // 在文件夹中显示
-  ipcManager.showInFolder();
+  registerIpc();
 });
 
 app.on("activate", () => {

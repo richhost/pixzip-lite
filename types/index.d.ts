@@ -1,14 +1,3 @@
-interface SendFile {
-  path: string;
-  name: string;
-  type: string;
-  status: ProcessStatus;
-  size: number;
-  compressedSize?: number;
-  spaceId: string;
-  outputPath?: string;
-}
-
 type ProcessStatus = "waiting" | "processing" | "success" | "failed";
 
 type Format = "original" | "jpg" | "png" | "webp" | "avif" | "gif";
@@ -25,3 +14,13 @@ interface Space {
   outputOriginal: boolean;
   outputPath?: string;
 }
+
+interface Img {
+  path: string;
+  name: string;
+  size: number;
+  type: string;
+  spaceId: string;
+}
+
+type ImgStatus = "waiting" | "start" | "success" | "failed";

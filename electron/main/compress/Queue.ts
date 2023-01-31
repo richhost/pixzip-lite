@@ -1,12 +1,8 @@
 class Queue<T> {
   private queue: T[];
 
-  enqueue(value: T | T[]) {
-    if (Array.isArray(value)) {
-      this.queue.push(...value);
-    } else {
-      this.queue.push(value);
-    }
+  enqueue(value: T) {
+    this.queue.push(value);
   }
 
   dequeue() {

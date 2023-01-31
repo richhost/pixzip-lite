@@ -1,29 +1,46 @@
 /// <reference types="vite/client" />
 
-type LossAPI = {
-  "dialog:openFolder": Function;
-  "window:close": Function;
-  "window:minimize": Function;
-  "window:maximize": Function;
+interface SpaceBridge {
+  getSpaces: () => Promise<Space[]>;
+  addSpace: () => Promise<Space>;
+  patchSpace: (data: Space) => void;
+  delSpace: (id: string) => Promise<false | { def: string }>;
+  getDefault: () => Promise<string>;
+  setDefault: (id: string) => Promise<boolean>;
+}
+
+interface ImgBridge {
+  addImgs: (data: Img[]) => void;
+  clearImgs: (spaceId: string) => void;
+  showInFolder: (outputPath: string) => void;
+}
+
+interface CompressBridge {
+  start: (
+    callback: (path: string, spaceId: string, status: ImgStatus) => void
+  ) => void;
+  success: (
+    callback: (
+      path: string,
+      spaceId: string,
+      status: ImgStatus,
+      compressedSize: number
+    ) => void
+  ) => void;
+  failed: (
+    callback: (path: string, spaceId: string, status: ImgStatus) => void
+  ) => void;
+  removeListeners: () => void;
+}
+
+interface UtilBridge {
   isMacOS: boolean;
-  "space:get": () => Promise<Space[]>;
-  "space:add": (data?: Omit<Space, "id">) => Promise<Space>;
-  "space:patch": (data: Space[]) => void;
-  "space:del": (
-    id: string
-  ) => Promise<{ currentSpaceId: string; spaces: Space[] }>;
-  "space:getCurrentId": () => Promise<string>;
-  "space:setCurrentId": (id: string) => void;
-  "file:add": (files: SendFile[]) => void;
-  "file:clear": (spaceId: string) => void;
-  "file:showInFolder": (path: string) => void;
-  onCompress: Function;
-  "compress:processing": Function;
-  "compress:success": Function;
-  "compress:failed": Function;
-  "compress:remove": () => void;
-};
+  folderPicker: () => Promise<string[]>;
+}
 
 interface Window {
-  lossApi: LossAPI;
+  space: SpaceBridge;
+  img: ImgBridge;
+  compress: CompressBridge;
+  util: UtilBridge;
 }

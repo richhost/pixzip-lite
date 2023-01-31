@@ -21,7 +21,6 @@ specifiers:
   electron-store: ^8.1.0
   immer: ^9.0.19
   jotai: ^1.13.1
-  lucide-react: ^0.105.0
   nanoid: 3.3.4
   open-props: ^1.5.5
   react: ^18.2.0
@@ -30,7 +29,7 @@ specifiers:
   sass: ^1.57.1
   sharp: ^0.31.3
   the-new-css-reset: ^1.8.3
-  typescript: ^4.9.4
+  typescript: ^4.9.5
   vite: ^4.0.4
   vite-electron-plugin: ^0.7.4
   vite-plugin-electron-renderer: ^0.11.4
@@ -60,14 +59,13 @@ devDependencies:
   electron-builder: 23.6.0
   immer: 9.0.19
   jotai: 1.13.1_react@18.2.0
-  lucide-react: 0.105.0_react@18.2.0
   open-props: 1.5.5
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
   sass: 1.57.1
   the-new-css-reset: 1.8.3
-  typescript: 4.9.4
+  typescript: 4.9.5
   vite: 4.0.4_ovmyjmuuyckt3r3gpaexj2onji
   vite-electron-plugin: 0.7.4
   vite-plugin-electron-renderer: 0.11.4
@@ -2517,14 +2515,6 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lucide-react/0.105.0_react@18.2.0:
-    resolution: {integrity: sha512-iHaIkd4Wq6aNIVrFMXt3If8E/+2lnJd4WlCyntoJNIzZ8nWhdSSHWpsw7XM4rlw2319LZ2t4WLdnM8Z0ECDTOQ==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: true
-
   /matcher/3.0.0:
     resolution: {integrity: sha512-OkeDaAZ/bQCxeFAozM55PKcKU0yJMPGifLwV4Qgjitu+5MoAfSQN4lsLJeXZ1b8w0x+/Emda6MZgXS1jvsapng==}
     engines: {node: '>=10'}
@@ -3466,8 +3456,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: false
 
-  /typescript/4.9.4:
-    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
+  /typescript/4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
