@@ -61,6 +61,7 @@ export const addSpace = (): Space => {
     outputPath: "",
   };
   spaceSchema.spaces.push(space);
+  spaceSchema.def = id;
   store.set("spaces", spaceSchema.spaces);
   store.set("def", id);
   return space;
