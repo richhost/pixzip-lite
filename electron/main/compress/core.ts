@@ -1,4 +1,4 @@
-import sharp, { FormatEnum } from "sharp";
+import sharp from "sharp";
 import Fs from "@supercharge/fs";
 
 const delimiter = process.platform === "win32" ? "\\" : "/";
@@ -35,16 +35,18 @@ async function needAnimated(img: TaskImg) {
   const formatAnimated =
     img.config.format === "gif" || img.config.format === "webp";
   const inputAnimated = extension === "gif" || extension === "webp";
-
   return formatAnimated && inputAnimated;
 }
 
-async function getFormat(img: TaskImg): Promise<Omit<Format, "original">> {
+async function getFormat(img: TaskImg): Promise<Exclude<Format, "original">> {
   let format = img.config.format;
   if (format === "original") {
-    format === (await getExtension(img.name));
+    format = (await getExtension(img.name)).replace(".", "") as Exclude<
+      Format,
+      "original"
+    >;
   }
-  return format;
+  return format as Exclude<Format, "original">;
 }
 
 export const compress = async (img: TaskImg) => {
@@ -56,7 +58,7 @@ export const compress = async (img: TaskImg) => {
       width: img.config.width,
       height: img.config.height,
     })
-    .toFormat(format as keyof FormatEnum, { quality })
+    .toFormat(format, { quality })
     .toBuffer();
 };
 
