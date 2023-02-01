@@ -1,21 +1,16 @@
-import { currentSpaceIdAtom, spacesAtom } from "@/stores/space";
-import { useSetAtom } from "jotai";
 import React, { useEffect } from "react";
+import { useSetAtom } from "jotai";
+import { defAtom, spacesAtom } from "@/stores/space";
 import Configure from "./Configure";
 import Workbench from "./Workbench";
 
 const Space: React.FC = () => {
   const setSpaces = useSetAtom(spacesAtom);
-  const setCurrentSpacesId = useSetAtom(currentSpaceIdAtom);
+  const setDef = useSetAtom(defAtom);
 
   useEffect(() => {
-    window.lossApi["space:get"]().then((spaces) => {
-      setSpaces(spaces);
-    });
-    window.lossApi["space:getCurrentId"]().then((id) => {
-      console.log("id: ", id);
-      setCurrentSpacesId(id);
-    });
+    window.space.getSpaces().then((spaces) => setSpaces(spaces));
+    window.space.getDefault().then((id) => setDef(id));
   }, []);
 
   return (

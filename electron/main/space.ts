@@ -1,5 +1,6 @@
 import Store from "electron-store";
 import { nanoid } from "nanoid";
+import { clearImgs } from "./compress";
 
 type SpaceSchema = {
   def: string; // default space id
@@ -31,6 +32,7 @@ if (store.get("currentSpaceId")) {
   def = store.get("currentSpaceId") as string;
   // @ts-ignore
   store.delete("currentSpaceId");
+  store.set("def", def);
 }
 // @ts-ignore
 if (store.get("userConfig")) store.delete("userConfig"); // 兼容 1.0 版本
@@ -79,6 +81,7 @@ export const delSpace = (id: string): boolean | { def: string } => {
   const spaces = spaceSchema.spaces.filter((element) => element.id !== id);
   spaceSchema.spaces = spaces;
   store.set("spaces", spaceSchema.spaces);
+  clearImgs(id); // clear space imgs
   if (id === spaceSchema.def) {
     const def = spaceSchema.spaces.at(-1).id;
     spaceSchema.def = def;

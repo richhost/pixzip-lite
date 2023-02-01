@@ -10,10 +10,6 @@ declare namespace NodeJS {
   }
 }
 
-interface TaskFile extends SendFile {
-  config: Space;
-}
-
 interface TaskImg extends Img {
   config: Space;
 }

@@ -5,7 +5,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const isMacOS = window.lossApi["isMacOS"];
+const isMacOS = window.util.isMacOS;
 
 const Aside: React.FC<Props> = ({ children }) => {
   return (

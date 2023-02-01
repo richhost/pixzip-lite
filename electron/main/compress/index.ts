@@ -6,7 +6,7 @@ import { SendData } from "./types";
 import { compress, operate } from "./core";
 
 let max = 5;
-let taskQueue: Queue<TaskImg>;
+let taskQueue: Queue<TaskImg> = new Queue<TaskImg>();
 
 function send<K extends keyof SendData>(key: K, val: SendData[K]) {
   const window = windowController.getWindow(MAIN_WINDOW_NAME);

@@ -17,18 +17,27 @@ interface ImgBridge {
 
 interface CompressBridge {
   start: (
-    callback: (path: string, spaceId: string, status: ImgStatus) => void
+    callback: (params: {
+      path: string;
+      spaceId: string;
+      status: ImgStatus;
+    }) => void
   ) => void;
   success: (
-    callback: (
-      path: string,
-      spaceId: string,
-      status: ImgStatus,
-      compressedSize: number
-    ) => void
+    callback: (params: {
+      path: string;
+      spaceId: string;
+      status: ImgStatus;
+      compressedSize: number;
+      outputPath: string;
+    }) => void
   ) => void;
   failed: (
-    callback: (path: string, spaceId: string, status: ImgStatus) => void
+    callback: (params: {
+      path: string;
+      spaceId: string;
+      status: ImgStatus;
+    }) => void
   ) => void;
   removeListeners: () => void;
 }
@@ -43,4 +52,8 @@ interface Window {
   img: ImgBridge;
   compress: CompressBridge;
   util: UtilBridge;
+}
+
+interface FileWithPath extends File {
+  path: string;
 }

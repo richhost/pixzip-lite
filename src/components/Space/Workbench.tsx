@@ -1,51 +1,83 @@
 import React, { useRef, useState } from "react";
+import { useAtom } from "jotai";
+import produce from "immer";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/Popover";
 import Icon from "@/components/Icon";
 import IconPane from "@/components/IconPane";
-import { useSpace } from "@/hooks/useSpace";
 import { AlertDialog } from "@/components/AlertDialog";
+import { defAtom, spacesAtom } from "@/stores/space";
 import "./workbench.scss";
 
 const Workbench: React.FC = () => {
-  const {
-    spaces,
-    changeOption,
-    currentSpace,
-    setCurrentId,
-    currentId,
-    addSpace,
-    delSpace,
-  } = useSpace();
-
   const [iconPaneIsOpen, setIconPaneIsOpen] = useState(false);
   const [delAlertDialogOpen, setDelAlertDialogOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const delId = useRef("");
 
-  const onSpaceNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    changeOption({ key: "name", value: value });
+  const [spaces, setSpaces] = useAtom(spacesAtom);
+  const [def, setDef] = useAtom(defAtom);
+
+  const currentSpace = spaces.find((element) => element.id === def);
+
+  const onSetDefault = (id: string) => {
+    window.space.setDefault(id).then((res) => {
+      if (res) {
+        setDef(id);
+      }
+    });
   };
 
-  const onIconChange = (icon: string) => {
-    changeOption({ key: "icon", value: icon });
+  const onAddSpace = () => {
+    window.space.addSpace().then((space) => {
+      const nextState = produce(spaces, (draft) => {
+        draft.push(space);
+      });
+      setSpaces(nextState);
+      setDef(space.id);
+      inputRef.current && inputRef.current.focus();
+    });
+  };
+
+  const onDelSpace = (id: string) => {
+    delId.current = id;
+    setDelAlertDialogOpen(true);
+  };
+
+  const delSpace = () => {
+    window.space.delSpace(delId.current).then((res) => {
+      if (res !== false) {
+        const defId = res.def;
+        const nextState = spaces.filter(
+          (element) => element.id !== delId.current
+        );
+        setSpaces(nextState);
+        setDef(defId);
+        setDelAlertDialogOpen(false);
+      }
+    });
   };
 
   const onPopoverOpenChange = (open: boolean) => {
     setIconPaneIsOpen(open);
   };
-
-  const onAddSpace = () => {
-    window.lossApi["space:add"]().then((data) => {
-      addSpace(data);
-      inputRef.current && inputRef.current.focus();
+  const onIconChange = (name: string) => {
+    window.space.patchSpace({
+      ...currentSpace!,
+      icon: name,
     });
+    const nextState = produce(spaces, (draft) => {
+      const index = draft.findIndex((element) => element.id === def);
+      if (index !== -1) draft[index].icon = name;
+    });
+    setSpaces(nextState);
   };
-
-  const delId = useRef("");
-
-  const onDelSpace = (id: string) => {
-    delId.current = id;
-    setDelAlertDialogOpen(true);
+  const onSpaceNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const nextState = produce(spaces, (draft) => {
+      const index = draft.findIndex((element) => element.id === def);
+      if (index !== -1) draft[index].name = value;
+    });
+    setSpaces(nextState);
   };
 
   return (
@@ -81,10 +113,9 @@ const Workbench: React.FC = () => {
           {spaces.map((element) => (
             <li
               key={element.id}
-              onClick={() => setCurrentId(element.id)}
+              onClick={() => onSetDefault(element.id)}
               className={
-                "space-item " +
-                (element.id === currentId ? "space-item__active" : "")
+                "space-item " + (element.id === def ? "space-item__active" : "")
               }
             >
               {spaces.length > 1 && (
@@ -112,10 +143,7 @@ const Workbench: React.FC = () => {
         title="删除 Space"
         description="进行中的任务不会被中止"
         onCancel={() => setDelAlertDialogOpen(false)}
-        onAction={() => {
-          delSpace(delId.current);
-          setDelAlertDialogOpen(false);
-        }}
+        onAction={() => delSpace()}
       />
     </>
   );

@@ -1,10 +1,12 @@
-import { useFile } from "@/hooks/useFile";
 import React from "react";
-import Icon from "../Icon";
+import useAddImg from "@/hooks/useAddImg";
+import useClearImg from "@/hooks/useClearImg";
+import Icon from "@/components/Icon";
 import "./toolbar.scss";
 
 const Toolbar: React.FC = () => {
-  const { inputRef, handleInputAddFile, again, clear } = useFile();
+  const { handleInputAddFile, inputRef, again } = useAddImg();
+  const { onClear } = useClearImg();
 
   return (
     <div className="toolbar">
@@ -23,7 +25,7 @@ const Toolbar: React.FC = () => {
         <button className="drag-none" title="再次压缩" onClick={again}>
           <Icon name="ReloadIcon" />
         </button>
-        <button className="drag-none" title="清空列表" onClick={clear}>
+        <button className="drag-none" title="清空列表" onClick={onClear}>
           <Icon name="EraserIcon" />
         </button>
       </div>

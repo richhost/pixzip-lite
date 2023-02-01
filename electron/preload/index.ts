@@ -2,32 +2,38 @@ import { contextBridge, ipcRenderer } from "electron";
 
 const compressBridge = {
   start: (
-    callback: (path: string, spaceId: string, status: ImgStatus) => void
+    callback: (params: {
+      path: string;
+      spaceId: string;
+      status: ImgStatus;
+    }) => void
   ) => {
-    ipcRenderer.on("compress-start", (_, path, spaceId, status) => {
-      callback(path, spaceId, status);
+    ipcRenderer.on("compress-start", (_, params) => {
+      callback(params);
     });
   },
   success: (
-    callback: (
-      path: string,
-      spaceId: string,
-      status: ImgStatus,
-      compressedSize: number
-    ) => void
+    callback: (params: {
+      path: string;
+      spaceId: string;
+      status: ImgStatus;
+      compressedSize: number;
+      outputPath: string;
+    }) => void
   ) => {
-    ipcRenderer.on(
-      "compress-success",
-      (_, path, spaceId, status, compressedSize) => {
-        callback(path, spaceId, status, compressedSize);
-      }
-    );
+    ipcRenderer.on("compress-success", (_, params) => {
+      callback(params);
+    });
   },
   failed: (
-    callback: (path: string, spaceId: string, status: ImgStatus) => void
+    callback: (params: {
+      path: string;
+      spaceId: string;
+      status: ImgStatus;
+    }) => void
   ) => {
-    ipcRenderer.on("compress-failed", (_, path, spaceId, status) => {
-      callback(path, spaceId, status);
+    ipcRenderer.on("compress-failed", (_, params) => {
+      callback(params);
     });
   },
   removeListeners: () => {

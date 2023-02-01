@@ -6,7 +6,7 @@ export default function Empty() {
       <img src="./imgs/cat.svg" alt="" />
       <div>
         <p>将图片拖入此处开始压缩</p>
-        <p>支持 JPG / PNG / GIF / WebP / AVIF</p>
+        <p>支持 JPG / PNG / GIF / WebP / AVIF / TIFF</p>
       </div>
     </div>
   );

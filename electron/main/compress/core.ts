@@ -83,7 +83,7 @@ export const operate = (
           outputPath += delimiter + outputFilename;
 
           if (Fs.existsSync(outputPath)) Fs.removeSync(outputPath);
-          Fs.moveSync(tempFullname, outputFilename);
+          Fs.moveSync(tempFullname, outputPath);
 
           resolve({
             outputPath,

@@ -1,5 +1,3 @@
-type ProcessStatus = "waiting" | "processing" | "success" | "failed";
-
 type Format = "original" | "jpg" | "png" | "webp" | "avif" | "gif";
 
 interface Space {

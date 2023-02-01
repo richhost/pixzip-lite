@@ -1,9 +1,11 @@
 import React from "react";
+import { useAtom, useAtomValue } from "jotai";
+import produce from "immer";
 import Scrollbar from "@/components/Scrollbar";
 import { Select, SelectItem } from "@/components/Select";
 import { Slider } from "@/components/Slider";
 import { Tooltip } from "@/components/Tooltip";
-import { useSpace } from "@/hooks/useSpace";
+import { defAtom, spacesAtom } from "@/stores/space";
 import "./configure.scss";
 
 const formatOption: { name: string; value: Format }[] = [
@@ -15,7 +17,38 @@ const formatOption: { name: string; value: Format }[] = [
 ];
 
 const Configure: React.FC = () => {
-  const { currentSpace, changeOption, onOpenFolder } = useSpace();
+  const [spaces, setSpaces] = useAtom(spacesAtom);
+  const def = useAtomValue(defAtom);
+  const currentSpace = spaces.find((element) => element.id === def);
+
+  const changeOption: <K extends keyof Space>(
+    key: K,
+    value: Space[K]
+  ) => void = (key, value) => {
+    const nextState = produce(spaces, (draft) => {
+      const index = draft.findIndex((element) => element.id === def);
+      if (index !== -1 && key !== "id") {
+        if (Object.is(value, NaN)) {
+          delete draft[index][key];
+        } else {
+          draft[index][key] = value;
+        }
+      }
+    });
+    const target = nextState.find((element) => element.id === def);
+    if (target) {
+      window.space.patchSpace(target);
+      setSpaces(nextState);
+    }
+  };
+
+  const onOpenFolder = () => {
+    window.util.folderPicker().then((path) => {
+      if (path.length) {
+        changeOption("outputPath", path[0]);
+      }
+    });
+  };
 
   return (
     <Scrollbar>
@@ -28,7 +61,7 @@ const Configure: React.FC = () => {
             type="number"
             value={currentSpace?.width || ""}
             onChange={(e) => {
-              changeOption({ key: "width", value: e.target.valueAsNumber });
+              changeOption("width", e.target.valueAsNumber);
             }}
             min={0}
             placeholder="自动"
@@ -43,7 +76,7 @@ const Configure: React.FC = () => {
             type="number"
             value={currentSpace?.height || ""}
             onChange={(e) => {
-              changeOption({ key: "height", value: e.target.valueAsNumber });
+              changeOption("height", e.target.valueAsNumber);
             }}
             min={0}
             placeholder="自动"
@@ -57,9 +90,7 @@ const Configure: React.FC = () => {
             name="suffix"
             type="text"
             value={currentSpace?.suffix || ""}
-            onChange={(e) =>
-              changeOption({ key: "suffix", value: e.target.value })
-            }
+            onChange={(e) => changeOption("suffix", e.target.value)}
           />
         </div>
 
@@ -69,9 +100,7 @@ const Configure: React.FC = () => {
             id="format"
             name="format"
             value={currentSpace?.format}
-            onValueChange={(value) =>
-              changeOption({ key: "format", value: value })
-            }
+            onValueChange={(value) => changeOption("format", value as Format)}
           >
             {formatOption.map((element) => (
               <SelectItem key={element.value} value={element.value}>
@@ -86,9 +115,7 @@ const Configure: React.FC = () => {
           <Slider
             name="quality"
             value={[currentSpace?.quality || 2]}
-            onValueChange={(value) =>
-              changeOption({ key: "quality", value: value[0] })
-            }
+            onValueChange={(value) => changeOption("quality", value[0])}
             min={1}
             max={9}
           />
@@ -103,12 +130,7 @@ const Configure: React.FC = () => {
                 name="outputOriginal"
                 value="true"
                 checked={currentSpace?.outputOriginal === true}
-                onChange={() =>
-                  changeOption({
-                    key: "outputOriginal",
-                    value: true,
-                  })
-                }
+                onChange={() => changeOption("outputOriginal", true)}
               />
               原目录
             </label>
@@ -118,12 +140,7 @@ const Configure: React.FC = () => {
                 name="outputOriginal"
                 value="false"
                 checked={currentSpace?.outputOriginal === false}
-                onChange={() =>
-                  changeOption({
-                    key: "outputOriginal",
-                    value: false,
-                  })
-                }
+                onChange={() => changeOption("outputOriginal", false)}
               />
               自定义
             </label>
