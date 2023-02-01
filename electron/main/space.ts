@@ -86,9 +86,8 @@ export const delSpace = (id: string): boolean | { def: string } => {
     const def = spaceSchema.spaces.at(-1).id;
     spaceSchema.def = def;
     store.set("def", def);
-    return { def };
   }
-  return false;
+  return { def: spaceSchema.def };
 };
 
 export const getDefault = () => {

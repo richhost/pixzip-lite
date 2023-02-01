@@ -1,13 +1,20 @@
 .workbench {
   .space-head {
     border-radius: 8px;
-    margin-inline: 8px;
+    margin-inline: 12px;
     margin-block-end: 8px;
     padding: 4px;
     display: flex;
     align-items: center;
     gap: 4px;
     font-weight: 500;
+    background-color: var(--gray3);
+    outline-color: transparent;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+    transition: outline-offset 145ms var(--ease-2),
+      outline-color 145ms var(--ease-2);
 
     &-icon {
       width: 28px;
@@ -37,11 +44,21 @@
     &:hover,
     &:focus-within,
     &__active {
-      background: var(--gray3);
+      background: var(--gray4);
 
       .space-head-icon {
         border-color: var(--gray8);
       }
+    }
+
+    &:focus-within,
+    &__active {
+      outline-color: var(--gray12);
+      outline-offset: 0;
+    }
+
+    &:active {
+      outline-offset: 2px;
     }
   }
 
@@ -58,6 +75,11 @@
       border: 2px solid var(--gray4);
       border-radius: 8px;
       position: relative;
+      transition: scale 0.2s var(--ease-5);
+
+      &:active {
+        scale: 0.95;
+      }
 
       &__active {
         border-color: var(--gray12);

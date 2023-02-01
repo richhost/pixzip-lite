@@ -106,6 +106,7 @@ const Workbench: React.FC = () => {
             type="text"
             maxLength={15}
             onChange={onSpaceNameChange}
+            spellCheck={false}
           />
         </div>
 

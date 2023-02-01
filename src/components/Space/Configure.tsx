@@ -65,6 +65,7 @@ const Configure: React.FC = () => {
             }}
             min={0}
             placeholder="自动"
+            spellCheck={false}
           />
         </div>
 
@@ -80,6 +81,7 @@ const Configure: React.FC = () => {
             }}
             min={0}
             placeholder="自动"
+            spellCheck={false}
           />
         </div>
 
@@ -91,6 +93,7 @@ const Configure: React.FC = () => {
             type="text"
             value={currentSpace?.suffix || ""}
             onChange={(e) => changeOption("suffix", e.target.value)}
+            spellCheck={false}
           />
         </div>
 
@@ -131,6 +134,7 @@ const Configure: React.FC = () => {
                 value="true"
                 checked={currentSpace?.outputOriginal === true}
                 onChange={() => changeOption("outputOriginal", true)}
+                spellCheck={false}
               />
               原目录
             </label>
@@ -141,6 +145,7 @@ const Configure: React.FC = () => {
                 value="false"
                 checked={currentSpace?.outputOriginal === false}
                 onChange={() => changeOption("outputOriginal", false)}
+                spellCheck={false}
               />
               自定义
             </label>
@@ -153,6 +158,7 @@ const Configure: React.FC = () => {
                   disabled
                   placeholder="点击设置文件夹"
                   value={currentSpace.outputPath || ""}
+                  spellCheck={false}
                 />
               </span>
             </Tooltip>

@@ -24,7 +24,7 @@
       transition: border 150ms ease-out;
 
       &:hover,
-      &:focus-within {
+      &:focus-visible {
         border-color: var(--blackA10);
       }
 

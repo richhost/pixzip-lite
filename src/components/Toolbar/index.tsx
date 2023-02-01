@@ -20,6 +20,7 @@ const Toolbar: React.FC = () => {
             accept="image/avif, image/jpeg, image/png, image/tiff, image/webp, image/gif"
             multiple
             hidden
+            spellCheck={false}
           />
         </label>
         <button className="drag-none" title="再次压缩" onClick={again}>
