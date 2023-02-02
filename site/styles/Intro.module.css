@@ -1,0 +1,32 @@
+.introWrap {
+  padding-block: var(--size-10);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--size-8);
+}
+
+@media (width >= 768px) {
+  .introWrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-areas: "icon content";
+}
+.intro figcaption {
+  grid-area: icon;
+}
+.intro article {
+  grid-area: content;
+}
+.intro h1 {
+  line-height: 1;
+}
+.intro p {
+  margin-block-start: var(--size-4);
+  line-height: var(--font-lineheight-2);
+  color: var(--gray-7);
+}

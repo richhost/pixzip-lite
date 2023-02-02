@@ -1,0 +1,85 @@
+@import "open-props/style";
+@import "@fontsource/inter/variable.css";
+
+:root {
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+
+  font-family: "InterVariable", system-ui, —apple-system, Segoe UI, Rototo,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#__next {
+  isolation: isolate;
+}
+
+.container {
+  display: grid;
+  grid-template-columns:
+    [full-start] 1fr
+    [content-start] min(90vw, 1500px)
+    [content-end] 1fr
+    [full-end];
+  /* width: clamp(100px, 90vw, 1500px); */
+  margin-inline: auto;
+}
+
+.container > * {
+  grid-column: content;
+}
+
+.full-bleed {
+  grid-column: full;
+}
