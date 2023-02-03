@@ -11,23 +11,23 @@ export default function Showcase() {
         leftImage="/showcase/IMG_7774.jpg"
         leftImageLabel="压缩前：1.5MB"
         rightImage="/showcase/IMG_7774-loss.jpg"
-        rightImageLabel="压缩后：863KB"
+        rightImageLabel="压缩后：842KB"
       />
 
       <div className={styles.double}>
         <ReactCompareImage
           aspectRatio="wider"
           leftImage="/showcase/1.jpg"
-          leftImageLabel="压缩前：227KB"
+          leftImageLabel="压缩前：221KB"
           rightImage="/showcase/1-loss.jpg"
-          rightImageLabel="压缩后：181KB"
+          rightImageLabel="压缩后：105KB"
         />
         <ReactCompareImage
           aspectRatio="wider"
           leftImage="/showcase/2.jpg"
-          leftImageLabel="压缩前：1.5MB"
+          leftImageLabel="压缩前：346KB"
           rightImage="/showcase/2-loss.jpg"
-          rightImageLabel="压缩后：108KB"
+          rightImageLabel="压缩后：176KB"
         />
       </div>
     </div>
