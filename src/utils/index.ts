@@ -1,4 +1,4 @@
-const unit = window.util.isMacOS ? 1000 : 1024;
+const unit = window.util.platform === 'darwin' ? 1000 : 1024;
 
 export const bytes2MB = (bytes: number) => {
   const sizes = ["Bytes", "KB", "MB", "GB", "TB"];

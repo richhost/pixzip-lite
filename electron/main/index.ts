@@ -1,7 +1,7 @@
 import { app, BrowserWindow, Menu } from "electron";
-import windowController from "./window-controller";
-import { MAIN_WINDOW_NAME, winOptions, macOptions } from "./config";
-import registerIpc from "./ipc";
+import WindowManager from "./window";
+import windowOptions, { MAIN_WINDOW_NAME } from "./config";
+import { registerIpc, registerWindowIpc } from "./ipc";
 
 // The built directory structure
 //
@@ -18,14 +18,15 @@ import registerIpc from "./ipc";
 if (process.platform === "win32") app.setAppUserModelId(app.getName());
 
 function createWindow() {
-  const options = process.platform === "darwin" ? macOptions : winOptions;
-  windowController.createWindow(MAIN_WINDOW_NAME, options);
-  windowController.loadWebContainer(MAIN_WINDOW_NAME);
+  const options = windowOptions;
+  WindowManager.createWindow(MAIN_WINDOW_NAME, options);
+  WindowManager.loadWebContainer(MAIN_WINDOW_NAME);
 }
 
 app.whenReady().then(() => {
   createWindow();
   registerIpc();
+  if (process.platform === "linux") registerWindowIpc();
 });
 
 app.on("activate", () => {
@@ -38,7 +39,7 @@ app.on("activate", () => {
 });
 
 app.on("window-all-closed", () => {
-  windowController.clearAllWindows();
+  WindowManager.clearAllWindows();
   if (process.platform !== "darwin") app.quit();
 });
 

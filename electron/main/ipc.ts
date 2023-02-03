@@ -1,5 +1,6 @@
 import { ipcMain, dialog, shell } from "electron";
 import { addImgs, clearImgs } from "./compress";
+import { MAIN_WINDOW_NAME } from "./config";
 import {
   addSpace,
   delSpace,
@@ -8,8 +9,9 @@ import {
   patchSpace,
   setDefault,
 } from "./space";
+import WindowManager from "./window";
 
-const registerIpc = () => {
+export const registerIpc = () => {
   ipcMain.handle("folder-picker", async () => {
     const { filePaths } = await dialog.showOpenDialog({
       properties: ["openDirectory"],
@@ -47,4 +49,18 @@ const registerIpc = () => {
   });
 };
 
-export default registerIpc;
+export const registerWindowIpc = () => {
+  const win = WindowManager.getWindow(MAIN_WINDOW_NAME);
+  ipcMain.on("maximize", () => {
+    win.maximize();
+  });
+  ipcMain.on("unmaximize", () => {
+    win.unmaximize();
+  });
+  ipcMain.on("minimize", () => {
+    win.minimize();
+  });
+  ipcMain.on("close", () => {
+    win.close();
+  });
+};

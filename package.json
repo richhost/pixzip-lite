@@ -1,21 +1,23 @@
 {
   "name": "pixel-loss",
   "productName": "像素丢失",
+  "homepage": "https://xiangsu.art",
+  "author": {
+    "name": "Abiee",
+    "email": "uucc@live.com"
+  },
+  "license": "MIT",
   "version": "1.2.1",
   "main": "dist-electron/main/index.js",
-  "license": "MIT",
-  "author": {
-    "name": "Abiee"
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview"
   },
   "debug": {
     "env": {
       "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
     }
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
-    "preview": "vite preview"
   },
   "devDependencies": {
     "@fontsource/inter": "^4.5.15",
@@ -31,8 +33,8 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/sharp": "^0.31.1",
-    "@vitejs/plugin-react-swc": "^3.0.1",
-    "electron": "^22.1.0",
+    "@vitejs/plugin-react-swc": "^3.1.0",
+    "electron": "^22.2.0",
     "electron-builder": "^23.6.0",
     "immer": "^9.0.19",
     "jotai": "^2.0.0",
@@ -43,7 +45,7 @@
     "sass": "^1.58.0",
     "the-new-css-reset": "^1.8.3",
     "typescript": "^4.9.5",
-    "vite": "^4.0.4",
+    "vite": "^4.1.1",
     "vite-electron-plugin": "^0.7.4",
     "vite-plugin-electron-renderer": "^0.11.4"
   },

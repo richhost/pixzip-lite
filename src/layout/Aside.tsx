@@ -5,7 +5,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const isMacOS = window.util.isMacOS;
+const isMacOS = window.util.platform === 'darwin';
 
 const Aside: React.FC<Props> = ({ children }) => {
   return (

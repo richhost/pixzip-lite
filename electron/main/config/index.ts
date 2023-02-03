@@ -17,7 +17,7 @@ const base: BrowserWindowConstructorOptions = {
   },
 };
 
-export const macOptions: BrowserWindowConstructorOptions = {
+const macOptions: BrowserWindowConstructorOptions = {
   ...base,
   trafficLightPosition: {
     x: 20,
@@ -25,9 +25,24 @@ export const macOptions: BrowserWindowConstructorOptions = {
   },
 };
 
-export const winOptions: BrowserWindowConstructorOptions = {
+const winOptions: BrowserWindowConstructorOptions = {
   ...base,
   titleBarOverlay: {
     color: "hsl(0, 0%, 99.0%)",
   },
 };
+
+const linxOptions: BrowserWindowConstructorOptions = {
+  ...base,
+  frame: false
+}
+
+
+let windowOptions: BrowserWindowConstructorOptions = winOptions
+
+
+if (process.platform === 'darwin') windowOptions = macOptions
+if (process.platform === 'win32') windowOptions = winOptions
+if (process.platform === 'linux') windowOptions = linxOptions
+
+export default windowOptions

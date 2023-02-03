@@ -23,9 +23,12 @@
       border-radius: 4px;
       transition: border 150ms ease-out;
 
-      &:hover,
+      &:hover {
+        border-color: var(--gray9);
+      }
+
       &:focus-visible {
-        border-color: var(--blackA10);
+        border-color: var(--gray12);
       }
 
       &::placeholder {

@@ -10,7 +10,7 @@ process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
 const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, "index.html");
 
-class WindowController {
+class WindowManager {
   private winInstances: {
     [key: string]: BrowserWindow;
   };
@@ -28,6 +28,25 @@ class WindowController {
         };
       })(windowName)
     );
+
+    if (process.platform === "linux") {
+      window.on(
+        "maximize",
+        ((windowName) => {
+          return () => {
+            this.winInstances[windowName].webContents.send("on-maximize");
+          };
+        })(windowName)
+      );
+      window.on(
+        "unmaximize",
+        ((windowName) => {
+          return () => {
+            this.winInstances[windowName].webContents.send("on-unmaximize");
+          };
+        })(windowName)
+      );
+    }
   }
 
   // 获取窗口
@@ -55,4 +74,4 @@ class WindowController {
   }
 }
 
-export default new WindowController();
+export default new WindowManager();

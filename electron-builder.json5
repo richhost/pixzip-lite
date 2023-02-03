@@ -2,35 +2,47 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  "appId": "dev.uimo.pxloss",
-  "asar": true,
-  "directories": {
-    "output": "release",
+  appId: "dev.uimo.pxloss",
+  asar: true,
+  directories: {
+    output: "release",
   },
-  "files": ["dist-electron", "dist"],
-  "artifactName": "pixel-loss_${version}-${os}-${arch}.${ext}",
-  "mac": {
-    "icon": "public/icons/mac/favicon.icns",
-    "target": [
+  files: ["dist-electron", "dist"],
+  artifactName: "pixel-loss_${version}-${os}-${arch}.${ext}",
+  mac: {
+    icon: "public/icons/mac/favicon.icns",
+    target: [
       {
         target: "dmg",
         arch: ["x64", "arm64"],
       },
     ],
   },
-  "win": {
-    "icon": "public/icons/win/favicon.ico",
-    "target": [
+  win: {
+    icon: "public/icons/win/favicon.ico",
+    target: [
       {
-        "target": "nsis",
-        "arch": ["x64"],
+        target: "nsis",
+        arch: ["x64"],
       },
     ],
   },
-  "nsis": {
-    "oneClick": false,
-    "perMachine": false,
-    "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false,
+  linux: {
+    target: [
+      {
+        target: "deb",
+        arch: ["x64"],
+      },
+      {
+        target: "appImage",
+        arch: ["x64"],
+      },
+    ],
+  },
+  nsis: {
+    oneClick: false,
+    perMachine: false,
+    allowToChangeInstallationDirectory: true,
+    deleteAppDataOnUninstall: false,
   },
 }

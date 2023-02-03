@@ -53,8 +53,9 @@
   }
 
   .compressing {
-    // width: 12px;
-    // height: 12px;
+    width: 16px;
+    height: 16px;
     animation: var(--animation-spin);
+    animation-duration: 0.8s;
   }
 }

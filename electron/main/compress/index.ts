@@ -1,7 +1,7 @@
 import { getSpaces } from "../space";
 import Queue from "./Queue";
 import { MAIN_WINDOW_NAME } from "../config";
-import windowController from "../window-controller";
+import WindowManager from "../window";
 import { SendData } from "./types";
 import { compress, operate } from "./core";
 
@@ -9,7 +9,7 @@ let max = 5;
 let taskQueue: Queue<TaskImg> = new Queue<TaskImg>();
 
 function send<K extends keyof SendData>(key: K, val: SendData[K]) {
-  const window = windowController.getWindow(MAIN_WINDOW_NAME);
+  const window = WindowManager.getWindow(MAIN_WINDOW_NAME);
   if (!window) return;
   window.webContents.send(key, val);
 }

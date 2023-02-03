@@ -1,5 +1,18 @@
 /// <reference types="vite/client" />
 
+type Platform =
+  | "aix"
+  | "android"
+  | "darwin"
+  | "freebsd"
+  | "haiku"
+  | "linux"
+  | "openbsd"
+  | "sunos"
+  | "win32"
+  | "cygwin"
+  | "netbsd";
+
 interface SpaceBridge {
   getSpaces: () => Promise<Space[]>;
   addSpace: () => Promise<Space>;
@@ -43,8 +56,18 @@ interface CompressBridge {
 }
 
 interface UtilBridge {
-  isMacOS: boolean;
+  platform: Platform;
   folderPicker: () => Promise<string[]>;
+}
+
+interface LinuxBridge {
+  onMaximize: (callback: () => void) => void;
+  onUnmaximize: (callback: () => void) => void;
+  minimize: () => void;
+  maximize: () => void;
+  unmaximize: () => void;
+  close: () => void;
+  removeListeners: () => void;
 }
 
 interface Window {
@@ -52,6 +75,7 @@ interface Window {
   img: ImgBridge;
   compress: CompressBridge;
   util: UtilBridge;
+  linux?: LinuxBridge;
 }
 
 interface FileWithPath extends File {

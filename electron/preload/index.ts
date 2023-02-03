@@ -77,9 +77,27 @@ const imgBridge = {
 };
 
 const utilBridge = {
-  isMacOS: process.platform === "darwin",
+  platform: process.platform,
   folderPicker: (): Promise<string[]> => {
     return ipcRenderer.invoke("folder-picker");
+  },
+};
+
+const linuxBridge = {
+  onMaximize: (callback: () => void) => {
+    ipcRenderer.on("on-maximize", () => callback());
+  },
+  onUnmaximize: (callback: () => void) => {
+    ipcRenderer.on("on-unmaximize", () => callback());
+  },
+  minimize: () => ipcRenderer.send("minimize"),
+  maximize: () => ipcRenderer.send("maximize"),
+  unmaximize: () => ipcRenderer.send("unmaximize"),
+  close: () => ipcRenderer.send("close"),
+
+  removeListeners: () => {
+    ipcRenderer.removeAllListeners("on-maximize");
+    ipcRenderer.removeAllListeners("on-unmaximize");
   },
 };
 
@@ -87,3 +105,6 @@ contextBridge.exposeInMainWorld("space", spaceBridge);
 contextBridge.exposeInMainWorld("img", imgBridge);
 contextBridge.exposeInMainWorld("compress", compressBridge);
 contextBridge.exposeInMainWorld("util", utilBridge);
+
+if (process.platform === "linux")
+  contextBridge.exposeInMainWorld("linux", linuxBridge);
