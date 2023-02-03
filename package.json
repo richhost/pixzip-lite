@@ -1,7 +1,7 @@
 {
   "name": "pixel-loss",
   "productName": "像素丢失",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist-electron/main/index.js",
   "license": "MIT",
   "author": {
