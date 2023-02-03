@@ -1,8 +1,15 @@
 .openSource {
   padding-block: var(--size-10);
+  position: relative;
+}
+.openSource::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: var(--gradient-6), var(--noise-2);
   filter: var(--noise-filter-2);
   background-size: cover;
+  z-index: -1;
 }
 
 .title {

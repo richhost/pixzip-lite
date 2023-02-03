@@ -31,12 +31,14 @@ export default function Hero() {
       </article>
 
       <figcaption className={styles.screenshot}>
-        <Image
-          src="/screenshot.webp"
-          width={1760}
-          height={1160}
-          alt="screenshot"
-        />
+        <div>
+          <Image
+            src="/screenshot.webp"
+            width={1760}
+            height={1160}
+            alt="screenshot"
+          />
+        </div>
       </figcaption>
     </div>
   );
