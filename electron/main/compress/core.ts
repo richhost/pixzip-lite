@@ -32,9 +32,10 @@ async function getExtension(filename: string) {
 
 async function needAnimated(img: TaskImg) {
   const extension = await getExtension(img.name);
-  const formatAnimated =
-    img.config.format === "gif" || img.config.format === "webp";
-  const inputAnimated = extension === "gif" || extension === "webp";
+  const format = await getFormat(img);
+  const formatAnimated = format === "gif" || format === "webp";
+  const inputAnimated = extension === ".gif" || extension === ".webp";
+
   return formatAnimated && inputAnimated;
 }
 
@@ -53,7 +54,7 @@ export const compress = async (img: TaskImg) => {
   const animated = await needAnimated(img);
   const format = await getFormat(img);
   const quality = getQuality(img.config.format, img.config.quality);
-  return sharp(img.path, { animated })
+  return sharp(img.path, { animated, sequentialRead: true })
     .resize({
       width: img.config.width,
       height: img.config.height,
