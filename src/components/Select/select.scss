@@ -2,23 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 28px;
-  line-height: 28px;
-  border: 1px solid var(--blackA6);
-  border-radius: 4px;
-  padding-inline: 8px;
-  transition: border 150ms ease-out;
-
-  &:hover {
-    &:hover,
-    &:focus-within {
-      border-color: var(--blackA10);
-    }
-
-    .select-icon {
-      color: var(--blackA10);
-    }
-  }
 }
 
 .select-icon {

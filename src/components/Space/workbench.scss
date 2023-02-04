@@ -3,18 +3,15 @@
     border-radius: 8px;
     margin-inline: 12px;
     margin-block-end: 8px;
-    padding: 4px;
+    padding-inline: 4px;
     display: flex;
     align-items: center;
     gap: 4px;
     font-weight: 500;
     background-color: var(--gray3);
-    outline-color: transparent;
-    outline-style: solid;
-    outline-width: 2px;
-    outline-offset: 2px;
-    transition: outline-offset 145ms var(--ease-2),
-      outline-color 145ms var(--ease-2);
+    outline: 0 solid transparent;
+    border: 1px solid var(--gray3);
+    transition: all 0.2s var(--ease-1);
 
     &-icon {
       width: 28px;
@@ -34,31 +31,39 @@
 
     &-input {
       width: 100%;
+      height: calc(var(--size-6) + 8px);
+      line-height: calc(var(--size-6) + 8px);
       font-weight: 600;
+      border: none;
+      background-color: transparent;
 
-      &::placeholder {
-        color: var(--gray8);
+      &:hover,
+      &:focus-visible {
+        outline: none;
       }
     }
 
     &:hover,
     &:focus-within,
     &__active {
-      background: var(--gray4);
+      outline-width: 2px;
+      outline-color: var(--orange5);
+      background: #fff;
 
       .space-head-icon {
         border-color: var(--gray8);
       }
     }
 
-    &:focus-within,
-    &__active {
-      outline-color: var(--gray12);
-      outline-offset: 0;
+    &:active {
+      outline-width: 0 !important;
+      outline-color: transparent;
     }
 
-    &:active {
-      outline-offset: 2px;
+    &:is(:focus-within) {
+      outline-width: 2px;
+      outline-color: var(--orange5);
+      border-color: var(--orange7);
     }
   }
 
@@ -82,7 +87,7 @@
       }
 
       &__active {
-        border-color: var(--gray12);
+        border-color: var(--orange7);
       }
 
       &:hover {

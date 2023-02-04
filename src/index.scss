@@ -4,22 +4,14 @@
 @import "@radix-ui/colors/whiteA.css";
 @import "@radix-ui/colors/blackA.css";
 @import "@radix-ui/colors/grass.css";
+@import "@radix-ui/colors/orange.css";
 
 @import "@fontsource/inter/variable.css";
 
 @import "open-props/easings.min.css";
-@import "open-props/animations";
-
-@font-face {
-  font-family: "Smiley Sans";
-  src: url("/fonts/SmileySans-Oblique.ttf.woff2");
-}
-@font-face {
-  font-family: Emoji;
-  src: local("Apple Color Emojiji"), local("Segoe UI Emoji"),
-    local("Segoe UI Symbol"), local("Noto Color Emoji");
-  unicode-range: U+1F000-1F644, U+203C-3299;
-}
+@import "open-props/animations.min.css";
+@import "open-props/sizes.min.css";
+@import "open-props/borders.min.css";
 
 * {
   user-select: none;
@@ -31,20 +23,11 @@
   --h-drag: 50px;
 
   font-family: "InterVariable", system-ui, —apple-system, Segoe UI, Rototo,
-    Emoji, Helvetica, Arial, sans-serif;
+    Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 
   color: var(--gray12);
   background-color: var(--gray2);
-}
-
-body {
-  // background-image: linear-gradient(
-  //   to top,
-  //   #dad4ec 0%,
-  //   #dad4ec 1%,
-  //   #f3e7e9 100%
-  // );
 }
 
 .drag {
@@ -61,4 +44,46 @@ input[type="number"] {
     appearance: none;
     margin: 0;
   }
+}
+
+:where(input[type="number"], input[type="text"], .select-trigger) {
+  height: var(--size-6);
+  line-height: var(--size-6);
+  background-color: #fff;
+  border: 1px solid var(--gray7);
+  border-radius: var(--radius-2);
+  padding-inline: var(--size-2);
+  outline: 0 solid transparent;
+  transition: all 0.2s var(--ease-1);
+}
+:where(input[type="number"], input[type="text"], .select-trigger):hover {
+  outline-width: 2px;
+  outline-color: var(--orange5);
+}
+:where(input[type="number"], input[type="text"], .select-trigger):active {
+  outline-width: 0;
+  outline-color: transparent;
+}
+:where(input[type="number"], input[type="text"], .select-trigger):is(
+    :hover,
+    :active
+  ) {
+  border-color: var(--gray7);
+}
+:where(input[type="number"], input[type="text"], .select-trigger):where(
+    :focus-visible
+  ) {
+  border-color: var(--orange7);
+  outline-width: 2px;
+  outline-color: var(--orange5);
+}
+
+input::placeholder {
+  color: var(--gray8);
+}
+
+:where(input[type="radio"]) {
+  all: revert;
+  margin: 0;
+  accent-color: var(--orange7);
 }

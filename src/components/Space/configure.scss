@@ -14,28 +14,6 @@
       font-weight: 500;
     }
 
-    input[type="number"],
-    input[type="text"] {
-      height: 28px;
-      line-height: 28px;
-      padding-inline: 8px;
-      border: 1px solid var(--blackA6);
-      border-radius: 4px;
-      transition: border 150ms ease-out;
-
-      &:hover {
-        border-color: var(--gray9);
-      }
-
-      &:focus-visible {
-        border-color: var(--gray12);
-      }
-
-      &::placeholder {
-        color: var(--gray8);
-      }
-    }
-
     .radio-group {
       display: flex;
       align-items: center;
@@ -47,12 +25,6 @@
         align-items: center;
         gap: 4px;
       }
-    }
-
-    input[type="radio"] {
-      all: revert;
-      margin: 0;
-      accent-color: var(--blackA10);
     }
   }
 }
