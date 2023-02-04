@@ -21,6 +21,9 @@
 :root {
   --w-aside: 240px;
   --h-drag: 50px;
+  --border-color: var(--gray5);
+  --border-color-active: var(--orange7);
+  --outline-color-active: var(--orange5);
 
   font-family: "InterVariable", system-ui, —apple-system, Segoe UI, Rototo,
     Helvetica, Arial, sans-serif;
@@ -50,7 +53,7 @@ input[type="number"] {
   height: var(--size-6);
   line-height: var(--size-6);
   background-color: #fff;
-  border: 1px solid var(--gray7);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-2);
   padding-inline: var(--size-2);
   outline: 0 solid transparent;
@@ -58,7 +61,7 @@ input[type="number"] {
 }
 :where(input[type="number"], input[type="text"], .select-trigger):hover {
   outline-width: 2px;
-  outline-color: var(--orange5);
+  outline-color: var(--outline-color-active);
 }
 :where(input[type="number"], input[type="text"], .select-trigger):active {
   outline-width: 0;
@@ -68,14 +71,14 @@ input[type="number"] {
     :hover,
     :active
   ) {
-  border-color: var(--gray7);
+  border-color: var(--border-color);
 }
 :where(input[type="number"], input[type="text"], .select-trigger):where(
     :focus-visible
   ) {
-  border-color: var(--orange7);
+  border-color: var(--border-color-active);
   outline-width: 2px;
-  outline-color: var(--orange5);
+  outline-color: var(--outline-color-active);
 }
 
 input::placeholder {

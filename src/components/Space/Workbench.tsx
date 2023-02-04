@@ -9,7 +9,6 @@ import { defAtom, spacesAtom } from "@/stores/space";
 import "./workbench.scss";
 
 const Workbench: React.FC = () => {
-  const [iconPaneIsOpen, setIconPaneIsOpen] = useState(false);
   const [delAlertDialogOpen, setDelAlertDialogOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const delId = useRef("");
@@ -57,9 +56,6 @@ const Workbench: React.FC = () => {
     });
   };
 
-  const onPopoverOpenChange = (open: boolean) => {
-    setIconPaneIsOpen(open);
-  };
   const onIconChange = (name: string) => {
     window.space.patchSpace({
       ...currentSpace!,
@@ -83,12 +79,8 @@ const Workbench: React.FC = () => {
   return (
     <>
       <div className="workbench">
-        <div
-          className={
-            "space-head " + (iconPaneIsOpen ? "space-head__active " : "")
-          }
-        >
-          <Popover onOpenChange={onPopoverOpenChange}>
+        <div className="space-head">
+          <Popover>
             <PopoverTrigger>
               <span className="space-head-icon" title="修改空间图标">
                 <Icon name={currentSpace?.icon} />
@@ -104,7 +96,7 @@ const Workbench: React.FC = () => {
             className={"space-head-input"}
             value={currentSpace?.name || ""}
             type="text"
-            maxLength={15}
+            maxLength={30}
             onChange={onSpaceNameChange}
             spellCheck={false}
           />

@@ -1,6 +1,6 @@
 .popover-content {
   border-radius: 4px;
-  padding: 20px;
+  padding: var(--size-6) var(--size-4);
   width: var(--w-aside);
   background-color: #fff;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
@@ -30,6 +30,25 @@
 
 .popover-arrow {
   fill: white;
+}
+
+.popover-close {
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.popover-close:hover {
+  background-color: var(--orange4);
+}
+.popover-close:focus {
+  box-shadow: 0 0 0 2px var(--orange7);
 }
 
 @keyframes slideUpAndFade {

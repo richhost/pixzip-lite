@@ -26,5 +26,17 @@
         gap: 4px;
       }
     }
+
+    .select-trigger {
+      &:focus-within {
+        border-color: var(--border-color-active);
+        outline-width: 2px;
+        outline-color: var(--outline-color-active);
+      }
+      &:active,
+      &:hover {
+        border-color: var(--border-color);
+      }
+    }
   }
 }

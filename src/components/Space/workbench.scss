@@ -18,14 +18,11 @@
       height: 28px;
       display: grid;
       place-items: center;
-      border-width: 2px;
-      border-style: dashed;
-      border-color: transparent;
+      border: 2px dashed transparent;
       border-radius: 8px;
 
       &:hover {
-        border-color: var(--gray7);
-        background-color: var(--gray6);
+        background-color: var(--gray3);
       }
     }
 
@@ -34,6 +31,7 @@
       height: calc(var(--size-6) + 8px);
       line-height: calc(var(--size-6) + 8px);
       font-weight: 600;
+      padding-inline-start: 0;
       border: none;
       background-color: transparent;
 
@@ -44,26 +42,36 @@
     }
 
     &:hover,
-    &:focus-within,
-    &__active {
-      outline-width: 2px;
-      outline-color: var(--orange5);
-      background: #fff;
-
+    &:focus-within {
       .space-head-icon {
-        border-color: var(--gray8);
+        border-color: var(--border-color);
       }
     }
-
-    &:active {
-      outline-width: 0 !important;
-      outline-color: transparent;
+    .space-head-icon:where(:hover) {
+      background-color: var(--gray2);
+    }
+    .space-head-icon:where(:active) {
+      background-color: var(--gray3);
     }
 
-    &:is(:focus-within) {
+    &:is(:hover) {
+      background-color: #fff;
       outline-width: 2px;
-      outline-color: var(--orange5);
-      border-color: var(--orange7);
+      outline-color: var(--outline-color-active);
+      border-color: var(--border-color);
+    }
+
+    &:where(:focus-within) {
+      background-color: #fff;
+      outline-width: 2px;
+      border-color: var(--border-color-active);
+      outline-color: var(--outline-color-active);
+    }
+
+    &:is(:active) {
+      outline-width: 0;
+      outline-color: transparent;
+      border-color: var(--border-color);
     }
   }
 
