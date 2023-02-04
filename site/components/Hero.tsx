@@ -27,7 +27,7 @@ export default function Hero() {
           </a>
         </p>
         <p className={styles.system}>支持 macOS 和 Windows 系统</p>
-        <p className={styles.version}>版本：v1.2.1，更新日期：2023/02/03</p>
+        <p className={styles.version}>版本：v1.2.2，更新日期：2023/02/04</p>
       </article>
 
       <figcaption className={styles.screenshot}>
