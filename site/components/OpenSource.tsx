@@ -1,5 +1,3 @@
-import { Github } from "lucide-react";
-
 import styles from "~/styles/OpenSource.module.css";
 
 const data = [
@@ -38,7 +36,17 @@ export default function OpenSource() {
           >
             GitHub
           </a>
-          访问源代码。同时，也期待您的反馈和建议，请与 uucc@live.com 联系，谢谢
+          访问源代码。同时，也期待您的反馈和建议，请与 uucc@live.com
+          联系。像素丢失的灵感来自
+          <a
+            className={styles.tuya}
+            href="https://tuya.xinxiao.tech/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            图压
+          </a>
+          ，在此特别感谢。
         </div>
       </div>
     </div>

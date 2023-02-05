@@ -56,6 +56,10 @@
   color: var(--gray-7);
 }
 .pixlloss a {
-  display: inline-flex;
   margin-inline: var(--size-1);
+  color: var(--gray-11);
+}
+.pixlloss a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

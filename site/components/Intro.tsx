@@ -33,7 +33,7 @@ export default function Intro() {
         <div key={element.title} className={styles.intro}>
           <figcaption>{element.icon}</figcaption>
           <article>
-            <h1>{element.title}</h1>
+            <h3>{element.title}</h3>
             <p>{element.content}</p>
           </article>
         </div>
