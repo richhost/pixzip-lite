@@ -13,7 +13,6 @@ export const PopoverContent = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <PopoverPrimitive.Portal>
     <PopoverPrimitive.Content
-      sideOffset={0}
       className={"popover-content " + className}
       {...props}
       ref={forwardedRef}

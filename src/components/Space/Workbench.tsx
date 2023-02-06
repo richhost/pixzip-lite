@@ -86,7 +86,7 @@ const Workbench: React.FC = () => {
                 <Icon name={currentSpace?.icon} />
               </span>
             </PopoverTrigger>
-            <PopoverContent>
+            <PopoverContent align="start">
               <IconPane active={currentSpace?.icon} onChange={onIconChange} />
             </PopoverContent>
           </Popover>
