@@ -6,6 +6,7 @@ specifiers:
   '@types/node': 18.13.0
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
+  '@vercel/analytics': ^0.1.8
   eslint: 8.33.0
   eslint-config-next: 13.1.6
   lucide-react: ^0.112.0
@@ -21,6 +22,7 @@ specifiers:
 dependencies:
   '@fontsource/inter': 4.5.15
   '@radix-ui/react-popover': 1.0.3_5ndqzdd6t4rivxsukjv3i3ak2q
+  '@vercel/analytics': 0.1.8_react@18.2.0
   lucide-react: 0.112.0_react@18.2.0
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   open-props: 1.5.5
@@ -858,6 +860,14 @@ packages:
       '@typescript-eslint/types': 5.50.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@vercel/analytics/0.1.8_react@18.2.0:
+    resolution: {integrity: sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
