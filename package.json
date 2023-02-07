@@ -1,6 +1,7 @@
 {
   "name": "pixel-loss",
   "productName": "像素丢失",
+  "description": "面向现代 Web 应用的开源图片压缩软件",
   "homepage": "https://xiangsu.art",
   "author": {
     "name": "Abiee",

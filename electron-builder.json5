@@ -2,7 +2,7 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  appId: "dev.uimo.pxloss",
+  appId: "art.xiangsu",
   asar: true,
   directories: {
     output: "release",
@@ -10,13 +10,14 @@
   files: ["dist-electron", "dist"],
   artifactName: "pixel-loss_${version}-${os}-${arch}.${ext}",
   mac: {
-    icon: "public/icons/mac/favicon.icns",
+    icon: "resources/icons/mac/favicon.icns",
     target: [
       {
         target: "dmg",
         arch: ["x64", "arm64"],
       },
     ],
+    asarUnpack: ["./node_modules/sharp/**/*"],
   },
   win: {
     icon: "public/icons/win/favicon.ico",
@@ -28,6 +29,8 @@
     ],
   },
   linux: {
+    icon: "resources/icons/linux/icon.png",
+    category: "Graphics",
     target: [
       {
         target: "deb",
@@ -38,6 +41,11 @@
         arch: ["x64"],
       },
     ],
+    asarUnpack: ["./node_modules/sharp/**/*"],
+    extraResources: {
+      from: "resources/icons/linux/icon.png",
+      to: "extraResources/icon.png",
+    },
   },
   nsis: {
     oneClick: false,

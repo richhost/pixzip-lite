@@ -34,15 +34,20 @@ const winOptions: BrowserWindowConstructorOptions = {
 
 const linxOptions: BrowserWindowConstructorOptions = {
   ...base,
-  frame: false
+  frame: false,
+};
+
+let windowOptions: BrowserWindowConstructorOptions = winOptions;
+
+if (process.platform === "darwin") windowOptions = macOptions;
+if (process.platform === "win32") windowOptions = winOptions;
+if (process.platform === "linux") {
+  let iconPath = join(process.cwd(), "/resources/extraResources/icon.png");
+  const isDev = process.env.NODE_ENV === "development";
+  if (isDev) iconPath = join(process.cwd(), "/resources/icons/linux/icon.png");
+
+  linxOptions.icon = iconPath;
+  windowOptions = linxOptions;
 }
 
-
-let windowOptions: BrowserWindowConstructorOptions = winOptions
-
-
-if (process.platform === 'darwin') windowOptions = macOptions
-if (process.platform === 'win32') windowOptions = winOptions
-if (process.platform === 'linux') windowOptions = linxOptions
-
-export default windowOptions
+export default windowOptions;
