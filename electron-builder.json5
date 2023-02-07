@@ -2,7 +2,7 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  appId: "art.xiangsu",
+  appId: "pxloss.uimo.dev",
   asar: true,
   directories: {
     output: "release",
