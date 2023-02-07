@@ -19,7 +19,7 @@ export default function Home() {
         />
         <meta
           name="keywords"
-          content="图片压缩,avif,webp,开源图片压缩软件,像素丢失"
+          content="像素丢失,像素丢失下载,图片压缩,avif,webp,开源图片压缩软件"
         />
         <meta property="og:title" content="像素丢失" />
         <meta property="og:type" content="website" />

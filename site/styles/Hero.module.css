@@ -69,14 +69,102 @@
   margin-block-start: var(--size-2);
   color: var(--gray-7);
 }
+
+.message {
+  width: 15px;
+  height: 15px;
+  margin-inline-start: var(--size-1);
+  display: inline;
+  cursor: pointer;
+}
+.message:hover {
+  animation: var(--animation-shake-x) 0.2s forwards;
+}
+
 .version {
   font-size: 12px;
   margin-block-start: var(--size-1);
   color: var(--gray-6);
 }
 
+.popoverContent {
+  width: min(80vw, 200px);
+  border-radius: 4px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  font-size: 12px;
+  color: var(--gray-7);
+}
+.popoverContent:focus {
+  outline: none;
+}
+.popoverContent[data-state="open"][data-side="top"] {
+  animation-name: slideDownAndFade;
+}
+.popoverContent[data-state="open"][data-side="right"] {
+  animation-name: slideLeftAndFade;
+}
+.popoverContent[data-state="open"][data-side="bottom"] {
+  animation-name: slideUpAndFade;
+}
+.popoverContent[data-state="open"][data-side="left"] {
+  animation-name: slideRightAndFade;
+}
+.popoverArrow {
+  fill: white;
+}
+
 @media (width >= 768px) {
   .hero {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import * as Popover from "@radix-ui/react-popover";
+import { MessageCircle } from "lucide-react";
 import styles from "~/styles/Hero.module.css";
 
 export default function Hero() {
@@ -26,8 +28,24 @@ export default function Hero() {
             网盘下载
           </a>
         </p>
-        <p className={styles.system}>支持 macOS 和 Windows 系统</p>
-        <p className={styles.version}>版本：v1.2.2，更新日期：2023/02/04</p>
+        <p className={styles.system}>
+          支持 macOS、Windows、Linux 系统
+          <Popover.Root>
+            <Popover.Trigger asChild>
+              <MessageCircle className={styles.message} />
+            </Popover.Trigger>
+            <Popover.Portal>
+              <Popover.Content side="bottom" className={styles.popoverContent}>
+                <div>
+                  仅支持 64 位操作系统，且最低为 macOS 11 或 Windows 10，Linux
+                  平台尚未测试。
+                </div>
+                <Popover.Arrow className={styles.popoverArrow} />
+              </Popover.Content>
+            </Popover.Portal>
+          </Popover.Root>
+        </p>
+        <p className={styles.version}>版本：v1.2.3，更新日期：2023/02/07</p>
       </article>
 
       <figcaption className={styles.screenshot}>
