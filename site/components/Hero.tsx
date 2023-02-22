@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import * as Popover from "@radix-ui/react-popover";
 import { MessageCircle } from "lucide-react";
