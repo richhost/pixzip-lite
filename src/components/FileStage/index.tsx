@@ -1,11 +1,11 @@
 import React from "react";
-import Scrollbar from "@/components/Scrollbar";
-import useSpaceImg from "@/hooks/useSpaceImg";
-import useAddImg from "@/hooks/useAddImg";
+import Scrollbar from "~/components/Scrollbar";
+import useSpaceImg from "~/hooks/useSpaceImg";
+import useAddImg from "~/hooks/useAddImg";
 import Empty from "./Empty";
 import ImgList from "./ImgList";
 import "./file-stage.scss";
-import useImgStatus from "@/hooks/useImgStatus";
+import useImgStatus from "~/hooks/useImgStatus";
 
 const FileStage: React.FC = () => {
   const imgs = useSpaceImg();

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSetAtom } from "jotai";
-import { defAtom, spacesAtom } from "@/stores/space";
+import { defAtom, spacesAtom } from "~/stores/space";
 import Configure from "./Configure";
 import Workbench from "./Workbench";
 

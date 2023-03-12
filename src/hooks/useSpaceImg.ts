@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
-import { defAtom } from "@/stores/space";
-import { imgsAtom } from "@/stores/img";
+import { defAtom } from "~/stores/space";
+import { imgsAtom } from "~/stores/img";
 
 const useSpaceImg = () => {
   const def = useAtomValue(defAtom);

@@ -1,7 +1,7 @@
 import React from "react";
-import { SpaceImg } from "@/stores/img";
-import { bytes2MB, calcLossPercent } from "@/utils";
-import Icon from "@/components/Icon";
+import { SpaceImg } from "~/stores/img";
+import { bytes2MB, calcLossPercent } from "~/utils";
+import Icon from "~/components/Icon";
 import "./img-list.scss";
 
 type Props = {

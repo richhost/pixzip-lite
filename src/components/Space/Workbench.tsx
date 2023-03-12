@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useAtom } from "jotai";
 import produce from "immer";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/Popover";
-import Icon from "@/components/Icon";
-import IconPane from "@/components/IconPane";
-import { AlertDialog } from "@/components/AlertDialog";
-import { defAtom, spacesAtom } from "@/stores/space";
+import { Popover, PopoverTrigger, PopoverContent } from "~/components/Popover";
+import Icon from "~/components/Icon";
+import IconPane from "~/components/IconPane";
+import { AlertDialog } from "~/components/AlertDialog";
+import { defAtom, spacesAtom } from "~/stores/space";
 import "./workbench.scss";
 
 const Workbench: React.FC = () => {

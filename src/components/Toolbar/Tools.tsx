@@ -1,7 +1,7 @@
 import React from "react";
-import Icon from "@/components/Icon";
-import useAddImg from "@/hooks/useAddImg";
-import useClearImg from "@/hooks/useClearImg";
+import Icon from "~/components/Icon";
+import useAddImg from "~/hooks/useAddImg";
+import useClearImg from "~/hooks/useClearImg";
 import "./tools.scss";
 
 const Tools: React.FC = () => {

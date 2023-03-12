@@ -1,11 +1,11 @@
 import React from "react";
 import { useAtom, useAtomValue } from "jotai";
 import produce from "immer";
-import Scrollbar from "@/components/Scrollbar";
-import { Select, SelectItem } from "@/components/Select";
-import { Slider } from "@/components/Slider";
-import { Tooltip } from "@/components/Tooltip";
-import { defAtom, spacesAtom } from "@/stores/space";
+import Scrollbar from "~/components/Scrollbar";
+import { Select, SelectItem } from "~/components/Select";
+import { Slider } from "~/components/Slider";
+import { Tooltip } from "~/components/Tooltip";
+import { defAtom, spacesAtom } from "~/stores/space";
 import "./configure.scss";
 
 const formatOption: { name: string; value: Format }[] = [

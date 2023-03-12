@@ -1,10 +1,10 @@
-import Layout from "@/layout";
-import Header from "@/layout/Header";
-import Aside from "@/layout/Aside";
-import Main from "@/layout/Main";
-import SpaceComponent from "@/components/Space";
-import FileStage from "@/components/FileStage";
-import Toolbar from "@/components/Toolbar";
+import Layout from "~/layout";
+import Header from "~/layout/Header";
+import Aside from "~/layout/Aside";
+import Main from "~/layout/Main";
+import SpaceComponent from "~/components/Space";
+import FileStage from "~/components/FileStage";
+import Toolbar from "~/components/Toolbar";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import { useAtom, useAtomValue } from "jotai";
 import produce from "immer";
-import { defAtom } from "@/stores/space";
-import { imgsAtom } from "@/stores/img";
+import { defAtom } from "~/stores/space";
+import { imgsAtom } from "~/stores/img";
 
 const useClearImg = () => {
   const def = useAtomValue(defAtom);
