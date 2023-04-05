@@ -47,8 +47,8 @@ const spaceBridge = {
   getSpaces: (): Promise<Space[]> => {
     return ipcRenderer.invoke("get-spaces");
   },
-  addSpace: (): Promise<Space> => {
-    return ipcRenderer.invoke("add-space");
+  addSpace: (id: string): Promise<Space> => {
+    return ipcRenderer.invoke("add-space", id);
   },
   patchSpace: (data: Space) => {
     ipcRenderer.send("patch-space", data);

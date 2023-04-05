@@ -19,7 +19,6 @@ const WindowController: React.FC = () => {
     }
   };
   const handleClose = () => {
-    console.log("close");
     window.linux?.close();
   };
 

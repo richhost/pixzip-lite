@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { nanoid } from "nanoid";
 import { useAtom } from "jotai";
 import produce from "immer";
 import { Popover, PopoverTrigger, PopoverContent } from "~/components/Popover";
@@ -27,7 +28,7 @@ const Workbench: React.FC = () => {
   };
 
   const onAddSpace = () => {
-    window.space.addSpace().then((space) => {
+    window.space.addSpace(nanoid()).then((space) => {
       const nextState = produce(spaces, (draft) => {
         draft.push(space);
       });

@@ -22,8 +22,8 @@ export const registerIpc = () => {
   ipcMain.handle("get-spaces", async () => {
     return getSpaces();
   });
-  ipcMain.handle("add-space", async () => {
-    return addSpace();
+  ipcMain.handle("add-space", async (_, id: string) => {
+    return addSpace(id);
   });
   ipcMain.on("patch-space", (_, data: Space) => {
     patchSpace(data);
