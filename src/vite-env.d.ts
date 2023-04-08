@@ -15,7 +15,7 @@ type Platform =
 
 interface SpaceBridge {
   getSpaces: () => Promise<Space[]>;
-  addSpace: () => Promise<Space>;
+  addSpace: (id: string) => Promise<Space>;
   patchSpace: (data: Space) => void;
   delSpace: (id: string) => Promise<false | { def: string }>;
   getDefault: () => Promise<string>;

@@ -44,7 +44,6 @@ const useImgStatus = () => {
     });
 
     window.compress.failed((params) => {
-      console.log("failed: ", params);
       setImgs((prev) => {
         const nextState = produce(prev, (draft) => {
           const spaceImgs = draft.get(params.spaceId)!;
