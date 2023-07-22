@@ -9,7 +9,7 @@
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
   font-size: 13px;
-  color: var(--gray12);
+  color: var(--gray-12);
 
   &[data-state="delayed-open"][data-side="top"] {
     animation-name: slideDownAndFade;

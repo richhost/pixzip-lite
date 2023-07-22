@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSetAtom } from "jotai";
-import produce from "immer";
+import { produce } from "immer";
 import { imgsAtom } from "~/stores/img";
 
 const useImgStatus = () => {

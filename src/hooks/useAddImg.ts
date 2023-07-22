@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useAtomValue, useAtom } from "jotai";
-import produce from "immer";
+import { produce } from "immer";
 import { defAtom } from "~/stores/space";
 import { imgsAtom, SpaceImg } from "~/stores/img";
 

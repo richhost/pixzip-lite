@@ -1,5 +1,5 @@
 .alert-dialog-overlay {
-  background-color: var(--blackA9);
+  background-color: var(--black-a9);
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -27,7 +27,7 @@
 
 .alert-dialog-title {
   margin: 0;
-  color: var(--mauve12);
+  color: var(--mauve-12);
   font-size: 15px;
   font-weight: 500;
 }
@@ -35,7 +35,7 @@
 .alert-dialog-description {
   margin-block-start: 16px;
   margin-block-end: 20px;
-  color: var(--mauve11);
+  color: var(--mauve-11);
   font-size: 13px;
   line-height: 1.5;
 }
@@ -59,27 +59,27 @@
   }
 
   .button-cancel {
-    background-color: var(--mauve4);
-    color: var(--mauve11);
+    background-color: var(--mauve-4);
+    color: var(--mauve-11);
 
     &:hover {
-      background-color: var(--mauve5);
+      background-color: var(--mauve-5);
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px var(--mauve7);
+      box-shadow: 0 0 0 2px var(--mauve-7);
     }
   }
   .button-action {
-    background-color: var(--red4);
-    color: var(--red11);
+    background-color: var(--red-4);
+    color: var(--red-11);
 
     &:hover {
-      background-color: var(--red5);
+      background-color: var(--red-5);
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px var(--red7);
+      box-shadow: 0 0 0 2px var(--red-7);
     }
   }
 }

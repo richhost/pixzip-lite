@@ -1,5 +1,5 @@
 import { useAtom, useAtomValue } from "jotai";
-import produce from "immer";
+import { produce } from "immer";
 import { defAtom } from "~/stores/space";
 import { imgsAtom } from "~/stores/img";
 

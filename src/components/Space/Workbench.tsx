@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { nanoid } from "nanoid";
 import { useAtom } from "jotai";
-import produce from "immer";
+import { produce } from "immer";
 import { Popover, PopoverTrigger, PopoverContent } from "~/components/Popover";
 import Icon from "~/components/Icon";
 import IconPane from "~/components/IconPane";

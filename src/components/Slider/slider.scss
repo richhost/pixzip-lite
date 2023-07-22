@@ -12,7 +12,7 @@
 }
 
 .slider-track {
-  background-color: var(--blackA5);
+  background-color: var(--black-a5);
   position: relative;
   flex-grow: 1;
   border-radius: 9999px;
@@ -24,7 +24,7 @@
 
 .slider-range {
   position: absolute;
-  background-color: var(--orange7);
+  background-color: var(--orange-7);
   border-radius: 9999px;
   height: 100%;
 }
@@ -34,15 +34,15 @@
   width: 18px;
   height: 18px;
   background-color: white;
-  box-shadow: 0 2px 8px var(--blackA7);
+  box-shadow: 0 2px 8px var(--black-a7);
   border-radius: 10px;
 
   &:hover {
-    box-shadow: 0 0 0 5px var(--blackA5);
+    box-shadow: 0 0 0 5px var(--black-a5);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 5px var(--blackA8);
+    box-shadow: 0 0 0 5px var(--black-a8);
   }
 }

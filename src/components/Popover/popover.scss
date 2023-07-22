@@ -40,10 +40,10 @@
   right: 5px;
 }
 .popover-close:hover {
-  background-color: var(--orange4);
+  background-color: var(--orange-4);
 }
 .popover-close:focus {
-  box-shadow: 0 0 0 2px var(--orange5);
+  box-shadow: 0 0 0 2px var(--orange-5);
 }
 
 @keyframes slideUpAndFade {

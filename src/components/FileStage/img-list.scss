@@ -9,9 +9,9 @@
   --item-h: 32px;
   padding-inline: 8px;
   border-radius: 4px;
-  border: 1px solid var(--gray3);
+  border: 1px solid var(--gray-3);
   height: var(--item-h);
-  background-color: #fff;
+  background-color: white;
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 40px 80px 80px 80px;
@@ -31,10 +31,10 @@
       border-radius: 4px;
 
       &:hover {
-        background-color: var(--gray3);
+        background-color: var(--gray-3);
       }
       &:active {
-        background-color: var(--gray4);
+        background-color: var(--gray-4);
       }
     }
   }

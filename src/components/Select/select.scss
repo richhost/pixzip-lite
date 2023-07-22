@@ -7,7 +7,7 @@
 .select-icon {
   display: flex;
   align-items: center;
-  color: var(--blackA6);
+  color: var(--black-a6);
   transition: color 150ms ease-out;
 }
 
@@ -25,7 +25,7 @@
   justify-content: center;
   height: 25px;
   background-color: white;
-  color: var(--blackA10);
+  color: var(--black-a10);
   cursor: default;
 }
 
@@ -45,7 +45,7 @@
   border-radius: 4px;
 
   &[data-highlighted] {
-    background-color: var(--blackA5);
+    background-color: var(--black-a5);
   }
 
   .select-item-indicator {

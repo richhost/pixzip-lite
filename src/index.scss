@@ -1,12 +1,11 @@
 @import "@radix-ui/colors/gray.css";
 @import "@radix-ui/colors/red.css";
 @import "@radix-ui/colors/mauve.css";
-@import "@radix-ui/colors/whiteA.css";
-@import "@radix-ui/colors/blackA.css";
-@import "@radix-ui/colors/grass.css";
+@import "@radix-ui/colors/white-alpha.css";
+@import "@radix-ui/colors/black-alpha.css";
 @import "@radix-ui/colors/orange.css";
 
-@import "@fontsource/inter/variable.css";
+@import "@fontsource-variable/inter/index.css";
 
 @import "open-props/easings.min.css";
 @import "open-props/animations.min.css";
@@ -21,16 +20,16 @@
 :root {
   --w-aside: 240px;
   --h-drag: 50px;
-  --border-color: var(--gray5);
-  --border-color-active: var(--orange7);
-  --outline-color-active: var(--orange5);
+  --border-color: var(--gray-5);
+  --border-color-active: var(--orange-7);
+  --outline-color-active: var(--orange-5);
 
-  font-family: "InterVariable", system-ui, —apple-system, Segoe UI, Rototo,
+  font-family: "Inter Variable", system-ui, —apple-system, Segoe UI, Rototo,
     Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 
-  color: var(--gray12);
-  background-color: var(--gray2);
+  color: var(--gray-12);
+  background-color: var(--gray-2);
 }
 
 .drag {
@@ -82,11 +81,11 @@ input[type="number"] {
 }
 
 input::placeholder {
-  color: var(--gray8);
+  color: var(--gray-8);
 }
 
 :where(input[type="radio"]) {
   all: revert;
   margin: 0;
-  accent-color: var(--orange7);
+  accent-color: var(--orange-7);
 }

@@ -24,12 +24,12 @@
 
 .scroll-area-thumb {
   flex: 1;
-  background: var(--blackA7);
+  background: var(--black-a7);
   border-radius: var(--scrollbar-size);
   position: relative;
 
   &:hover {
-    background: var(--blackA10);
+    background: var(--black-a10);
   }
 
   &::before {

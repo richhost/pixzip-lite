@@ -9,11 +9,11 @@
     place-items: center;
 
     &:hover {
-      background-color: var(--gray3);
+      background-color: var(--gray-3);
     }
 
     &:active {
-      background-color: var(--gray4);
+      background-color: var(--gray-4);
     }
   }
 
@@ -25,11 +25,11 @@
     place-items: center;
 
     &:hover {
-      background-color: var(--gray3);
+      background-color: var(--gray-3);
     }
 
     &:active {
-      background-color: var(--gray4);
+      background-color: var(--gray-4);
     }
 
     input[type="file"] {

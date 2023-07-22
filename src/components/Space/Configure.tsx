@@ -1,6 +1,6 @@
 import React from "react";
 import { useAtom, useAtomValue } from "jotai";
-import produce from "immer";
+import { produce } from "immer";
 import Scrollbar from "~/components/Scrollbar";
 import { Select, SelectItem } from "~/components/Select";
 import { Slider } from "~/components/Slider";
@@ -151,7 +151,7 @@ const Configure: React.FC = () => {
             </label>
           </div>
           {currentSpace && currentSpace.outputOriginal === false && (
-            <Tooltip content={<>{currentSpace.outputPath}</>}>
+            <Tooltip content={currentSpace.outputPath}>
               <span onClick={onOpenFolder}>
                 <input
                   type="text"
