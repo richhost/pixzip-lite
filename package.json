@@ -1,61 +1,39 @@
 {
   "name": "pixel-loss",
-  "productName": "像素丢失",
-  "description": "面向现代 Web 应用的开源图片压缩软件",
+  "version": "2.0.0-next.001",
   "homepage": "https://xiangsu.art",
   "author": {
     "name": "Abiee",
-    "email": "uucc@live.com"
+    "email": "hexcy@pm.me"
   },
-  "license": "MIT",
-  "version": "1.2.3",
-  "main": "dist-electron/main/index.js",
+  "main": "./out/main/index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
+    "dev": "electron-vite --config ./vite.config.ts dev --watch",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "debug": {
-    "env": {
-      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
-    }
-  },
   "devDependencies": {
-    "@fontsource-variable/inter": "^5.0.5",
-    "@radix-ui/colors": "^1.0.1",
-    "@radix-ui/react-alert-dialog": "^1.0.4",
-    "@radix-ui/react-icons": "^1.3.0",
-    "@radix-ui/react-popover": "^1.0.6",
-    "@radix-ui/react-scroll-area": "^1.0.4",
-    "@radix-ui/react-select": "^1.2.2",
-    "@radix-ui/react-slider": "^1.1.2",
-    "@radix-ui/react-tooltip": "^1.0.6",
-    "@types/node": "^20.4.4",
-    "@types/react": "^18.2.15",
+    "@radix-ui/colors": "^2.1.0",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "electron": "^25.3.1",
-    "electron-builder": "^24.4.0",
+    "electron": "^26.1.0",
+    "electron-vite": "^1.0.27",
+    "eslint": "^8.48.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
     "immer": "^10.0.2",
-    "jotai": "^2.2.2",
-    "nanoid": "4.0.2",
-    "open-props": "^1.5.10",
+    "jotai": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-use": "^17.4.0",
-    "sass": "^1.64.1",
     "the-new-css-reset": "^1.9.0",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.6",
-    "vite-electron-plugin": "^0.8.2",
-    "vite-plugin-electron-renderer": "^0.14.5"
-  },
-  "engines": {
-    "node": "^14.18.0 || >=16.0.0"
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
   },
   "dependencies": {
-    "@supercharge/fs": "^3.4.0",
-    "electron-store": "^8.1.0",
-    "sharp": "^0.32.4"
+    "electron-window-state": "^5.0.3"
   }
 }
