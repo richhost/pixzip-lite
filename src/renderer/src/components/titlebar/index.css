@@ -1,0 +1,15 @@
+.titlebar {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.window-ctrl {
+  display: grid;
+  grid-template-columns: repeat(3, 28px);
+
+  & button {
+    display: grid;
+    place-items: center;
+  }
+}
