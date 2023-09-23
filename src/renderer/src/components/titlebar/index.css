@@ -11,5 +11,15 @@
   & button {
     display: grid;
     place-items: center;
+
+    & svg {
+      width: 15px;
+      height: 15px;
+      color: var(--gray-9);
+
+      &:hover {
+        color: var(--gray-12);
+      }
+    }
   }
 }

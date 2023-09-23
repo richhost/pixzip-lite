@@ -16,7 +16,7 @@ async function createWindow() {
     webPreferences: {
       preload: join(__dirname, "../preload/index.js"),
     },
-    // titleBarStyle: "hidden",
+    titleBarStyle: "hidden",
     backgroundMaterial: "mica",
   });
 
