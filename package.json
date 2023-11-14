@@ -1,9 +1,12 @@
 {
 	"name": "pixzip",
 	"version": "2.0.0-next.001",
-	"private": true,
+	"private": false,
+	"main": "src/electron/main/index.js",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "cross-env NODE_ENV=dev concurrently -n=svelte,electron -c='#ff3e00','#9feaf9' \"npm run dev:svelte\" \"npm run dev:electron\"",
+		"dev:svelte": "vite dev",
+		"dev:electron": "electron src/electron/main/index.js",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -14,16 +17,23 @@
 	"devDependencies": {
 		"@radix-ui/colors": "^3.0.0",
 		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.27.5",
-		"open-props": "^1.6.10",
-		"prettier": "^2.8.8",
-		"prettier-plugin-svelte": "^2.10.1",
-		"svelte": "5.0.0-next.1",
+		"@sveltejs/kit": "^1.27.6",
+		"concurrently": "^8.2.2",
+		"cross-env": "^7.0.3",
+		"electron": "28.0.0-beta.5",
+		"lightningcss": "^1.22.1",
+		"open-props": "^1.6.11",
+		"prettier": "^3.1.0",
+		"prettier-plugin-svelte": "^3.1.0",
+		"svelte": "5.0.0-next.2",
 		"svelte-check": "^3.6.0",
 		"the-new-css-reset": "^1.11.1",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
 		"vite": "^4.5.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"electron-window-state": "^5.0.3"
+	}
 }

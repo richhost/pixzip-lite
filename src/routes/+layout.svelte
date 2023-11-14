@@ -2,6 +2,7 @@
 	import 'the-new-css-reset';
 	import '@radix-ui/colors/sky.css';
 	import '@radix-ui/colors/gray.css';
+	import '../app.css';
 	import Aside from '$lib/components/aside.svelte';
 </script>
 
