@@ -1,5 +1,6 @@
 import windowStateKeeper from 'electron-window-state';
 import { BrowserWindow, app } from 'electron';
+import { fileURLToPath } from 'node:url';
 
 async function createWindow() {
 	const mainWindowState = windowStateKeeper({
@@ -11,16 +12,24 @@ async function createWindow() {
 		x: mainWindowState.x,
 		y: mainWindowState.y,
 		width: mainWindowState.width,
-		height: mainWindowState.height
+		height: mainWindowState.height,
+		webPreferences: {
+			preload: fileURLToPath(new URL('../preload/index.cjs', import.meta.url))
+		}
 	});
 
 	function loadDevServer() {
-		browserWindow.loadURL('http://localhost:5173').catch((e) => {
-			console.log('Error loading dev server: ', e);
-			setTimeout(() => {
-				loadDevServer();
-			}, 500);
-		});
+		browserWindow
+			.loadURL('http://localhost:5173')
+			.then(() => {
+				browserWindow.webContents.openDevTools();
+			})
+			.catch((e) => {
+				console.log('Error loading dev server: ', e);
+				setTimeout(() => {
+					loadDevServer();
+				}, 500);
+			});
 	}
 
 	if (!app.isPackaged) {
