@@ -1,6 +1,7 @@
 import windowStateKeeper from 'electron-window-state';
 import { BrowserWindow, app } from 'electron';
 import { fileURLToPath } from 'node:url';
+import { loadDevServer } from './dev.js';
 
 async function createWindow() {
 	const mainWindowState = windowStateKeeper({
@@ -18,22 +19,15 @@ async function createWindow() {
 		}
 	});
 
-	function loadDevServer() {
-		browserWindow
-			.loadURL('http://localhost:5173')
-			.then(() => {
-				browserWindow.webContents.openDevTools();
-			})
-			.catch((e) => {
-				console.log('Error loading dev server: ', e);
-				setTimeout(() => {
-					loadDevServer();
-				}, 500);
-			});
-	}
-
 	if (!app.isPackaged) {
-		loadDevServer();
+		loadDevServer()
+			.then((url) => {
+				browserWindow.loadURL(url);
+			})
+			.then(() => browserWindow.webContents.openDevTools());
+		//		browserWindow
+		//			.loadURL('http://localhost:5173')
+		//			.then(() => browserWindow.webContents.openDevTools());
 	} else {
 		// TODO
 	}

@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { Counter, createCounter } from '$lib/runes/counter.svelte';
+  import { Counter } from '$lib/runes/counter.svelte';
 
-	const counter = new Counter();
-
-	// const counter = createCounter();
+  const counter = new Counter();
 </script>
 
 <button on:click={() => counter.increment()}>clicks: {counter.count}</button>
