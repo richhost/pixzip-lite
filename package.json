@@ -1,22 +1,17 @@
 {
 	"name": "pixzip",
 	"version": "2.0.0-next.001",
-	"private": false,
 	"main": "src/electron/main/index.js",
 	"scripts": {
 		"dev": "electron src/electron/main/index.js",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"check": "svelte-check --tsconfig ./tsconfig.json"
 	},
 	"devDependencies": {
 		"@radix-ui/colors": "^3.0.0",
-		"@sveltejs/adapter-static": "^3.0.1",
-		"@sveltejs/kit": "^2.0.6",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
+		"@tsconfig/svelte": "^5.0.2",
 		"concurrently": "^8.2.2",
 		"cross-env": "^7.0.3",
 		"electron": "^28.1.0",
