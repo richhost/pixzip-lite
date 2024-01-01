@@ -14,21 +14,21 @@
 	},
 	"devDependencies": {
 		"@radix-ui/colors": "^3.0.0",
-		"@sveltejs/adapter-static": "^3.0.0",
-		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/adapter-static": "^3.0.1",
+		"@sveltejs/kit": "^2.0.6",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
 		"concurrently": "^8.2.2",
 		"cross-env": "^7.0.3",
-		"electron": "^28.0.0",
+		"electron": "^28.1.0",
 		"open-props": "^1.6.16",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
-		"svelte": "5.0.0-next.25",
+		"svelte": "5.0.0-next.27",
 		"svelte-check": "^3.6.2",
 		"the-new-css-reset": "^1.11.2",
 		"tslib": "^2.6.2",
 		"typescript": "^5.3.3",
-		"vite": "^5.0.9"
+		"vite": "^5.0.10"
 	},
 	"type": "module",
 	"dependencies": {

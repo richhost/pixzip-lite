@@ -4,38 +4,18 @@
 	import '@radix-ui/colors/gray.css';
 	import '../app.css';
 	import Aside from '$lib/components/aside.svelte';
+	import WindowClose from '$lib/components/icons/ui/window-close.svelte';
+	import WindowMaximize from '$lib/components/icons/ui/window-maximize.svelte';
+	import WindowMinimize from '$lib/components/icons/ui/window-minimize.svelte';
+	import WindowRestore from '$lib/components/icons/ui/window-restore.svelte';
 </script>
 
 <div class="layout">
 	<header>
-		<svg fill="none" height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="m2 6c0-.27614.22386-.5.5-.5h7c.27614 0 .5.22386.5.5s-.22386.5-.5.5h-7c-.27614 0-.5-.22386-.5-.5z"
-				fill="#212121"
-			/>
-		</svg>
-		<svg fill="none" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
-			<g fill="#212121">
-				<path
-					d="m5.08496 4c.20592-.5826.76154-1 1.41465-1h3.5c1.65689 0 2.99999 1.34315 2.99999 3v3.5c0 .6531-.4174 1.2087-1 1.4146v-4.9146c0-1.10457-.8954-2-1.99999-2z"
-				/>
-				<path
-					d="m4.5 5h5c.8284 0 1.5.67157 1.5 1.5v5c0 .8284-.6716 1.5-1.5 1.5h-5c-.82843 0-1.5-.6716-1.5-1.5v-5c0-.82843.67157-1.5 1.5-1.5zm0 1c-.27614 0-.5.22386-.5.5v5c0 .2761.22386.5.5.5h5c.27614 0 .5-.2239.5-.5v-5c0-.27614-.22386-.5-.5-.5z"
-				/>
-			</g>
-		</svg>
-		<svg fill="none" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="m4.5 3c-.82843 0-1.5.67157-1.5 1.5v7c0 .8284.67157 1.5 1.5 1.5h7c.8284 0 1.5-.6716 1.5-1.5v-7c0-.82843-.6716-1.5-1.5-1.5zm0 1h7c.2761 0 .5.22386.5.5v7c0 .2761-.2239.5-.5.5h-7c-.27614 0-.5-.2239-.5-.5v-7c0-.27614.22386-.5.5-.5z"
-				fill="#212121"
-			/>
-		</svg>
-		<svg height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="m2.08859116 2.2156945.05785545-.06924789c.17356635-.17356635.44299075-.1928515.63785889-.05785545l.06924789.05785545 3.14644661 3.14655339 3.14644661-3.14655339c.19526215-.19526215.51184463-.19526215.70710678 0 .19526211.19526215.19526211.51184463 0 .70710678l-3.14655339 3.14644661 3.14655339 3.14644661c.17356631.17356635.19285151.44299075.05785545.63785889l-.05785545.06924789c-.17356635.17356631-.44299075.19285151-.63785889.05785545l-.06924789-.05785545-3.14644661-3.14655339-3.14644661 3.14655339c-.19526215.19526211-.51184463.19526211-.70710678 0-.19526215-.19526215-.19526215-.51184463 0-.70710678l3.14655339-3.14644661-3.14655339-3.14644661c-.17356635-.17356635-.1928515-.44299075-.05785545-.63785889l.05785545-.06924789z"
-				fill="#212121"
-			/>
-		</svg>
+		<WindowRestore size={24} />
+		<WindowMaximize size={24} />
+		<WindowMinimize size={24} />
+		<WindowClose size={24} />
 	</header>
 	<Aside />
 	<main class="main">
