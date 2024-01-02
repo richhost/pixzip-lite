@@ -1,4 +1,8 @@
 import 'the-new-css-reset';
+
+/** radix color */
+import '@radix-ui/colors/gray.css';
+
 import './app.css';
 import { createRoot } from 'svelte';
 import App from './app.svelte';

@@ -16,16 +16,7 @@
 		font-family="sans-serif"
 		font-weight="400"
 	>
-		<path
-			d="m4 6v6h6v-6zm1 1h4v4h-4z"
-			overflow="visible"
-			style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none"
-		/>
-		<path
-			d="m6 4v1h5v5h1v-6z"
-			opacity=".5"
-			overflow="visible"
-			style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none"
-		/>
+		<path d="m4 6v6h6v-6zm1 1h4v4h-4z" overflow="visible" />
+		<path d="m6 4v1h5v5h1v-6z" opacity=".5" overflow="visible" />
 	</g>
 </svg>

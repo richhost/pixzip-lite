@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Header from './lib/components/header.svelte';
 </script>
 
-<h1>hello</h1>
+<Header />

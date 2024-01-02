@@ -1,6 +1,7 @@
 import windowStateKeeper from 'electron-window-state';
 import { BrowserWindow, app } from 'electron';
 import { fileURLToPath } from 'node:url';
+import { platform } from 'node:os';
 import { loadDevServer } from './dev-server.mjs';
 
 async function createWindow() {
@@ -14,8 +15,12 @@ async function createWindow() {
 		y: mainWindowState.y,
 		width: mainWindowState.width,
 		height: mainWindowState.height,
+		frame: platform() !== 'linux',
 		webPreferences: {
-			preload: fileURLToPath(new URL('../preload/index.cjs', import.meta.url))
+			nodeIntegration: false,
+			contextIsolation: true,
+			sandbox: false,
+			preload: fileURLToPath(new URL('../preload/index.mjs', import.meta.url))
 		}
 	});
 
