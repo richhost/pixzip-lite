@@ -3,7 +3,7 @@
 	"version": "2.0.0-next.001",
 	"main": "src/electron/main/index.js",
 	"scripts": {
-		"dev": "electron src/electron/main/index.js",
+		"dev": "electron src/electron/main/index.mjs",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json"
