@@ -1,7 +1,7 @@
 import windowStateKeeper from 'electron-window-state';
 import { BrowserWindow, app } from 'electron';
 import { fileURLToPath } from 'node:url';
-import { loadDevServer } from './dev.js';
+import { loadDevServer } from './dev-server.mjs';
 
 async function createWindow() {
 	const mainWindowState = windowStateKeeper({

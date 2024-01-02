@@ -1,5 +1,5 @@
 import { app } from 'electron';
-import { restoreOrCreateWindow } from './window.js';
+import { restoreOrCreateWindow } from './window.mjs';
 
 app.enableSandbox();
 

@@ -9,5 +9,6 @@
 		"skipLibCheck": true,
 		"strict": true
 	},
-	"include": ["src/**/*.ts", "src/**/*.svelte", "src/**/*.js"]
+	"include": ["src/**/*.ts", "src/**/*.svelte"],
+	"exclude": ["src/electron/**/*"]
 }
