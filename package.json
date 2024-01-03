@@ -18,7 +18,7 @@
 		"open-props": "^1.6.16",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
-		"svelte": "5.0.0-next.27",
+		"svelte": "5.0.0-next.28",
 		"svelte-check": "^3.6.2",
 		"the-new-css-reset": "^1.11.2",
 		"tslib": "^2.6.2",
