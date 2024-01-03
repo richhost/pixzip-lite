@@ -1,5 +1,26 @@
 :root {
-	--h-header: 48px;
+	--h-header: 46px;
+	color: var(--gray-12);
+}
+
+* {
+	user-select: none;
+	cursor: default;
+}
+
+html,
+body {
+	font-size: 13px;
+	font-family:
+		'Inter Variable',
+		system-ui,
+		—apple-system,
+		Segoe UI,
+		Rototo,
+		Helvetica,
+		Arial,
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
 .draggable {

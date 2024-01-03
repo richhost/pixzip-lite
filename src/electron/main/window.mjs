@@ -15,6 +15,8 @@ async function createWindow() {
 		y: mainWindowState.y,
 		width: mainWindowState.width,
 		height: mainWindowState.height,
+		minWidth: 375,
+		minHeight: 400,
 		frame: platform() !== 'linux',
 		webPreferences: {
 			nodeIntegration: false,

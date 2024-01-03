@@ -48,7 +48,6 @@
 <style>
 	#header {
 		height: var(--h-header);
-		background-color: var(--gray-2);
 	}
 
 	.window-ctr {
