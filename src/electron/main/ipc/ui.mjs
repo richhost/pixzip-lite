@@ -4,7 +4,7 @@ import { ipcMain } from 'electron';
  * register ipcMain event listeners for ui actions
  * @param {import('electron').BrowserWindow} browserWindow
  */
-export const windowManager = (browserWindow) => {
+export const registerUIHandlers = (browserWindow) => {
 	ipcMain.on('maximize', () => browserWindow.maximize());
 	ipcMain.on('unmaximize', () => browserWindow.unmaximize());
 	ipcMain.on('minimize', () => browserWindow.minimize());

@@ -10,6 +10,7 @@ interface Window {
 			close: Function;
 			onMaximized: (callback: Function) => void;
 			onUnmaximized: (callback: Function) => void;
+			removeListeners: () => void;
 		};
 	};
 }

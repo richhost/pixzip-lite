@@ -1,20 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import WindowClose from './icons/ui/window-close.svelte';
 	import WindowMaximize from './icons/ui/window-maximize.svelte';
 	import WindowMinimize from './icons/ui/window-minimize.svelte';
 	import WindowRestore from './icons/ui/window-restore.svelte';
+	import { createUI } from '../runes/ui.svelte';
 
-	let maximized = $state(false);
-
-	onMount(() => {
-		window.pixzip.ui.onUnmaximized(() => {
-			maximized = false;
-		});
-		window.pixzip.ui.onMaximized(() => {
-			maximized = true;
-		});
-	});
+	const ui = createUI();
 </script>
 
 <div id="header" class="draggable">
@@ -22,7 +13,7 @@
 		<button
 			class="button no-drag"
 			onclick={() => {
-				window.pixzip.ui.minimize();
+				ui.minimizeApp();
 			}}
 		>
 			<WindowMinimize />
@@ -30,14 +21,14 @@
 		<button
 			class="button no-drag"
 			onclick={() => {
-				if (maximized) {
-					window.pixzip.ui.unmaximize();
+				if (ui.maximized) {
+					ui.unmaximizeApp();
 				} else {
-					window.pixzip.ui.maximize();
+					ui.maximizeApp();
 				}
 			}}
 		>
-			{#if maximized}
+			{#if ui.maximized}
 				<WindowRestore />
 			{:else}
 				<WindowMaximize />
@@ -46,7 +37,7 @@
 		<button
 			class="button no-drag"
 			onclick={() => {
-				window.pixzip.ui.close();
+				ui.closeApp();
 			}}
 		>
 			<WindowClose />

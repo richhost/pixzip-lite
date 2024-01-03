@@ -6,7 +6,12 @@ const ui = {
 	unmaximize: () => ipcRenderer.send('unmaximize'),
 	close: () => ipcRenderer.send('close'),
 	onMaximized: (callback) => ipcRenderer.on('maximized', callback),
-	onUnmaximized: (callback) => ipcRenderer.on('unmaximized', callback)
+	onUnmaximized: (callback) => ipcRenderer.on('unmaximized', callback),
+
+	removeListeners: () => {
+		ipcRenderer.removeAllListeners('maximized');
+		ipcRenderer.removeAllListeners('unmaximized');
+	}
 };
 
 contextBridge.exposeInMainWorld('pixzip', {

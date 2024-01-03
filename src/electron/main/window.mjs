@@ -41,6 +41,7 @@ async function createWindow() {
 	return browserWindow;
 }
 
+/** @type {import('electron').BrowserWindow | undefined} */
 let browserWindow;
 
 export async function restoreOrCreateWindow() {
@@ -56,3 +57,5 @@ export async function restoreOrCreateWindow() {
 
 	return browserWindow;
 }
+
+export function getMainWindow() {}

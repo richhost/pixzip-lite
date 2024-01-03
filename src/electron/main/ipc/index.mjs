@@ -1,1 +1,1 @@
-export { windowManager } from './ui.mjs';
+export { registerUIHandlers } from './ui.mjs';
