@@ -18,6 +18,7 @@ async function createWindow() {
 		minWidth: 375,
 		minHeight: 400,
 		frame: platform() !== 'linux',
+		titleBarStyle: 'hidden',
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
