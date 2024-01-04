@@ -14,7 +14,7 @@
 		"@tsconfig/svelte": "^5.0.2",
 		"concurrently": "^8.2.2",
 		"cross-env": "^7.0.3",
-		"electron": "^28.1.0",
+		"electron": "^28.1.1",
 		"open-props": "^1.6.16",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
