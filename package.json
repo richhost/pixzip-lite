@@ -15,16 +15,16 @@
 		"concurrently": "^8.2.2",
 		"cross-env": "^7.0.3",
 		"electron": "^28.1.1",
-		"open-props": "^1.6.16",
+		"open-props": "^1.6.17",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"simplebar": "^6.2.5",
-		"svelte": "5.0.0-next.28",
+		"svelte": "5.0.0-next.29",
 		"svelte-check": "^3.6.2",
 		"the-new-css-reset": "^1.11.2",
 		"tslib": "^2.6.2",
 		"typescript": "^5.3.3",
-		"vite": "^5.0.10"
+		"vite": "^5.0.11"
 	},
 	"type": "module",
 	"dependencies": {
