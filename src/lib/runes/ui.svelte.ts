@@ -1,9 +1,13 @@
+import { untrack } from 'svelte';
+
 export function createUI() {
 	let maximized = $state(false);
 
 	$effect(() => {
-		window.pixzip.ui.onMaximized(() => (maximized = true));
-		window.pixzip.ui.onUnmaximized(() => (maximized = false));
+		untrack(() => {
+			window.pixzip.ui.onMaximized(() => (maximized = true));
+			window.pixzip.ui.onUnmaximized(() => (maximized = false));
+		});
 
 		return () => {
 			window.pixzip.ui.removeListeners();

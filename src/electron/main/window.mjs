@@ -19,6 +19,11 @@ async function createWindow() {
 		minHeight: 400,
 		frame: platform() !== 'linux',
 		titleBarStyle: 'hidden',
+		fullscreen: false,
+		vibrancy: 'window',
+		backgroundColor: '#00000000',
+		transparent: platform() === 'darwin',
+		visualEffectState: 'followWindow',
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
