@@ -4,45 +4,48 @@
 	import WindowMinimize from './icons/ui/window-minimize.svelte';
 	import WindowRestore from './icons/ui/window-restore.svelte';
 	import { createUI } from '../runes/ui.svelte';
+	import OS from '../runes/os.svelte';
 
 	const ui = createUI();
 </script>
 
 <div id="header" class="draggable">
-	<div class="window-ctr">
-		<button
-			class="button no-drag"
-			onclick={() => {
-				ui.minimizeApp();
-			}}
-		>
-			<WindowMinimize />
-		</button>
-		<button
-			class="button no-drag"
-			onclick={() => {
-				if (ui.maximized) {
-					ui.unmaximizeApp();
-				} else {
-					ui.maximizeApp();
-				}
-			}}
-		>
-			{#if ui.maximized}
-				<WindowRestore />
-			{:else}
-				<WindowMaximize />
-			{/if}
-		</button>
-		<button
-			class="button no-drag"
-			onclick={() => {
-				ui.closeApp();
-			}}
-		>
-			<WindowClose />
-		</button>
-	</div>
+	{#if OS.os !== 'darwin'}
+		<div class="window-ctr">
+			<button
+				class="button no-drag"
+				onclick={() => {
+					ui.minimizeApp();
+				}}
+			>
+				<WindowMinimize />
+			</button>
+			<button
+				class="button no-drag"
+				onclick={() => {
+					if (ui.maximized) {
+						ui.unmaximizeApp();
+					} else {
+						ui.maximizeApp();
+					}
+				}}
+			>
+				{#if ui.maximized}
+					<WindowRestore />
+				{:else}
+					<WindowMaximize />
+				{/if}
+			</button>
+			<button
+				class="button no-drag"
+				onclick={() => {
+					ui.closeApp();
+				}}
+			>
+				<WindowClose />
+			</button>
+		</div>
+	{/if}
 </div>
 
 <style>

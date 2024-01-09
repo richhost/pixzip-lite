@@ -1,9 +1,14 @@
 <script lang="ts">
 	import OpenMenu from './icons/ui/open-menu.svelte';
+	import OS from '../runes/os.svelte';
+
+	const showBrandName = $derived(OS.os !== 'darwin');
 </script>
 
 <div class="brand draggable">
-	像素丢失
+	{#if showBrandName}
+		像素丢失
+	{/if}
 	<button class="open-menu no-drag"><OpenMenu /></button>
 </div>
 

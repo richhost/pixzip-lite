@@ -12,5 +12,6 @@ interface Window {
 			onUnmaximized: (callback: Function) => void;
 			removeListeners: () => void;
 		};
+		os: NodeJS.Platform;
 	};
 }

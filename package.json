@@ -12,6 +12,7 @@
 		"@radix-ui/colors": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
 		"@tsconfig/svelte": "^5.0.2",
+		"@types/node": "^20.10.7",
 		"concurrently": "^8.2.2",
 		"cross-env": "^7.0.3",
 		"electron": "^28.1.2",
