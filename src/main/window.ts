@@ -1,8 +1,8 @@
-import windowStateKeeper from 'electron-window-state';
 import { BrowserWindow, app } from 'electron';
+import windowStateKeeper from 'electron-window-state';
 import { fileURLToPath } from 'node:url';
-import { platform } from 'node:os';
-import { loadDevServer } from './dev-server.mjs';
+
+const platform = process.platform;
 
 async function createWindow() {
 	const mainWindowState = windowStateKeeper({
@@ -17,12 +17,11 @@ async function createWindow() {
 		height: mainWindowState.height,
 		minWidth: 375,
 		minHeight: 400,
-		frame: platform() !== 'linux',
+		frame: platform !== 'linux',
 		titleBarStyle: 'hidden',
-		fullscreen: false,
 		vibrancy: 'window',
 		backgroundColor: '#00000000',
-		transparent: platform() === 'darwin',
+		transparent: platform === 'darwin',
 		visualEffectState: 'followWindow',
 		webPreferences: {
 			nodeIntegration: false,
@@ -32,15 +31,9 @@ async function createWindow() {
 		}
 	});
 
-	if (!app.isPackaged) {
-		loadDevServer()
-			.then((url) => {
-				browserWindow.loadURL(url);
-			})
-			.then(() => browserWindow.webContents.openDevTools());
-		//		browserWindow
-		//			.loadURL('http://localhost:5173')
-		//			.then(() => browserWindow.webContents.openDevTools());
+	if (!app.isPackaged && process.env['ELECTRON_RENDERER_URL']) {
+		browserWindow.loadURL(process.env['ELECTRON_RENDERER_URL']);
+		browserWindow.webContents.openDevTools();
 	} else {
 		// TODO
 	}
@@ -49,8 +42,7 @@ async function createWindow() {
 	return browserWindow;
 }
 
-/** @type {import('electron').BrowserWindow | undefined} */
-let browserWindow;
+let browserWindow: BrowserWindow | undefined;
 
 export async function restoreOrCreateWindow() {
 	browserWindow = BrowserWindow.getAllWindows().find((w) => !w.isDestroyed());
@@ -65,5 +57,3 @@ export async function restoreOrCreateWindow() {
 
 	return browserWindow;
 }
-
-export function getMainWindow() {}

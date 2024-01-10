@@ -1,0 +1,20 @@
+{
+	"include": ["electron.vite.config.*", "src/main/**/*", "src/preload/*"],
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"strict": true,
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitAny": false,
+		"noImplicitReturns": true,
+		"composite": true,
+		"types": ["node"]
+	}
+}
