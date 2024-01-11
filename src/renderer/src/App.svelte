@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Brand from './lib/components/brand.svelte';
-	import Header from './lib/components/header.svelte';
-	import Scrollbar from './lib/components/scrollbar.svelte';
-	import Workspace from './lib/components/workspace.svelte';
+	import Brand from './lib/components/Brand.svelte';
+	import Header from './lib/components/Header.svelte';
+	import Scrollbar from './lib/components/Scrollbar.svelte';
+	import Workspace from './lib/components/Workspace.svelte';
 </script>
 
 <div id="layout">

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import OpenMenu from './icons/ui/open-menu.svelte';
-	import OS from '../runes/os.svelte';
+	import { OS } from '../utils';
+	import OpenMenu from './icons/ui/OpenMenu.svelte';
 
-	const showBrandName = $derived(OS.os !== 'darwin');
+	const showBrandName = OS !== 'darwin';
 </script>
 
 <div class="brand draggable">

@@ -1,16 +1,16 @@
 <script lang="ts">
-	import WindowClose from './icons/ui/window-close.svelte';
-	import WindowMaximize from './icons/ui/window-maximize.svelte';
-	import WindowMinimize from './icons/ui/window-minimize.svelte';
-	import WindowRestore from './icons/ui/window-restore.svelte';
+	import WindowClose from './icons/ui/WindowClose.svelte';
+	import WindowMaximize from './icons/ui/WindowMaximize.svelte';
+	import WindowMinimize from './icons/ui/WindowMinimize.svelte';
+	import WindowRestore from './icons/ui/WindowRestore.svelte';
 	import { createUI } from '../runes/ui.svelte';
-	import OS from '../runes/os.svelte';
+	import { OS } from '../utils';
 
 	const ui = createUI();
 </script>
 
 <div id="header" class="draggable">
-	{#if OS.os !== 'darwin'}
+	{#if OS !== 'darwin'}
 		<div class="window-ctr">
 			<button
 				class="button no-drag"

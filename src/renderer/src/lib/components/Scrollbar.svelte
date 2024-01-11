@@ -1,8 +1,9 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import SimpleBar from 'simplebar';
 	import 'simplebar/dist/simplebar.css';
 
-	let { children } = $props<{ children: any }>();
+	const { children } = $props<{ children: Snippet }>();
 
 	let scrollWrapper: HTMLDivElement;
 

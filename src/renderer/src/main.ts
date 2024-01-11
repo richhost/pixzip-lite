@@ -7,8 +7,9 @@ import '@radix-ui/colors/gray.css';
 import 'open-props/easings.min.css';
 
 import './app.css';
+
 import { createRoot } from 'svelte';
-import App from './app.svelte';
+import App from './App.svelte';
 
 const app = createRoot(App, { target: document.getElementById('app')! });
 
