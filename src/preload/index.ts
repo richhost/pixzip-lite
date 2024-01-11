@@ -18,3 +18,12 @@ contextBridge.exposeInMainWorld('pixzip', {
 	os: process.platform,
 	ui
 });
+
+declare global {
+	interface Window {
+		pixzip: {
+			ui: typeof ui;
+			os: NodeJS.Platform;
+		};
+	}
+}
