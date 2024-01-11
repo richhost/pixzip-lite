@@ -9,6 +9,7 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json"
 	},
 	"devDependencies": {
+		"@floating-ui/dom": "^1.5.4",
 		"@radix-ui/colors": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
 		"@tsconfig/svelte": "^5.0.2",

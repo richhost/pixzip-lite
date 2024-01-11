@@ -3,7 +3,10 @@
 	import SimpleBar from 'simplebar';
 	import 'simplebar/dist/simplebar.css';
 
-	const { children } = $props<{ children: Snippet }>();
+	const { children, onscroll } = $props<{
+		children: Snippet;
+		onscroll?: (event: Event) => void;
+	}>();
 
 	let scrollWrapper: HTMLDivElement;
 
@@ -11,8 +14,18 @@
 		const simpleBar = new SimpleBar(scrollWrapper, {
 			autoHide: true
 		});
+		const scrollEl = simpleBar.getScrollElement();
 
-		return () => simpleBar.unMount();
+		if (onscroll && scrollEl) {
+			scrollEl.addEventListener('scroll', onscroll);
+		}
+
+		return () => {
+			simpleBar.unMount();
+			if (onscroll) {
+				scrollEl?.removeEventListener('scroll', onscroll);
+			}
+		};
 	});
 </script>
 
