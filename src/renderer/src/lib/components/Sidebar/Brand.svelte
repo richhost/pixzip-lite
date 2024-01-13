@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { OS } from '../utils';
-	import OpenMenu from './icons/ui/OpenMenu.svelte';
+	import { OS } from '../../utils';
+	import OpenMenu from '../icons/ui/OpenMenu.svelte';
 
 	const showBrandName = OS !== 'darwin';
 </script>
 
 <div class="brand draggable">
 	{#if showBrandName}
-		像素丢失
+		Pixzip
 	{/if}
 	<button class="open-menu no-drag"><OpenMenu /></button>
 </div>

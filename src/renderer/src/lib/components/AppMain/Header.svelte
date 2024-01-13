@@ -1,10 +1,10 @@
 <script lang="ts">
-	import WindowClose from './icons/ui/WindowClose.svelte';
-	import WindowMaximize from './icons/ui/WindowMaximize.svelte';
-	import WindowMinimize from './icons/ui/WindowMinimize.svelte';
-	import WindowRestore from './icons/ui/WindowRestore.svelte';
-	import { createUI } from '../runes/ui.svelte';
-	import { OS } from '../utils';
+	import WindowClose from '../icons/ui/WindowClose.svelte';
+	import WindowMaximize from '../icons/ui/WindowMaximize.svelte';
+	import WindowMinimize from '../icons/ui/WindowMinimize.svelte';
+	import WindowRestore from '../icons/ui/WindowRestore.svelte';
+	import { createUI } from '../../runes/ui.svelte';
+	import { OS } from '../../utils';
 
 	const ui = createUI();
 </script>

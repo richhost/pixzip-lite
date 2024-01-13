@@ -90,5 +90,6 @@
 		height: 100%;
 		left: var(--pos);
 		transform: translate(calc(var(--thickness) * -0.5), 0);
+		background-color: var(--color);
 	}
 </style>

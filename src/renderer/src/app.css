@@ -1,5 +1,8 @@
 :root {
 	--h-header: 46px;
+	--w-sidebar-min: 180px;
+	--w-sidebar-max: 240px;
+
 	color: var(--gray-12);
 }
 

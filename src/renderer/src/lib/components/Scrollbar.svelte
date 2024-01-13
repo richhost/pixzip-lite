@@ -4,7 +4,7 @@
 	import 'simplebar/dist/simplebar.css';
 
 	const { children, onscroll } = $props<{
-		children: Snippet;
+		children?: Snippet;
 		onscroll?: (event: Event) => void;
 	}>();
 
