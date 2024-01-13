@@ -3,6 +3,7 @@
 	import Header from './lib/components/Header.svelte';
 	import Scrollbar from './lib/components/Scrollbar.svelte';
 	import Workspace from './lib/components/Workspace.svelte';
+	import { SplitPane } from './lib/components/SplitPane';
 </script>
 
 <div id="layout">
@@ -14,6 +15,15 @@
 	</aside>
 	<main class="main">
 		<Header />
+
+		<SplitPane min="100px" max="400px" pos="200px">
+			{#snippet a()}
+				<div style="height: 100%; background: var(--gray-4);">this is a</div>
+			{/snippet}
+			{#snippet b()}
+				<div style="height: 100%; background: var(--gray-7);">this is b</div>
+			{/snippet}
+		</SplitPane>
 	</main>
 </div>
 
