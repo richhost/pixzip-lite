@@ -80,6 +80,11 @@
 		overflow: hidden;
 	}
 
+	.pane {
+		height: 100%;
+		overflow-y: auto;
+	}
+
 	.handle {
 		position: absolute;
 		z-index: 10;
