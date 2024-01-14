@@ -32,12 +32,13 @@
 		place-items: center;
 		transition: background 0.2s var(--ease-4);
 		background-color: transparent;
-	}
-	.open-menu:hover {
-		background-color: var(--gray-5);
-	}
 
-	.open-menu:active {
-		background-color: var(--gray-7);
+		&:hover {
+			background-color: var(--gray-5);
+		}
+
+		&:active {
+			background-color: var(--gray-7);
+		}
 	}
 </style>

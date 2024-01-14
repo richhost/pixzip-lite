@@ -23,6 +23,9 @@ export default defineConfig({
 		}
 	},
 	renderer: {
-		plugins: [svelte()]
+		plugins: [svelte()],
+		css: {
+			transformer: 'lightningcss'
+		}
 	}
 });
