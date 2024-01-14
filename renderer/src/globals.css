@@ -1,9 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base { 
-	:root {
+ 
+@layer base {
+  :root {
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
 
@@ -33,9 +33,9 @@
     --ring: 224 71.4% 4.1%;
  
     --radius: 0.5rem;
-	}
-
-	.dark {
+  }
+ 
+  .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
  
@@ -65,7 +65,7 @@
     --ring: 216 12.2% 83.9%;
   }
 }
-
+ 
 @layer base {
   * {
     @apply border-border;
@@ -73,35 +73,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-* {
-	user-select: none;
-	cursor: default;
-}
-
-html,
-body {
-	font-family:
-		'Inter Variable',
-		system-ui,
-		—apple-system,
-		Segoe UI,
-		Rototo,
-		Helvetica,
-		Arial,
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-
-  --h-header: 46px;
-  --w-sidebar-min: 120px;
-  --w-sidebar-max: 240px;
-}
-
-.draggable {
-	-webkit-app-region: drag;
-}
-
-.no-drag {
-	-webkit-app-region: no-drag;
 }
