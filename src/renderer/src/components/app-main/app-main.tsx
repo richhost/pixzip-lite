@@ -3,7 +3,9 @@ import {
 	ResizablePanel,
 	ResizablePanelGroup,
 } from "~/components/ui/resizable";
+
 import { Workspace } from "./workspace";
+import { Workbench } from "./workbench";
 
 export function AppMain() {
 	return (
@@ -13,9 +15,7 @@ export function AppMain() {
 			</ResizablePanel>
 			<ResizableHandle withHandle />
 			<ResizablePanel defaultSize={70}>
-				<div className="flex h-full items-center justify-center p-6">
-					<span className="font-semibold">Content</span>
-				</div>
+				<Workbench />
 			</ResizablePanel>
 		</ResizablePanelGroup>
 	);
