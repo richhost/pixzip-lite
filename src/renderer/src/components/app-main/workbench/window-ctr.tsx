@@ -10,11 +10,11 @@ export function WindowCtr() {
 
 	return (
 		<div className="flex items-center gap-3 h-full px-3">
-			<IconButton onPointerDown={min}>
+			<IconButton onPointerUp={min}>
 				<WindowMinimize width={16} height={16} />
 			</IconButton>
 			<IconButton
-				onPointerDown={() => {
+				onPointerUp={() => {
 					maximized ? restore() : max();
 				}}
 			>
@@ -24,7 +24,7 @@ export function WindowCtr() {
 					<WindowMaximize width={16} height={16} />
 				)}
 			</IconButton>
-			<IconButton onPointerDown={close}>
+			<IconButton onPointerUp={close}>
 				<WindowClose width={16} height={16} />
 			</IconButton>
 		</div>
