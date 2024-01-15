@@ -3,17 +3,28 @@ import WindowClose from "~/assets/window-close.svg?react";
 import WindowMinimize from "~/assets/window-minimize.svg?react";
 import WindowMaximize from "~/assets/window-maximize.svg?react";
 import WindowRestore from "~/assets/window-restore.svg?react";
+import { useWindowCtr } from "./hooks/use-window-ctr";
 
 export function WindowCtr() {
+	const { min, max, close, restore, maximized } = useWindowCtr();
+
 	return (
-		<div className="flex items-center gap-2 h-full px-2">
-			<IconButton>
+		<div className="flex items-center gap-3 h-full px-3">
+			<IconButton onPointerDown={min}>
 				<WindowMinimize width={16} height={16} />
 			</IconButton>
-			<IconButton>
-				<WindowMaximize width={16} height={16} />
+			<IconButton
+				onPointerDown={() => {
+					maximized ? restore() : max();
+				}}
+			>
+				{maximized ? (
+					<WindowRestore width={16} height={16} />
+				) : (
+					<WindowMaximize width={16} height={16} />
+				)}
 			</IconButton>
-			<IconButton>
+			<IconButton onPointerDown={close}>
 				<WindowClose width={16} height={16} />
 			</IconButton>
 		</div>
