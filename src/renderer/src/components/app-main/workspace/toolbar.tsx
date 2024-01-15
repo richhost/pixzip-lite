@@ -1,3 +1,4 @@
+import { useAtomValue } from "jotai";
 import { Trash2 } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
@@ -7,10 +8,22 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { cn } from "~/lib/utils";
+
+import { scrollAtom } from "./atom";
 
 export function Toolbar() {
+	const position = useAtomValue(scrollAtom);
+
 	return (
-		<header className="h-[var(--h-header)] draggable px-1.5 flex items-center flex-shrink-0">
+		<header
+			className={cn(
+				"h-[var(--h-header)] draggable px-1.5 flex items-center flex-shrink-0",
+				{
+					shadow: position?.top,
+				},
+			)}
+		>
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger asChild>
