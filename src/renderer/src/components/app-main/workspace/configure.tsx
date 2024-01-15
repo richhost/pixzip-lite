@@ -1,6 +1,5 @@
-import { PropsWithChildren, useRef } from "react";
+import { type PropsWithChildren, type UIEvent, useRef } from "react";
 import { useAtom } from "jotai";
-import { useScroll } from "ahooks";
 
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { Input } from "~/components/ui/input";
@@ -23,23 +22,21 @@ export function Configure() {
 
 	const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-	const scroll = useScroll(() => {
-		return scrollAreaRef.current?.querySelector(
-			"[data-radix-scroll-area-viewport]",
-		) as HTMLDivElement;
-	});
-
-	if (scroll !== position) {
-		setPosition(scroll);
-	}
+	const onScroll = (event: UIEvent<HTMLDivElement>) => {
+		const target = event.target as HTMLDivElement;
+		setPosition({
+			top: target.scrollTop,
+			left: target.scrollLeft,
+		});
+	};
 
 	return (
 		<div
 			className={cn("min-h-0", {
-				"border-t": scroll?.top,
+				"border-t": position?.top,
 			})}
 		>
-			<ScrollArea className="h-full" ref={scrollAreaRef}>
+			<ScrollArea className="h-full" ref={scrollAreaRef} onScroll={onScroll}>
 				<div className="p-4 space-y-8">
 					<div className="grid w-full items-center gap-2">
 						<Label htmlFor="width">宽</Label>

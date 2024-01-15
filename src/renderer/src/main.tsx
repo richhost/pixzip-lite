@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 /** fonts */
-import '@fontsource-variable/inter';
+import "@fontsource-variable/inter";
 
-import './app.css'
-import App from './App.tsx'
+import "./app.css";
+import App from "./App.tsx";
 
-ReactDOM.createRoot(document.getElementById('app')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("app") as HTMLElement).render(
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>,
+);

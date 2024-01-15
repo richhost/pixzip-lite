@@ -1,6 +1,5 @@
 import { atom } from "jotai";
-import { useScroll } from "ahooks";
 
-type Scroll = ReturnType<typeof useScroll>;
+export type Scroll = { top: number; left: number } | undefined;
 
 export const scrollAtom = atom<Scroll>(undefined);
