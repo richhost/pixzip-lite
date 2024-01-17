@@ -39,7 +39,7 @@ function IconButton({
 		<button
 			{...props}
 			type="button"
-			className="bg-gray-100 rounded-full w-6 h-6 grid place-items-center no-drag hover:bg-gray-200 active:bg-gray-300 transition-[background]"
+			className="bg-gray-100 rounded-full w-6 h-6 grid place-items-center no-drag hover:bg-gray-200 active:bg-gray-300 transition-[background] cursor-default"
 		>
 			{children}
 		</button>

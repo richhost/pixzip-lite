@@ -27,7 +27,11 @@ export function Toolbar() {
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<Button variant="ghost" className="no-drag" size="icon">
+						<Button
+							variant="ghost"
+							className="no-drag cursor-default"
+							size="icon"
+						>
 							<Trash2 size={16} className="no-drag" />
 						</Button>
 					</TooltipTrigger>
