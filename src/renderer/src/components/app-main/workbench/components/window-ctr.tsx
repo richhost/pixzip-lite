@@ -3,7 +3,7 @@ import WindowClose from "~/assets/window-close.svg?react";
 import WindowMinimize from "~/assets/window-minimize.svg?react";
 import WindowMaximize from "~/assets/window-maximize.svg?react";
 import WindowRestore from "~/assets/window-restore.svg?react";
-import { useWindowCtr } from "./hooks/use-window-ctr";
+import { useWindowCtr } from "../hooks/use-window-ctr";
 
 export function WindowCtr() {
 	const { min, max, close, restore, maximized } = useWindowCtr();

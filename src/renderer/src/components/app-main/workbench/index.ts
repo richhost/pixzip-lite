@@ -1,1 +1,1 @@
-export { Workbench } from "./workbench";
+export { Workbench } from "./components/workbench";
