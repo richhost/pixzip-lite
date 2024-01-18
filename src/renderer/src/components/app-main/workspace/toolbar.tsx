@@ -18,7 +18,7 @@ export function Toolbar() {
 	return (
 		<header
 			className={cn(
-				"h-[var(--h-header)] draggable px-1.5 flex items-center flex-shrink-0",
+				"h-[var(--h-header)] draggable px-1.5 flex items-center shrink-0",
 				{
 					shadow: position?.top,
 				},

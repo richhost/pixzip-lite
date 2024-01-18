@@ -13,7 +13,7 @@ import { WindowCtr } from "./window-ctr";
 
 export function HeadBar() {
 	return (
-		<header className="flex items-center h-[var(--h-header)] draggable justify-between flex-shrink-0">
+		<header className="flex items-center h-[var(--h-header)] draggable justify-between shrink-0">
 			<TooltipProvider>
 				<div className="px-1.5 space-x-2">
 					<Tooltip>

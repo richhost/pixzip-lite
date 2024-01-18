@@ -23,9 +23,9 @@ export function ImageItem() {
 			<div className="relative z-10 text-sm p-3 flex flex-wrap xl:flex-nowrap items-center justify-between gap-x-5 gap-y-2">
 				<div className="flex items-center gap-2 grow">
 					<p className="font-medium truncate">zhanfangfweaf.jpg</p>
-					<p className="flex-shrink-0 text-muted-foreground">5 MB</p>
+					<p className="shrink-0 text-muted-foreground">5 MB</p>
 				</div>
-				<div className="flex gap-2 items-center flex-shrink-0">
+				<div className="flex gap-2 items-center shrink-0">
 					<Badge>JPG</Badge>
 					<Badge variant="outline" className="space-x-2">
 						<span className="text-muted-foreground">1 MB</span>
