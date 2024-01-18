@@ -1,6 +1,7 @@
 {
 	"name": "pixzip",
 	"version": "2.0.0-next.001",
+	"type": "module",
 	"main": "./out/main/index.js",
 	"scripts": {
 		"dev": "electron-vite dev",
@@ -33,6 +34,7 @@
 		"framer-motion": "^10.18.0",
 		"jotai": "^2.6.2",
 		"lucide-react": "^0.309.0",
+		"nanoid": "^5.0.4",
 		"postcss": "^8.4.33",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -44,8 +46,11 @@
 		"vite": "^5.0.11",
 		"vite-plugin-svgr": "^4.2.0"
 	},
-	"type": "module",
 	"dependencies": {
+		"conf": "^12.0.0",
 		"electron-window-state": "^5.0.3"
+	},
+	"engines": {
+		"node": ">=20"
 	}
 }
