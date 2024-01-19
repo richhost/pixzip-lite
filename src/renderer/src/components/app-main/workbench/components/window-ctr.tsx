@@ -1,30 +1,31 @@
 import { type ButtonHTMLAttributes } from "react";
+
 import WindowClose from "~/assets/window-close.svg?react";
 import WindowMinimize from "~/assets/window-minimize.svg?react";
 import WindowMaximize from "~/assets/window-maximize.svg?react";
 import WindowRestore from "~/assets/window-restore.svg?react";
-import { useWindowCtr } from "../hooks/use-window-ctr";
+import { useUI } from "~/hooks/use-ui";
 
 export function WindowCtr() {
-	const { min, max, close, restore, maximized } = useWindowCtr();
+	const { maxApp, minApp, closeApp, restoreApp, windowMaximized } = useUI();
 
 	return (
 		<div className="flex items-center gap-3 h-full px-3">
-			<IconButton onPointerUp={min}>
+			<IconButton onPointerUp={minApp}>
 				<WindowMinimize width={16} height={16} />
 			</IconButton>
 			<IconButton
 				onPointerUp={() => {
-					maximized ? restore() : max();
+					windowMaximized ? restoreApp() : maxApp();
 				}}
 			>
-				{maximized ? (
+				{windowMaximized ? (
 					<WindowRestore width={16} height={16} />
 				) : (
 					<WindowMaximize width={16} height={16} />
 				)}
 			</IconButton>
-			<IconButton onPointerUp={close}>
+			<IconButton onPointerUp={closeApp}>
 				<WindowClose width={16} height={16} />
 			</IconButton>
 		</div>
