@@ -13,9 +13,15 @@ import {
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "~/components/ui/popover";
 import { cn } from "~/lib/utils";
 
 import { scrollAtom } from "./atom";
+import { Button } from "~/components/ui/button";
 
 export function Configure() {
 	const [position, setPosition] = useAtom(scrollAtom);
@@ -38,6 +44,24 @@ export function Configure() {
 		>
 			<ScrollArea className="h-full" ref={scrollAreaRef} onScroll={onScroll}>
 				<div className="p-4 space-y-8">
+					<div className="grid grid-cols-3 w-full gap-2">
+						<div className="grid gap-2">
+							<Label>图标</Label>
+							<Popover>
+								<PopoverTrigger asChild>
+									<Button>hello</Button>
+								</PopoverTrigger>
+								<PopoverContent align="start">
+									Place content for the popover here.
+								</PopoverContent>
+							</Popover>
+						</div>
+						<div className="grid w-full items-center gap-2 col-span-2">
+							<Label htmlFor="name">名称</Label>
+							<Input type="text" id="name" placeholder="空间名称" />
+						</div>
+					</div>
+
 					<div className="grid w-full items-center gap-2">
 						<Label htmlFor="width">宽</Label>
 						<Input type="number" id="width" min={1} placeholder="自动" />
