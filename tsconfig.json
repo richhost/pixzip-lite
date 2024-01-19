@@ -25,6 +25,6 @@
       "~/*": ["src/renderer/src/*"]
     }
   },
-  "include": ["src/renderer/src", "src/preload/*"],
+  "include": ["src/renderer/src", "src/preload/*", "src/types/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

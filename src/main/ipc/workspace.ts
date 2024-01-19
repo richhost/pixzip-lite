@@ -1,7 +1,8 @@
 import { ipcMain } from "electron";
 
 import { store } from "../utils/store";
-import { Workspace } from "../type";
+
+type Workspace = Pixzip.Workspace;
 
 const defaultWorkspace: Workspace = {
   id: "wks_default",
