@@ -15,7 +15,14 @@ const ui = {
 };
 
 const workspace = {
-  getWorkspaces: () => ipcRenderer.invoke("getWorkspaces"),
+  getWorkspaces: () =>
+    ipcRenderer.invoke("getWorkspaces") as Promise<Pixzip.Workspace[]>,
+  addWorkspace: (w: Pixzip.Workspace) =>
+    ipcRenderer.invoke("addWorkspace", w) as Promise<Pixzip.Workspace[]>,
+  updateWorkspace: (w: Pixzip.Workspace) =>
+    ipcRenderer.invoke("updateWorkspace", w) as Promise<Pixzip.Workspace[]>,
+  deleteWorkspace: (id: string) =>
+    ipcRenderer.invoke("deleteWorkspace", id) as Promise<Pixzip.Workspace[]>,
 };
 
 const pixzip = {
