@@ -20,8 +20,30 @@ import {
 } from "~/components/ui/popover";
 import { cn } from "~/lib/utils";
 
-import { scrollAtom } from "./atom";
+import { scrollAtom } from "../atom";
 import { Button } from "~/components/ui/button";
+import { WorkspaceIcon } from "~/components/ui/workspace-icon";
+
+const iconsMap = [
+	"StarIcon",
+	"HeartIcon",
+	"BookmarkIcon",
+	"LightningBoltIcon",
+	"CookieIcon",
+	"TargetIcon",
+	"ShadowIcon",
+	"FaceIcon",
+	"MixIcon",
+	"CameraIcon",
+	"RocketIcon",
+	"CubeIcon",
+	"FileIcon",
+	"ReaderIcon",
+	"MobileIcon",
+	"MarginIcon",
+	"EnvelopeOpenIcon",
+	"VideoIcon",
+];
 
 export function Configure() {
 	const [position, setPosition] = useAtom(scrollAtom);
@@ -44,19 +66,31 @@ export function Configure() {
 		>
 			<ScrollArea className="h-full" ref={scrollAreaRef} onScroll={onScroll}>
 				<div className="p-4 space-y-8">
-					<div className="grid grid-cols-3 w-full gap-2">
+					<div className="flex w-full gap-2">
 						<div className="grid gap-2">
 							<Label>图标</Label>
 							<Popover>
 								<PopoverTrigger asChild>
-									<Button>hello</Button>
+									<Button size="icon" variant="outline">
+										<WorkspaceIcon name="StarIcon" />
+									</Button>
 								</PopoverTrigger>
 								<PopoverContent align="start">
-									Place content for the popover here.
+									<div className="grid grid-cols-6 gap-1">
+										{iconsMap.map((icon) => (
+											<Button
+												key={icon}
+												variant="ghost"
+												className="shrink-0 cursor-default p-0 !w-full !h-full aspect-square"
+											>
+												<WorkspaceIcon width="15" height="15" name={icon} />
+											</Button>
+										))}
+									</div>
 								</PopoverContent>
 							</Popover>
 						</div>
-						<div className="grid w-full items-center gap-2 col-span-2">
+						<div className="grid w-full items-center gap-2">
 							<Label htmlFor="name">名称</Label>
 							<Input type="text" id="name" placeholder="空间名称" />
 						</div>

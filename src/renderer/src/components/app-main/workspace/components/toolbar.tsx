@@ -10,7 +10,7 @@ import {
 } from "~/components/ui/tooltip";
 import { cn } from "~/lib/utils";
 
-import { scrollAtom } from "./atom";
+import { scrollAtom } from "../atom";
 
 export function Toolbar() {
 	const position = useAtomValue(scrollAtom);
