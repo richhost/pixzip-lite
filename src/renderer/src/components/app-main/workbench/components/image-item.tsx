@@ -12,19 +12,27 @@ import { Button } from "~/components/ui/button";
 export function ImageItem() {
 	return (
 		<div className="relative rounded-lg overflow-hidden border">
-			<Progress.Root className="absolute inset-0 rounded-lg overflow-hidden">
+			<Progress.Root className="absolute inset-0 rounded overflow-hidden">
 				<Progress.Indicator
-					className="w-full h-full bg-secondary opacity-30 absolute z-10"
+					className="w-full h-full bg-secondary absolute z-10"
 					style={{
-						transform: "translateX(0%)",
+						transform: "translateX(60%)",
 					}}
 				/>
 			</Progress.Root>
-			<div className="relative z-10 text-sm p-3 flex flex-wrap xl:flex-nowrap items-center justify-between gap-x-5 gap-y-2">
-				<div className="flex items-center gap-2 grow">
-					<p className="font-medium truncate">zhanfangfweaf.jpg</p>
-					<p className="shrink-0 text-muted-foreground">5 MB</p>
-				</div>
+			<div className="relative z-10 text-sm p-3 flex items-center justify-between gap-x-5 gap-y-2">
+				<figure className="flex items-center gap-4">
+					<img
+						src="https://picsum.photos/200"
+						alt="img"
+						className="w-12 h-12 rounded-lg aspect-square"
+					/>
+					<figcaption className="min-w-0">
+						<p className="font-medium truncate">lorem_picsum.jpg</p>
+						<p className="text-muted-foreground">5M</p>
+					</figcaption>
+				</figure>
+
 				<div className="flex gap-2 items-center shrink-0">
 					<Badge>JPG</Badge>
 					<Badge variant="outline" className="space-x-2">
