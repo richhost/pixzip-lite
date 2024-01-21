@@ -1,9 +1,23 @@
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
+import { nanoid } from "nanoid";
 
 type Workspace = Pixzip.Workspace;
 
 let workspaces: Workspace[] = [];
 const subscribers = new Set<() => void>();
+
+const workspaceTmpl: Omit<Workspace, "id"> = {
+  name: "Workspace",
+  icon: "FaceIcon",
+  width: undefined,
+  height: undefined,
+  suffix: "-min",
+  format: "original",
+  level: 1,
+  autoExec: true,
+  originalOutput: true,
+  outputDir: "",
+};
 
 await window.pixzip.workspace.getWorkspaces().then((w) => {
   workspaces = w;
@@ -20,8 +34,10 @@ function getSnapshot() {
   return workspaces;
 }
 
-function addWorkspace(w: Workspace) {
-  workspaces.push(w);
+function addWorkspace() {
+  const w = { ...workspaceTmpl, id: `wks_${nanoid(10)}` };
+  workspaces = [...workspaces, w];
+
   window.pixzip.workspace.addWorkspace(w);
   for (const cb of subscribers) {
     cb();
@@ -44,7 +60,7 @@ function deleteWorkspace(id: string) {
   }
   const index = workspaces.findIndex((wk) => wk.id === id);
 
-  workspaces.splice(index, 1);
+  workspaces = workspaces.toSpliced(index, 1);
   window.pixzip.workspace.deleteWorkspace(id);
   for (const cb of subscribers) {
     cb();
@@ -57,7 +73,7 @@ export function useWorkspace() {
   return {
     workspaces: wks,
     add: addWorkspace,
-    update: updateWorkspace,
-    delete: deleteWorkspace,
+    patch: updateWorkspace,
+    del: deleteWorkspace,
   };
 }

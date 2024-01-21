@@ -4,11 +4,11 @@ import ReactDOM from "react-dom/client";
 /** fonts */
 import "@fontsource-variable/inter";
 
-import "./app.css";
 import App from "./App.tsx";
+import "./app.css";
 
 ReactDOM.createRoot(document.getElementById("app") as HTMLElement).render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
 );

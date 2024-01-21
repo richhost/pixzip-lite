@@ -7,7 +7,7 @@
 		"dev": "electron-vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json"
+		"check": "pnpm biome lint ./src"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.5.2",
@@ -45,7 +45,8 @@
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.3.3",
 		"vite": "^5.0.12",
-		"vite-plugin-svgr": "^4.2.0"
+		"vite-plugin-svgr": "^4.2.0",
+		"zod": "^3.22.4"
 	},
 	"dependencies": {
 		"conf": "^12.0.0",

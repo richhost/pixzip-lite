@@ -3,18 +3,15 @@ declare namespace Pixzip {
   type Format = "original" | "jpg" | "png" | "webp" | "avif";
   type Workspace = {
     id: string;
-    name?: string;
+    name: string;
     icon: string;
-    width?: SafeNumber;
-    height?: SafeNumber;
+    width?: number;
+    height?: number;
+    suffix: string;
     format: Format;
-    quality: number;
-    /**
-     * output path.
-     *
-     * `0`: original path,
-     * `string`: custom path
-     */
-    outputPath: 0 | string;
+    level: number;
+    autoExec: boolean;
+    originalOutput: boolean;
+    outputDir?: string;
   };
 }

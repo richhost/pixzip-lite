@@ -1,6 +1,6 @@
+import { fileURLToPath } from "node:url";
 import { BrowserWindow, app } from "electron";
 import windowStateKeeper from "electron-window-state";
-import { fileURLToPath } from "node:url";
 
 const platform = process.platform;
 

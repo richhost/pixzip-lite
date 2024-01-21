@@ -1,7 +1,7 @@
 import { app } from "electron";
-import { restoreOrCreateWindow } from "./window";
 import { registerUIHandlers } from "./ipc";
 import { registerWorkspaceHandlers } from "./ipc/workspace";
+import { restoreOrCreateWindow } from "./window";
 
 app.on("window-all-closed", () => {
   if (process.platform === "darwin") app.quit();

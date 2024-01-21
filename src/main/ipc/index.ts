@@ -1,1 +1,1 @@
-export { registerUIHandlers } from './ui';
+export { registerUIHandlers } from "./ui";

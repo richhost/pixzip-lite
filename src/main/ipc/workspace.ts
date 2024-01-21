@@ -8,9 +8,14 @@ const defaultWorkspace: Workspace = {
   id: "wks_default",
   name: "Workspace",
   icon: "FaceIcon",
+  width: undefined,
+  height: undefined,
+  suffix: "-min",
   format: "original",
-  outputPath: 0,
-  quality: 1,
+  level: 1,
+  autoExec: true,
+  originalOutput: true,
+  outputDir: "",
 };
 
 const getWorkspaces = () => {
@@ -19,8 +24,9 @@ const getWorkspaces = () => {
   const fromStore = store.get("workspace");
   if (fromStore) {
     wks = fromStore as Workspace[];
+  } else {
+    wks = [defaultWorkspace];
   }
-  wks = [defaultWorkspace];
   return wks;
 };
 
