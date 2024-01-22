@@ -48,7 +48,7 @@ export function useWorkspaceConfig() {
         patch({ ...res, id: currWksID });
       }
     },
-    [currWksID],
+    [currWksID, patch]
   );
 
   const delWorkspace = useCallback(() => {
