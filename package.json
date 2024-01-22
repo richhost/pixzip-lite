@@ -33,6 +33,7 @@
 		"electron": "^28.1.4",
 		"electron-vite": "^2.0.0",
 		"framer-motion": "^10.18.0",
+		"immer": "^10.0.3",
 		"jotai": "^2.6.2",
 		"lucide-react": "^0.309.0",
 		"nanoid": "^5.0.4",

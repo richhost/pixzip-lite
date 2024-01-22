@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { useCallback, useMemo, useState } from "react";
-import { currentWksID } from "~/atoms/wroksapce.ts";
+import { currentWksIDAtom } from "~/atoms/wroksapce.ts";
 import { useWorkspace } from "~/hooks/use-workspace.ts";
 import { ConfigFormData, FormDataSchema } from "~/lib/schema";
 
@@ -18,7 +18,7 @@ const initState: ConfigFormData = {
 };
 
 export function useWorkspaceConfig() {
-  const currWksID = useAtomValue(currentWksID);
+  const currWksID = useAtomValue(currentWksIDAtom);
   const { workspaces, del } = useWorkspace();
 
   const [formData, setFormData] = useState<ConfigFormData>(initState);
@@ -42,13 +42,11 @@ export function useWorkspaceConfig() {
 
   const settingFormData = useCallback((data: ConfigFormData) => {
     setFormData(data);
-
-    // TODO
   }, []);
 
   const delWorkspace = useCallback(() => {
-    del(currentWks.id);
-  }, [currentWks.id, del]);
+    currWksID && del(currWksID);
+  }, [currWksID, del]);
 
   return {
     formData,

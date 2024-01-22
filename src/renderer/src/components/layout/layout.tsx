@@ -7,7 +7,7 @@ export function Layout({ children }: PropsWithChildren) {
 export function Aside({ children }: PropsWithChildren) {
   return (
     <aside
-      className="bg-secondary/45 border-r shrink-0"
+      className="border-r shrink-0"
       style={{
         width: "clamp(var(--w-sidebar-min), 16%, var(--w-sidebar-max))",
       }}

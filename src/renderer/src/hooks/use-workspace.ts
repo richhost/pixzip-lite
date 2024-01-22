@@ -1,5 +1,8 @@
 import { useSyncExternalStore } from "react";
 import { nanoid } from "nanoid";
+import { produce } from "immer";
+import { useSetAtom } from "jotai";
+import { currentWksIDAtom } from "~/atoms/wroksapce.ts";
 
 type Workspace = Pixzip.Workspace;
 
@@ -34,19 +37,25 @@ function getSnapshot() {
   return workspaces;
 }
 
-function addWorkspace() {
-  const w = { ...workspaceTmpl, id: `wks_${nanoid(10)}` };
-  workspaces = [...workspaces, w];
+function addWorkspace(w: Pixzip.Workspace) {
+  workspaces = produce(workspaces, (draft) => {
+    draft.push(w);
+  });
 
   window.pixzip.workspace.addWorkspace(w);
   for (const cb of subscribers) {
     cb();
   }
+
+  return w.id;
 }
 
 function updateWorkspace(w: Workspace) {
-  const index = workspaces.findIndex((wk) => wk.id === w.id);
-  workspaces[index] = w;
+  workspaces = produce(workspaces, (draft) => {
+    const index = draft.findIndex((wk) => wk.id === w.id);
+    draft[index] = w;
+  });
+
   window.pixzip.workspace.updateWorkspace(w);
   for (const cb of subscribers) {
     cb();
@@ -55,12 +64,10 @@ function updateWorkspace(w: Workspace) {
 
 function deleteWorkspace(id: string) {
   const length = workspaces.length;
-  if (length === 1) {
-    return;
-  }
+  if (length === 1) return;
   const index = workspaces.findIndex((wk) => wk.id === id);
-
   workspaces = workspaces.toSpliced(index, 1);
+
   window.pixzip.workspace.deleteWorkspace(id);
   for (const cb of subscribers) {
     cb();
@@ -69,11 +76,26 @@ function deleteWorkspace(id: string) {
 
 export function useWorkspace() {
   const wks = useSyncExternalStore(subscribe, getSnapshot);
+  const setCurrentWksId = useSetAtom(currentWksIDAtom);
+
+  const add = () => {
+    const w = { ...workspaceTmpl, id: `wks_${nanoid(10)}` };
+    addWorkspace(w);
+    setCurrentWksId(w.id);
+  };
+
+  const del = (id: string) => {
+    if (wks.length === 1) return;
+    const index = wks.findIndex((wk) => wk.id === id);
+    const nextIndex = index >= wks.length - 1 ? index - 1 : index + 1;
+    setCurrentWksId(wks[nextIndex].id);
+    deleteWorkspace(id);
+  };
 
   return {
     workspaces: wks,
-    add: addWorkspace,
+    add,
     patch: updateWorkspace,
-    del: deleteWorkspace,
+    del,
   };
 }

@@ -1,6 +1,6 @@
 import { atomWithStorage } from "jotai/utils";
 
-export const currentWksID = atomWithStorage<string | undefined>(
+export const currentWksIDAtom = atomWithStorage<string | undefined>(
   "currentWksID",
   undefined,
 );

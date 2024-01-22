@@ -15,7 +15,7 @@ async function createWindow() {
     y: mainWindowState.y,
     width: mainWindowState.width,
     height: mainWindowState.height,
-    minWidth: 375,
+    minWidth: 800,
     minHeight: 400,
     frame: platform !== "linux",
     titleBarStyle: "hidden",
