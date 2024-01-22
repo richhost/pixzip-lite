@@ -1,6 +1,9 @@
 import { app } from "electron";
-import { registerUIHandlers } from "./ipc";
-import { registerWorkspaceHandlers } from "./ipc/workspace";
+import {
+  registerHandlers,
+  registerWorkspaceHandlers,
+  registerUIHandlers,
+} from "./ipc";
 import { restoreOrCreateWindow } from "./window";
 
 app.on("window-all-closed", () => {
@@ -13,5 +16,6 @@ app
   .then((browserWindow) => {
     registerUIHandlers(browserWindow);
     registerWorkspaceHandlers();
+    registerHandlers();
   })
   .catch((e) => console.error("create window failed: ", e));

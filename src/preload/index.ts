@@ -25,10 +25,14 @@ const workspace = {
     ipcRenderer.invoke("deleteWorkspace", id) as Promise<Pixzip.Workspace[]>,
 };
 
+const folderPicker = () =>
+  ipcRenderer.invoke("folderPicker") as Promise<string[]>;
+
 const pixzip = {
   os: process.platform,
   ui,
   workspace,
+  folderPicker,
 };
 
 contextBridge.exposeInMainWorld("pixzip", pixzip);

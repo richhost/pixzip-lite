@@ -21,29 +21,16 @@ import {
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
 import { WorkspaceIcon } from "~/components/ui/workspace-icon";
+import { Switch } from "~/components/ui/switch";
+import {
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+  Tooltip,
+} from "~/components/ui/tooltip";
 import { cn } from "~/lib/utils";
 import { scrollAtom } from "../atom";
-
-const iconsMap = [
-  "StarIcon",
-  "HeartIcon",
-  "BookmarkIcon",
-  "LightningBoltIcon",
-  "CookieIcon",
-  "TargetIcon",
-  "ShadowIcon",
-  "FaceIcon",
-  "MixIcon",
-  "CameraIcon",
-  "RocketIcon",
-  "CubeIcon",
-  "FileIcon",
-  "ReaderIcon",
-  "MobileIcon",
-  "MarginIcon",
-  "EnvelopeOpenIcon",
-  "VideoIcon",
-];
+import { formatMap, iconsMap } from "../constants";
 
 export function Configure() {
   const [position, setPosition] = useAtom(scrollAtom);
@@ -58,7 +45,7 @@ export function Configure() {
     });
   };
 
-  const { formData, settingFormData } = useWorkspaceConfig();
+  const { formData, settingFormData, selectOutputDir } = useWorkspaceConfig();
 
   return (
     <div
@@ -111,12 +98,44 @@ export function Configure() {
 
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="width">宽</Label>
-            <Input type="number" id="width" min={1} placeholder="自动" />
+            <Input
+              type="number"
+              id="width"
+              min={1}
+              placeholder="自动"
+              value={formData.width ?? ""}
+              onChange={(event) => {
+                if (event.target.value === "") {
+                  settingFormData({ ...formData, width: undefined });
+                } else if (!Object.is(event.target.valueAsNumber, NaN)) {
+                  settingFormData({
+                    ...formData,
+                    width: event.target.valueAsNumber,
+                  });
+                }
+              }}
+            />
           </div>
 
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="height">高</Label>
-            <Input type="number" id="height" min={1} placeholder="自动" />
+            <Input
+              type="number"
+              id="height"
+              min={1}
+              placeholder="自动"
+              value={formData.height}
+              onChange={(event) => {
+                if (event.target.value === "") {
+                  settingFormData({ ...formData, height: undefined });
+                } else if (!Object.is(event.target.valueAsNumber, NaN)) {
+                  settingFormData({
+                    ...formData,
+                    height: event.target.valueAsNumber,
+                  });
+                }
+              }}
+            />
           </div>
 
           <div className="grid w-full items-center gap-2">
@@ -125,54 +144,119 @@ export function Configure() {
               type="text"
               id="suffix"
               min={1}
-              placeholder=""
-              defaultValue="-min"
+              value={formData.suffix}
+              onChange={(event) => {
+                settingFormData({
+                  ...formData,
+                  suffix: event.target.value,
+                });
+              }}
             />
             <Description>
-              original_filename<span className="text-destructive">-mini</span>
+              original_filename
+              <span className="text-destructive">{formData.suffix}</span>
               .jpg
             </Description>
           </div>
 
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="format">输出格式</Label>
-            <Select>
+            <Select
+              value={formData.format}
+              onValueChange={(value) => {
+                settingFormData({
+                  ...formData,
+                  format: value as Pixzip.Format,
+                });
+              }}
+            >
               <SelectTrigger id="format">
                 <SelectValue placeholder="" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="origin">原格式</SelectItem>
-                <SelectItem value="webp">WebP</SelectItem>
-                <SelectItem value="avif">AVIF</SelectItem>
-                <SelectItem value="jpg">JPG</SelectItem>
-                <SelectItem value="png">PNG</SelectItem>
+                {formatMap.map((f) => (
+                  <SelectItem key={f.value} value={f.value}>
+                    {f.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
 
           <div className="grid w-full items-center gap-2">
-            <Label htmlFor="quality">压缩强度</Label>
+            <Label htmlFor="quality">
+              压缩强度：
+              <span>{formData.level}</span>
+            </Label>
             <Slider
               id="quality"
               min={1}
               max={9}
               defaultValue={[1]}
               className="my-2"
+              value={[formData.level]}
+              onValueChange={([value]) => {
+                settingFormData({
+                  ...formData,
+                  level: value,
+                });
+              }}
             />
           </div>
 
           <div className="grid w-full items-center gap-2">
             <Label>保存到</Label>
-            <RadioGroup defaultValue="option-one" className="my-2">
+            <RadioGroup
+              className="my-2"
+              value={formData.originalOutput ? "original" : "custom"}
+              onValueChange={(value) => {
+                settingFormData({
+                  ...formData,
+                  originalOutput: value === "original",
+                });
+              }}
+            >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-one" id="option-one" />
-                <Label htmlFor="option-one">原目录</Label>
+                <RadioGroupItem value="original" id="originalDir" />
+                <Label htmlFor="originalDir">原目录</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-two" id="option-two" />
-                <Label htmlFor="option-two">自定义</Label>
+                <RadioGroupItem value="custom" id="customDir" />
+                <Label htmlFor="customDir">自定义</Label>
               </div>
             </RadioGroup>
+            {!formData.originalOutput && (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Input
+                      value={formData.outputDir}
+                      readOnly
+                      placeholder="点击选择文件夹"
+                      onClick={selectOutputDir}
+                    />
+                  </TooltipTrigger>
+                  {formData.outputDir && (
+                    <TooltipContent>{formData.outputDir}</TooltipContent>
+                  )}
+                </Tooltip>
+              </TooltipProvider>
+            )}
+          </div>
+
+          <div className="grid gap-2">
+            <Label>自动执行</Label>
+            <Switch
+              className="mt-1"
+              checked={formData.autoExec}
+              onCheckedChange={(checked) => {
+                settingFormData({
+                  ...formData,
+                  autoExec: checked,
+                });
+              }}
+            />
+            <Description>添加图片后自动压缩</Description>
           </div>
         </div>
       </ScrollArea>

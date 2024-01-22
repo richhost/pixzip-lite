@@ -20,8 +20,13 @@ export function Nav() {
           ))}
         </nav>
       </ScrollArea>
-      <div className="px-2 py-1 border-t">
-        <Button variant="ghost" size="sm" className="w-full" onClick={add}>
+      <div className="m-2">
+        <Button
+          variant="outline"
+          size="sm"
+          className="w-full border-dashed"
+          onClick={add}
+        >
           <PlusIcon />
         </Button>
       </div>

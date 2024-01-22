@@ -19,7 +19,7 @@ const initState: ConfigFormData = {
 
 export function useWorkspaceConfig() {
   const currWksID = useAtomValue(currentWksIDAtom);
-  const { workspaces, del } = useWorkspace();
+  const { workspaces, del, patch } = useWorkspace();
 
   const [formData, setFormData] = useState<ConfigFormData>(initState);
 
@@ -40,17 +40,34 @@ export function useWorkspaceConfig() {
     normalizedFormData(currentWks);
   }
 
-  const settingFormData = useCallback((data: ConfigFormData) => {
-    setFormData(data);
-  }, []);
+  const settingFormData = useCallback(
+    (data: ConfigFormData) => {
+      setFormData(data);
+      const res = FormDataSchema.parse(data);
+      if (currWksID) {
+        patch({ ...res, id: currWksID });
+      }
+    },
+    [currWksID],
+  );
 
   const delWorkspace = useCallback(() => {
     currWksID && del(currWksID);
   }, [currWksID, del]);
 
+  const selectOutputDir = useCallback(() => {
+    window.pixzip.folderPicker().then((dir) => {
+      settingFormData({
+        ...formData,
+        outputDir: dir[0] ?? "",
+      });
+    });
+  }, [formData, settingFormData]);
+
   return {
     formData,
     settingFormData,
     delWorkspace,
+    selectOutputDir,
   };
 }
