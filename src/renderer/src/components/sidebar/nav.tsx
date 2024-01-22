@@ -7,6 +7,7 @@ import { useWorkspace } from "~/hooks/use-workspace";
 import { Button, buttonVariants } from "../ui/button";
 import { currentWksIDAtom } from "~/atoms/wroksapce.ts";
 import { cn } from "~/lib/utils.ts";
+import { OS } from "~/lib/os.ts";
 
 export function Nav() {
   const { workspaces, add } = useWorkspace();
@@ -14,7 +15,11 @@ export function Nav() {
   return (
     <>
       <ScrollArea className="h-full">
-        <nav className="grid grid-cols-1 gap-1 p-2 text-sm">
+        <nav
+          className={cn("grid grid-cols-1 gap-1 p-2 text-sm", {
+            "pt-0": OS === "darwin",
+          })}
+        >
           {workspaces.map((w) => (
             <NavItem key={w.id} {...w} />
           ))}

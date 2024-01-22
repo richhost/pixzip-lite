@@ -19,6 +19,7 @@ async function createWindow() {
     minHeight: 400,
     frame: platform !== "linux",
     titleBarStyle: "hidden",
+    trafficLightPosition: { x: 10, y: 14 },
     vibrancy: "window",
     backgroundColor: "#00000000",
     transparent: platform === "darwin",
