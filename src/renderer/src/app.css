@@ -89,6 +89,10 @@ body {
   --w-sidebar-max: 240px;
 }
 
+img {
+  -webkit-user-drag: none;
+}
+
 .draggable {
   -webkit-app-region: drag;
 }
