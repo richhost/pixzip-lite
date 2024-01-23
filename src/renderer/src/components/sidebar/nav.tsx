@@ -29,7 +29,7 @@ export function Nav() {
         <Button
           variant="outline"
           size="sm"
-          className="w-full border-dashed"
+          className="w-full border-dashed bg-transparent shadow-none"
           onClick={add}
         >
           <PlusIcon />

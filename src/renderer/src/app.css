@@ -71,7 +71,7 @@
     @apply border-border select-none cursor-default;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
   }
 }
 

@@ -18,5 +18,5 @@ export function Aside({ children }: PropsWithChildren) {
 }
 
 export function Main({ children }: PropsWithChildren) {
-  return <main className="grow">{children}</main>;
+  return <main className="grow bg-background">{children}</main>;
 }
