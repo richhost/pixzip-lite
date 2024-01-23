@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { useCallback, useMemo, useState } from "react";
-import { currentWksIDAtom } from "~/atoms/wroksapce.ts";
+import { currentWksIDAtom } from "~/atoms/workspaces";
 import { useWorkspace } from "~/hooks/use-workspace.ts";
 import { ConfigFormData, FormDataSchema } from "~/lib/schema";
 

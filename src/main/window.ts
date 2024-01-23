@@ -17,7 +17,7 @@ async function createWindow() {
     height: mainWindowState.height,
     minWidth: 800,
     minHeight: 400,
-    frame: platform === "linux",
+    frame: !(platform === "linux"),
     titleBarStyle: "hidden",
     trafficLightPosition: { x: 10, y: 14 },
     vibrancy: "sidebar",

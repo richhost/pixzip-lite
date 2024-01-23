@@ -52,7 +52,8 @@
 	},
 	"dependencies": {
 		"conf": "^12.0.0",
-		"electron-window-state": "^5.0.3"
+		"electron-window-state": "^5.0.3",
+		"sharp": "^0.33.2"
 	},
 	"engines": {
 		"node": ">=20"

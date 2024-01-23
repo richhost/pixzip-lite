@@ -1,8 +1,8 @@
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { nanoid } from "nanoid";
 import { produce } from "immer";
-import { useSetAtom } from "jotai";
-import { currentWksIDAtom } from "~/atoms/wroksapce.ts";
+import { useAtom } from "jotai";
+import { currentWksIDAtom } from "~/atoms/workspaces";
 
 type Workspace = Pixzip.Workspace;
 
@@ -76,7 +76,19 @@ function deleteWorkspace(id: string) {
 
 export function useWorkspace() {
   const wks = useSyncExternalStore(subscribe, getSnapshot);
-  const setCurrentWksId = useSetAtom(currentWksIDAtom);
+  const [currentWksID, setCurrentWksId] = useAtom(currentWksIDAtom);
+
+  const [preview, setPreview] = useState<Pixzip.Workspace[]>([]);
+
+  if (preview !== wks) {
+    setPreview(wks);
+    if (!currentWksID) {
+      setCurrentWksId(wks[0].id);
+    } else {
+      const index = wks.findIndex((wk) => wk.id === currentWksID);
+      index === -1 && setCurrentWksId(wks[0].id);
+    }
+  }
 
   const add = () => {
     const w = { ...workspaceTmpl, id: `wks_${nanoid(10)}` };

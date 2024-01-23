@@ -5,7 +5,7 @@ import { ScrollArea } from "~/components/ui/scroll-area";
 import { WorkspaceIcon } from "~/components/ui/workspace-icon";
 import { useWorkspace } from "~/hooks/use-workspace";
 import { Button, buttonVariants } from "../ui/button";
-import { currentWksIDAtom } from "~/atoms/wroksapce.ts";
+import { currentWksIDAtom } from "~/atoms/workspaces";
 import { cn } from "~/lib/utils.ts";
 import { OS } from "~/lib/os.ts";
 

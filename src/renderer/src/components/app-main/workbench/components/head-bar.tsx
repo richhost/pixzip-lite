@@ -42,7 +42,7 @@ export function HeadBar() {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>再次压缩</p>
+              <p>开始压缩</p>
             </TooltipContent>
           </Tooltip>
 
