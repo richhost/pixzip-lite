@@ -18,7 +18,7 @@ const defaultWorkspace: Workspace = {
   outputDir: "",
 };
 
-const getWorkspaces = () => {
+export const getWorkspaces = () => {
   let wks: Workspace[] = [];
 
   const fromStore = store.get("workspace");

@@ -57,3 +57,10 @@ export async function restoreOrCreateWindow() {
 
   return browserWindow;
 }
+
+export async function getMainWindow() {
+  if (browserWindow === undefined) {
+    return await restoreOrCreateWindow();
+  }
+  return browserWindow;
+}
