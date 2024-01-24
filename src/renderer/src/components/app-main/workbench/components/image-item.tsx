@@ -4,22 +4,15 @@ import {
   Cross1Icon,
   ExternalLinkIcon,
 } from "@radix-ui/react-icons";
-import * as Progress from "@radix-ui/react-progress";
 
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 
-export function ImageItem() {
+export function ImageItem({ filepath }: { filepath: string }) {
+  console.log(filepath);
+
   return (
     <div className="relative rounded-lg overflow-hidden border">
-      <Progress.Root className="absolute inset-0 rounded overflow-hidden">
-        <Progress.Indicator
-          className="w-full h-full bg-secondary absolute z-10"
-          style={{
-            transform: "translateX(60%)",
-          }}
-        />
-      </Progress.Root>
       <div className="relative z-10 text-sm p-3 flex items-center justify-between gap-x-5 gap-y-2">
         <figure className="flex items-center gap-4">
           <img

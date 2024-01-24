@@ -10,8 +10,11 @@ import {
 import { OS } from "~/lib/os";
 
 import { WindowCtr } from "./window-ctr";
+import { useAddFiles } from "~/hooks/use-add-files";
 
 export function HeadBar() {
+  const { handleInputFile, inputRef } = useAddFiles();
+
   return (
     <header className="flex items-center h-[var(--h-header)] draggable justify-between shrink-0">
       <TooltipProvider>
@@ -20,9 +23,20 @@ export function HeadBar() {
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
-                className="no-drag cursor-default"
+                className="no-drag cursor-default relative"
                 size="icon"
               >
+                <label htmlFor="update-file" className="absolute inset-0" />
+                <input
+                  id="update-file"
+                  type="file"
+                  className="hidden"
+                  ref={inputRef}
+                  accept="image/avif, image/jpeg, image/png, image/webp, image/gif"
+                  multiple
+                  hidden
+                  onChange={handleInputFile}
+                />
                 <Plus size={16} className="no-drag" />
               </Button>
             </TooltipTrigger>

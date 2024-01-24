@@ -2,10 +2,11 @@ import { getMainWindow } from "../window";
 import { Queue } from "./queue";
 import { fileExists, getConfig, output, zip } from "./utils";
 
-type AddTask = Pixzip.Task | Pixzip.Task[];
+type Task = { workspaceId: string; filepath: string };
+type AddTask = Task | Task[];
 
 let max = 5;
-const taskQueue = new Queue<Pixzip.Task>();
+const taskQueue = new Queue<Task>();
 
 async function send(data: Pixzip.SendData) {
   const window = await getMainWindow();
