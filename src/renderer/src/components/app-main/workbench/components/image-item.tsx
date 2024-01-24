@@ -16,7 +16,7 @@ export function ImageItem({ filepath }: { filepath: string }) {
       <div className="relative z-10 text-sm p-3 flex items-center justify-between gap-x-5 gap-y-2">
         <figure className="flex items-center gap-4">
           <img
-            src="https://picsum.photos/200"
+            src={`resource://${filepath}`}
             alt="img"
             className="w-12 h-12 rounded-lg aspect-square"
           />

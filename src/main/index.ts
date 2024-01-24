@@ -5,6 +5,7 @@ import {
   registerUIHandlers,
 } from "./ipc";
 import { restoreOrCreateWindow } from "./window";
+import { registerProtocol } from "./protocol";
 
 app.on("window-all-closed", () => {
   if (process.platform === "darwin") app.quit();
@@ -12,6 +13,7 @@ app.on("window-all-closed", () => {
 
 app
   .whenReady()
+  .then(registerProtocol)
   .then(restoreOrCreateWindow)
   .then((browserWindow) => {
     registerUIHandlers(browserWindow);
