@@ -2,8 +2,8 @@ import { getMainWindow } from "../window";
 import { Queue } from "./queue";
 import { fileExists, getConfig, output, zip } from "./utils";
 
-type Task = { workspaceId: string; filepath: string };
-type AddTask = Task | Task[];
+export type Task = { workspaceId: string; filepath: string };
+export type AddTask = Task | Task[];
 
 let max = 5;
 const taskQueue = new Queue<Task>();
@@ -67,6 +67,17 @@ export function addTask(tasks: AddTask) {
 export function clearTask(workspaceId: string) {
   const copy = taskQueue.toArray();
   const filter = copy.filter((element) => element.workspaceId !== workspaceId);
+  taskQueue.clear();
+  if (filter.length) addTask(filter);
+}
+
+export function removeTask(task: Task) {
+  const copy = taskQueue.toArray();
+  const filter = copy.filter(
+    (element) =>
+      element.workspaceId !== task.workspaceId &&
+      element.filepath !== task.filepath
+  );
   taskQueue.clear();
   if (filter.length) addTask(filter);
 }

@@ -3,6 +3,7 @@ import {
   registerHandlers,
   registerWorkspaceHandlers,
   registerUIHandlers,
+  registerTaskHandlers,
 } from "./ipc";
 import { restoreOrCreateWindow } from "./window";
 import { registerProtocol } from "./protocol";
@@ -18,6 +19,7 @@ app
   .then((browserWindow) => {
     registerUIHandlers(browserWindow);
     registerWorkspaceHandlers();
+    registerTaskHandlers();
     registerHandlers();
   })
   .catch((e) => console.error("create window failed: ", e));

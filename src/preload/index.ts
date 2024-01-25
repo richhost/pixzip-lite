@@ -28,11 +28,37 @@ const workspace = {
 const folderPicker = () =>
   ipcRenderer.invoke("folderPicker") as Promise<string[]>;
 
+type ProcessingParams = Extract<Pixzip.SendData, { status: "processing" }>;
+type SucceedParams = Extract<Pixzip.SendData, { status: "succeed" }>;
+type FailedParams = Extract<Pixzip.SendData, { status: "failed" }>;
+
+const task = {
+  addTask: (task: Pixzip.Task | Pixzip.Task[]) =>
+    ipcRenderer.send("addTask", task),
+  clearTask: (workspaceId: string) =>
+    ipcRenderer.send("clearTask", workspaceId),
+  precessing: (cb: (params: ProcessingParams) => void) =>
+    ipcRenderer.on("processing", (_, params) => {
+      cb(params);
+    }),
+  succeed: (cb: (params: SucceedParams) => void) => {
+    ipcRenderer.on("succeed", (_, params) => {
+      cb(params);
+    });
+  },
+  failed: (cb: (params: FailedParams) => void) => {
+    ipcRenderer.on("failed", (_, params) => {
+      cb(params);
+    });
+  },
+};
+
 const pixzip = {
   os: process.platform,
   ui,
   workspace,
   folderPicker,
+  task,
 };
 
 contextBridge.exposeInMainWorld("pixzip", pixzip);
