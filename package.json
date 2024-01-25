@@ -32,11 +32,11 @@
 		"autoprefixer": "^10.4.17",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",
-		"electron": "^28.1.4",
+		"electron": "^28.2.0",
 		"electron-vite": "^2.0.0",
 		"framer-motion": "^10.18.0",
 		"immer": "^10.0.3",
-		"jotai": "^2.6.2",
+		"jotai": "^2.6.3",
 		"lucide-react": "^0.309.0",
 		"nanoid": "^5.0.4",
 		"postcss": "^8.4.33",
@@ -58,6 +58,6 @@
 		"sharp": "^0.33.2"
 	},
 	"engines": {
-		"node": ">=20"
+		"node": ">=20.10.0"
 	}
 }
