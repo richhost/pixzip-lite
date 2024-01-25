@@ -7,6 +7,7 @@ import {
 
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
+import { parseImg } from "~/lib/utils";
 
 export function ImageItem({ filepath }: { filepath: string }) {
   console.log(filepath);
@@ -16,9 +17,10 @@ export function ImageItem({ filepath }: { filepath: string }) {
       <div className="relative z-10 text-sm p-3 flex items-center justify-between gap-x-5 gap-y-2">
         <figure className="flex items-center gap-4">
           <img
-            src={`resource://${filepath}`}
+            src={parseImg(filepath)}
             alt="img"
-            className="w-12 h-12 rounded-lg aspect-square"
+            className="w-12 h-12 object-contain aspect-square"
+            loading="lazy"
           />
           <figcaption className="min-w-0">
             <p className="font-medium truncate">lorem_picsum.jpg</p>
