@@ -7,6 +7,7 @@ import "@fontsource-variable/inter";
 
 import App from "./App.tsx";
 import "./app.css";
+import "./dot-rolling.css";
 
 enableMapSet();
 

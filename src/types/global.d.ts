@@ -14,7 +14,12 @@ declare namespace Pixzip {
     originalOutput: boolean;
     outputDir?: string;
   };
-  type TaskStatus = "waiting" | "processing" | "succeed" | "failed";
+  type TaskStatus =
+    | "waiting"
+    | "preprocessing"
+    | "processing"
+    | "succeed"
+    | "failed";
   type Task = { workspaceId: string; filepath: string };
   type SendData =
     | {
