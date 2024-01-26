@@ -15,7 +15,7 @@ export function bytesToSize(bytes: number) {
   const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
   if (bytes === 0) return "0 Byte";
   const i = Math.floor(Math.log(bytes) / Math.log(1024));
-  return `${Math.round(bytes / 1024 ** i)} ${sizes[i]}`;
+  return `${(bytes / 1024 ** i).toFixed(1)} ${sizes[i]}`;
 }
 
 export function basename(path: string) {
@@ -24,4 +24,9 @@ export function basename(path: string) {
 
 export function extname(path: string) {
   return path.split(".").pop();
+}
+
+export function savePercentage(current: number, total: number) {
+  const percent = ((total - current) / total) * 100;
+  return `${Math.round(percent) === 100 ? 99 : Math.round(percent)}%`;
 }

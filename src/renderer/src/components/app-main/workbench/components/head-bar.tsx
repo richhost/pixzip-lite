@@ -1,4 +1,5 @@
-import { Eraser, Plus, RotateCw } from "lucide-react";
+import { produce } from "immer";
+import { Eraser, Plus, PlayIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import {
@@ -12,10 +13,22 @@ import { OS } from "~/lib/os";
 import { WindowCtr } from "./window-ctr";
 import { useAddFiles } from "~/hooks/use-add-files";
 import { useTaskAction } from "~/hooks/use-task-action";
+import { useAtom, useAtomValue } from "jotai";
+import { tasksAtom } from "~/atoms/tasks";
+import { currentWksIDAtom } from "~/atoms/workspaces";
+import { useMemo } from "react";
 
 export function HeadBar() {
   const { handleInputFile, inputRef } = useAddFiles();
-  const { clearTask } = useTaskAction();
+  const { clearTask, addTask } = useTaskAction();
+
+  const [tasks, setTasks] = useAtom(tasksAtom);
+  const workspaceId = useAtomValue(currentWksIDAtom);
+
+  const list = useMemo(() => {
+    if (!workspaceId) return [];
+    return tasks.get(workspaceId) ?? [];
+  }, [tasks, workspaceId]);
 
   return (
     <header className="flex items-center h-[var(--h-header)] draggable justify-between shrink-0">
@@ -53,8 +66,29 @@ export function HeadBar() {
                 variant="ghost"
                 className="no-drag cursor-default"
                 size="icon"
+                onClick={() => {
+                  if (!workspaceId) return;
+                  setTasks((prev) => {
+                    const nextState = produce(prev, (draft) => {
+                      const list = draft.get(workspaceId);
+                      if (list) {
+                        for (const item of list) {
+                          if (
+                            item.status !== "preprocessing" &&
+                            item.status !== "processing"
+                          ) {
+                            item.status = "preprocessing";
+                          }
+                        }
+                      }
+                    });
+
+                    return nextState;
+                  });
+                  addTask(list.map((i) => i.filepath));
+                }}
               >
-                <RotateCw size={16} className="no-drag" />
+                <PlayIcon size={16} className="no-drag" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>

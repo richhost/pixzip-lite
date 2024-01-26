@@ -25,6 +25,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { useTaskAction } from "~/hooks/use-task-action";
+import { bytesToSize, extname, savePercentage } from "~/lib/utils";
 
 export function TaskActions({ task }: { task: Task | undefined }) {
   return (
@@ -40,10 +42,16 @@ export function TaskActions({ task }: { task: Task | undefined }) {
 }
 
 function Waiting({ task }: { task: Task }) {
+  const { addTask } = useTaskAction();
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant="ghost" className="w-6 h-6 px-0">
+        <Button
+          variant="ghost"
+          className="w-6 h-6 px-0"
+          onClick={() => addTask(task.filepath)}
+        >
           <PlayIcon />
         </Button>
       </TooltipTrigger>
@@ -61,14 +69,18 @@ function Preprocessing() {
 }
 
 function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
+  const { remove, trash, addTask } = useTaskAction();
+
   return (
     <div className="flex flex-col">
       <div className="flex gap-2">
-        <Badge>JPG</Badge>
+        <Badge>{extname(task.outputPath)}</Badge>
         <Badge variant="outline" className="space-x-2 shrink-0">
-          <span className="text-muted-foreground">1 MB</span>
+          <span className="text-muted-foreground">
+            {bytesToSize(task.outputSize)}
+          </span>
           <ArrowDownIcon />
-          <span>22%</span>
+          <span>{savePercentage(task.outputSize, task.size)}</span>
         </Badge>
       </div>
 
@@ -78,6 +90,7 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
         <Button
           variant="ghost"
           className="w-6 h-6 px-0"
+          disabled
           onClick={() => {
             window.pixzip.action.copy(task.outputPath);
           }}
@@ -85,9 +98,23 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
           <CopyIcon className="pointer-events-none" />
         </Button>
         <Separator orientation="vertical" />
-        <Button variant="ghost" className="w-6 h-6 px-0">
+        <Button
+          variant="ghost"
+          className="w-6 h-6 px-0"
+          onClick={() => window.pixzip.action.reveal(task.outputPath)}
+        >
           <ExternalLinkIcon className="pointer-events-none" />
         </Button>
+        <Separator orientation="vertical" />
+
+        <Button
+          variant="ghost"
+          className="w-6 h-6 px-0"
+          onClick={() => addTask(task.filepath)}
+        >
+          <ReloadIcon />
+        </Button>
+
         <Separator orientation="vertical" />
 
         <DropdownMenu>
@@ -97,11 +124,17 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                remove(task.filepath);
+              }}
+            >
               <MinusIcon className="mr-2" />
               <span>移除</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => trash(task.filepath, task.outputPath)}
+            >
               <TrashIcon className="mr-2" />
               <span>删除</span>
             </DropdownMenuItem>
@@ -113,6 +146,7 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
 }
 
 function Failed({ task }: { task: Task }) {
+  const { remove, addTask } = useTaskAction();
   return (
     <div className="flex flex-col">
       <div className="flex items-center gap-2">
@@ -125,7 +159,11 @@ function Failed({ task }: { task: Task }) {
       <Separator className="my-2" />
 
       <div className="flex items-center h-5 space-x-2">
-        <Button variant="ghost" className="w-6 h-6 px-0" onClick={() => {}}>
+        <Button
+          variant="ghost"
+          className="w-6 h-6 px-0"
+          onClick={() => addTask(task.filepath)}
+        >
           <ReloadIcon className="pointer-events-none" />
         </Button>
 
@@ -137,13 +175,13 @@ function Failed({ task }: { task: Task }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                remove(task.filepath);
+              }}
+            >
               <MinusIcon className="mr-2" />
               <span>移除</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <TrashIcon className="mr-2" />
-              <span>删除</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

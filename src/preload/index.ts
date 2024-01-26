@@ -37,6 +37,8 @@ const task = {
     ipcRenderer.send("addTask", task),
   clearTask: (workspaceId: string) =>
     ipcRenderer.send("clearTask", workspaceId),
+  removeTask: (workspaceId: string, filepath: string) =>
+    ipcRenderer.send("removeTask", { workspaceId, filepath }),
   precessing: (cb: (params: ProcessingParams) => void) =>
     ipcRenderer.on("processing", (_, params) => {
       cb(params);
@@ -58,6 +60,8 @@ const task = {
 
 const action = {
   copy: (filepath: string) => ipcRenderer.send("copy", filepath),
+  trash: (outputPath: string) => ipcRenderer.send("trash", outputPath),
+  reveal: (outputPath: string) => ipcRenderer.send("reveal", outputPath),
 };
 
 const pixzip = {
