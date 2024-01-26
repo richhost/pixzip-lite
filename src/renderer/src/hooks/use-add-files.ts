@@ -4,36 +4,49 @@ import { produce } from "immer";
 
 import { currentWksIDAtom } from "~/atoms/workspaces";
 import { Task, tasksAtom } from "~/atoms/tasks";
+import { useWorkspace } from "./use-workspace";
 
 export function useAddFiles() {
-  const workspace = useAtomValue(currentWksIDAtom);
+  const workspaceId = useAtomValue(currentWksIDAtom);
+  const { workspaces } = useWorkspace();
+
+  const currentWorkspace = workspaces.find((w) => w.id === workspaceId);
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [tasks, setTasks] = useAtom(tasksAtom);
 
   const addFiles = useCallback(
     (t: Task[]) => {
-      if (!workspace) return;
+      if (!currentWorkspace) return;
       const nextState = produce(tasks, (draft) => {
-        const prevTasks = draft.get(workspace) ?? [];
-        draft.set(workspace, [...prevTasks, ...t]);
+        const prevTasks = draft.get(currentWorkspace.id) ?? [];
+        draft.set(currentWorkspace.id, [...prevTasks, ...t]);
       });
       setTasks(nextState);
+      if (currentWorkspace.autoExec) {
+        window.pixzip.task.addTask(
+          t.map((t) => ({
+            workspaceId: currentWorkspace.id,
+            filepath: t.filepath,
+          }))
+        );
+      }
     },
-    [tasks, workspace, setTasks]
+    [tasks, currentWorkspace, setTasks]
   );
 
   const normalize = (files: FileList) => {
-    if (!workspace) return [];
+    if (!currentWorkspace) return [];
     const data: Task[] = [];
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const isImg = img(files[i]);
-      const isExisted = existed(file, tasks.get(workspace) ?? []);
+      const isExisted = existed(file, tasks.get(currentWorkspace.id) ?? []);
       if (isImg && !isExisted) {
         data.push({
           filepath: file.path,
           size: file.size,
-          status: "waiting",
+          status: currentWorkspace.autoExec ? "preprocessing" : "waiting",
         });
       }
     }

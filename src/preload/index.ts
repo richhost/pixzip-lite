@@ -51,6 +51,13 @@ const task = {
       cb(params);
     });
   },
+  removePrecessingListener: () => ipcRenderer.removeAllListeners("processing"),
+  removeSucceedListener: () => ipcRenderer.removeAllListeners("succeed"),
+  removeFailedListener: () => ipcRenderer.removeAllListeners("failed"),
+};
+
+const action = {
+  copy: (filepath: string) => ipcRenderer.send("copy", filepath),
 };
 
 const pixzip = {
@@ -59,6 +66,7 @@ const pixzip = {
   workspace,
   folderPicker,
   task,
+  action,
 };
 
 contextBridge.exposeInMainWorld("pixzip", pixzip);

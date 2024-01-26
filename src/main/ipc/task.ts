@@ -3,9 +3,7 @@ import { addTask, clearTask, removeTask } from "../core";
 import type { AddTask, Task } from "../core";
 
 export function registerTaskHandlers() {
-  ipcMain.handle("addTask", (_, task: AddTask) => addTask(task));
-  ipcMain.handle("clearTask", (_, workspaceId: string) =>
-    clearTask(workspaceId)
-  );
-  ipcMain.handle("removeTask", (_, task: Task) => removeTask(task));
+  ipcMain.on("addTask", (_, task: AddTask) => addTask(task));
+  ipcMain.on("clearTask", (_, workspaceId: string) => clearTask(workspaceId));
+  ipcMain.on("removeTask", (_, task: Task) => removeTask(task));
 }

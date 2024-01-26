@@ -7,7 +7,7 @@ import { getWorkspaces } from "../ipc/workspace";
 import { delimiter, qualityMap } from "./constants";
 
 export const getExtname = (filename: string) => {
-  return extname(filename).toLocaleLowerCase();
+  return extname(filename).replace(".", "").toLocaleLowerCase();
 };
 
 const animated = (filename: string) => {
@@ -54,7 +54,7 @@ export const zip = (filepath: string, config: Pixzip.Workspace) => {
 
 const outputFilepath = (filepath: string, config: Pixzip.Workspace) => {
   const ext = getExtname(filepath);
-  const filename = basename(filepath, ext);
+  const filename = basename(filepath, `.${ext}`);
 
   let outputDir = dirname(filepath);
 
@@ -62,7 +62,7 @@ const outputFilepath = (filepath: string, config: Pixzip.Workspace) => {
     outputDir = config.outputDir;
   }
   ensureDirSync(outputDir);
-  return `${outputDir + delimiter + filename}.${
+  return `${outputDir + delimiter + filename + config.suffix}.${
     config.format === "original" ? ext : config.format
   }`;
 };

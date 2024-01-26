@@ -11,9 +11,11 @@ import { OS } from "~/lib/os";
 
 import { WindowCtr } from "./window-ctr";
 import { useAddFiles } from "~/hooks/use-add-files";
+import { useTaskAction } from "~/hooks/use-task-action";
 
 export function HeadBar() {
   const { handleInputFile, inputRef } = useAddFiles();
+  const { clearTask } = useTaskAction();
 
   return (
     <header className="flex items-center h-[var(--h-header)] draggable justify-between shrink-0">
@@ -66,6 +68,7 @@ export function HeadBar() {
                 variant="ghost"
                 className="no-drag cursor-default"
                 size="icon"
+                onClick={() => clearTask()}
               >
                 <Eraser size={16} className="no-drag" />
               </Button>

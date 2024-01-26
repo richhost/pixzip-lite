@@ -27,6 +27,8 @@ function bootTask() {
           filepath: task.filepath,
           workspaceId: task.workspaceId,
         });
+        max++;
+        bootTask();
       } else {
         zip(task.filepath, config)
           .then((buffer) => {
@@ -40,6 +42,8 @@ function bootTask() {
               fileSize: size,
               outputPath,
             });
+            max++;
+            bootTask();
           })
           .catch(() => {
             send({
@@ -47,6 +51,8 @@ function bootTask() {
               filepath: task.filepath,
               workspaceId: task.workspaceId,
             });
+            max++;
+            bootTask();
           });
       }
     }
