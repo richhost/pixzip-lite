@@ -44,6 +44,7 @@ export const zip = (filepath: string, config: Pixzip.Workspace) => {
   const quality = getQuality(format, config.level);
 
   return sharp(filepath, { animated: needAnimated })
+    .keepMetadata()
     .resize({
       width: config.width,
       height: config.height,
