@@ -19,7 +19,5 @@ export async function registerProtocol() {
     return new Response(buffer, {
       status: 200,
     });
-
-    // return net.fetch(`file:${delimiter}${delimiter}${url}`);
   });
 }

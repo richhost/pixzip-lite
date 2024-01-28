@@ -1,6 +1,5 @@
 import {
   ArrowDownIcon,
-  CopyIcon,
   DotsHorizontalIcon,
   ExternalLinkIcon,
   MinusIcon,
@@ -87,17 +86,17 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
       <Separator className="my-2" />
 
       <div className="flex items-center h-5 space-x-2">
-        <Button
+        {/* <Button
           variant="ghost"
           className="w-6 h-6 px-0"
-          disabled
           onClick={() => {
             window.pixzip.action.copy(task.outputPath);
           }}
         >
           <CopyIcon className="pointer-events-none" />
         </Button>
-        <Separator orientation="vertical" />
+        <Separator orientation="vertical" /> */}
+
         <Button
           variant="ghost"
           className="w-6 h-6 px-0"
