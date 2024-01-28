@@ -9,6 +9,7 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { OS } from "~/lib/os";
+import { cn } from "~/lib/utils";
 
 import { WindowCtr } from "./window-ctr";
 import { useAddFiles } from "~/hooks/use-add-files";
@@ -17,8 +18,9 @@ import { useAtom, useAtomValue } from "jotai";
 import { tasksAtom } from "~/atoms/tasks";
 import { currentWksIDAtom } from "~/atoms/workspaces";
 import { useMemo } from "react";
+import { Scroll } from "../../workspace/atom";
 
-export function HeadBar() {
+export function HeadBar({ position }: { position: Scroll }) {
   const { handleInputFile, inputRef } = useAddFiles();
   const { clearTask, addTask } = useTaskAction();
 
@@ -31,7 +33,14 @@ export function HeadBar() {
   }, [tasks, workspaceId]);
 
   return (
-    <header className="flex items-center h-[var(--h-header)] draggable justify-between shrink-0">
+    <header
+      className={cn(
+        "flex items-center h-[var(--h-header)] draggable justify-between shrink-0",
+        {
+          shadow: position?.top,
+        },
+      )}
+    >
       <TooltipProvider>
         <div className="px-1.5 space-x-2">
           <Tooltip>

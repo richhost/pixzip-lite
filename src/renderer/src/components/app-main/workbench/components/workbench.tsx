@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { ScrollArea } from "~/components/ui/scroll-area";
 
 import { HeadBar } from "./head-bar";
@@ -8,6 +8,8 @@ import { useAtomValue } from "jotai";
 import { currentWksIDAtom } from "~/atoms/workspaces";
 import { tasksAtom } from "~/atoms/tasks";
 import { useAddFiles } from "~/hooks/use-add-files";
+import { cn } from "~/lib/utils";
+import { Scroll } from "../../workspace/atom";
 
 export function Workbench() {
   const currentWorkspaceId = useAtomValue(currentWksIDAtom);
@@ -22,13 +24,22 @@ export function Workbench() {
 
   const { handleDrop } = useAddFiles();
 
+  const [position, setPosition] = useState<Scroll>();
+
   return (
     <section className="flex flex-col h-full">
-      <HeadBar />
+      <HeadBar position={position} />
       <ScrollArea
-        className="h-full"
+        className={cn("h-full", { "border-t": position?.top })}
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
+        onScroll={(event) => {
+          const target = event.target as HTMLDivElement;
+          setPosition({
+            top: target.scrollTop,
+            left: target.scrollLeft,
+          });
+        }}
       >
         <div className="space-y-2 p-4">
           {list.length === 0 ? (
