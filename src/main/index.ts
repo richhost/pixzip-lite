@@ -1,4 +1,4 @@
-import { app } from "electron";
+import { app, Menu } from "electron";
 import {
   registerHandlers,
   registerWorkspaceHandlers,
@@ -23,3 +23,21 @@ app
     registerHandlers();
   })
   .catch((e) => console.error("create window failed: ", e));
+
+const menus = Menu.buildFromTemplate([
+  {
+    label: app.getName(),
+    submenu: [
+      {
+        label: "About",
+        role: "about",
+      },
+    ],
+  },
+]);
+Menu.setApplicationMenu(menus);
+app.setAboutPanelOptions({
+  applicationName: app.getName(),
+  applicationVersion: app.getVersion(),
+  version: "",
+});
