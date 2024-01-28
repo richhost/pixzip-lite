@@ -62,13 +62,14 @@ const action = {
   copy: (filepath: string) => ipcRenderer.send("copy", filepath),
   trash: (outputPath: string) => ipcRenderer.send("trash", outputPath),
   reveal: (outputPath: string) => ipcRenderer.send("reveal", outputPath),
+  folderPicker,
+  openUrl: (url: string) => ipcRenderer.send("openUrl", url),
 };
 
 const pixzip = {
   os: process.platform,
   ui,
   workspace,
-  folderPicker,
   task,
   action,
 };

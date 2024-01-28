@@ -23,8 +23,9 @@ export function useWorkspaceConfig() {
 
   const [formData, setFormData] = useState<ConfigFormData>(initState);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   const currentWks = useMemo(() => {
-    return workspaces.find((w) => w.id === currWksID) || workspaces[0];
+    return workspaces.find((w) => w.id === currWksID) ?? workspaces[0];
   }, [workspaces, currWksID]);
 
   const [previewCurrentWks, setPreviewCurrentWks] =
@@ -56,7 +57,7 @@ export function useWorkspaceConfig() {
   }, [currWksID, del]);
 
   const selectOutputDir = useCallback(() => {
-    window.pixzip.folderPicker().then((dir) => {
+    window.pixzip.action.folderPicker().then((dir) => {
       settingFormData({
         ...formData,
         outputDir: dir[0] ?? "",

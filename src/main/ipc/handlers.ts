@@ -20,4 +20,7 @@ export const registerHandlers = async () => {
   ipcMain.on("reveal", async (_, filepath: string) => {
     shell.showItemInFolder(filepath);
   });
+  ipcMain.on("openUrl", async (_, url: string) => {
+    shell.openExternal(url);
+  });
 };
