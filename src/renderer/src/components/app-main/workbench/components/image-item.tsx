@@ -27,7 +27,7 @@ export function ImageItem({ filepath }: { filepath: string }) {
             className="w-16 h-16 object-contain"
             loading="lazy"
           />
-          <figcaption className="min-w-0">
+          <figcaption className="min-w-0 grid gap-1">
             <p className="font-medium truncate">{basename(filepath)}</p>
             <p className="text-muted-foreground">
               {bytesToSize(task?.size ?? 0)}

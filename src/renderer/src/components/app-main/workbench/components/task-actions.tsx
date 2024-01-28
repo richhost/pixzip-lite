@@ -29,7 +29,7 @@ import { bytesToSize, extname, savePercentage } from "~/lib/utils";
 
 export function TaskActions({ task }: { task: Task | undefined }) {
   return (
-    <div>
+    <div className="shrink-0">
       {match(task)
         .with({ status: "waiting" }, (res) => <Waiting task={res} />)
         .with({ status: "preprocessing" }, () => <Preprocessing />)
