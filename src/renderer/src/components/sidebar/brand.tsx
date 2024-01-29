@@ -42,7 +42,7 @@ export function Brand() {
                   e.preventDefault();
                   window.pixzip.action.openUrl("https://xiangsu.fun");
                 }}
-                className="underline underline-offset-2 px-1"
+                className="underline underline-offset-4 px-1"
               >
                 官网
               </a>
@@ -55,7 +55,7 @@ export function Brand() {
                     "https://github.com/richhost/pixzip/releases",
                   );
                 }}
-                className="underline underline-offset-2 px-1"
+                className="underline underline-offset-4 px-1"
               >
                 GitHub
               </a>

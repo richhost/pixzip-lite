@@ -36,7 +36,6 @@
 		"clsx": "^2.1.0",
 		"electron": "^28.2.0",
 		"electron-vite": "^2.0.0",
-		"framer-motion": "^10.18.0",
 		"immer": "^10.0.3",
 		"jotai": "^2.6.3",
 		"lucide-react": "^0.309.0",
