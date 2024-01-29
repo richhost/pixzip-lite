@@ -18,11 +18,13 @@ export function useAddFiles() {
   const addFiles = useCallback(
     (t: Task[]) => {
       if (!currentWorkspace) return;
-      const nextState = produce(tasks, (draft) => {
-        const prevTasks = draft.get(currentWorkspace.id) ?? [];
-        draft.set(currentWorkspace.id, [...prevTasks, ...t]);
+      setTasks((prev) => {
+        const nextState = produce(prev, (draft) => {
+          const prevTasks = draft.get(currentWorkspace.id) ?? [];
+          draft.set(currentWorkspace.id, [...prevTasks, ...t]);
+        });
+        return nextState;
       });
-      setTasks(nextState);
       if (currentWorkspace.autoExec) {
         window.pixzip.task.addTask(
           t.map((t) => ({
@@ -32,10 +34,10 @@ export function useAddFiles() {
         );
       }
     },
-    [tasks, currentWorkspace, setTasks]
+    [currentWorkspace, setTasks]
   );
 
-  const normalize = (files: FileList) => {
+  const normalize = (files: FileList | File[]) => {
     if (!currentWorkspace) return [];
     const data: Task[] = [];
     for (let i = 0; i < files.length; i++) {
@@ -55,9 +57,34 @@ export function useAddFiles() {
 
   const handleDrop = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault();
-    const files = event.dataTransfer.files;
-    const t = normalize(files);
-    addFiles(t);
+    event.stopPropagation();
+
+    const items = [...event.dataTransfer.items];
+
+    const scanFiles = (item: FileSystemEntry) => {
+      if (item.isFile) {
+        (item as FileSystemFileEntry).file((file) => {
+          const t = normalize([file]);
+          addFiles(t);
+        });
+      } else if (item.isDirectory) {
+        const directoryReader = (
+          item as FileSystemDirectoryEntry
+        ).createReader();
+        directoryReader.readEntries((entries) => {
+          for (const entry of entries) {
+            scanFiles(entry);
+          }
+        });
+      }
+    };
+
+    for (const i of items) {
+      const item = i.webkitGetAsEntry();
+      if (item) {
+        scanFiles(item);
+      }
+    }
   };
 
   const handleInputFile = () => {

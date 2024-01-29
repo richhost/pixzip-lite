@@ -26,6 +26,10 @@ export function extname(path: string) {
   return path.split(".").pop();
 }
 
+export function dirname(path: string) {
+  return path.split(delimiter).slice(0, -1).join(delimiter);
+}
+
 export function savePercentage(current: number, total: number) {
   const percent = ((total - current) / total) * 100;
   return `${Math.round(percent) === 100 ? 99 : Math.round(percent)}%`;

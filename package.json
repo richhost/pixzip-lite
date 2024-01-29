@@ -30,6 +30,8 @@
 		"@types/node": "^20.11.9",
 		"@types/react": "^18.2.48",
 		"@types/react-dom": "^18.2.18",
+		"@types/wicg-entries-api": "^2020.8.5",
+		"@types/wicg-file-system-access": "^2023.10.4",
 		"@vitejs/plugin-react": "^4.2.1",
 		"autoprefixer": "^10.4.17",
 		"class-variance-authority": "^0.7.0",

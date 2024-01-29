@@ -79,6 +79,12 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.18
     version: 18.2.18
+  '@types/wicg-entries-api':
+    specifier: ^2020.8.5
+    version: 2020.8.5
+  '@types/wicg-file-system-access':
+    specifier: ^2023.10.4
+    version: 2023.10.4
   '@vitejs/plugin-react':
     specifier: ^4.2.1
     version: 4.2.1(vite@5.0.12)
@@ -2205,6 +2211,14 @@ packages:
 
   /@types/scheduler@0.16.8:
     resolution: {integrity: sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==}
+    dev: true
+
+  /@types/wicg-entries-api@2020.8.5:
+    resolution: {integrity: sha512-HXp6ze0+M/59IbCIZGsb3A4W/08eJJBAVUGIjk7XcF3aX/khd8x4YZnZgoRK2LNTBk5X1WVbYSc4yx0QymkIIg==}
+    dev: true
+
+  /@types/wicg-file-system-access@2023.10.4:
+    resolution: {integrity: sha512-ewOj7hWhsUTS2+aY6zY+7BwlgqGBj5ZXxKuHt3TAWpIJH0bDW/6bO1N1SdUDAzV8r0Nc+/ZtpAEETYTwrehBMw==}
     dev: true
 
   /@types/yauzl@2.10.3:
