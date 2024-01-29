@@ -21,7 +21,7 @@ async function createWindow() {
     titleBarStyle: "hidden",
     trafficLightPosition: { x: 10, y: 14 },
     vibrancy: "sidebar",
-    visualEffectState: "followWindow",
+    visualEffectState: "active",
     transparent: platform === "darwin",
     webPreferences: {
       nodeIntegration: false,
