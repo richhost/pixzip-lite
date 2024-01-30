@@ -35,7 +35,7 @@ const getQuality = (format: keyof FormatEnum, level: number) => {
   if (format === "gif") {
     quality = 1;
   }
-  return Math.floor((10 - level) * 10 * quality);
+  return Math.floor((11 - level) * 10 * quality);
 };
 
 export const zip = (filepath: string, config: Pixzip.Workspace) => {
@@ -49,7 +49,10 @@ export const zip = (filepath: string, config: Pixzip.Workspace) => {
       width: config.width,
       height: config.height,
     })
-    .toFormat(format, { quality: quality })
+    .toFormat(format, {
+      quality: quality,
+      mozjpeg: format === "jpeg" || format === "jpg",
+    })
     .toBuffer();
 };
 

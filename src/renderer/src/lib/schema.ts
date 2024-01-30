@@ -9,7 +9,8 @@ const formatSchema = z
   .or(z.literal("jpg"))
   .or(z.literal("png"))
   .or(z.literal("webp"))
-  .or(z.literal("avif"));
+  .or(z.literal("avif"))
+  .or(z.literal("jpeg"));
 
 const baseSchema = z.object({
   id: z.string(),
