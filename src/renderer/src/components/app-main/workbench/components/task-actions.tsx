@@ -1,5 +1,6 @@
 import {
   ArrowDownIcon,
+  CopyIcon,
   DotsHorizontalIcon,
   ExternalLinkIcon,
   MinusIcon,
@@ -25,7 +26,10 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { useTaskAction } from "~/hooks/use-task-action";
+import { OS } from "~/lib/os";
 import { bytesToSize, extname, savePercentage } from "~/lib/utils";
+
+import Loader from "~/assets/loader.svg?react";
 
 export function TaskActions({ task }: { task: Task | undefined }) {
   return (
@@ -62,7 +66,8 @@ function Waiting({ task }: { task: Task }) {
 function Preprocessing() {
   return (
     <div className="w-10">
-      <div className="dot-rolling" />
+      {/* <div className="dot-rolling" /> */}
+      <Loader className="animate-spin" />
     </div>
   );
 }
@@ -86,16 +91,20 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
       <Separator className="my-2" />
 
       <div className="flex items-center h-5 space-x-2">
-        {/* <Button
-          variant="ghost"
-          className="w-6 h-6 px-0"
-          onClick={() => {
-            window.pixzip.action.copy(task.outputPath);
-          }}
-        >
-          <CopyIcon className="pointer-events-none" />
-        </Button>
-        <Separator orientation="vertical" /> */}
+        {OS !== "linux" && (
+          <>
+            <Button
+              variant="ghost"
+              className="w-6 h-6 px-0"
+              onClick={() => {
+                window.pixzip.action.copy(task.outputPath);
+              }}
+            >
+              <CopyIcon className="pointer-events-none" />
+            </Button>
+            <Separator orientation="vertical" />
+          </>
+        )}
 
         <Button
           variant="ghost"
