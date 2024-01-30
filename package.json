@@ -7,7 +7,8 @@
 		"dev": "electron-vite dev",
 		"check": "pnpm biome lint ./src",
 		"build": "pnpm run check && electron-vite build",
-		"build:win": "pnpm run build && electron-builder --win"
+		"build:win": "pnpm run build && electron-builder --win",
+		"build:mac": "pnpm run build && electron-builder --mac"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.5.3",
