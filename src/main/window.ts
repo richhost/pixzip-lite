@@ -35,7 +35,9 @@ async function createWindow() {
     browserWindow.loadURL(process.env.ELECTRON_RENDERER_URL);
     browserWindow.webContents.openDevTools();
   } else {
-    // TODO
+    browserWindow.loadFile(
+      fileURLToPath(new URL("../renderer/index.html", import.meta.url))
+    );
   }
 
   mainWindowState.manage(browserWindow);
