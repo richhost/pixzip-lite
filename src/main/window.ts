@@ -47,6 +47,8 @@ async function createWindow() {
 let browserWindow: BrowserWindow | undefined;
 
 export async function restoreOrCreateWindow() {
+  const gotTheLock = app.requestSingleInstanceLock();
+  if (!gotTheLock) app.quit();
   browserWindow = BrowserWindow.getAllWindows().find((w) => !w.isDestroyed());
 
   if (browserWindow === undefined) {
