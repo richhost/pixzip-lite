@@ -33,7 +33,7 @@ export function Brand() {
             <DrawerDescription>
               面向现代 Web 应用的开源图片压缩软件
             </DrawerDescription>
-            <div className="pt-4">
+            <div className="pt-4 text-sm">
               本应用不会联网，所以不会收集任何用户信息。若要更新应用，请前往
               {/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
               <a
