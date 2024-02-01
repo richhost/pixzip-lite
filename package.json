@@ -1,6 +1,6 @@
 {
 	"name": "pixzip",
-	"version": "2.0.0-next.001",
+	"version": "2.0.0",
 	"type": "module",
 	"main": "./out/main/index.js",
 	"scripts": {
