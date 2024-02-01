@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-latest-xlarge, macos-latest-large, windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -30,8 +30,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: upload artifact (macOS)
-        if: matrix.os == 'macos-latest'
+      - name: upload artifact (macOS Apple Silicon)
+        if: matrix.os == 'macos-latest-xlarge'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}
+          path: release/*.dmg
+
+      - name: upload artifact (macOS Intel)
+        if: matrix.os == 'macos-latest-large'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
