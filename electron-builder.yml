@@ -16,8 +16,6 @@ win:
   executableName: Pixzip
   target:
     - target: nsis
-      arch:
-        - x64
   icon: resources/icons/win/icon.ico
 nsis:
   artifactName: "${productName}-${os}-${version}.${ext}"
@@ -29,9 +27,6 @@ mac:
   category: public.app-category.photography
   target:
     - target: dmg
-      arch:
-        - x64
-        - arm64
   icon: resources/icons/mac/icon.icns
 electronDownload:
   mirror: https://npmmirror.com/mirrors/electron/

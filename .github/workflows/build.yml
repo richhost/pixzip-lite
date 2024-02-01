@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-14, macos-latest, windows-latest]
+        os: [macos-14, macos-12, windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -37,7 +37,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build for macOS Intel
-        if: matrix.os == 'macos-latest'
+        if: matrix.os == 'macos-12'
         run: pnpm run build:mac:intel
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,28 +53,28 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
-          path: release/*.dmg
+          path: dist/*.dmg
 
       - name: upload artifact (macOS Intel)
-        if: matrix.os == 'macos-latest'
+        if: matrix.os == 'macos-12'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
-          path: release/*.dmg
+          path: dist/*.dmg
 
       - name: upload artifact (Windows)
         if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
-          path: release/*.exe
+          path: dist/*.exe
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            release/*.dmg
-            release/*.exe
+            dist/*.dmg
+            dist/*.exe
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
