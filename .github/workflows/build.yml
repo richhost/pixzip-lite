@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest-xlarge, macos-latest-large, windows-latest]
+        os: [macos-14, macos-latest, windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -22,23 +22,41 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
-      - name: Build Electron App
-        run: npm run build
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Build for macOS Apple Silicon
+        if: matrix.os == 'macos-14'
+        run: pnpm run build:mac:apple
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build for macOS Intel
+        if: matrix.os == 'macos-latest'
+        run: pnpm run build:mac:intel
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build for Windows
+        if: matrix.os == 'windows-latest'
+        run: pnpm run build:win
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: upload artifact (macOS Apple Silicon)
-        if: matrix.os == 'macos-latest-xlarge'
+        if: matrix.os == 'macos-14'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
           path: release/*.dmg
 
       - name: upload artifact (macOS Intel)
-        if: matrix.os == 'macos-latest-large'
+        if: matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
