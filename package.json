@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "electron-vite dev",
 		"check": "pnpm biome lint ./src",
-		"build": "pnpm run check && electron-vite build",
+		"build": "pnpm run check && electron-vite build && electron-builder",
 		"build:win": "pnpm run build && electron-builder --win",
 		"build:mac": "pnpm run build && electron-builder --mac"
 	},

@@ -12,7 +12,6 @@ files:
   - "!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}"
 asarUnpack:
   - resources/**
-  - node_modules/sharp/**/*
 win:
   executableName: Pixzip
   target:
