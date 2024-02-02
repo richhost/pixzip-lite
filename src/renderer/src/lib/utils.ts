@@ -34,3 +34,15 @@ export function savePercentage(current: number, total: number) {
   const percent = ((total - current) / total) * 100;
   return `${Math.round(percent) === 100 ? 99 : Math.round(percent)}%`;
 }
+
+export const filePromise = (file: FileSystemFileEntry) => {
+  return new Promise<File>((resolve, reject) => {
+    file.file(resolve, reject);
+  });
+};
+
+export const readEntriesPromise = (reader: FileSystemDirectoryReader) => {
+  return new Promise<FileSystemEntry[]>((resolve, reject) => {
+    reader.readEntries(resolve, reject);
+  });
+};

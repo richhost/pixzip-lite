@@ -5,6 +5,7 @@ import { produce } from "immer";
 import { currentWksIDAtom } from "~/atoms/workspaces";
 import { Task, tasksAtom } from "~/atoms/tasks";
 import { useWorkspace } from "./use-workspace";
+import { filePromise, readEntriesPromise } from "~/lib/utils";
 
 export function useAddFiles() {
   const workspaceId = useAtomValue(currentWksIDAtom);
@@ -61,30 +62,39 @@ export function useAddFiles() {
 
     const items = [...event.dataTransfer.items];
 
-    const scanFiles = (item: FileSystemEntry) => {
+    const scanFiles = async (
+      item: FileSystemEntry,
+      fileList: Promise<File>[]
+    ) => {
       if (item.isFile) {
-        (item as FileSystemFileEntry).file((file) => {
-          const t = normalize([file]);
-          addFiles(t);
-        });
+        fileList.push(filePromise(item as FileSystemFileEntry));
       } else if (item.isDirectory) {
         const directoryReader = (
           item as FileSystemDirectoryEntry
         ).createReader();
-        directoryReader.readEntries((entries) => {
-          for (const entry of entries) {
-            scanFiles(entry);
-          }
-        });
+        const res = await readEntriesPromise(directoryReader);
+        for (const entry of res) {
+          scanFiles(entry, fileList);
+        }
       }
     };
 
-    for (const i of items) {
-      const item = i.webkitGetAsEntry();
-      if (item) {
-        scanFiles(item);
+    const fileList: Promise<File>[] = [];
+
+    const eachFiles = async () => {
+      for (const i of items) {
+        const item = i.webkitGetAsEntry();
+        if (item) {
+          await scanFiles(item, fileList);
+        }
       }
-    }
+
+      Promise.all(fileList).then((files) => {
+        const t = normalize(files);
+        addFiles(t);
+      });
+    };
+    eachFiles();
   };
 
   const handleInputFile = () => {
