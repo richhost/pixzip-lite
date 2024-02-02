@@ -5,11 +5,11 @@
 	"main": "./out/main/index.js",
 	"scripts": {
 		"dev": "electron-vite dev",
-		"check": "pnpm biome lint ./src",
-		"build": "pnpm run check && electron-vite build",
-		"build:win": "pnpm run build && electron-builder --win --x64",
-		"build:mac:apple": "pnpm run build && electron-builder --mac --arm64",
-		"build:mac:intel": "pnpm run build && electron-builder --mac --x64"
+		"check": "biome lint ./src",
+		"build": "npm run check && electron-vite build",
+		"build:win": "npm run build && electron-builder --win --x64",
+		"build:mac:apple": "npm run build && electron-builder --mac --arm64",
+		"build:mac:intel": "npm run build && electron-builder --mac --x64"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.5.3",
