@@ -13,6 +13,7 @@ declare namespace Pixzip {
     autoExec: boolean;
     originalOutput: boolean;
     outputDir?: string;
+    keepExif: boolean;
   };
   type TaskStatus =
     | "waiting"

@@ -1,4 +1,4 @@
-import sharp, { FormatEnum } from "sharp";
+import sharp, { FormatEnum, Sharp } from "sharp";
 import { extname, basename, dirname } from "node:path";
 import { existsSync, statSync } from "node:fs";
 import { ensureDirSync, outputFile } from "fs-extra/esm";
@@ -38,13 +38,18 @@ const getQuality = (format: keyof FormatEnum, level: number) => {
   return Math.floor((11 - level) * 10 * quality);
 };
 
+const keepExif = (sharp: Sharp, config: Pixzip.Workspace) => {
+  return config.keepExif ? sharp : sharp.withExif({});
+};
+
 export const zip = (filepath: string, config: Pixzip.Workspace) => {
   const needAnimated = animated(filepath);
   const format = getFormat(filepath, config);
   const quality = getQuality(format, config.level);
 
-  return sharp(filepath, { animated: needAnimated })
-    .keepMetadata()
+  const instance = sharp(filepath, { animated: needAnimated }).keepMetadata();
+
+  return keepExif(instance, config)
     .resize({
       width: config.width,
       height: config.height,

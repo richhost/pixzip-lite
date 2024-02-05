@@ -15,6 +15,7 @@ const initState: ConfigFormData = {
   autoExec: true,
   originalOutput: true,
   outputDir: "",
+  keepExif: false,
 };
 
 export function useWorkspaceConfig() {

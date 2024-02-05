@@ -245,18 +245,35 @@ export function Configure() {
           </div>
 
           <div className="grid gap-2">
+            <Label>EXIF</Label>
+            <div className="flex gap-4 items-start justify-between">
+              <Description>保留 EXIF 数据</Description>
+              <Switch
+                checked={formData.keepExif}
+                onCheckedChange={(checked) => {
+                  settingFormData({
+                    ...formData,
+                    keepExif: checked,
+                  });
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-2">
             <Label>自动执行</Label>
-            <Switch
-              className="mt-1"
-              checked={formData.autoExec}
-              onCheckedChange={(checked) => {
-                settingFormData({
-                  ...formData,
-                  autoExec: checked,
-                });
-              }}
-            />
-            <Description>添加图片后自动压缩</Description>
+            <div className="flex gap-4 items-start justify-between">
+              <Description>添加图片后自动压缩</Description>
+              <Switch
+                checked={formData.autoExec}
+                onCheckedChange={(checked) => {
+                  settingFormData({
+                    ...formData,
+                    autoExec: checked,
+                  });
+                }}
+              />
+            </div>
           </div>
         </div>
       </ScrollArea>

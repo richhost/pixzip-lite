@@ -29,6 +29,7 @@ const baseSchema = z.object({
   autoExec: z.boolean().default(false),
   originalOutput: z.boolean().default(true),
   outputDir: z.string().default(""),
+  keepExif: z.boolean().default(false),
 });
 
 export const FormDataSchema = baseSchema.omit({ id: true });
