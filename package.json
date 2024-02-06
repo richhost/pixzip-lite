@@ -64,7 +64,7 @@
 		"electron-window-state": "^5.0.3",
 		"fs-extra": "^11.2.0",
 		"jsonfile": "^6.1.0",
-		"sharp": "^0.33.2"
+		"sharp": "^0.32.6"
 	},
 	"engines": {
 		"node": ">=20.10.0"

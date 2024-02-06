@@ -39,7 +39,7 @@ const getQuality = (format: keyof FormatEnum, level: number) => {
 };
 
 const keepExif = (sharp: Sharp, config: Pixzip.Workspace) => {
-  return config.keepExif ? sharp : sharp.withExif({});
+  return config.keepExif ? sharp.withMetadata() : sharp;
 };
 
 export const zip = (filepath: string, config: Pixzip.Workspace) => {
@@ -47,7 +47,7 @@ export const zip = (filepath: string, config: Pixzip.Workspace) => {
   const format = getFormat(filepath, config);
   const quality = getQuality(format, config.level);
 
-  const instance = sharp(filepath, { animated: needAnimated }).keepMetadata();
+  const instance = sharp(filepath, { animated: needAnimated });
 
   return keepExif(instance, config)
     .resize({
