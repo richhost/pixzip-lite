@@ -116,7 +116,7 @@ export function useAddFiles() {
 
 function img(file: File) {
   const imgTypes = "image/avif,image/gif,image/jpeg,image/png,image/webp";
-  return imgTypes.includes(file.type);
+  return file.type && imgTypes.includes(file.type);
 }
 
 function existed(file: File, tasks: Task[]) {
