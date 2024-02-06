@@ -6,6 +6,11 @@ import { ensureDirSync, outputFile } from "fs-extra/esm";
 import { getWorkspaces } from "../ipc/workspace";
 import { delimiter, qualityMap } from "./constants";
 
+/**
+ * Get file extension name, it will be lower case and not contain dot
+ * @param filename
+ * @returns string
+ */
 export const getExtname = (filename: string) => {
   return extname(filename).replace(".", "").toLocaleLowerCase();
 };
@@ -62,8 +67,9 @@ export const zip = (filepath: string, config: Pixzip.Workspace) => {
 };
 
 const outputFilepath = (filepath: string, config: Pixzip.Workspace) => {
-  const ext = getExtname(filepath);
+  let ext = extname(filepath).replace(".", "");
   const filename = basename(filepath, `.${ext}`);
+  ext = ext.toLocaleLowerCase();
 
   let outputDir = dirname(filepath);
 
