@@ -74,7 +74,7 @@ export function useAddFiles() {
         ).createReader();
         const res = await readEntriesPromise(directoryReader);
         for (const entry of res) {
-          scanFiles(entry, fileList);
+          await scanFiles(entry, fileList);
         }
       }
     };
