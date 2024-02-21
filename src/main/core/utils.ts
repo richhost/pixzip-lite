@@ -6,6 +6,8 @@ import { ensureDirSync, outputFile } from "fs-extra/esm";
 import { getWorkspaces } from "../ipc/workspace";
 import { delimiter, qualityMap } from "./constants";
 
+sharp.cache(false);
+
 /**
  * Get file extension name, it will be lower case and not contain dot
  * @param filename
@@ -44,7 +46,7 @@ const getQuality = (format: keyof FormatEnum, level: number) => {
 };
 
 const keepExif = (sharp: Sharp, config: Pixzip.Workspace) => {
-  return config.keepExif ? sharp.withMetadata() : sharp;
+  return config.keepExif ? sharp : sharp.withExif({});
 };
 
 export const zip = (filepath: string, config: Pixzip.Workspace) => {
@@ -52,7 +54,7 @@ export const zip = (filepath: string, config: Pixzip.Workspace) => {
   const format = getFormat(filepath, config);
   const quality = getQuality(format, config.level);
 
-  const instance = sharp(filepath, { animated: needAnimated });
+  const instance = sharp(filepath, { animated: needAnimated }).keepMetadata();
 
   return keepExif(instance, config)
     .resize({

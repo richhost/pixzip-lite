@@ -4,6 +4,8 @@ import querystring from "node:querystring";
 
 import { delimiter } from "./core/constants";
 
+sharp.cache(false);
+
 export async function registerProtocol() {
   protocol.handle("resource", async (request) => {
     const replace = `resource:${delimiter}${delimiter}`;
@@ -11,7 +13,6 @@ export async function registerProtocol() {
     const url = src.replace(replace, "");
 
     const buffer = await sharp(querystring.unescape(url))
-      .withMetadata()
       .resize({ width: 128 })
       .jpeg({ quality: 60 })
       .toBuffer();
