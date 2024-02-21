@@ -81,9 +81,17 @@ export function useAddFiles() {
 
     const fileList: Promise<File>[] = [];
 
+    // FileSystemEntry List
+    const entries = items.reduce((acc, item) => {
+      if (item.webkitGetAsEntry() !== null) {
+        acc.push(item.webkitGetAsEntry() as FileSystemEntry);
+      }
+      return acc;
+    }, [] as FileSystemEntry[]);
+
     const eachFiles = async () => {
-      for (const i of items) {
-        const item = i.webkitGetAsEntry();
+      for (let i = 0; i < entries.length; i++) {
+        const item = entries[i];
         if (item) {
           await scanFiles(item, fileList);
         }
