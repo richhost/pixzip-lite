@@ -7,7 +7,7 @@ const platform = process.platform;
 async function createWindow() {
   const mainWindowState = windowStateKeeper({
     defaultWidth: 800,
-    defaultHeight: 600,
+    defaultHeight: 500,
   });
 
   const browserWindow = new BrowserWindow({
