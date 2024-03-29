@@ -2,10 +2,8 @@ import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -52,7 +50,7 @@ export function Brand() {
                 onClick={(e) => {
                   e.preventDefault();
                   window.pixzip.action.openUrl(
-                    "https://github.com/richhost/pixzip/releases",
+                    "https://github.com/richhost/pixzip/releases"
                   );
                 }}
                 className="underline underline-offset-4 px-1"

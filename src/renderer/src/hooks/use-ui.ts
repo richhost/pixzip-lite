@@ -25,7 +25,7 @@ export function useUI() {
 
   const windowMaximized = useSyncExternalStore(
     subscribeWindowMaximized,
-    () => appMaximized,
+    () => appMaximized
   );
 
   return {

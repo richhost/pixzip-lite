@@ -107,7 +107,7 @@ export function Configure() {
               onChange={(event) => {
                 if (event.target.value === "") {
                   settingFormData({ ...formData, width: undefined });
-                } else if (!Object.is(event.target.valueAsNumber, NaN)) {
+                } else if (!Object.is(event.target.valueAsNumber, Number.NaN)) {
                   settingFormData({
                     ...formData,
                     width: event.target.valueAsNumber,
@@ -128,7 +128,7 @@ export function Configure() {
               onChange={(event) => {
                 if (event.target.value === "") {
                   settingFormData({ ...formData, height: undefined });
-                } else if (!Object.is(event.target.valueAsNumber, NaN)) {
+                } else if (!Object.is(event.target.valueAsNumber, Number.NaN)) {
                   settingFormData({
                     ...formData,
                     height: event.target.valueAsNumber,

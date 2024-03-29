@@ -38,7 +38,7 @@ export function HeadBar({ position }: { position: Scroll }) {
         "flex items-center h-[var(--h-header)] draggable justify-between shrink-0",
         {
           shadow: position?.top,
-        },
+        }
       )}
     >
       <TooltipProvider>

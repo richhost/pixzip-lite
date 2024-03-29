@@ -1,9 +1,10 @@
-import React, { useCallback, useRef } from "react";
+import type React from "react";
+import { useCallback, useRef } from "react";
 import { useAtom, useAtomValue } from "jotai";
 import { produce } from "immer";
 
 import { currentWksIDAtom } from "~/atoms/workspaces";
-import { Task, tasksAtom } from "~/atoms/tasks";
+import { type Task, tasksAtom } from "~/atoms/tasks";
 import { useWorkspace } from "./use-workspace";
 import { filePromise, readEntriesPromise } from "~/lib/utils";
 

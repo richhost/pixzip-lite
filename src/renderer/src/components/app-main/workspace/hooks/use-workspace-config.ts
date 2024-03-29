@@ -2,7 +2,7 @@ import { useAtomValue } from "jotai";
 import { useCallback, useMemo, useState } from "react";
 import { currentWksIDAtom } from "~/atoms/workspaces";
 import { useWorkspace } from "~/hooks/use-workspace.ts";
-import { ConfigFormData, FormDataSchema } from "~/lib/schema";
+import { type ConfigFormData, FormDataSchema } from "~/lib/schema";
 
 const initState: ConfigFormData = {
   name: "",
@@ -24,7 +24,6 @@ export function useWorkspaceConfig() {
 
   const [formData, setFormData] = useState<ConfigFormData>(initState);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   const currentWks = useMemo(() => {
     return workspaces.find((w) => w.id === currWksID) ?? workspaces[0];
   }, [workspaces, currWksID]);

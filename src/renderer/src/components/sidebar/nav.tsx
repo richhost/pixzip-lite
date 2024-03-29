@@ -49,7 +49,7 @@ function NavItem(props: Pixzip.Workspace) {
         buttonVariants({
           variant: props.id === currentWksID ? "default" : "ghost",
           size: "sm",
-        }),
+        })
       )}
       onClick={() => {
         if (currentWksID !== props.id) setCurrentWksID(props.id);

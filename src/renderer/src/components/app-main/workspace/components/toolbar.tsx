@@ -23,7 +23,7 @@ export function Toolbar() {
         "h-[var(--h-header)] draggable px-1.5 flex items-center shrink-0",
         {
           shadow: position?.top,
-        },
+        }
       )}
     >
       <TooltipProvider>

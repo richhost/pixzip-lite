@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const preprocessNumber = z.preprocess((val) => {
-  return Object.is(Number(val), NaN) ? undefined : Number(val);
+  return Object.is(Number(val), Number.NaN) ? undefined : Number(val);
 }, z.number().or(z.undefined()));
 
 const formatSchema = z

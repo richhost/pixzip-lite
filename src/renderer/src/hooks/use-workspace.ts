@@ -20,6 +20,7 @@ const workspaceTmpl: Omit<Workspace, "id"> = {
   autoExec: true,
   originalOutput: true,
   outputDir: "",
+  keepExif: false,
 };
 
 await window.pixzip.workspace.getWorkspaces().then((w) => {
