@@ -33,7 +33,6 @@ export function Brand() {
             </DrawerDescription>
             <div className="pt-4 text-sm">
               本应用不会联网，所以不会收集任何用户信息。若要更新应用，请前往
-              {/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
               <a
                 href="https://xiangsu.fun"
                 onClick={(e) => {
@@ -44,7 +43,7 @@ export function Brand() {
               >
                 官网
               </a>
-              或{/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
+              或
               <a
                 href="https://github.com/richhost/pixzip/releases"
                 onClick={(e) => {
