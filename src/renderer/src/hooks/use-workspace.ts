@@ -78,16 +78,15 @@ function deleteWorkspace(id: string) {
 export function useWorkspace() {
   const wks = useSyncExternalStore(subscribe, getSnapshot);
   const [currentWksID, setCurrentWksId] = useAtom(currentWksIDAtom);
+  const currentWksIDStorage = window.localStorage.getItem("currentWksID");
 
   const [preview, setPreview] = useState<Pixzip.Workspace[]>([]);
 
   if (preview !== wks) {
     setPreview(wks);
-    if (!currentWksID) {
+
+    if (!currentWksIDStorage && !currentWksID) {
       setCurrentWksId(wks[0].id);
-    } else {
-      const index = wks.findIndex((wk) => wk.id === currentWksID);
-      index === -1 && setCurrentWksId(wks[0].id);
     }
   }
 
