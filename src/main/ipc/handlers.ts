@@ -1,5 +1,4 @@
 import { dialog, ipcMain, shell } from "electron";
-// import clipboardEx from "electron-clipboard-ex";
 import { clipboard } from "clipboard-sys";
 
 export const registerHandlers = async () => {
@@ -10,7 +9,6 @@ export const registerHandlers = async () => {
     return filePaths;
   });
   ipcMain.on("copy", async (_, filepath: string) => {
-    // clipboardEx.writeFilePaths([filepath]);
     clipboard.writeFiles(filepath);
   });
   ipcMain.on("trash", async (_, filepath: string) => {
