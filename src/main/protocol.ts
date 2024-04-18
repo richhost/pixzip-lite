@@ -13,8 +13,9 @@ export async function registerProtocol() {
     const url = src.replace(replace, "");
 
     const buffer = await sharp(querystring.unescape(url))
+      .keepMetadata()
       .resize({ width: 128 })
-      .jpeg({ quality: 60 })
+      .jpeg({ quality: 60, mozjpeg: true })
       .toBuffer();
 
     return new Response(buffer, {

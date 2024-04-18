@@ -46,7 +46,7 @@ const getQuality = (format: keyof FormatEnum, level: number) => {
 };
 
 const keepExif = (sharp: Sharp, config: Pixzip.Workspace) => {
-  return config.keepExif ? sharp : sharp.withExif({});
+  return config.keepExif ? sharp.keepExif() : sharp.withExif({});
 };
 
 export const zip = (filepath: string, config: Pixzip.Workspace) => {
