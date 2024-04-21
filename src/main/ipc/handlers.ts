@@ -1,4 +1,4 @@
-import { dialog, ipcMain, shell, clipboard } from "electron";
+import { dialog, ipcMain, shell } from "electron";
 import clipboardEx from "electron-clipboard-ex";
 
 export const registerHandlers = async () => {
