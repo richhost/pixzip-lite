@@ -14,7 +14,7 @@ const config = {
     "!{.env,.env.*,.npmrc,pnpm-lock.yaml}",
     "!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}",
   ],
-  artifactName: "${productName}-${version}-${os}-${arch}.${ext}",
+  artifactName: "${productName}-${os}-${arch}-${version}.${ext}",
   win: {
     target: "nsis",
     icon: "resources/icons/win/icon.ico",
