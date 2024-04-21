@@ -14,6 +14,9 @@ importers:
       conf:
         specifier: ^12.0.0
         version: 12.0.0
+      electron-clipboard-ex:
+        specifier: ^1.3.3
+        version: 1.3.3
       electron-window-state:
         specifier: ^5.0.3
         version: 5.0.3
@@ -1929,6 +1932,10 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
+  electron-clipboard-ex@1.3.3:
+    resolution: {integrity: sha512-bny+IQhbLd7ur4NMKJ6P9+WRG2KTF6yGrbKem2N/zIdK64Yk3hCqVEiuyON6b2aOeEUDGkvS8LCkk4Q2IimehA==}
+    os: [darwin, win32]
+
   electron-publish@24.13.1:
     resolution: {integrity: sha512-2ZgdEqJ8e9D17Hwp5LEq5mLQPjqU3lv/IALvgp+4W8VeNhryfGhYEQC/PgDPMrnWUp+l60Ou5SJLsu+k4mhQ8A==}
 
@@ -2418,8 +2425,9 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
 
-  magic-string@0.30.10:
-    resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
+  magic-string@0.30.9:
+    resolution: {integrity: sha512-S1+hd+dIrC8EZqKyT9DstTH/0Z+f76kmmvZnkfQVmOpDEF9iVgdYif3Q/pIWHmCoo59bQVGW0kVL3e2nl+9+Sw==}
+    engines: {node: '>=12'}
 
   matcher@3.0.0:
     resolution: {integrity: sha512-OkeDaAZ/bQCxeFAozM55PKcKU0yJMPGifLwV4Qgjitu+5MoAfSQN4lsLJeXZ1b8w0x+/Emda6MZgXS1jvsapng==}
@@ -2525,6 +2533,13 @@ packages:
 
   node-addon-api@1.7.2:
     resolution: {integrity: sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==}
+
+  node-addon-api@4.3.0:
+    resolution: {integrity: sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==}
+
+  node-gyp-build@4.8.0:
+    resolution: {integrity: sha512-u6fs2AEUljNho3EYTJNBfImO5QTo/J/1Etd+NVdCj7qWKUSN/bSLkZwhDv7I+w/MSC6qJ4cknepkAYykDdK8og==}
+    hasBin: true
 
   node-releases@2.0.14:
     resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
@@ -4954,6 +4969,11 @@ snapshots:
       - electron-builder-squirrel-windows
       - supports-color
 
+  electron-clipboard-ex@1.3.3:
+    dependencies:
+      node-addon-api: 4.3.0
+      node-gyp-build: 4.8.0
+
   electron-publish@24.13.1:
     dependencies:
       '@types/fs-extra': 9.0.13
@@ -4974,7 +4994,7 @@ snapshots:
       '@babel/plugin-transform-arrow-functions': 7.24.1(@babel/core@7.24.4)
       cac: 6.7.14
       esbuild: 0.19.12
-      magic-string: 0.30.10
+      magic-string: 0.30.9
       picocolors: 1.0.0
       vite: 5.2.9(@types/node@20.12.7)
     transitivePeerDependencies:
@@ -5491,7 +5511,7 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  magic-string@0.30.10:
+  magic-string@0.30.9:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
 
@@ -5577,6 +5597,10 @@ snapshots:
 
   node-addon-api@1.7.2:
     optional: true
+
+  node-addon-api@4.3.0: {}
+
+  node-gyp-build@4.8.0: {}
 
   node-releases@2.0.14: {}
 
