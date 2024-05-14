@@ -124,7 +124,7 @@ export function Configure() {
               id="height"
               min={1}
               placeholder="自动"
-              value={formData.height}
+              value={formData.height ?? ""}
               onChange={(event) => {
                 if (event.target.value === "") {
                   settingFormData({ ...formData, height: undefined });
@@ -144,7 +144,7 @@ export function Configure() {
               type="text"
               id="suffix"
               min={1}
-              value={formData.suffix}
+              value={formData.suffix ?? ""}
               onChange={(event) => {
                 settingFormData({
                   ...formData,
