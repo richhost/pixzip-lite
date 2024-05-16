@@ -17,7 +17,6 @@ import { useTaskAction } from "~/hooks/use-task-action";
 import { useAtom, useAtomValue } from "jotai";
 import { tasksAtom } from "~/atoms/tasks";
 import { currentWksIDAtom } from "~/atoms/workspaces";
-import { useMemo } from "react";
 import { Scroll } from "../../workspace/atom";
 
 export function HeadBar({ position }: { position: Scroll }) {
@@ -27,10 +26,7 @@ export function HeadBar({ position }: { position: Scroll }) {
   const [tasks, setTasks] = useAtom(tasksAtom);
   const workspaceId = useAtomValue(currentWksIDAtom);
 
-  const list = useMemo(() => {
-    if (!workspaceId) return [];
-    return tasks.get(workspaceId) ?? [];
-  }, [tasks, workspaceId]);
+  const list = !workspaceId ? [] : tasks.get(workspaceId) ?? [];
 
   return (
     <header

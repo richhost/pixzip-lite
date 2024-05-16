@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { useCallback, useMemo, useState } from "react";
+import { useState } from "react";
 import { currentWksIDAtom } from "~/atoms/workspaces";
 import { useWorkspace } from "~/hooks/use-workspace.ts";
 import { type ConfigFormData, FormDataSchema } from "~/lib/schema";
@@ -24,46 +24,42 @@ export function useWorkspaceConfig() {
 
   const [formData, setFormData] = useState<ConfigFormData>(initState);
 
-  const currentWks = useMemo(() => {
-    return workspaces.find((w) => w.id === currWksID) ?? workspaces[0];
-  }, [workspaces, currWksID]);
+  const currentWks =
+    workspaces.find((w) => w.id === currWksID) ?? workspaces[0];
 
   const [previewCurrentWks, setPreviewCurrentWks] =
     useState<Pixzip.Workspace>();
 
-  const normalizedFormData = useCallback((workspace: Pixzip.Workspace) => {
+  const normalizedFormData = (workspace: Pixzip.Workspace) => {
     const data = FormDataSchema.parse(workspace);
     setFormData(data);
-  }, []);
+  };
 
   if (currentWks !== previewCurrentWks) {
     setPreviewCurrentWks(currentWks);
     normalizedFormData(currentWks);
   }
 
-  const settingFormData = useCallback(
-    (data: ConfigFormData) => {
-      setFormData(data);
-      const res = FormDataSchema.parse(data);
-      if (currWksID) {
-        patch({ ...res, id: currWksID });
-      }
-    },
-    [currWksID, patch]
-  );
+  const settingFormData = (data: ConfigFormData) => {
+    setFormData(data);
+    const res = FormDataSchema.parse(data);
+    if (currWksID) {
+      patch({ ...res, id: currWksID });
+    }
+  };
 
-  const delWorkspace = useCallback(() => {
+  const delWorkspace = () => {
     currWksID && del(currWksID);
-  }, [currWksID, del]);
+  };
 
-  const selectOutputDir = useCallback(() => {
+  const selectOutputDir = () => {
     window.pixzip.action.folderPicker().then((dir) => {
       settingFormData({
         ...formData,
         outputDir: dir[0] ?? "",
       });
     });
-  }, [formData, settingFormData]);
+  };
 
   return {
     formData,

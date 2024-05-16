@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useAtomValue } from "jotai";
 
 import { TooltipProvider } from "~/components/ui/tooltip";
@@ -11,11 +10,9 @@ export function ImageItem({ filepath }: { filepath: string }) {
   const workspaceId = useAtomValue(currentWksIDAtom);
   const tasks = useAtomValue(tasksAtom);
 
-  const task = useMemo(() => {
-    return tasks
-      .get(workspaceId as string)
-      ?.find((t) => t.filepath === filepath);
-  }, [tasks, workspaceId, filepath]);
+  const task = tasks
+    .get(workspaceId as string)
+    ?.find((t) => t.filepath === filepath);
 
   return (
     <TooltipProvider>

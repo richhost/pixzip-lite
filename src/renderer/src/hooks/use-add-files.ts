@@ -1,5 +1,5 @@
 import type React from "react";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { useAtom, useAtomValue } from "jotai";
 import { produce } from "immer";
 
@@ -17,27 +17,24 @@ export function useAddFiles() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [tasks, setTasks] = useAtom(tasksAtom);
 
-  const addFiles = useCallback(
-    (t: Task[]) => {
-      if (!currentWorkspace) return;
-      setTasks((prev) => {
-        const nextState = produce(prev, (draft) => {
-          const prevTasks = draft.get(currentWorkspace.id) ?? [];
-          draft.set(currentWorkspace.id, [...prevTasks, ...t]);
-        });
-        return nextState;
+  const addFiles = (t: Task[]) => {
+    if (!currentWorkspace) return;
+    setTasks((prev) => {
+      const nextState = produce(prev, (draft) => {
+        const prevTasks = draft.get(currentWorkspace.id) ?? [];
+        draft.set(currentWorkspace.id, [...prevTasks, ...t]);
       });
-      if (currentWorkspace.autoExec) {
-        window.pixzip.task.addTask(
-          t.map((t) => ({
-            workspaceId: currentWorkspace.id,
-            filepath: t.filepath,
-          }))
-        );
-      }
-    },
-    [currentWorkspace, setTasks]
-  );
+      return nextState;
+    });
+    if (currentWorkspace.autoExec) {
+      window.pixzip.task.addTask(
+        t.map((t) => ({
+          workspaceId: currentWorkspace.id,
+          filepath: t.filepath,
+        }))
+      );
+    }
+  };
 
   const normalize = (files: FileList | File[]) => {
     if (!currentWorkspace) return [];

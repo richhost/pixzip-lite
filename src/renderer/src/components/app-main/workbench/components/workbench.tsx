@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { ScrollArea } from "~/components/ui/scroll-area";
 
 import { HeadBar } from "./head-bar";
@@ -15,15 +15,9 @@ export function Workbench() {
   const currentWorkspaceId = useAtomValue(currentWksIDAtom);
   const tasks = useAtomValue(tasksAtom);
 
-  const list = useMemo(() => {
-    if (currentWorkspaceId) {
-      return tasks.get(currentWorkspaceId) || [];
-    }
-    return [];
-  }, [tasks, currentWorkspaceId]);
+  const list = currentWorkspaceId ? tasks.get(currentWorkspaceId) || [] : [];
 
   const { handleDrop } = useAddFiles();
-
   const [position, setPosition] = useState<Scroll>();
 
   return (
