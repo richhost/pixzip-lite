@@ -41,7 +41,7 @@
     "electron-builder": "^24.13.3",
     "electron-vite": "^2.2.0",
     "immer": "^10.1.1",
-    "jotai": "^2.8.0",
+    "jotai": "^2.8.1",
     "lucide-react": "^0.338.0",
     "nanoid": "^5.0.7",
     "postcss": "^8.4.38",

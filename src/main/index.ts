@@ -12,6 +12,10 @@ app.on("window-all-closed", () => {
   app.quit();
 });
 
+if (process.platform !== "darwin") {
+  app.commandLine.appendSwitch("--enable-features", "FluentOverlayScrollbar");
+}
+
 app
   .whenReady()
   .then(registerProtocol)

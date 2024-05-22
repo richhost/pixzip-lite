@@ -11,7 +11,6 @@ import {
   PopoverTrigger,
 } from "~/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
-import { ScrollArea } from "~/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -53,7 +52,7 @@ export function Configure() {
         "border-t": position?.top,
       })}
     >
-      <ScrollArea className="h-full" ref={scrollAreaRef} onScroll={onScroll}>
+      <div className="h-full overflow-auto" ref={scrollAreaRef} onScroll={onScroll}>
         <div className="p-4 space-y-8">
           <div className="flex w-full gap-2">
             <div className="grid gap-2">
@@ -276,7 +275,7 @@ export function Configure() {
             </div>
           </div>
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 }

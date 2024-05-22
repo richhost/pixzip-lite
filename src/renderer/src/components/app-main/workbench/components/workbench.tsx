@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ScrollArea } from "~/components/ui/scroll-area";
 
 import { HeadBar } from "./head-bar";
 import { ImageItem } from "./image-item";
@@ -23,8 +22,8 @@ export function Workbench() {
   return (
     <section className="flex flex-col h-full">
       <HeadBar position={position} />
-      <ScrollArea
-        className={cn("h-full", { "border-t": position?.top })}
+      <div
+        className={cn("h-full overflow-auto", { "border-t": position?.top })}
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
         onScroll={(event) => {
@@ -44,7 +43,7 @@ export function Workbench() {
             ))
           )}
         </div>
-      </ScrollArea>
+      </div>
     </section>
   );
 }

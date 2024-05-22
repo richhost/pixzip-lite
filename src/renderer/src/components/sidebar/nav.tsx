@@ -1,7 +1,6 @@
 import { useAtom } from "jotai";
 import { PlusIcon } from "@radix-ui/react-icons";
 
-import { ScrollArea } from "~/components/ui/scroll-area";
 import { WorkspaceIcon } from "~/components/ui/workspace-icon";
 import { useWorkspace } from "~/hooks/use-workspace";
 import { Button, buttonVariants } from "../ui/button";
@@ -14,7 +13,7 @@ export function Nav() {
 
   return (
     <>
-      <ScrollArea className="h-full">
+      <div className="h-full overflow-auto">
         <nav
           className={cn("grid grid-cols-1 gap-1 p-2 text-sm", {
             "pt-0": OS === "darwin",
@@ -24,7 +23,7 @@ export function Nav() {
             <NavItem key={w.id} {...w} />
           ))}
         </nav>
-      </ScrollArea>
+      </div>
       <div className="m-2">
         <Button
           variant="outline"
