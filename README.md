@@ -17,3 +17,7 @@
 ## 下载安装
 
 [下载](https://github.com/richhost/pixzip/releases) 最新版本的 Pixzip。
+
+## Thanks JetBrains
+
+[![JetBrains](https://raw.githubusercontent.com/richhost/pixzip/main/static/JetBrains.svg)](https://www.jetbrains.com/?from=pixzip)
