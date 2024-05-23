@@ -32,7 +32,7 @@ export function dirname(path: string) {
 
 export function savePercentage(current: number, total: number) {
   const percent = ((total - current) / total) * 100;
-  return `${Math.round(percent) === 100 ? 99 : Math.round(percent)}%`;
+  return Math.round(percent) === 100 ? 99 : Math.round(percent);
 }
 
 export const filePromise = (file: FileSystemFileEntry) => {

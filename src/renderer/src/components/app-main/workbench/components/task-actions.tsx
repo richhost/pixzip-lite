@@ -1,5 +1,6 @@
 import {
   ArrowDownIcon,
+  ArrowUpIcon,
   CopyIcon,
   DotsHorizontalIcon,
   ExternalLinkIcon,
@@ -75,6 +76,8 @@ function Preprocessing() {
 function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
   const { remove, trash, addTask } = useTaskAction();
 
+  const percentage = savePercentage(task.outputSize, task.size);
+
   return (
     <div className="flex flex-col">
       <div className="flex gap-2">
@@ -83,8 +86,8 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
           <span className="text-muted-foreground">
             {bytesToSize(task.outputSize)}
           </span>
-          <ArrowDownIcon />
-          <span>{savePercentage(task.outputSize, task.size)}</span>
+          {percentage >= 0 ? <ArrowDownIcon /> : <ArrowUpIcon />}
+          <span>{Math.abs(percentage) + "%"}</span>
         </Badge>
       </div>
 

@@ -5,6 +5,7 @@ import { ensureDirSync, outputFile } from "fs-extra/esm";
 
 import { getWorkspaces } from "../ipc/workspace";
 import { delimiter, qualityMap } from "./constants";
+import { getGifFrameCount } from "./helper";
 
 sharp.cache(false);
 
@@ -32,9 +33,23 @@ export const fileExists = (filepath: string) => {
 };
 
 const getFormat = (filepath: string, config: Pixzip.Workspace) => {
+  let format: keyof FormatEnum;
   const ext = getExtname(filepath);
-  if (config.format === "original") return ext as unknown as keyof FormatEnum;
-  return config.format as keyof FormatEnum;
+
+  if (config.format === "original") {
+    format = ext as unknown as keyof FormatEnum;
+  } else {
+    format = config.format;
+  }
+
+  // in Windows, if gif only have 1 frame, will crash
+  if (format === "gif" && process.platform === "win32") {
+    const count = getGifFrameCount(filepath);
+    if (count === 1) {
+      format = "png";
+    }
+  }
+  return format;
 };
 
 const getQuality = (format: keyof FormatEnum, level: number) => {
@@ -54,7 +69,9 @@ export const zip = (filepath: string, config: Pixzip.Workspace) => {
   const format = getFormat(filepath, config);
   const quality = getQuality(format, config.level);
 
-  const instance = sharp(filepath, { animated: needAnimated }).keepMetadata();
+  const instance = sharp(filepath, {
+    animated: needAnimated && format !== "avif",
+  }).keepMetadata();
 
   return keepExif(instance, config)
     .resize({
