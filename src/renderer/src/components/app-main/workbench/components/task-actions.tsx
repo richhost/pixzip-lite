@@ -87,7 +87,7 @@ function Succeed({ task }: { task: Extract<Task, { status: "succeed" }> }) {
             {bytesToSize(task.outputSize)}
           </span>
           {percentage >= 0 ? <ArrowDownIcon /> : <ArrowUpIcon />}
-          <span>{Math.abs(percentage) + "%"}</span>
+          <span>{`${Math.abs(percentage)}%`}</span>
         </Badge>
       </div>
 
