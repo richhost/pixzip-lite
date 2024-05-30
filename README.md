@@ -14,6 +14,8 @@
 
 **如果觉得这个应用还不错，给个 [Star](https://github.com/richhost/pixzip) ⭐️ 支持一下吧 (^-^)**
 
+**如果你需要更多特性或功能（深色模式、按比例缩放等），请考虑购买 [Pro](https://pixzip.cutepuppy.tech/) 版本 🙏**
+
 ## 下载安装
 
 [下载](https://github.com/richhost/pixzip/releases) 最新版本的 Pixzip。
