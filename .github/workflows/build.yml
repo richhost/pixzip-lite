@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-14, macos-12]
+        os: [macos-14, macos-12, windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -22,10 +22,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - name: Install Python
+        uses: actions/setup-python@v5
         with:
-          version: 8
+          python-version: "3.10"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install Dependencies
         run: pnpm install
