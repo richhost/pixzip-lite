@@ -29,9 +29,6 @@ const config = {
     target: "dmg",
     icon: "resources/icons/mac/icon.icns",
   },
-  electronDownload: {
-    mirror: "https://npmmirror.com/mirrors/electron/",
-  },
 };
 
 module.exports = config;
