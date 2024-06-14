@@ -28,6 +28,7 @@ const config = {
   mac: {
     target: "dmg",
     icon: "resources/icons/mac/icon.icns",
+    minimumSystemVersion: "12.0",
   },
 };
 
