@@ -1,5 +1,5 @@
 import { dialog, ipcMain, shell } from "electron";
-import clipboardEx from "electron-clipboard-ex";
+import { loadClipboardEx } from "../helper";
 
 export const registerHandlers = async () => {
   ipcMain.handle("folderPicker", async () => {
@@ -9,10 +9,11 @@ export const registerHandlers = async () => {
     return filePaths;
   });
   ipcMain.on("copy", async (_, filepath: string) => {
-    // not support webp, avif....
-    // const img = nativeImage.createFromPath(filepath);
-    // clipboard.writeImage(img);
-    clipboardEx.writeFilePaths([filepath]);
+    if (process.platform !== "linux") {
+      loadClipboardEx().then(({ writeFilePaths }) => {
+        writeFilePaths([filepath]);
+      });
+    }
   });
   ipcMain.on("trash", async (_, filepath: string) => {
     shell.trashItem(filepath);
