@@ -1,18 +1,16 @@
-import { useAtomValue } from "jotai";
+import { useStore } from "@tanstack/react-store";
 
 import { TooltipProvider } from "~/components/ui/tooltip";
-import { tasksAtom } from "~/atoms/tasks";
-import { currentWksIDAtom } from "~/atoms/workspaces";
 import { basename, bytesToSize, parseImg } from "~/lib/utils";
 import { TaskActions } from "./task-actions";
+import { defaultSpaceStore } from "~/stores/space";
+import { tasksStore } from "~/stores/task";
 
 export function ImageItem({ filepath }: { filepath: string }) {
-  const workspaceId = useAtomValue(currentWksIDAtom);
-  const tasks = useAtomValue(tasksAtom);
+  const spaceId = useStore(defaultSpaceStore);
+  const tasks = useStore(tasksStore, (state) => state.get(spaceId || "") ?? []);
 
-  const task = tasks
-    .get(workspaceId as string)
-    ?.find((t) => t.filepath === filepath);
+  const task = tasks.find((t) => t.filepath === filepath);
 
   return (
     <TooltipProvider>

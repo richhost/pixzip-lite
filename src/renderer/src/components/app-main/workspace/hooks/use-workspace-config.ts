@@ -1,8 +1,9 @@
-import { useAtomValue } from "jotai";
 import { useState } from "react";
-import { currentWksIDAtom } from "~/atoms/workspaces";
-import { useWorkspace } from "~/hooks/use-workspace.ts";
+import { useStore } from "@tanstack/react-store";
+
 import { type ConfigFormData, FormDataSchema } from "~/lib/schema";
+import { defaultSpaceStore } from "~/stores/space";
+import { useSpace } from "~/hooks/use-spaces";
 
 const initState: ConfigFormData = {
   name: "",
@@ -19,13 +20,12 @@ const initState: ConfigFormData = {
 };
 
 export function useWorkspaceConfig() {
-  const currWksID = useAtomValue(currentWksIDAtom);
-  const { workspaces, del, patch } = useWorkspace();
+  const spaceId = useStore(defaultSpaceStore);
+  const { spaces, delSpace, updateSpace } = useSpace();
 
   const [formData, setFormData] = useState<ConfigFormData>(initState);
 
-  const currentWks =
-    workspaces.find((w) => w.id === currWksID) ?? workspaces[0];
+  const currentSpace = spaces.find((w) => w.id === spaceId) ?? spaces[0];
 
   const [previewCurrentWks, setPreviewCurrentWks] =
     useState<Pixzip.Workspace>();
@@ -35,21 +35,21 @@ export function useWorkspaceConfig() {
     setFormData(data);
   };
 
-  if (currentWks !== previewCurrentWks) {
-    setPreviewCurrentWks(currentWks);
-    normalizedFormData(currentWks);
+  if (currentSpace !== previewCurrentWks) {
+    setPreviewCurrentWks(currentSpace);
+    normalizedFormData(currentSpace);
   }
 
   const settingFormData = (data: ConfigFormData) => {
     setFormData(data);
     const res = FormDataSchema.parse(data);
-    if (currWksID) {
-      patch({ ...res, id: currWksID });
+    if (spaceId) {
+      updateSpace({ ...res, id: spaceId });
     }
   };
 
   const delWorkspace = () => {
-    currWksID && del(currWksID);
+    spaceId && delSpace(spaceId);
   };
 
   const selectOutputDir = () => {

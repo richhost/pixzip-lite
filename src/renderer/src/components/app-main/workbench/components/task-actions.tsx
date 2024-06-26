@@ -11,7 +11,6 @@ import {
 } from "@radix-ui/react-icons";
 import { match } from "ts-pattern";
 
-import { Task } from "~/atoms/tasks";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import {
@@ -31,6 +30,7 @@ import { OS } from "~/lib/os";
 import { bytesToSize, extname, savePercentage } from "~/lib/utils";
 
 import Loader from "~/assets/loader.svg?react";
+import { Task } from "~/stores/task";
 
 export function TaskActions({ task }: { task: Task | undefined }) {
   return (
@@ -67,7 +67,6 @@ function Waiting({ task }: { task: Task }) {
 function Preprocessing() {
   return (
     <div className="w-10">
-      {/* <div className="dot-rolling" /> */}
       <Loader className="animate-spin" />
     </div>
   );

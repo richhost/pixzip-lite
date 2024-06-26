@@ -1,4 +1,4 @@
-import { produce } from "immer";
+import { useStore } from "@tanstack/react-store";
 import { Eraser, Plus, PlayIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
@@ -13,20 +13,15 @@ import { cn } from "~/lib/utils";
 
 import { WindowCtr } from "./window-ctr";
 import { useAddFiles } from "~/hooks/use-add-files";
-import { useTaskAction } from "~/hooks/use-task-action";
-import { useAtom, useAtomValue } from "jotai";
-import { tasksAtom } from "~/atoms/tasks";
-import { currentWksIDAtom } from "~/atoms/workspaces";
 import { Scroll } from "../../workspace/atom";
+import { defaultSpaceStore } from "~/stores/space";
+import { clearTasks, tasksStore } from "~/stores/task";
 
 export function HeadBar({ position }: { position: Scroll }) {
   const { handleInputFile, inputRef } = useAddFiles();
-  const { clearTask, addTask } = useTaskAction();
 
-  const [tasks, setTasks] = useAtom(tasksAtom);
-  const workspaceId = useAtomValue(currentWksIDAtom);
-
-  const list = !workspaceId ? [] : tasks.get(workspaceId) ?? [];
+  const spaceId = useStore(defaultSpaceStore);
+  const tasks = useStore(tasksStore, (state) => state.get(spaceId || "") ?? []);
 
   return (
     <header
@@ -72,25 +67,25 @@ export function HeadBar({ position }: { position: Scroll }) {
                 className="no-drag cursor-default"
                 size="icon"
                 onClick={() => {
-                  if (!workspaceId) return;
-                  setTasks((prev) => {
-                    const nextState = produce(prev, (draft) => {
-                      const list = draft.get(workspaceId);
-                      if (list) {
-                        for (const item of list) {
-                          if (
-                            item.status !== "preprocessing" &&
-                            item.status !== "processing"
-                          ) {
-                            item.status = "preprocessing";
-                          }
+                  if (!spaceId) return;
+                  tasksStore.setState((state) => {
+                    const list = state.get(spaceId);
+                    if (list) {
+                      const status = ["preprocessing", "processing"];
+                      for (const item of list) {
+                        if (!status.includes(item.status)) {
+                          item.status = "preprocessing";
                         }
                       }
-                    });
-
-                    return nextState;
+                    }
+                    return structuredClone(state);
                   });
-                  addTask(list.map((i) => i.filepath));
+                  window.pixzip.task.addTask(
+                    tasks.map((element) => ({
+                      workspaceId: spaceId,
+                      filepath: element.filepath,
+                    }))
+                  );
                 }}
               >
                 <PlayIcon size={16} className="no-drag" />
@@ -107,7 +102,9 @@ export function HeadBar({ position }: { position: Scroll }) {
                 variant="ghost"
                 className="no-drag cursor-default"
                 size="icon"
-                onClick={() => clearTask()}
+                onClick={() => {
+                  spaceId && clearTasks(spaceId);
+                }}
               >
                 <Eraser size={16} className="no-drag" />
               </Button>

@@ -1,53 +1,29 @@
 import type React from "react";
 import { useRef } from "react";
-import { useAtom, useAtomValue } from "jotai";
-import { produce } from "immer";
+import { useStore } from "@tanstack/react-store";
 
-import { currentWksIDAtom } from "~/atoms/workspaces";
-import { type Task, tasksAtom } from "~/atoms/tasks";
-import { useWorkspace } from "./use-workspace";
 import { filePromise, readEntriesPromise } from "~/lib/utils";
+import { defaultSpaceStore } from "~/stores/space";
+import { addTasks, tasksStore, type Task } from "~/stores/task";
 
 export function useAddFiles() {
-  const workspaceId = useAtomValue(currentWksIDAtom);
-  const { workspaces } = useWorkspace();
-
-  const currentWorkspace = workspaces.find((w) => w.id === workspaceId);
+  const spaceId = useStore(defaultSpaceStore);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [tasks, setTasks] = useAtom(tasksAtom);
-
-  const addFiles = (t: Task[]) => {
-    if (!currentWorkspace) return;
-    setTasks((prev) => {
-      const nextState = produce(prev, (draft) => {
-        const prevTasks = draft.get(currentWorkspace.id) ?? [];
-        draft.set(currentWorkspace.id, [...prevTasks, ...t]);
-      });
-      return nextState;
-    });
-    if (currentWorkspace.autoExec) {
-      window.pixzip.task.addTask(
-        t.map((t) => ({
-          workspaceId: currentWorkspace.id,
-          filepath: t.filepath,
-        }))
-      );
-    }
-  };
+  const tasks = useStore(tasksStore, (state) => state.get(spaceId || "") ?? []);
 
   const normalize = (files: FileList | File[]) => {
-    if (!currentWorkspace) return [];
+    if (!spaceId) return [];
     const data: Task[] = [];
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const isImg = img(files[i]);
-      const isExisted = existed(file, tasks.get(currentWorkspace.id) ?? []);
+      const isExisted = existed(file, tasks);
       if (isImg && !isExisted) {
         data.push({
           filepath: file.path,
           size: file.size,
-          status: currentWorkspace.autoExec ? "preprocessing" : "waiting",
+          status: "preprocessing",
         });
       }
     }
@@ -97,7 +73,7 @@ export function useAddFiles() {
 
       Promise.all(fileList).then((files) => {
         const t = normalize(files);
-        addFiles(t);
+        spaceId && addTasks(spaceId, t);
       });
     };
     eachFiles();
@@ -108,7 +84,7 @@ export function useAddFiles() {
     const files = inputRef.current?.files;
     if (files?.length) {
       const t = normalize(files);
-      addFiles(t);
+      spaceId && addTasks(spaceId, t);
     }
     inputRef.current.value = "";
   };

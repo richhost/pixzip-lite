@@ -2,7 +2,7 @@
 
 import { platform, arch } from "node:os";
 
-const platformPath = platform() + "-" + arch();
+const platformPath = `${platform()}-${arch()}`;
 
 export const loadClipboardEx = async () => {
   return new Promise((resolve) => {

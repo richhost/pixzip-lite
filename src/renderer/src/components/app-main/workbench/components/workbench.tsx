@@ -1,20 +1,20 @@
 import { useState } from "react";
+import { useStore } from "@tanstack/react-store";
 
 import { HeadBar } from "./head-bar";
 import { ImageItem } from "./image-item";
 import { Empty } from "./empty";
-import { useAtomValue } from "jotai";
-import { currentWksIDAtom } from "~/atoms/workspaces";
-import { tasksAtom } from "~/atoms/tasks";
 import { useAddFiles } from "~/hooks/use-add-files";
 import { cn } from "~/lib/utils";
 import { Scroll } from "../../workspace/atom";
+import { defaultSpaceStore } from "~/stores/space";
+import { tasksStore } from "~/stores/task";
 
 export function Workbench() {
-  const currentWorkspaceId = useAtomValue(currentWksIDAtom);
-  const tasks = useAtomValue(tasksAtom);
-
-  const list = currentWorkspaceId ? tasks.get(currentWorkspaceId) || [] : [];
+  const spaceId = useStore(defaultSpaceStore);
+  const tasks = useStore(tasksStore, (state) => {
+    return state.get(spaceId || "") || [];
+  });
 
   const { handleDrop } = useAddFiles();
   const [position, setPosition] = useState<Scroll>();
@@ -35,10 +35,10 @@ export function Workbench() {
         }}
       >
         <div className="space-y-2 p-4">
-          {list.length === 0 ? (
+          {tasks.length === 0 ? (
             <Empty />
           ) : (
-            list.map((item) => (
+            tasks.map((item) => (
               <ImageItem key={item.filepath} filepath={item.filepath} />
             ))
           )}

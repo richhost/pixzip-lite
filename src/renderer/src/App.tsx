@@ -1,27 +1,19 @@
 import { AppMain } from "./components/app-main";
 import { Aside, Layout, Main } from "./components/layout";
 import { Sidebar } from "./components/sidebar";
-import { useTask } from "./hooks/use-task";
+import "./hooks/use-task";
 
 function App() {
   return (
-    <>
-      <Layout>
-        <Aside>
-          <Sidebar />
-        </Aside>
-        <Main>
-          <AppMain />
-        </Main>
-      </Layout>
-      <Core />
-    </>
+    <Layout>
+      <Aside>
+        <Sidebar />
+      </Aside>
+      <Main>
+        <AppMain />
+      </Main>
+    </Layout>
   );
-}
-
-function Core() {
-  useTask();
-  return null;
 }
 
 export default App;

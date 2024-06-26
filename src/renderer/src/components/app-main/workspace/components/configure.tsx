@@ -52,7 +52,11 @@ export function Configure() {
         "border-t": position?.top,
       })}
     >
-      <div className="h-full overflow-auto" ref={scrollAreaRef} onScroll={onScroll}>
+      <div
+        className="h-full overflow-auto"
+        ref={scrollAreaRef}
+        onScroll={onScroll}
+      >
         <div className="p-4 space-y-8">
           <div className="flex w-full gap-2">
             <div className="grid gap-2">
@@ -253,22 +257,6 @@ export function Configure() {
                   settingFormData({
                     ...formData,
                     keepExif: checked,
-                  });
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="grid gap-2">
-            <Label>自动执行</Label>
-            <div className="flex gap-4 items-start justify-between">
-              <Description>添加图片后自动压缩</Description>
-              <Switch
-                checked={formData.autoExec}
-                onCheckedChange={(checked) => {
-                  settingFormData({
-                    ...formData,
-                    autoExec: checked,
                   });
                 }}
               />

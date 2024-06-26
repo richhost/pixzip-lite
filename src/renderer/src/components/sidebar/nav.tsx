@@ -1,15 +1,15 @@
-import { useAtom } from "jotai";
+import { useStore } from "@tanstack/react-store";
 import { PlusIcon } from "@radix-ui/react-icons";
 
 import { WorkspaceIcon } from "~/components/ui/workspace-icon";
-import { useWorkspace } from "~/hooks/use-workspace";
 import { Button, buttonVariants } from "../ui/button";
-import { currentWksIDAtom } from "~/atoms/workspaces";
 import { cn } from "~/lib/utils.ts";
 import { OS } from "~/lib/os.ts";
+import { useSpace } from "~/hooks/use-spaces";
+import { defaultSpaceStore, updateDefaultSpace } from "~/stores/space";
 
 export function Nav() {
-  const { workspaces, add } = useWorkspace();
+  const { spaces, addSpace } = useSpace();
 
   return (
     <>
@@ -19,7 +19,7 @@ export function Nav() {
             "pt-0": OS === "darwin",
           })}
         >
-          {workspaces.map((w) => (
+          {spaces.map((w) => (
             <NavItem key={w.id} {...w} />
           ))}
         </nav>
@@ -29,7 +29,7 @@ export function Nav() {
           variant="outline"
           size="sm"
           className="w-full border-dashed bg-transparent shadow-none"
-          onClick={add}
+          onClick={addSpace}
         >
           <PlusIcon />
         </Button>
@@ -39,19 +39,19 @@ export function Nav() {
 }
 
 function NavItem(props: Pixzip.Workspace) {
-  const [currentWksID, setCurrentWksID] = useAtom(currentWksIDAtom);
+  const defaultId = useStore(defaultSpaceStore);
 
   return (
     <button
       type="button"
       className={cn(
         buttonVariants({
-          variant: props.id === currentWksID ? "default" : "ghost",
+          variant: props.id === defaultId ? "default" : "ghost",
           size: "sm",
         })
       )}
       onClick={() => {
-        if (currentWksID !== props.id) setCurrentWksID(props.id);
+        if (defaultId !== props.id) updateDefaultSpace(props.id);
       }}
     >
       <div className="flex min-w-0 items-center gap-2">
