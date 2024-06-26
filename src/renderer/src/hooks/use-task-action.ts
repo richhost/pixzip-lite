@@ -34,7 +34,9 @@ export function useTaskAction() {
       const list = state.get(spaceId);
       if (list) {
         const index = list.findIndex((t) => t.filepath === filepath);
-        if (index !== -1) list.splice(index, 1);
+        if (index !== -1) {
+          state.set(spaceId, list.toSpliced(index, 1));
+        }
       }
       return structuredClone(state);
     });
@@ -48,7 +50,9 @@ export function useTaskAction() {
       const list = state.get(spaceId);
       if (list) {
         const index = list.findIndex((t) => t.filepath === filepath);
-        if (index !== -1) list.splice(index, 1);
+        if (index !== -1) {
+          state.set(spaceId, list.toSpliced(index, 1));
+        }
       }
       return structuredClone(state);
     });
