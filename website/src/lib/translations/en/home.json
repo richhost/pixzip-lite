@@ -1,0 +1,35 @@
+{
+	"h1": "Compress images quickly & free!",
+	"descr": "Save your storage now",
+	"download": "Free Download",
+	"os": "Supports",
+	"version": "Version: ",
+	"updated": "Updated: ",
+	"workspace": {
+		"index": "🚀 Workspace",
+		"descr": "You can combine any configuration of output size, output format, compression strength, etc., and switch them freely."
+	},
+	"format": {
+		"index": "🌈 Popular format",
+		"descr": "Batch compress JPG/PNG/GIF/WebP/AVIF."
+	},
+	"local": {
+		"index": "📥 Local compression",
+		"descr": "No data will be uploaded, so you don't have to worry about your photos being leaked."
+	},
+	"free": {
+		"index": "❤️ Free software",
+		"descr": "All people and businesses can use this software for free, and the source code is open."
+	},
+	"showcase": {
+		"descr": "Visually Lossless Compression",
+		"title": "High Compression Ratio",
+		"content": "In the example, the original image is on the left and the compressed image is on the right. You can drag the slider and it is hard to see any difference.",
+		"original": "Original",
+		"compressed": "Compressed",
+		"both": "Both",
+		"file": "File",
+		"save": "Save",
+		"storage": "storage"
+	}
+}

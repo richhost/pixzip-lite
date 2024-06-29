@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+		<script src="https://openpanel.dev/op.js" defer async></script>
+		<script>
+			window.op =
+				window.op ||
+				function (...args) {
+					(window.op.q = window.op.q || []).push(args);
+				};
+			window.op('ctor', {
+				clientId: '0077c520-6bf5-4790-8412-ac0874c00cd1',
+				trackScreenViews: true,
+				trackOutgoingLinks: true,
+				trackAttributes: true,
+			});
+		</script>
+	</body>
+</html>
