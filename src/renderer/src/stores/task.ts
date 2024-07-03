@@ -16,15 +16,15 @@ export type Task =
 
 type TaskMap = Map<Pixzip.Workspace["id"], Task[]>;
 
-export const tasksStore = new Store<TaskMap>(new Map());
+export const tasksStore = new Store<{ taskMap: TaskMap }>({
+  taskMap: new Map(),
+});
 
 export const addTasks = (spaceId: string, tasks: Task[]) => {
   tasksStore.setState((state) => {
-    if (!state.has(spaceId)) {
-      state.set(spaceId, []);
-    }
-    state.get(spaceId)?.push(...tasks);
-    return structuredClone(state);
+    const list = state.taskMap.get(spaceId) ?? [];
+    list.push(...tasks);
+    return { taskMap: new Map(state.taskMap).set(spaceId, list) };
   });
   window.pixzip.task.addTask(
     tasks.map((element) => ({
@@ -38,7 +38,7 @@ export const clearTasks = (spaceId: string) => {
   window.pixzip.task.clearTask(spaceId);
 
   tasksStore.setState((state) => {
-    state.delete(spaceId);
-    return structuredClone(state);
+    state.taskMap.delete(spaceId);
+    return { taskMap: new Map(state.taskMap) };
   });
 };

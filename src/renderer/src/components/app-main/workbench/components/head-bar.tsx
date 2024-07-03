@@ -13,23 +13,22 @@ import { cn } from "~/lib/utils";
 
 import { WindowCtr } from "./window-ctr";
 import { useAddFiles } from "~/hooks/use-add-files";
-import { Scroll } from "../../workspace/atom";
 import { defaultSpaceStore } from "~/stores/space";
 import { clearTasks, tasksStore } from "~/stores/task";
 
-export function HeadBar({ position }: { position: Scroll }) {
+export function HeadBar() {
   const { handleInputFile, inputRef } = useAddFiles();
 
   const spaceId = useStore(defaultSpaceStore);
-  const tasks = useStore(tasksStore, (state) => state.get(spaceId || "") ?? []);
+  const tasks = useStore(
+    tasksStore,
+    (state) => state.taskMap.get(spaceId || "") ?? []
+  );
 
   return (
     <header
       className={cn(
-        "flex items-center h-[var(--h-header)] draggable justify-between shrink-0",
-        {
-          shadow: position?.top,
-        }
+        "flex items-center h-[var(--h-header)] draggable justify-between shrink-0"
       )}
     >
       <TooltipProvider>
@@ -69,16 +68,19 @@ export function HeadBar({ position }: { position: Scroll }) {
                 onClick={() => {
                   if (!spaceId) return;
                   tasksStore.setState((state) => {
-                    const list = state.get(spaceId);
-                    if (list) {
-                      const status = ["preprocessing", "processing"];
-                      for (const item of list) {
-                        if (!status.includes(item.status)) {
-                          item.status = "preprocessing";
-                        }
+                    const list = structuredClone(
+                      state.taskMap.get(spaceId) ?? []
+                    );
+                    const status = ["preprocessing", "processing"];
+                    for (const item of list) {
+                      if (!status.includes(item.status)) {
+                        item.status = "preprocessing";
                       }
                     }
-                    return structuredClone(state);
+
+                    return {
+                      taskMap: new Map(state.taskMap).set(spaceId, list),
+                    };
                   });
                   window.pixzip.task.addTask(
                     tasks.map((element) => ({

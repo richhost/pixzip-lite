@@ -8,7 +8,10 @@ import { tasksStore } from "~/stores/task";
 
 export function ImageItem({ filepath }: { filepath: string }) {
   const spaceId = useStore(defaultSpaceStore);
-  const tasks = useStore(tasksStore, (state) => state.get(spaceId || "") ?? []);
+  const tasks = useStore(
+    tasksStore,
+    (state) => state.taskMap.get(spaceId || "") ?? []
+  );
 
   const task = tasks.find((t) => t.filepath === filepath);
 

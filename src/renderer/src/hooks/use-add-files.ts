@@ -10,7 +10,10 @@ export function useAddFiles() {
   const spaceId = useStore(defaultSpaceStore);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const tasks = useStore(tasksStore, (state) => state.get(spaceId || "") ?? []);
+  const tasks = useStore(
+    tasksStore,
+    (state) => state.taskMap.get(spaceId || "") ?? []
+  );
 
   const normalize = (files: FileList | File[]) => {
     if (!spaceId) return [];
