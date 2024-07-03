@@ -13,6 +13,7 @@ const config = {
     "!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}",
     "!{.env,.env.*,.npmrc,pnpm-lock.yaml}",
     "!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}",
+    "!**/website/*",
   ],
   artifactName: "${productName}-${version}-${os}-${arch}.${ext}",
   win: {
