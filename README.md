@@ -10,11 +10,11 @@
 
 `Pixzip` 是一款快速、免费的图片压缩软件，支持 JPG / PNG / WebP / AVIF 等主流格式，支持 Windows 10+，macOS 11+ 操作系统。
 
-![Log](https://raw.githubusercontent.com/richhost/xiangsu.fun/main/static/1.webp)
+![Log](https://raw.githubusercontent.com/richhost/pixzip/main/website/static/1.webp)
 
 **如果觉得这个应用还不错，给个 [Star](https://github.com/richhost/pixzip) ⭐️ 支持一下吧 (^-^)**
 
-**如果你需要更多特性或功能（深色模式、按比例缩放等），请考虑购买 [Pro](https://pixzip.cutepuppy.tech/) 版本 🙏**
+**如果你需要更多特性或功能（按比例缩放、通知、BMP 格式支持等等），请考虑购买 [Pro](https://pixzip.cutepuppy.tech/) 版本 🙏**
 
 ## 下载安装
 
