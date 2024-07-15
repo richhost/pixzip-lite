@@ -28,7 +28,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
-    "@tanstack/react-store": "^0.5.4",
+    "@tanstack/react-store": "^0.5.5",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
