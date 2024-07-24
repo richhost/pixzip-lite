@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+* {
+  @apply select-none cursor-default;
+}
+
+:root {
+  --w-sidebar-min: 180px;
+  --w-sidebar-max: 240px;
+  --w-config-min: 224px;
+  --w-config-max: 360px;
+  --h-title-bar: 30px;
+}
+
+body {
+  @apply text-[13px] antialiased;
+  font-family: system-ui, —apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  -webkit-app-region: no-drag;
+}
+
+:where(input::placeholder) {
+  @apply text-[13px];
+}
+
+@layer utilities {
+  .draggable {
+    -webkit-app-region: drag;
+  }
+
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+}

@@ -63,9 +63,18 @@ importers:
       gifuct-js:
         specifier: ^2.1.2
         version: 2.1.2
+      lucide-svelte:
+        specifier: ^0.414.0
+        version: 0.414.0(svelte@5.0.0-next.197)
       nanoid:
         specifier: ^5.0.7
         version: 5.0.7
+      prettier:
+        specifier: ^3.3.3
+        version: 3.3.3
+      prettier-plugin-svelte:
+        specifier: ^3.2.6
+        version: 3.2.6(prettier@3.3.3)(svelte@5.0.0-next.197)
       svelte:
         specifier: 5.0.0-next.197
         version: 5.0.0-next.197
@@ -1866,6 +1875,11 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
+  lucide-svelte@0.414.0:
+    resolution: {integrity: sha512-LTEzcm5rix345H2rLxH0nBNZRaFx4I2yL48yDgiIkM9jtUb4LZ629e0MuUmeosS35dGnLFmnGeGNDOt9SKouDA==}
+    peerDependencies:
+      svelte: ^3 || ^4 || ^5.0.0-next.42
+
   magic-string@0.30.10:
     resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
 
@@ -2027,6 +2041,17 @@ packages:
   postcss@8.4.39:
     resolution: {integrity: sha512-0vzE+lAiG7hZl1/9I8yzKLx3aR9Xbof3fBHKunvMfOCYAtMhrsnccJY2iTURb9EZd5+pLuiNV9/c/GZJOHsgIw==}
     engines: {node: ^10 || ^12 || >=14}
+
+  prettier-plugin-svelte@3.2.6:
+    resolution: {integrity: sha512-Y1XWLw7vXUQQZmgv1JAEiLcErqUniAF2wO7QJsw8BVMvpLET2dI5WpEIEJx1r11iHVdSMzQxivyfrH9On9t2IQ==}
+    peerDependencies:
+      prettier: ^3.0.0
+      svelte: ^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0
+
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -4321,6 +4346,10 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
+  lucide-svelte@0.414.0(svelte@5.0.0-next.197):
+    dependencies:
+      svelte: 5.0.0-next.197
+
   magic-string@0.30.10:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -4441,6 +4470,13 @@ snapshots:
       nanoid: 3.3.7
       picocolors: 1.0.1
       source-map-js: 1.2.0
+
+  prettier-plugin-svelte@3.2.6(prettier@3.3.3)(svelte@5.0.0-next.197):
+    dependencies:
+      prettier: 3.3.3
+      svelte: 5.0.0-next.197
+
+  prettier@3.3.3: {}
 
   process-nextick-args@2.0.1: {}
 

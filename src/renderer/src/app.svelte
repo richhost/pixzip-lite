@@ -1,1 +1,7 @@
-<main class="h-screen grid place-items-center">Hello, Svelte!</main>
+<script lang="ts">
+    import TitleBar from "~/lib/components/title-bar/title-bar.svelte";
+</script>
+
+<div>
+    <TitleBar />
+</div>
