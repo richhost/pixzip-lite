@@ -1,0 +1,1 @@
+<main class="h-screen grid place-items-center">Hello, Svelte!</main>
