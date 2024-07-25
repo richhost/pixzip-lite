@@ -18,11 +18,14 @@
 		<ChevronsUpDown size="16" class="shrink-0 mr-1" />
 	</Select.Trigger>
 
-	<Select.Content class="w-full border rounded shadow border-neutral-200 p-2" sideOffset={8}>
+	<Select.Content
+		class="w-full border bg-white rounded shadow-lg border-neutral-200 p-2"
+		sideOffset={8}
+	>
 		{#each items as item}
 			<Select.Item
 				value={item.value}
-				class="h-7 px-2 flex items-center hover:bg-neutral-100 transition rounded duration-100"
+				class="h-7 px-2 flex items-center hover:bg-neutral-100 transition rounded duration-100 data-[highlighted]:bg-neutral-100"
 			>
 				<span class="grow">{item.label}</span>
 				<Select.ItemIndicator>

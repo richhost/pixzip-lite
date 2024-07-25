@@ -1,10 +1,19 @@
 <script lang="ts">
-	import { FolderPen, Scaling, WandSparkles, HardDriveDownload, FolderDown } from 'lucide-svelte';
+	import {
+		FolderPen,
+		Scaling,
+		WandSparkles,
+		HardDriveDownload,
+		FolderDown,
+		Box
+	} from 'lucide-svelte';
 
 	import ItemGroupLabel from './item-group-label.svelte';
 	import Input from '../ui/input.svelte';
 	import NumberInput from '../ui/number-input.svelte';
 	import Select from '../ui/select.svelte';
+	import SaveInto from './save-into.svelte';
+	import Switch from '../ui/switch.svelte';
 
 	const items = [
 		{ value: 'original', label: 'Original' },
@@ -16,9 +25,9 @@
 </script>
 
 <section
-	class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] bg-white m-2 rounded-2xl border border-neutral-200/80 p-3"
+	class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] m-2 rounded-2xl border border-neutral-200/80"
 >
-	<form class="grid grid-cols-1 gap-5">
+	<form class="flex flex-col gap-5 h-full overflow-auto p-3">
 		<ItemGroupLabel text="Space Name">
 			{#snippet icon()}
 				<FolderPen size="15" />
@@ -76,7 +85,23 @@
 			{#snippet icon()}
 				<FolderDown size="15" />
 			{/snippet}
-			<div></div>
+			<SaveInto />
+
+			<div>
+				<div class="mb-1">Add Suffix</div>
+				<Input />
+				<div class="text-xs mt-1">filename<span class="text-red-500">-min</span>.jpg</div>
+			</div>
+		</ItemGroupLabel>
+
+		<ItemGroupLabel text="Other">
+			{#snippet icon()}
+				<Box size="15" />
+			{/snippet}
+			<div class="flex items-center gap-2">
+				<Switch id="keepExif" name="keepExif" />
+				<label for="keepExif">Keep EXIF</label>
+			</div>
 		</ItemGroupLabel>
 	</form>
 </section>
