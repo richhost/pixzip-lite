@@ -19,7 +19,7 @@ async function createWindow() {
 		minHeight: 400,
 		frame: !(platform === 'linux'),
 		titleBarStyle: 'hidden',
-		trafficLightPosition: { x: 10, y: 8 },
+		trafficLightPosition: { x: 10, y: 11 },
 		// vibrancy: "sidebar",
 		visualEffectState: 'active',
 		transparent: platform === 'darwin',

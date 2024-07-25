@@ -1,39 +1,57 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 * {
-  @apply select-none cursor-default;
+	@apply select-none cursor-default;
 }
 
 :root {
-  --w-sidebar-min: 180px;
-  --w-sidebar-max: 240px;
-  --w-config-min: 224px;
-  --w-config-max: 360px;
-  --h-title-bar: 30px;
+	--w-sidebar-min: 180px;
+	--w-sidebar-max: 240px;
+	--w-config-min: 224px;
+	--w-config-max: 360px;
+	--h-title-bar: 30px;
+
+	--polygon-avif: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	--polygon-webp: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+	--polygon-jpg: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	--polygon-png: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+	--polygon-original: circle(50% at 50% 50%);
+
+	--bg-original: #a8a29e;
+	--bg-avif: #84cc16;
+	--bg-webp: #10b981;
+	--bg-jpg: #38bdf8;
+	--bg-png: #f97316;
 }
 
 body {
-  @apply text-[13px] antialiased;
-  font-family: system-ui, —apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+	@apply text-[13px] antialiased bg-white;
+	font-family:
+		system-ui,
+		—apple-system,
+		Segoe UI,
+		Helvetica,
+		Arial,
+		sans-serif;
 }
 
 button,
 input,
 select,
 textarea {
-  -webkit-app-region: no-drag;
+	-webkit-app-region: no-drag;
 }
 
 :where(input::placeholder) {
-  @apply text-[13px];
+	@apply text-[13px];
 }
 
 @layer utilities {
-  .draggable {
-    -webkit-app-region: drag;
-  }
+	.draggable {
+		-webkit-app-region: drag;
+	}
 
-  .no-drag {
-    -webkit-app-region: no-drag;
-  }
+	.no-drag {
+		-webkit-app-region: no-drag;
+	}
 }
