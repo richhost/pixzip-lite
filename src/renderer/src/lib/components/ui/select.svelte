@@ -14,7 +14,7 @@
 	<Select.Trigger
 		class="flex items-center w-full h-7 border border-neutral-200 rounded focus:outline-1 focus:outline-neutral-400"
 	>
-		<Select.Value {placeholder} class="grow" />
+		<Select.Value {placeholder} class="mr-auto px-2" />
 		<ChevronsUpDown size="16" class="shrink-0 mr-1" />
 	</Select.Trigger>
 

@@ -14,6 +14,7 @@
 	import Select from '../ui/select.svelte';
 	import SaveInto from './save-into.svelte';
 	import Switch from '../ui/switch.svelte';
+	import Slider from '../ui/slider.svelte';
 
 	const items = [
 		{ value: 'original', label: 'Original' },
@@ -25,7 +26,7 @@
 </script>
 
 <section
-	class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] m-2 rounded-2xl border border-neutral-200/80"
+	class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] m-2 rounded-2xl border bg-white border-neutral-200/80"
 >
 	<form class="flex flex-col gap-5 h-full overflow-auto p-3">
 		<ItemGroupLabel text="Space Name">
@@ -68,13 +69,8 @@
 				<HardDriveDownload size="15" />
 			{/snippet}
 
-			<input
-				type="range"
-				step="1"
-				min="1"
-				max="9"
-				class="w-full h-2 bg-neutral-200 border-none rounded-lg appearance-none"
-			/>
+			<Slider max={9} min={1} step={1} class="my-2" />
+
 			<div class="flex items-center justify-between text-xs text-neutral-400">
 				<span>Best Quality</span>
 				<span>Lowest Quality</span>
