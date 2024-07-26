@@ -8,9 +8,9 @@
 
 	type Props = { placeholder?: string } & Optional<numberInput.Context, 'id'>;
 
-	const { placeholder, ...reset }: Props = $props();
+	const { placeholder, ...rest }: Props = $props();
 
-	const [snapshot, send] = useMachine(numberInput.machine({ id: nanoid(), ...reset }));
+	const [snapshot, send] = useMachine(numberInput.machine({ id: nanoid(), ...rest }));
 
 	const api = $derived(numberInput.connect(snapshot, send, normalizeProps));
 </script>
