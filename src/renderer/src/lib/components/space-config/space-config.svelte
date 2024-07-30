@@ -26,7 +26,7 @@
 </script>
 
 <section
-	class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] m-2 rounded-2xl border bg-white border-neutral-200/80"
+	class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] m-2 rounded-2xl border bg-white border-neutral-200/80 shrink-0"
 >
 	<form class="flex flex-col gap-5 h-full overflow-auto p-3">
 		<ItemGroupLabel text="Space Name">

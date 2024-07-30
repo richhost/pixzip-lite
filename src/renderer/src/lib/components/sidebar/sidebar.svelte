@@ -5,7 +5,9 @@
 	import Navigation from './navigation.svelte';
 </script>
 
-<aside class="w-[clamp(var(--w-sidebar-min),16vw,var(--w-sidebar-max))] h-full flex flex-col">
+<aside
+	class="w-[clamp(var(--w-sidebar-min),16vw,var(--w-sidebar-max))] h-full flex flex-col shrink-0"
+>
 	{#if OS === 'darwin'}
 		<div class="h-[var(--h-title-bar)] draggable shrink-0"></div>
 	{/if}

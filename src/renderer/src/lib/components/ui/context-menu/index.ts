@@ -1,3 +1,5 @@
-export { default as ContextMenu } from './context-menu.svelte';
-export { default as ContextMenuItem } from './context-menu-item.svelte';
-export { default as ContextMenuSeparator } from './context-menu-separator.svelte';
+export { default as MenuRoot } from './menu-root.svelte';
+export { default as MenuTrigger } from './menu-trigger.svelte';
+export { default as MenuContent } from './menu-content.svelte';
+export { default as MenuItem } from './menu-item.svelte';
+export { default as MenuSeparator } from './menu-separator.svelte';
