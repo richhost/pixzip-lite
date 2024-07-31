@@ -11,7 +11,7 @@
 <div use:portal {...api.getPositionerProps()}>
 	<ul
 		{...api.getContentProps()}
-		class="w-48 p-2 bg-white focus-within:outline-0 border border-neutral-100 shadow-md rounded"
+		class="w-48 p-1 bg-white focus-within:outline-0 border border-neutral-100 shadow-md rounded"
 	>
 		{#if children}{@render children()}{/if}
 	</ul>

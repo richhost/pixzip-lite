@@ -36,8 +36,8 @@
 		"nanoid": "^5.0.7",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",
-		"svelte": "5.0.0-next.202",
-		"svelte-check": "^3.8.4",
+		"svelte": "5.0.0-next.203",
+		"svelte-check": "^3.8.5",
 		"sveltekit-superforms": "^2.16.1",
 		"tailwind-merge": "^2.4.0",
 		"tailwindcss": "4.0.0-alpha.17",
@@ -49,6 +49,7 @@
 		"zod": "^3.23.8"
 	},
 	"dependencies": {
+		"@egoist/tipc": "^0.3.2",
 		"conf": "^13.0.1",
 		"electron-window-state": "^5.0.3",
 		"fs-extra": "^11.2.0",

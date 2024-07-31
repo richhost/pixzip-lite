@@ -27,12 +27,14 @@
 body {
 	@apply text-[13px] antialiased bg-white;
 	font-family:
+		'Rethink Sans',
 		system-ui,
 		—apple-system,
 		Segoe UI,
 		Helvetica,
 		Arial,
 		sans-serif;
+	font-optical-sizing: auto;
 }
 
 button,

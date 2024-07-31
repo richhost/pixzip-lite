@@ -4,4 +4,4 @@
 	const { class: className }: { class?: string } = $props();
 </script>
 
-<hr class={cn('-mx-2 text-neutral-100 my-1', className)} />
+<hr class={cn('-mx-1 text-neutral-100 my-1', className)} />
