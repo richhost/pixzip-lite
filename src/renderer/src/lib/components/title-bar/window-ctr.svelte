@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import { type Snippet } from 'svelte';
+	import { closeFn, maximizeFn, minimizeFn, useWindowState } from './action.svelte';
 
-	const minimizeFn = () => {};
+	const isMax = useWindowState();
 
-	const maximizeFn = () => {};
-
-	const closeFn = () => {};
+	$inspect('isMax---', isMax);
 </script>
 
 <div class="absolute right-0 top-0 bottom-0 flex items-center">
@@ -40,7 +39,7 @@
 
 {#snippet button(icon: Snippet, fn: Function, isClose = false)}
 	<button
-		onpointerdown={() => fn()}
+		onclick={() => fn()}
 		class={cn('w-10 h-full grid place-items-center transition', {
 			'hover:bg-red-600 hover:text-white': isClose,
 			'hover:bg-neutral-200 hover:text-neutral-600': !isClose

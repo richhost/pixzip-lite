@@ -1,14 +1,10 @@
 import { app, Menu } from 'electron';
 import { registerIpcMain } from '@egoist/tipc/main';
-import {
-	registerHandlers,
-	registerWorkspaceHandlers,
-	registerUIHandlers,
-	registerTaskHandlers
-} from './ipc';
+import { registerWorkspaceHandlers, registerUIHandlers, registerTaskHandlers } from './ipc';
 import { restoreOrCreateWindow } from './window';
 import { registerProtocol } from './protocol';
 import { router } from './tipc';
+import { registerHandlers } from './tipc/handlers';
 
 app.on('window-all-closed', () => {
 	app.quit();
@@ -26,7 +22,7 @@ app
 		registerUIHandlers(browserWindow);
 		registerWorkspaceHandlers();
 		registerTaskHandlers();
-		registerHandlers();
+		registerHandlers(browserWindow);
 	})
 	.catch((e) => console.error('create window failed: ', e));
 

@@ -34,3 +34,8 @@ declare namespace Pixzip {
 				status: Extract<TaskStatus, 'failed'>;
 		  };
 }
+
+type RendererHandlers = {
+	maximizeApp: () => void;
+	unmaximizeApp: () => void;
+};

@@ -6,6 +6,7 @@
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"strict": true,
-		"noEmit": false
+		"noEmit": false,
+		"target": "ES2023"
 	}
 }

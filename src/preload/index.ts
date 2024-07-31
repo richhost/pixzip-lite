@@ -73,7 +73,10 @@ const pixzip = {
 	task,
 	action,
 	space,
-	invoke: ipcRenderer.invoke
+	invoke: ipcRenderer.invoke,
+	on: ipcRenderer.on,
+	off: ipcRenderer.off,
+	send: ipcRenderer.send
 };
 
 contextBridge.exposeInMainWorld('pixzip', pixzip);

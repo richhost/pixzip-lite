@@ -39,18 +39,12 @@ importers:
       '@tanstack/svelte-store':
         specifier: ^0.5.5
         version: 0.5.5(svelte@5.0.0-next.203)
-      '@tsconfig/svelte':
-        specifier: ^5.0.4
-        version: 5.0.4
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
       '@types/node':
         specifier: ^20.14.13
         version: 20.14.13
-      '@types/wicg-file-system-access':
-        specifier: ^2023.10.5
-        version: 2023.10.5
       '@zag-js/menu':
         specifier: ^0.62.1
         version: 0.62.1
@@ -1150,11 +1144,11 @@ packages:
     peerDependencies:
       vite: ^5.2.0
 
-  '@tanstack/query-core@5.51.15':
-    resolution: {integrity: sha512-xyobHDJ0yhPE3+UkSQ2/4X1fLSg7ICJI5J1JyU9yf7F3deQfEwSImCDrB1WSRrauJkMtXW7YIEcC0oA6ZZWt5A==}
+  '@tanstack/query-core@5.51.16':
+    resolution: {integrity: sha512-zfV+WAtBGm1dUIbL0w/x8qTqVLKU1/Bo1p19J9LF02MmIc4FxzMImMXhFzYJQl5Hx8Wit6RiQ4tB/DvN8y9zaQ==}
 
-  '@tanstack/react-query@5.51.15':
-    resolution: {integrity: sha512-UgFg23SrdIYrmfTSxAUn9g+J64VQy11pb9/EefoY/u2+zWuNMeqEOnvpJhf52XQy0yztQoyM9p6x8PFyTNaxXg==}
+  '@tanstack/react-query@5.51.16':
+    resolution: {integrity: sha512-NZnpJ30zkwaA2ZPhxJLs/qoMbd0yNAj6yyb3JTADJx9HjSdtvnNzOY1bDa3bU1B9CZTBBb7W9E1PpWlNXdgESg==}
     peerDependencies:
       react: ^18.0.0
 
@@ -1169,9 +1163,6 @@ packages:
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
-
-  '@tsconfig/svelte@5.0.4':
-    resolution: {integrity: sha512-BV9NplVgLmSi4mwKzD8BD/NQ8erOY/nUE/GpgWe2ckx+wIQF5RyRirn/QsSSCPeulVpc3RA/iJt6DpfTIZps0Q==}
 
   '@types/cacheable-request@6.0.3':
     resolution: {integrity: sha512-IQ3EbTzGxIigb1I3qPZc1rWJnH0BmSKv5QYTalEwweFvyBDLSAe24zP0le/hyi7ecGfZVlIVAg4BZqb8WBwKqw==}
@@ -1232,9 +1223,6 @@ packages:
 
   '@types/verror@1.10.10':
     resolution: {integrity: sha512-l4MM0Jppn18hb9xmM6wwD1uTdShpf9Pn80aXTStnK1C94gtPvJcV2FrDmbOQUAQfJ1cKZHktkQUDwEqaAKXMMg==}
-
-  '@types/wicg-file-system-access@2023.10.5':
-    resolution: {integrity: sha512-e9kZO9kCdLqT2h9Tw38oGv9UNzBBWaR1MzuAavxPcsV/7FJ3tWbU6RI3uB+yKIDPGLkGVbplS52ub0AcRLvrhA==}
 
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
@@ -1516,8 +1504,8 @@ packages:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
     engines: {node: '>=16'}
 
-  caniuse-lite@1.0.30001644:
-    resolution: {integrity: sha512-YGvlOZB4QhZuiis+ETS0VXR+MExbFf4fZYYeMTEE0aTQd/RdIjkTyZjLrbYVKnHzppDvnOhritRVv+i7Go6mHw==}
+  caniuse-lite@1.0.30001645:
+    resolution: {integrity: sha512-GFtY2+qt91kzyMk6j48dJcwJVq5uTkk71XxE3RtScx7XWRLsO7bU44LOFkOZYR8w9YMS0UhPSYpN/6rAMImmLw==}
 
   chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -3231,7 +3219,7 @@ snapshots:
     dependencies:
       electron: 31.3.1
     optionalDependencies:
-      '@tanstack/react-query': 5.51.15(react@18.3.1)
+      '@tanstack/react-query': 5.51.16(react@18.3.1)
     transitivePeerDependencies:
       - react
 
@@ -3904,12 +3892,12 @@ snapshots:
       tailwindcss: 4.0.0-alpha.17
       vite: 5.3.5(@types/node@20.14.13)(lightningcss@1.25.1)
 
-  '@tanstack/query-core@5.51.15':
+  '@tanstack/query-core@5.51.16':
     optional: true
 
-  '@tanstack/react-query@5.51.15(react@18.3.1)':
+  '@tanstack/react-query@5.51.16(react@18.3.1)':
     dependencies:
-      '@tanstack/query-core': 5.51.15
+      '@tanstack/query-core': 5.51.16
       react: 18.3.1
     optional: true
 
@@ -3921,8 +3909,6 @@ snapshots:
       svelte: 5.0.0-next.203
 
   '@tootallnate/once@2.0.0': {}
-
-  '@tsconfig/svelte@5.0.4': {}
 
   '@types/cacheable-request@6.0.3':
     dependencies:
@@ -3998,8 +3984,6 @@ snapshots:
 
   '@types/verror@1.10.10':
     optional: true
-
-  '@types/wicg-file-system-access@2023.10.5': {}
 
   '@types/yauzl@2.10.3':
     dependencies:
@@ -4328,7 +4312,7 @@ snapshots:
 
   browserslist@4.23.2:
     dependencies:
-      caniuse-lite: 1.0.30001644
+      caniuse-lite: 1.0.30001645
       electron-to-chromium: 1.5.4
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
@@ -4391,7 +4375,7 @@ snapshots:
   camelcase@8.0.0:
     optional: true
 
-  caniuse-lite@1.0.30001644: {}
+  caniuse-lite@1.0.30001645: {}
 
   chalk@2.4.2:
     dependencies:

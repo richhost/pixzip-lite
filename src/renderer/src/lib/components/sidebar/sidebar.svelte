@@ -7,9 +7,12 @@
 <aside
 	class="w-[clamp(var(--w-sidebar-min),16vw,var(--w-sidebar-max))] h-full flex flex-col shrink-0"
 >
-	{#if OS === 'darwin'}
-		<div class="h-[var(--h-title-bar)] draggable shrink-0"></div>
-	{/if}
+	<div class="h-[var(--h-title-bar)] draggable shrink-0 flex items-center">
+		{#if OS !== 'darwin'}
+			<span class="text-xs font-semibold ml-2">PixZip Lite</span>
+		{/if}
+	</div>
+
 	<Navigation />
 	<BottomBar />
 </aside>
