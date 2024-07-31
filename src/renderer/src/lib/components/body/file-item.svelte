@@ -8,7 +8,7 @@
 		ArrowDown
 	} from 'lucide-svelte';
 	import { MenuContent, MenuItem, MenuRoot, MenuSeparator, MenuTrigger } from '../ui/context-menu';
-	import { OS } from '~/lib/utils';
+	import { OS } from '$lib/utils';
 </script>
 
 <section class="p-1 even:bg-neutral-50">

@@ -1,27 +1,26 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 const ui = {
-	minimize: () => ipcRenderer.send('minimize'),
-	maximize: () => ipcRenderer.send('maximize'),
-	unmaximize: () => ipcRenderer.send('unmaximize'),
-	close: () => ipcRenderer.send('close'),
-	onMaximized: (callback) => ipcRenderer.on('maximized', callback),
-	onUnmaximized: (callback) => ipcRenderer.on('unmaximized', callback),
-
-	removeListeners: () => {
-		ipcRenderer.removeAllListeners('maximized');
-		ipcRenderer.removeAllListeners('unmaximized');
-	}
+	// minimize: () => ipcRenderer.send('minimize'),
+	// maximize: () => ipcRenderer.send('maximize'),
+	// unmaximize: () => ipcRenderer.send('unmaximize'),
+	// close: () => ipcRenderer.send('close'),
+	// onMaximized: (callback) => ipcRenderer.on('maximized', callback),
+	// onUnmaximized: (callback) => ipcRenderer.on('unmaximized', callback),
+	// removeListeners: () => {
+	// 	ipcRenderer.removeAllListeners('maximized');
+	// 	ipcRenderer.removeAllListeners('unmaximized');
+	// }
 };
 
 const workspace = {
-	getWorkspaces: () => ipcRenderer.invoke('getWorkspaces') as Promise<Pixzip.Workspace[]>,
-	addWorkspace: (w: Pixzip.Workspace) =>
-		ipcRenderer.invoke('addWorkspace', w) as Promise<Pixzip.Workspace[]>,
-	updateWorkspace: (w: Pixzip.Workspace) =>
-		ipcRenderer.invoke('updateWorkspace', w) as Promise<Pixzip.Workspace[]>,
-	deleteWorkspace: (id: string) =>
-		ipcRenderer.invoke('deleteWorkspace', id) as Promise<Pixzip.Workspace[]>
+	// getWorkspaces: () => ipcRenderer.invoke('getWorkspaces') as Promise<Pixzip.Workspace[]>,
+	// addWorkspace: (w: Pixzip.Workspace) =>
+	// 	ipcRenderer.invoke('addWorkspace', w) as Promise<Pixzip.Workspace[]>,
+	// updateWorkspace: (w: Pixzip.Workspace) =>
+	// 	ipcRenderer.invoke('updateWorkspace', w) as Promise<Pixzip.Workspace[]>,
+	// deleteWorkspace: (id: string) =>
+	// 	ipcRenderer.invoke('deleteWorkspace', id) as Promise<Pixzip.Workspace[]>
 };
 
 const folderPicker = () => ipcRenderer.invoke('folderPicker') as Promise<string[]>;
@@ -62,13 +61,19 @@ const action = {
 	openUrl: (url: string) => ipcRenderer.send('openUrl', url)
 };
 
+const space = {
+	getSpaces: () => ipcRenderer.invoke('getSpaces'),
+	addSpace: () => ipcRenderer.invoke('addSpace')
+};
+
 const pixzip = {
 	os: process.platform,
 	ui,
 	workspace,
 	task,
 	action,
-	invoke: (_, ...args) => ipcRenderer.invoke('sum', ...args)
+	space,
+	invoke: ipcRenderer.invoke
 };
 
 contextBridge.exposeInMainWorld('pixzip', pixzip);

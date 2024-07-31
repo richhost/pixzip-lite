@@ -4,7 +4,7 @@
 	import { nanoid } from 'nanoid/non-secure';
 	import { ChevronDown, ChevronUp } from 'lucide-svelte';
 
-	import type { Optional } from '~/lib/types';
+	import type { Optional } from '$lib/types';
 
 	type Props = { placeholder?: string } & Optional<numberInput.Context, 'id'>;
 

@@ -2,8 +2,9 @@
 	import type { Snippet } from 'svelte';
 	import { portal } from '@zag-js/svelte';
 	import { getApi } from './context.svelte';
+	import { cn } from '$lib/utils';
 
-	const { children }: { children?: Snippet } = $props();
+	const { children, class: className }: { children?: Snippet; class?: string } = $props();
 
 	const api = getApi();
 </script>
@@ -11,8 +12,11 @@
 <div use:portal {...api.getPositionerProps()}>
 	<ul
 		{...api.getContentProps()}
-		class="w-48 p-1 bg-white focus-within:outline-0 border border-neutral-100 shadow-md rounded"
+		class={cn(
+			'w-48 p-1 bg-white focus-within:outline-0 border border-neutral-100 shadow-md rounded',
+			className
+		)}
 	>
-		{#if children}{@render children()}{/if}
+		{@render children?.()}
 	</ul>
 </div>

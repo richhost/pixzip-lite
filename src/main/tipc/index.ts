@@ -1,11 +1,8 @@
-import { tipc } from '@egoist/tipc/main';
-
-const t = tipc.create();
+import { addSpace, getSpaces } from './space';
 
 export const router = {
-	sum: t.procedure.input<{ a: number; b: number }>().action(async ({ input }) => {
-		return input.a + input.b;
-	})
+	getSpaces,
+	addSpace
 };
 
 export type Router = typeof router;

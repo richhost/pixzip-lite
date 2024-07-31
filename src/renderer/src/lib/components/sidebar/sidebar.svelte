@@ -1,8 +1,7 @@
 <script>
-	import { Plus } from 'lucide-svelte';
-
-	import { OS } from '~/lib/utils';
+	import { OS } from '$lib/utils';
 	import Navigation from './navigation.svelte';
+	import BottomBar from './bottom-bar.svelte';
 </script>
 
 <aside
@@ -12,8 +11,5 @@
 		<div class="h-[var(--h-title-bar)] draggable shrink-0"></div>
 	{/if}
 	<Navigation />
-
-	<button>
-		<Plus />
-	</button>
+	<BottomBar />
 </aside>

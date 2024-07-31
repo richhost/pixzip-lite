@@ -8,7 +8,5 @@
 </script>
 
 <div {...api.getContextTriggerProps()}>
-	{#if children}
-		{@render children()}
-	{/if}
+	{@render children?.()}
 </div>

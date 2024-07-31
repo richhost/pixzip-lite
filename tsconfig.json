@@ -1,33 +1,27 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "resolveJsonModule": true,
-
-    /**
-     * Typecheck JS in `.svelte` and `.js` files by default.
-     * Disable checkJs if you'd like to use dynamic types in JS.
-     * Note that setting allowJs false does not prevent the use
-     * of JS in `.svelte` files.
-     */
-    "allowJs": true,
-    "checkJs": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["src/renderer/src/*"]
-    }
-  },
-  "include": [
-    "src/renderer/src/*/**.ts",
-    "src/renderer/src/*/**.js",
-    "src/renderer/src/*/**.svelte",
-    "src/preload/*",
-    "src/types/*.d.ts"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"target": "ESNext",
+		"useDefineForClassFields": true,
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"checkJs": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"esModuleInterop": true,
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"paths": {
+			"$lib": ["./src/renderer/src/lib"],
+			"$lib/*": ["./src/renderer/src/lib/*"]
+		}
+	},
+	"include": [
+		"./src/renderer/src/**/*.ts",
+		"./src/renderer/src/**/*.svelte",
+		"./src/preload/**/*.ts",
+		"./src/types/*.d.ts"
+	],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }

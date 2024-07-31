@@ -2,7 +2,7 @@
 	import * as slider from '@zag-js/slider';
 	import { normalizeProps, useMachine } from '@zag-js/svelte';
 	import { nanoid } from 'nanoid/non-secure';
-	import type { Optional } from '~/lib/types';
+	import type { Optional } from '$lib/types';
 
 	type Props = { class?: string } & Optional<slider.Context, 'id'>;
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { OS } from '~/lib/utils';
+	import { OS } from '$lib/utils';
 	import WindowCtr from './window-ctr.svelte';
 	import Toolbar from './toolbar.svelte';
 </script>

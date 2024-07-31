@@ -1,25 +1,11 @@
 {
-  "include": [
-    "electron.vite.config.*",
-    "src/main/**/*",
-    "src/preload/*",
-    "src/types/*.d.ts"
-  ],
-  "compilerOptions": {
-    "target": "ES2023",
-    "module": "ES2022",
-    "strict": true,
-    "esModuleInterop": true,
-    "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "composite": true,
-    "types": ["node"]
-  }
+	"include": ["electron.vite.config.*", "src/main/**/*", "src/preload/*", "src/types/*.d.ts"],
+	"compilerOptions": {
+		"composite": true,
+		"skipLibCheck": true,
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"strict": true,
+		"noEmit": false
+	}
 }
