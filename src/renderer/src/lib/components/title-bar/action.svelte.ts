@@ -1,5 +1,4 @@
-import { client } from '$lib/client';
-import { handlers } from '$lib/handlers';
+import { client, handlers } from '$lib/client';
 
 export const minimizeFn = () => {
 	client.minimizeApp();

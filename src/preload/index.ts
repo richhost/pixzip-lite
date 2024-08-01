@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
+import { type ElectronAPI, electronAPI } from '@electron-toolkit/preload';
 
 const ui = {
 	// minimize: () => ipcRenderer.send('minimize'),
@@ -79,10 +80,20 @@ const pixzip = {
 	send: ipcRenderer.send
 };
 
-contextBridge.exposeInMainWorld('pixzip', pixzip);
+// contextBridge.exposeInMainWorld('pixzip', pixzip);
 
 declare global {
 	interface Window {
-		pixzip: typeof pixzip;
+		pixzip: ElectronAPI;
 	}
+}
+
+if (process.contextIsolated) {
+	try {
+		contextBridge.exposeInMainWorld('pixzip', electronAPI);
+	} catch (error) {
+		console.error(error);
+	}
+} else {
+	window.pixzip = electronAPI;
 }
