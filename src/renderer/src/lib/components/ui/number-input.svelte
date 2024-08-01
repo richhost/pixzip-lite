@@ -28,11 +28,11 @@
 		<div class="flex flex-col shrink-0">
 			<button
 				class="hover:bg-neutral-200 active:scale-95 scale-100 transition"
-				{...api.getDecrementTriggerProps()}><ChevronUp size="14" /></button
+				{...api.getIncrementTriggerProps()}><ChevronUp size="14" /></button
 			>
 			<button
 				class="hover:bg-neutral-200 active:scale-95 scale-100 transition"
-				{...api.getIncrementTriggerProps()}><ChevronDown size="14" /></button
+				{...api.getDecrementTriggerProps()}><ChevronDown size="14" /></button
 			>
 		</div>
 	</div>

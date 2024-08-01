@@ -1,19 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { type ElectronAPI, electronAPI } from '@electron-toolkit/preload';
 
-const ui = {
-	// minimize: () => ipcRenderer.send('minimize'),
-	// maximize: () => ipcRenderer.send('maximize'),
-	// unmaximize: () => ipcRenderer.send('unmaximize'),
-	// close: () => ipcRenderer.send('close'),
-	// onMaximized: (callback) => ipcRenderer.on('maximized', callback),
-	// onUnmaximized: (callback) => ipcRenderer.on('unmaximized', callback),
-	// removeListeners: () => {
-	// 	ipcRenderer.removeAllListeners('maximized');
-	// 	ipcRenderer.removeAllListeners('unmaximized');
-	// }
-};
-
 const workspace = {
 	// getWorkspaces: () => ipcRenderer.invoke('getWorkspaces') as Promise<Pixzip.Workspace[]>,
 	// addWorkspace: (w: Pixzip.Workspace) =>
@@ -69,7 +56,6 @@ const space = {
 
 const pixzip = {
 	os: process.platform,
-	ui,
 	workspace,
 	task,
 	action,

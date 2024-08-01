@@ -13,7 +13,7 @@
 	<ul
 		{...api.getContentProps()}
 		class={cn(
-			'w-48 p-1 bg-white focus-within:outline-0 border border-neutral-100 shadow-md rounded',
+			'w-48 p-1 bg-white focus-within:outline-0 border border-neutral-200 shadow-lg rounded',
 			className
 		)}
 	>

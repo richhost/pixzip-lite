@@ -19,7 +19,7 @@
 	</Select.Trigger>
 
 	<Select.Content
-		class="w-full border bg-white rounded shadow-lg border-neutral-200 p-2"
+		class="w-full border bg-white rounded shadow-lg border-neutral-200 p-1"
 		sideOffset={8}
 	>
 		{#each items as item}

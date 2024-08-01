@@ -33,3 +33,15 @@ export const addSpace = t.procedure.input<{ space: Space }>().action(async ({ in
 	store.set('space', fromStore);
 	return fromStore;
 });
+
+export const deleteSpace = t.procedure.input<{ id: string }>().action(async ({ input }) => {
+	const fromStore = store.get('space') as Space[];
+	const length = fromStore.length;
+	if (length === 1) {
+		return fromStore;
+	}
+	const index = fromStore.findIndex((space) => space.id === input.id);
+	fromStore.splice(index, 1);
+	store.set('space', fromStore);
+	return fromStore;
+});

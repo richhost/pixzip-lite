@@ -8,6 +8,6 @@
 
 <nav class="grow overflow-y-auto p-2">
 	{#each spaces.current as space}
-		<NavigationItem {space} />
+		<NavigationItem {space} length={spaces.current.length} />
 	{/each}
 </nav>
