@@ -8,28 +8,30 @@ export const maximizeFn = () => {
 	client.maximizeApp();
 };
 
+export const unmaximizeFn = () => {
+	client.unmaximizeApp();
+};
+
 export const closeFn = () => {
 	client.closeApp();
 };
 
 export const useWindowState = () => {
-	let isMax = $state({ value: false });
+	let isMax = $state({ current: false });
 
 	$effect(() => {
-		const unlisten = handlers.maximizeApp.listen(() => {
-			console.log('=---max');
-			isMax.value = true;
+		const unlisten1 = handlers.maximizeApp.listen(() => {
+			isMax.current = true;
 		});
 
-		return unlisten;
-	});
-
-	$effect(() => {
-		const unlisten = handlers.unmaximizeApp.listen(() => {
-			console.log('un max');
-			isMax.value;
+		const unlisten2 = handlers.unmaximizeApp.listen(() => {
+			isMax.current = false;
 		});
-		return unlisten;
+
+		return () => {
+			unlisten1();
+			unlisten2();
+		};
 	});
 
 	return isMax;

@@ -5,4 +5,4 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-export const OS = window.pixzip.os;
+export const OS = window.pixzip.process.platform;

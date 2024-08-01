@@ -10,4 +10,6 @@ export const router = {
 	closeApp
 };
 
+export { registerUIHandlers } from './ui';
+
 export type Router = typeof router;
