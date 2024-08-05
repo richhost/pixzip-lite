@@ -1,3 +1,5 @@
+# Renderer with Svelte is developing!!!
+
 <div align="center">
   <img src="https://github.com/richhost/pixzip/blob/main/resources/icons/linux/icon.png?raw=true" height="256">
   <h1 align="center">Pixzip</h1>
