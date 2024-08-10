@@ -2,13 +2,13 @@
 	import TitleBar from '$lib/components/title-bar/title-bar.svelte';
 	import Sidebar from '$lib/components/sidebar/sidebar.svelte';
 	import { cn } from '$lib/utils';
-	import Body from '$lib/components/body/body.svelte';
-	import SpaceConfig from '$lib/components/space-config/space-config.svelte';
+	import Panel from '$lib/components/panel/panel.svelte';
+	import Stage from '$lib/components/stage/stage.svelte';
 </script>
 
-<div class="h-screen bg-neutral-50 rounded-md flex overflow-hidden text-neutral-900">
+<div class="h-screen bg-neutral-50 rounded-md flex overflow-hidden text-neutral-900 text-sm">
 	<Sidebar />
-	<section class="grow flex flex-col">
+	<div class="grow flex flex-col">
 		<TitleBar />
 
 		<div
@@ -17,8 +17,17 @@
 				{}
 			)}
 		>
-			<SpaceConfig />
-			<Body />
+			<section
+				class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] m-2 rounded-2xl border bg-white border-neutral-200/80 shrink-0"
+			>
+				<Panel />
+			</section>
+
+			<section
+				class="grow m-2 ml-0 border border-neutral-200/80 bg-white rounded-2xl overflow-y-auto"
+			>
+				<Stage />
+			</section>
 		</div>
-	</section>
+	</div>
 </div>

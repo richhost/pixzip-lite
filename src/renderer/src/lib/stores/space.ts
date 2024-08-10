@@ -26,3 +26,12 @@ export const updateDefaultSpace = (id: string) => {
 	window.localStorage.setItem(DEFAULT_SPACE, id);
 	defaultSpaceStore.setState(() => id);
 };
+
+export const updateSpace = (space: Pixzip.Space) => {
+	client.updateSpace({ space });
+	spaceStore.setState((prev) => {
+		const index = prev.findIndex((s) => s.id === space.id);
+		if (index !== -1) prev[index] = space;
+		return [...prev];
+	});
+};

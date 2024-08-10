@@ -1,9 +1,10 @@
-import { addSpace, deleteSpace, getSpaces } from './space';
+import { addSpace, deleteSpace, getSpaces, updateSpace } from './space';
 import { closeApp, maximizeApp, minimizeApp, unmaximizeApp } from './ui';
 
 export const router = {
 	getSpaces,
 	addSpace,
+	updateSpace,
 	deleteSpace,
 	maximizeApp,
 	minimizeApp,

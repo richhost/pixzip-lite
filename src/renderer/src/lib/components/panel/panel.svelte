@@ -1,0 +1,11 @@
+<script lang="ts">
+	import Compression from './compression.svelte';
+	import Resize from './resize.svelte';
+	import SpaceName from './space-name.svelte';
+</script>
+
+<form onsubmit={(e) => e.preventDefault()} class="flex flex-col gap-5 h-full overflow-auto p-3">
+	<SpaceName />
+	<Resize />
+	<Compression />
+</form>

@@ -25,7 +25,7 @@
 }
 
 body {
-	@apply text-[13px] antialiased bg-white;
+	@apply antialiased bg-white;
 	font-family:
 		'Rethink Sans',
 		system-ui,

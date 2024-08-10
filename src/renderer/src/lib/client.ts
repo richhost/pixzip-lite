@@ -1,8 +1,6 @@
 import { createClient, createEventHandlers } from '@egoist/tipc/renderer';
 import type { Router } from '../../../main/tipc';
 
-console.log(window.pixzip);
-
 export const client = createClient<Router>({
 	ipcInvoke: window.pixzip.ipcRenderer.invoke
 });

@@ -12,6 +12,7 @@
 		"moduleDetection": "force",
 		"esModuleInterop": true,
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"strict": true,
 		"paths": {
 			"$lib": ["./src/renderer/src/lib"],
 			"$lib/*": ["./src/renderer/src/lib/*"]

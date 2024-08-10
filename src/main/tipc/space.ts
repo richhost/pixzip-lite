@@ -45,3 +45,11 @@ export const deleteSpace = t.procedure.input<{ id: string }>().action(async ({ i
 	store.set('space', fromStore);
 	return fromStore;
 });
+
+export const updateSpace = t.procedure.input<{ space: Space }>().action(async ({ input }) => {
+	const fromStore = store.get('space') as Space[];
+	const index = fromStore.findIndex((space) => space.id === input.space.id);
+	fromStore[index] = input.space;
+	store.set('space', fromStore);
+	return fromStore;
+});
