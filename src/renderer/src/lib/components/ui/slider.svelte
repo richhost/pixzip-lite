@@ -7,8 +7,11 @@
 	type Props = { class?: string } & Optional<slider.Context, 'id'>;
 
 	const { class: className, ...rest }: Props = $props();
+	const context = $derived(rest);
 
-	const [snapshot, send] = useMachine(slider.machine({ id: nanoid(), ...rest }));
+	const [snapshot, send] = useMachine(slider.machine({ id: nanoid(), ...rest }), {
+		context
+	});
 	const api = $derived(slider.connect(snapshot, send, normalizeProps));
 </script>
 
