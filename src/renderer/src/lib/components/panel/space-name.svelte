@@ -10,13 +10,14 @@
 
 <Fieldset legend="Basic">
 	<label class="flex items-center justify-between">
-		<span>Name</span>
+		<span class="font-medium">Name</span>
 		<Input
-			class="w-24"
+			class="w-28"
 			value={name}
-			onchange={(e) => {
+			oninput={(e) => {
 				update('name', (e.target as HTMLInputElement).value);
 			}}
+			spellcheck={false}
 		/>
 	</label>
 </Fieldset>

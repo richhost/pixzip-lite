@@ -1,3 +1,4 @@
+import { folderPicker } from './action';
 import { addSpace, deleteSpace, getSpaces, updateSpace } from './space';
 import { closeApp, maximizeApp, minimizeApp, unmaximizeApp } from './ui';
 
@@ -9,7 +10,8 @@ export const router = {
 	maximizeApp,
 	minimizeApp,
 	unmaximizeApp,
-	closeApp
+	closeApp,
+	folderPicker
 };
 
 export { registerUIHandlers } from './ui';

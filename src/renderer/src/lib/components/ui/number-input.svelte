@@ -27,7 +27,7 @@
 
 <div {...api.getRootProps()} class="h-7 flex items-center justify-between">
 	<!-- svelte-ignore a11y_label_has_associated_control -->
-	<label {...api.getLabelProps()} class="shrink-0">{label}</label>
+	<label {...api.getLabelProps()} class="shrink-0 font-medium">{label}</label>
 	<div
 		{...api.getControlProps()}
 		class={cn(

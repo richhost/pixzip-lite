@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Compression from './compression.svelte';
 	import Resize from './resize.svelte';
+	import SaveInto from './save-into.svelte';
 	import SpaceName from './space-name.svelte';
 </script>
 
@@ -8,4 +9,5 @@
 	<SpaceName />
 	<Resize />
 	<Compression />
+	<SaveInto />
 </form>

@@ -4,6 +4,7 @@
 	import Select from '../ui/select.svelte';
 	import Fieldset from './fieldset.svelte';
 	import Slider from '../ui/slider.svelte';
+	import Checkbox from '../ui/checkbox.svelte';
 
 	const items: Selected<string>[] = [
 		{ value: 'original', label: 'Original' },
@@ -26,7 +27,7 @@
 
 <Fieldset legend="Compression">
 	<div class="flex items-center justify-between">
-		<span>Format</span>
+		<span class="font-medium">Format</span>
 		<Select
 			{items}
 			class="w-28"
@@ -43,7 +44,7 @@
 
 	<div>
 		<div class="flex items-center justify-between mb-2">
-			<span>Level</span>
+			<span class="font-medium">Level</span>
 			<span>{level}</span>
 		</div>
 		<Slider
@@ -63,14 +64,11 @@
 
 	<hr class="border-neutral-200 my-3" />
 
-	<label class="inline-flex items-center gap-2">
-		<input
-			type="checkbox"
-			checked={keepEXIF}
-			onchange={(e) => {
-				update('keepExif', (e.target as HTMLInputElement).checked);
-			}}
-		/>
-		<span>Keep EXIF</span>
-	</label>
+	<Checkbox
+		label="Keep EXIF"
+		checked={keepEXIF}
+		onchange={(e) => {
+			update('keepExif', (e.target as HTMLInputElement).checked);
+		}}
+	/>
 </Fieldset>
