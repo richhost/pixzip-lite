@@ -1,5 +1,5 @@
 import { tipc } from '@egoist/tipc/main';
-import { dialog, shell } from 'electron';
+import { app, dialog, shell } from 'electron';
 import { loadClipboardEx } from '../helper';
 
 const t = tipc.create();
@@ -25,4 +25,8 @@ export const copyFile = t.procedure.input<{ filepath: string }>().action(async (
 
 export const trashFile = t.procedure.input<{ filepath: string }>().action(async ({ input }) => {
 	shell.trashItem(input.filepath);
+});
+
+export const getVersion = t.procedure.action(async () => {
+	return app.getVersion();
 });

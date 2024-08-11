@@ -1,4 +1,4 @@
-import { copyFile, folderPicker, revealWith, trashFile } from './action';
+import { copyFile, folderPicker, getVersion, revealWith, trashFile } from './action';
 import { openFolder, scan } from './scan';
 import { addSpace, deleteSpace, getSpaces, updateSpace } from './space';
 import { pushTask, removeTask, emptyTask } from './task';
@@ -21,7 +21,8 @@ export const router = {
 	removeTask,
 	revealWith,
 	copyFile,
-	trashFile
+	trashFile,
+	getVersion
 };
 
 export { registerUIHandlers } from './ui';

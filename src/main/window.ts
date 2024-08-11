@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url';
-import { BrowserWindow, app } from 'electron';
+import { BrowserWindow, app, shell } from 'electron';
 import windowStateKeeper from 'electron-window-state';
 
 const platform = process.platform;
@@ -39,6 +39,12 @@ async function createWindow() {
 	}
 
 	mainWindowState.manage(browserWindow);
+
+	browserWindow.webContents.setWindowOpenHandler((details) => {
+		shell.openExternal(details.url);
+		return { action: 'deny' };
+	});
+
 	return browserWindow;
 }
 

@@ -11,7 +11,10 @@
 	useTaskScheduler();
 </script>
 
-<div class="h-screen bg-neutral-50 rounded-md flex overflow-hidden text-neutral-900 text-sm">
+<div
+	data-vaul-drawer-wrapper
+	class="h-screen bg-neutral-50 rounded-md flex overflow-hidden text-neutral-900 text-sm"
+>
 	<Sidebar />
 	<div class="grow flex flex-col">
 		<TitleBar />
