@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import { imageExtension } from '../constants';
-import path, { extname } from 'path';
+import path, { extname } from 'node:path';
 
 export const scanDirectory = (dir: string) => {
 	let results: FileInfo[] = [];
@@ -23,11 +23,9 @@ export const scanDirectory = (dir: string) => {
 		const filePath = path.join(dir, file);
 		const stat = fs.statSync(filePath);
 
-		if (stat && stat.isDirectory()) {
-			// 递归到子目录
+		if (stat?.isDirectory()) {
 			results = results.concat(scanDirectory(filePath));
-		} else if (stat && stat.isFile() && isImage(file)) {
-			// 将图片文件信息添加到结果中
+		} else if (stat?.isFile() && isImage(file)) {
 			results.push({
 				path: path.resolve(filePath),
 				size: stat.size

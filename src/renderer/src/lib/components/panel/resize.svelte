@@ -15,7 +15,7 @@
 	});
 
 	const transformValue = (value: number) => {
-		if (Object.is(value, NaN)) return undefined;
+		if (Object.is(value, Number.NaN)) return undefined;
 		return value < 1 ? undefined : value;
 	};
 </script>

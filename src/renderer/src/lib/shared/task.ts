@@ -17,7 +17,7 @@ export const getTargetExtname = (filepath: string, config: Pixzip.Space) => {
 
 export const getOutputPath = (filepath: string, config: Pixzip.Space) => {
 	let outputPath = dirname(filepath);
-	let base = basename(filepath, true);
+	const base = basename(filepath, true);
 	if (!config.originalOutput && config.outputDir) {
 		outputPath = config.outputDir;
 	}

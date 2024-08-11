@@ -17,7 +17,7 @@ export const closeFn = () => {
 };
 
 export const useWindowCtr = () => {
-	let isMax = $state({ current: false });
+	const isMax = $state({ current: false });
 
 	$effect(() => {
 		const unlisten1 = handlers.maximizeApp.listen(() => {

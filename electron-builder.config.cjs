@@ -1,6 +1,6 @@
 /** @type {import('electron-builder').Configuration} */
 const config = {
-	appId: 'fun.xiangsu.app',
+	appId: 'in.cutelabs.pixziplite',
 	productName: 'PixZip Lite',
 	asar: false,
 	directories: {

@@ -71,7 +71,7 @@ export function addTask(tasks: ProcessingTask[]) {
 
 function boxing(task: ProcessingTask) {
 	const config = structuredClone(getConfig(task.spaceId));
-	let list: BoxingTask[] = [];
+	const list: BoxingTask[] = [];
 
 	if (config) {
 		list.push({ ...config, ...task });

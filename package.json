@@ -1,6 +1,6 @@
 {
 	"name": "pixzip-lite",
-	"version": "2.1.6",
+	"version": "3.0.0",
 	"type": "module",
 	"main": "./out/main/index.js",
 	"scripts": {
