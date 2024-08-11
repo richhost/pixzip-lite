@@ -1,13 +1,15 @@
-import sharp, { FormatEnum, Sharp } from "sharp";
-import { extname, basename, dirname } from "node:path";
-import { existsSync, statSync } from "node:fs";
-import { ensureDirSync, outputFile } from "fs-extra/esm";
+import sharp, { FormatEnum, Sharp } from 'sharp';
+import { extname } from 'node:path';
+import { existsSync, statSync } from 'node:fs';
+import { outputFile } from 'fs-extra/esm';
 
-import { getWorkspaces } from "../ipc/workspace";
-import { delimiter, qualityMap } from "./constants";
-import { getGifFrameCount } from "./helper";
+import { qualityMap } from './constants';
+import { getGifFrameCount } from './helper';
+import { getSpacesFromStore } from '../tipc/space';
 
 sharp.cache(false);
+
+export type BoxingTask = ProcessingTask & Pixzip.Space;
 
 /**
  * Get file extension name, it will be lower case and not contain dot
@@ -15,107 +17,82 @@ sharp.cache(false);
  * @returns string
  */
 export const getExtname = (filename: string) => {
-  return extname(filename).replace(".", "").toLocaleLowerCase();
+	return extname(filename).replace('.', '').toLocaleLowerCase();
 };
 
 const animated = (filename: string) => {
-  const ext = getExtname(filename);
-  return ["gif", "webp"].includes(ext);
+	const ext = getExtname(filename);
+	return ['gif', 'webp'].includes(ext);
 };
 
 export const getConfig = (workspaceId: string) => {
-  const configs = getWorkspaces();
-  return configs.find((config) => config.id === workspaceId);
+	const configs = getSpacesFromStore();
+	return configs.find((config) => config.id === workspaceId);
 };
 
 export const fileExists = (filepath: string) => {
-  return existsSync(filepath);
+	return existsSync(filepath);
 };
 
-const getFormat = (filepath: string, config: Pixzip.Workspace) => {
-  let format: keyof FormatEnum;
-  const ext = getExtname(filepath);
+const getFormat = (task: BoxingTask) => {
+	let format = task.targetExtname as keyof FormatEnum;
 
-  if (config.format === "original") {
-    format = ext as unknown as keyof FormatEnum;
-  } else {
-    format = config.format;
-  }
-
-  // in Windows, if gif only have 1 frame, will crash
-  if (format === "gif" && process.platform === "win32") {
-    const count = getGifFrameCount(filepath);
-    if (count === 1) {
-      format = "png";
-    }
-  }
-  return format;
+	// in Windows, if gif only have 1 frame, will crash
+	if (format === 'gif' && process.platform === 'win32') {
+		const count = getGifFrameCount(task.filepath);
+		if (count === 1) {
+			format = 'png';
+		}
+	}
+	return format;
 };
 
 const getQuality = (format: keyof FormatEnum, level: number) => {
-  let quality = qualityMap[format];
-  if (format === "gif") {
-    quality = 1;
-  }
-  return Math.floor((11 - level) * 10 * quality);
+	let quality = qualityMap[format] ?? 1;
+	if (format === 'gif') {
+		quality = 1;
+	}
+	return Math.floor((11 - level) * 10 * quality);
 };
 
-const keepExif = (sharp: Sharp, config: Pixzip.Workspace) => {
-  return config.keepExif ? sharp.keepExif() : sharp.withExif({});
+const keepExif = (sharp: Sharp, keepExif: boolean) => {
+	return keepExif ? sharp.keepExif() : sharp.withExif({});
 };
 
-export const zip = (filepath: string, config: Pixzip.Workspace) => {
-  const needAnimated = animated(filepath);
-  const format = getFormat(filepath, config);
-  const quality = getQuality(format, config.level);
+export const zip = (task: BoxingTask) => {
+	const needAnimated = animated(task.filepath);
+	const format = getFormat(task);
+	const quality = getQuality(format as keyof FormatEnum, task.level);
 
-  const instance = sharp(filepath, {
-    animated: needAnimated && format !== "avif",
-  }).keepMetadata();
+	const instance = sharp(task.filepath, {
+		animated: needAnimated && format !== 'avif'
+	})
+		.withMetadata()
+		.keepIccProfile();
 
-  return keepExif(instance, config)
-    .resize({
-      width: config.width,
-      height: config.height,
-    })
-    .toFormat(format, {
-      quality: quality,
-      mozjpeg: format === "jpeg" || format === "jpg",
-    })
-    .toBuffer();
+	return keepExif(instance, task.keepExif)
+		.resize({
+			width: task.width,
+			height: task.height
+		})
+		.toFormat(format, {
+			quality: quality,
+			mozjpeg: format === 'jpeg' || format === 'jpg'
+		})
+		.toBuffer();
 };
 
-const outputFilepath = (filepath: string, config: Pixzip.Workspace) => {
-  let ext = extname(filepath).replace(".", "");
-  const filename = basename(filepath, `.${ext}`);
-  ext = ext.toLocaleLowerCase();
-
-  let outputDir = dirname(filepath);
-
-  if (!config.originalOutput && config.outputDir) {
-    outputDir = config.outputDir;
-  }
-  ensureDirSync(outputDir);
-  return `${outputDir + delimiter + filename + config.suffix}.${
-    config.format === "original" ? ext : config.format
-  }`;
-};
-
-export const output = (
-  buffer: Buffer,
-  filepath: string,
-  config: Pixzip.Workspace
-) => {
-  const outFilepath = outputFilepath(filepath, config);
-  return new Promise<{ size: number; filepath: string }>((resolve, reject) => {
-    outputFile(outFilepath, buffer)
-      .then(() => {
-        const size = statSync(outFilepath).size;
-        resolve({
-          size,
-          filepath: outFilepath,
-        });
-      })
-      .catch(() => reject());
-  });
+export const output = (buffer: Buffer, task: BoxingTask) => {
+	const outFilepath = task.outputPath;
+	return new Promise<{ size: number; filepath: string }>((resolve, reject) => {
+		outputFile(outFilepath, buffer)
+			.then(() => {
+				const size = statSync(outFilepath).size;
+				resolve({
+					size,
+					filepath: outFilepath
+				});
+			})
+			.catch(() => reject());
+	});
 };

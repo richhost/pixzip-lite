@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import { portal } from '@zag-js/svelte';
 	import { getApi } from './context.svelte';
-	import { cn } from '$lib/utils';
+	import { cn } from '$lib/shared/utils';
 
 	const { children, class: className }: { children?: Snippet; class?: string } = $props();
 

@@ -1,4 +1,7 @@
-export const qualityMap = {
+import { type FormatEnum } from 'sharp';
+
+type FormatEnumKeys = keyof FormatEnum;
+export const qualityMap: Partial<Record<FormatEnumKeys, number>> = {
 	jpg: 0.85,
 	jpeg: 0.85,
 	png: 1,

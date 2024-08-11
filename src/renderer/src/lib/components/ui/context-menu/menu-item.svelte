@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import * as menu from '@zag-js/menu';
 	import { getApi } from './context.svelte';
-	import { cn } from '$lib/utils';
+	import { cn } from '$lib/shared/utils';
 
 	type Props = {
 		children?: Snippet;

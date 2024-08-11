@@ -16,7 +16,7 @@ export const closeFn = () => {
 	client.closeApp();
 };
 
-export const useWindowState = () => {
+export const useWindowCtr = () => {
 	let isMax = $state({ current: false });
 
 	$effect(() => {

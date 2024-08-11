@@ -1,5 +1,7 @@
 import { folderPicker } from './action';
+import { openFolder, scan } from './scan';
 import { addSpace, deleteSpace, getSpaces, updateSpace } from './space';
+import { pushTask, removeTask, emptyTask } from './task';
 import { closeApp, maximizeApp, minimizeApp, unmaximizeApp } from './ui';
 
 export const router = {
@@ -11,7 +13,12 @@ export const router = {
 	minimizeApp,
 	unmaximizeApp,
 	closeApp,
-	folderPicker
+	folderPicker,
+	scan,
+	openFolder,
+	pushTask,
+	emptyTask,
+	removeTask
 };
 
 export { registerUIHandlers } from './ui';

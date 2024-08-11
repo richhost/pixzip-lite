@@ -35,7 +35,45 @@ declare namespace Pixzip {
 		  };
 }
 
+type ProcessingTask = {
+	spaceId: string;
+	filepath: string;
+	status: 'processing';
+	outputPath: string;
+	fileSize: number;
+	extname: string;
+	targetExtname: string;
+};
+type CompletedTask = {
+	spaceId: string;
+	filepath: string;
+	status: 'completed';
+	outputPath: string;
+	fileSize: number;
+	outSize: number;
+	extname: string;
+	targetExtname: string;
+};
+type FailedTask = {
+	spaceId: string;
+	filepath: string;
+	status: 'failed';
+	fileSize: number;
+	outputPath: string;
+	extname: string;
+	targetExtname: string;
+};
+
+type FileInfo = {
+	path: string;
+	size: number;
+};
+type FileTask = ProcessingTask | CompletedTask | FailedTask;
+
 type RendererHandlers = {
 	maximizeApp: () => void;
 	unmaximizeApp: () => void;
+	scanned: (fileInfoList: FileInfo[]) => void;
+	completed: (data: CompletedTask) => void;
+	failed: (data: FailedTask) => void;
 };

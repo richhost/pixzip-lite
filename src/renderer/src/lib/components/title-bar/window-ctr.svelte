@@ -1,9 +1,15 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '$lib/shared/utils';
 	import { type Snippet } from 'svelte';
-	import { closeFn, maximizeFn, minimizeFn, unmaximizeFn, useWindowState } from './action.svelte';
+	import {
+		closeFn,
+		maximizeFn,
+		minimizeFn,
+		unmaximizeFn,
+		useWindowCtr
+	} from '$lib/hooks/use-window-ctr.svelte';
 
-	const isMax = useWindowState();
+	const isMax = useWindowCtr();
 </script>
 
 <div class="absolute right-0 top-0 bottom-0 flex items-center">

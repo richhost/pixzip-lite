@@ -4,7 +4,7 @@
 	import { ChevronDown, ChevronUp } from 'lucide-svelte';
 
 	import type { Optional } from '$lib/types';
-	import { cn, useId } from '$lib/utils';
+	import { cn, useId } from '$lib/shared/utils';
 
 	type Props = {
 		placeholder?: string;

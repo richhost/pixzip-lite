@@ -1,6 +1,5 @@
 import { app, Menu } from 'electron';
 import { registerIpcMain } from '@egoist/tipc/main';
-import { registerWorkspaceHandlers, registerTaskHandlers } from './ipc';
 import { restoreOrCreateWindow } from './window';
 import { registerProtocol } from './protocol';
 import { router, registerUIHandlers } from './tipc';
@@ -19,9 +18,10 @@ app
 	.then(restoreOrCreateWindow)
 	.then((browserWindow) => {
 		registerUIHandlers(browserWindow);
-		registerWorkspaceHandlers();
-		registerTaskHandlers();
-		registerUIHandlers(browserWindow);
+
+		if (process.platform !== 'darwin') {
+			app.setAppUserModelId('PixZip Lite');
+		}
 	})
 	.catch((e) => console.error('create window failed: ', e));
 

@@ -1,89 +1,96 @@
-import { getMainWindow } from "../window";
-import { Queue } from "./queue";
-import { fileExists, getConfig, output, zip } from "./utils";
-
-export type Task = { workspaceId: string; filepath: string };
-export type AddTask = Task | Task[];
+import { getRendererHandlers } from '@egoist/tipc/main';
+import { getMainWindow } from '../window';
+import { Queue } from './queue';
+import { BoxingTask, fileExists, getConfig, output, zip } from './utils';
 
 let max = 5;
-const taskQueue = new Queue<Task>();
+const taskQueue = new Queue<BoxingTask>();
 
-async function send(data: Pixzip.SendData) {
-  const window = await getMainWindow();
-  window.webContents.send(data.status, data);
+async function sendCompletedData(data: CompletedTask) {
+	const window = await getMainWindow();
+	const handlers = getRendererHandlers<RendererHandlers>(window.webContents);
+	handlers.completed.send(data);
+}
+
+async function sendFailedData(data: FailedTask) {
+	const window = await getMainWindow();
+	const handlers = getRendererHandlers<RendererHandlers>(window.webContents);
+	handlers.failed.send(data);
 }
 
 function bootTask() {
-  const length = taskQueue.toArray().length;
-  const min = Math.min(max, length);
-  for (let i = 0; i < min; i++) {
-    const task = taskQueue.dequeue();
-    if (task) {
-      max--;
-      const config = getConfig(task.workspaceId);
-      if (!fileExists(task.filepath) || !config) {
-        send({
-          status: "failed",
-          filepath: task.filepath,
-          workspaceId: task.workspaceId,
-        });
-        max++;
-        bootTask();
-      } else {
-        zip(task.filepath, config)
-          .then((buffer) => {
-            return output(buffer, task.filepath, config);
-          })
-          .then(({ size, filepath: outputPath }) => {
-            send({
-              status: "succeed",
-              workspaceId: task.workspaceId,
-              filepath: task.filepath,
-              fileSize: size,
-              outputPath,
-            });
-            max++;
-            bootTask();
-          })
-          .catch(() => {
-            send({
-              status: "failed",
-              filepath: task.filepath,
-              workspaceId: task.workspaceId,
-            });
-            max++;
-            bootTask();
-          });
-      }
-    }
-  }
+	const length = taskQueue.toArray().length;
+	const min = Math.min(max, length);
+	for (let i = 0; i < min; i++) {
+		const task = taskQueue.dequeue();
+		if (task) {
+			max--;
+			if (!fileExists(task.filepath)) {
+				sendFailedData({
+					...task,
+					status: 'failed'
+				});
+				max++;
+				bootTask();
+			} else {
+				zip(task)
+					.then((buffer) => {
+						return output(buffer, task);
+					})
+					.then(({ size, filepath: outputPath }) => {
+						sendCompletedData({
+							...task,
+							status: 'completed',
+							outputPath,
+							outSize: size
+						});
+						max++;
+						bootTask();
+					})
+					.catch((e) => {
+						console.error('catch', e);
+						sendFailedData({
+							...task,
+							status: 'failed'
+						});
+						max++;
+						bootTask();
+					});
+			}
+		}
+	}
 }
 
-export function addTask(tasks: AddTask) {
-  if (Array.isArray(tasks)) {
-    for (const t of tasks) {
-      taskQueue.enqueue(t);
-    }
-  } else {
-    taskQueue.enqueue(tasks);
-  }
-  bootTask();
+export function addTask(tasks: ProcessingTask[]) {
+	for (const t of tasks) {
+		const box = boxing(t);
+		box.forEach((item) => taskQueue.enqueue(item));
+	}
+	bootTask();
 }
 
-export function clearTask(workspaceId: string) {
-  const copy = taskQueue.toArray();
-  const filter = copy.filter((element) => element.workspaceId !== workspaceId);
-  taskQueue.clear();
-  if (filter.length) addTask(filter);
+function boxing(task: ProcessingTask) {
+	const config = structuredClone(getConfig(task.spaceId));
+	let list: BoxingTask[] = [];
+
+	if (config) {
+		list.push({ ...config, ...task });
+	}
+	return list;
 }
 
-export function removeTask(task: Task) {
-  const copy = taskQueue.toArray();
-  const filter = copy.filter(
-    (element) =>
-      element.workspaceId !== task.workspaceId &&
-      element.filepath !== task.filepath
-  );
-  taskQueue.clear();
-  if (filter.length) addTask(filter);
+export function clearTask(spaceId: string) {
+	const copy = taskQueue.toArray();
+	const filter = copy.filter((element) => element.spaceId !== spaceId);
+	taskQueue.clear();
+	if (filter.length) addTask(filter);
+}
+
+export function delTask({ spaceId, filepath }: { spaceId: string; filepath: string }) {
+	const copy = taskQueue.toArray();
+	const filter = copy.filter(
+		(element) => element.spaceId !== spaceId && element.filepath !== filepath
+	);
+	taskQueue.clear();
+	if (filter.length) addTask(filter);
 }

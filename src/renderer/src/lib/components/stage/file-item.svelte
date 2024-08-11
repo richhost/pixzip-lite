@@ -5,10 +5,34 @@
 		Clipboard,
 		SquareArrowOutUpRight,
 		ArrowRight,
-		ArrowDown
+		ArrowDown,
+		Loader,
+		ArrowUp
 	} from 'lucide-svelte';
 	import { MenuContent, MenuItem, MenuRoot, MenuSeparator, MenuTrigger } from '../ui/context-menu';
-	import { OS } from '$lib/utils';
+	import { bytesToSize, OS, savePercentage, thumbImg } from '$lib/shared/utils';
+
+	type Props = {
+		file: FileTask;
+	};
+
+	const { file }: Props = $props();
+
+	const extDict: Record<string, string> = {
+		jpg: 'JPG',
+		jpeg: 'JPEG',
+		png: 'PNG',
+		webp: 'WebP',
+		avif: 'AVIF',
+		bmp: 'BMP',
+		gif: 'GIF'
+	};
+
+	const percent = $derived.by(() => {
+		if (file.status === 'completed') {
+			return savePercentage(file.fileSize, file.outSize);
+		}
+	});
 </script>
 
 <section class="p-1 even:bg-neutral-50">
@@ -39,32 +63,41 @@
 {#snippet image()}
 	<div class="flex items-center gap-2 text-xs">
 		<div class="w-8 h-8 shrink-0 grid place-items-center">
-			<img
-				class="max-w-8 max-h-8 shadow"
-				src="https://images.unsplash.com/photo-1722195255633-a88675d20722?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8"
-				alt=""
-			/>
+			<img class="max-w-8 max-h-8 shadow" src={thumbImg(file.filepath)} alt="" />
 		</div>
 		<div class="grow w-20 min-w-0">
 			<div class="truncate min-w-0">
-				/Users/abiee/OSS/pixzip/Users/abiee/OSS/pixzip/Users/abiee/OSS/pixzip.png
+				{file.filepath}
 			</div>
-			<section class="flex items-start gap-3">
-				<div class="flex items-center gap-1 text-[9px]">
-					<span class="px-1 py-px bg-neutral-800 text-white rounded-sm font-bold">JPG</span>
-					<ArrowRight class="w-3" />
-					<span class="px-1 py-px bg-neutral-800 text-white rounded-sm font-bold">WebP </span>
-				</div>
-
+			<section class="flex items-center gap-3">
 				<div class="flex items-center gap-1">
-					<span>2.5MB</span>
+					<small class="px-1 bg-neutral-800 text-white rounded font-bold"
+						>{extDict[file.extname.toLowerCase()]}</small
+					>
 					<ArrowRight class="w-3" />
-					<span>1.2MB</span>
+					<small class="px-1 bg-neutral-800 text-white rounded font-bold"
+						>{extDict[file.targetExtname.toLowerCase()]}</small
+					>
 				</div>
 
-				<div class="flex items-center">
-					<ArrowDown class="w-3" />20%
-				</div>
+				{#if file.status === 'completed'}
+					<div class="flex items-center gap-1">
+						<span>{bytesToSize(file.fileSize)}</span>
+						<ArrowRight class="w-3 h-3" />
+						<span>{bytesToSize(file.outSize)}</span>
+					</div>
+
+					<div class="flex items-center">
+						{#if percent !== undefined && percent > 0}
+							<ArrowDown class="w-3 h-3" />
+						{:else if percent !== undefined && percent < 0}
+							<ArrowUp class="w-3 h-3" />
+						{/if}
+						<small>{percent && Math.abs(percent)}%</small>
+					</div>
+				{:else if file.status === 'processing'}
+					<Loader class="w-3 h-3 animate-spin" />
+				{/if}
 			</section>
 		</div>
 	</div>

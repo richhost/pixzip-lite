@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '$lib/shared/utils';
 	import { useStore } from '@tanstack/svelte-store';
 	import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from '../ui/context-menu';
 	import { defaultSpaceStore, updateDefaultSpace } from '$lib/stores/space';

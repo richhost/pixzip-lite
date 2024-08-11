@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '$lib/shared/utils';
 	import { Select, type SelectProps } from 'bits-ui';
 	import { ChevronsUpDown, Check } from 'lucide-svelte';
 

@@ -35,7 +35,7 @@
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",
 		"runed": "^0.15.0",
-		"svelte": "5.0.0-next.210",
+		"svelte": "5.0.0-next.215",
 		"svelte-check": "^3.8.5",
 		"sveltekit-superforms": "^2.16.1",
 		"tailwind-merge": "^2.4.0",
@@ -43,7 +43,6 @@
 		"ts-pattern": "^5.2.0",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.4",
-		"vaul": "^0.9.1",
 		"vite": "^5.4.0",
 		"zod": "^3.23.8"
 	},

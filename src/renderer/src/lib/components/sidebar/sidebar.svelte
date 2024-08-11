@@ -1,5 +1,5 @@
 <script>
-	import { OS } from '$lib/utils';
+	import { OS } from '$lib/shared/utils';
 	import Navigation from './navigation.svelte';
 	import BottomBar from './bottom-bar.svelte';
 </script>

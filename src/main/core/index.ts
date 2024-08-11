@@ -1,2 +1,2 @@
-export { addTask, removeTask, clearTask } from "./core";
-export type * from "./core";
+export { addTask, clearTask, delTask } from './core';
+export type * from './core';

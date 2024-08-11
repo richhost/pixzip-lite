@@ -2,7 +2,7 @@
 	import * as slider from '@zag-js/slider';
 	import { normalizeProps, useMachine } from '@zag-js/svelte';
 	import type { Optional } from '$lib/types';
-	import { useId } from '$lib/utils';
+	import { useId } from '$lib/shared/utils';
 
 	type Props = { class?: string } & Optional<slider.Context, 'id'>;
 

@@ -15,8 +15,6 @@ export function useConfig() {
 		updateSpace(valid);
 	};
 
-	$inspect('inner', formData);
-
 	return {
 		getFormData,
 		update
