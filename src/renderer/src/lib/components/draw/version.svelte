@@ -11,9 +11,8 @@
 		const data = await resp.json();
 		if (resp.ok) {
 			return data.tag_name.replace('v', '');
-		} else {
-			throw new Error('Failed to fetch version');
 		}
+		throw new Error('Failed to fetch version');
 	};
 </script>
 
