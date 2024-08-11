@@ -37,5 +37,7 @@
 		{:else}
 			<div>No new version</div>
 		{/if}
+	{:catch}
+		<p class="text-red-500">Failed to fetch version.</p>
 	{/await}
 </div>

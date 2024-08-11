@@ -7,7 +7,7 @@
 	import OpenSource from './open-source.svelte';
 </script>
 
-<Drawer.Root shouldScaleBackground open>
+<Drawer.Root shouldScaleBackground>
 	<Drawer.Trigger
 		class="w-7 h-7 flex items-center justify-center transition hover:bg-neutral-200 rounded active:scale-95"
 	>
