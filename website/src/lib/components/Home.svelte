@@ -32,7 +32,7 @@
 
 	<p class="text-center mt-4">
 		如果你需要更多功能（按比例缩放、暗色模式等），请使用 <a
-			href="https://pixzip.cutepuppy.tech"
+			href="https://pixzip.cutelabs.in"
 			target="_blank"
 			class="underline underline-offset-4">Pro</a
 		> 版本

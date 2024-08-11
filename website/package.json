@@ -18,7 +18,7 @@
 		"autoprefixer": "^10.4.20",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",
-		"svelte": "5.0.0-next.215",
+		"svelte": "5.0.0-next.216",
 		"svelte-check": "^3.8.5",
 		"svelte-compare-slider": "^0.0.2",
 		"svelte-meta-tags": "^3.1.2",
