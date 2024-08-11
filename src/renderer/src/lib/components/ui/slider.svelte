@@ -1,16 +1,15 @@
 <script lang="ts">
 	import * as slider from '@zag-js/slider';
 	import { normalizeProps, useMachine } from '@zag-js/svelte';
-	import { nanoid } from 'nanoid/non-secure';
 	import type { Optional } from '$lib/types';
+	import { useId } from '$lib/utils';
 
 	type Props = { class?: string } & Optional<slider.Context, 'id'>;
 
-	const { class: className, ...rest }: Props = $props();
-	const context = $derived(rest);
+	const { class: className, ...zagProps }: Props = $props();
 
-	const [snapshot, send] = useMachine(slider.machine({ id: nanoid(), ...rest }), {
-		context
+	const [snapshot, send] = useMachine(slider.machine({ id: useId() }), {
+		context: zagProps
 	});
 	const api = $derived(slider.connect(snapshot, send, normalizeProps));
 </script>

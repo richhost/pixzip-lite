@@ -1,11 +1,10 @@
 <script lang="ts">
 	import * as numberInput from '@zag-js/number-input';
 	import { normalizeProps, useMachine } from '@zag-js/svelte';
-	import { nanoid } from 'nanoid/non-secure';
 	import { ChevronDown, ChevronUp } from 'lucide-svelte';
 
 	import type { Optional } from '$lib/types';
-	import { cn } from '$lib/utils';
+	import { cn, useId } from '$lib/utils';
 
 	type Props = {
 		placeholder?: string;
@@ -14,12 +13,10 @@
 		class?: string;
 	} & Optional<numberInput.Context, 'id'>;
 
-	const { placeholder, label, class: className, inputClass, ...rest }: Props = $props();
+	const { placeholder, label, class: className, inputClass, ...zagProps }: Props = $props();
 
-	const context = $derived(rest);
-
-	const [snapshot, send] = useMachine(numberInput.machine({ id: nanoid(), ...rest }), {
-		context
+	const [snapshot, send] = useMachine(numberInput.machine({ id: useId() }), {
+		context: zagProps
 	});
 
 	const api = $derived(numberInput.connect(snapshot, send, normalizeProps));

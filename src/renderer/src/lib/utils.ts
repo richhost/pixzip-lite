@@ -6,3 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const OS = window.pixzip.process.platform;
+
+// unique string id
+export const useId = (() => {
+	let id = 0;
+	return () => Date.now().toString(36) + id++;
+})();
