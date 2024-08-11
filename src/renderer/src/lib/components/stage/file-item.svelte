@@ -10,7 +10,11 @@
 		ArrowUp
 	} from 'lucide-svelte';
 	import { MenuContent, MenuItem, MenuRoot, MenuSeparator, MenuTrigger } from '../ui/context-menu';
-	import { bytesToSize, OS, savePercentage, thumbImg } from '$lib/shared/utils';
+	import { bytesToSize, cn, OS, savePercentage, thumbImg } from '$lib/shared/utils';
+	import { client } from '$lib/client';
+	import { removeTask } from '$lib/stores/task';
+	import { useStore } from '@tanstack/svelte-store';
+	import { defaultSpaceStore } from '$lib/stores/space';
 
 	type Props = {
 		file: FileTask;
@@ -33,10 +37,42 @@
 			return savePercentage(file.fileSize, file.outSize);
 		}
 	});
+
+	let isOpen = $state(false);
+
+	const spaceId = useStore(defaultSpaceStore);
 </script>
 
-<section class="p-1 even:bg-neutral-50">
-	<MenuRoot>
+<section
+	class={cn('p-1', {
+		'bg-sky-100/80': isOpen,
+		'even:bg-neutral-100/80': !isOpen
+	})}
+>
+	<MenuRoot
+		onOpenChange={({ open }) => {
+			isOpen = open;
+		}}
+		onSelect={({ value }) => {
+			switch (value) {
+				case 'show':
+					client.revealWith({ filepath: file.outputPath });
+					break;
+				case 'copy':
+					client.copyFile({ filepath: file.outputPath });
+					break;
+				case 'remove':
+					if (!spaceId.current) return;
+					removeTask({ spaceId: spaceId.current, filepath: file.filepath });
+					break;
+				case 'delete':
+					if (!spaceId.current) return;
+					client.trashFile({ filepath: file.outputPath });
+					removeTask({ spaceId: spaceId.current, filepath: file.filepath });
+					break;
+			}
+		}}
+	>
 		<MenuTrigger>
 			{@render image()}
 		</MenuTrigger>
@@ -87,13 +123,18 @@
 						<span>{bytesToSize(file.outSize)}</span>
 					</div>
 
-					<div class="flex items-center">
+					<div
+						class={cn('flex items-center border border-neutral-200 rounded px-1 text-white', {
+							'bg-green-600/80': percent !== undefined && percent > 0,
+							'bg-orange-600/80': percent !== undefined && percent < 0
+						})}
+					>
 						{#if percent !== undefined && percent > 0}
 							<ArrowDown class="w-3 h-3" />
 						{:else if percent !== undefined && percent < 0}
 							<ArrowUp class="w-3 h-3" />
 						{/if}
-						<small>{percent && Math.abs(percent)}%</small>
+						<span>{percent && Math.abs(percent)}%</span>
 					</div>
 				{:else if file.status === 'processing'}
 					<Loader class="w-3 h-3 animate-spin" />

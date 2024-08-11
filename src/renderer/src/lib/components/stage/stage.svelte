@@ -4,6 +4,7 @@
 	import FileItem from './file-item.svelte';
 	import { taskStore } from '$lib/stores/task';
 	import { defaultSpaceStore } from '$lib/stores/space';
+	import Empty from './empty.svelte';
 
 	const { ondragover, ondrop } = useDragFile();
 
@@ -17,8 +18,12 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="grow" {ondrop} {ondragover} style="content-visibility: 'auto';">
-	{#each list as item}
-		<FileItem file={item} />
-	{/each}
+<div class="grow flex flex-col" {ondrop} {ondragover} style="content-visibility: 'auto';">
+	{#if list.length === 0}
+		<Empty />
+	{:else}
+		{#each list as item}
+			<FileItem file={item} />
+		{/each}
+	{/if}
 </div>

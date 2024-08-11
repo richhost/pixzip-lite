@@ -1,5 +1,6 @@
 import { tipc } from '@egoist/tipc/main';
-import { dialog } from 'electron';
+import { dialog, shell } from 'electron';
+import { loadClipboardEx } from '../helper';
 
 const t = tipc.create();
 
@@ -8,4 +9,20 @@ export const folderPicker = t.procedure.action(async () => {
 		properties: ['openDirectory']
 	});
 	return filePaths;
+});
+
+export const revealWith = t.procedure.input<{ filepath: string }>().action(async ({ input }) => {
+	shell.showItemInFolder(input.filepath);
+});
+
+export const copyFile = t.procedure.input<{ filepath: string }>().action(async ({ input }) => {
+	if (process.platform !== 'linux') {
+		loadClipboardEx().then(({ writeFilePaths }) => {
+			writeFilePaths([input.filepath]);
+		});
+	}
+});
+
+export const trashFile = t.procedure.input<{ filepath: string }>().action(async ({ input }) => {
+	shell.trashItem(input.filepath);
 });

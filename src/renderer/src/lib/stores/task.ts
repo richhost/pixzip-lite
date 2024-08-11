@@ -13,14 +13,14 @@ type RemoveTask = {
 };
 export const removeTask = ({ spaceId, filepath }: RemoveTask) => {
 	taskStore.setState((prev) => {
-		const clone = structuredClone(prev.task);
-		const list = clone.get(spaceId) ?? [];
+		const taskMap = structuredClone(prev.task);
+		const list = taskMap.get(spaceId) ?? [];
 		const newList = list.filter((item) => item.filepath !== filepath);
-		clone.set(spaceId, newList);
+		taskMap.set(spaceId, newList);
 		client.removeTask({ spaceId, filepath });
 
 		return {
-			task: new Map(clone)
+			task: new Map(taskMap)
 		};
 	});
 };

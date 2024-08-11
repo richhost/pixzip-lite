@@ -1,17 +1,18 @@
 import { getContext, setContext } from 'svelte';
 import * as menu from '@zag-js/menu';
 import { normalizeProps, useMachine } from '@zag-js/svelte';
-import type { Optional } from '../../../types';
-import { nanoid } from 'nanoid';
+
+import { useId } from '$lib/shared/utils';
+import { Optional } from '$lib/types';
 
 export type Props = Optional<menu.Context, 'id'>;
 
 const key = Symbol('menu');
 
-const id = nanoid();
-
 export const setApi = (props: Props) => {
-	const [snapshot, send] = useMachine(menu.machine({ id: nanoid(), ...props }));
+	const [snapshot, send] = useMachine(menu.machine({ id: useId() }), {
+		context: props
+	});
 
 	const _api = $derived(menu.connect(snapshot, send, normalizeProps));
 
