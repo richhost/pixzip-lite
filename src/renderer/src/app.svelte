@@ -4,11 +4,11 @@
 	import { cn } from '$lib/shared/utils';
 	import Panel from '$lib/components/panel/panel.svelte';
 	import Stage from '$lib/components/stage/stage.svelte';
-	import { useScan } from '$lib/hooks/use-scan.svelte';
-	import { useTaskScheduler } from '$lib/hooks/use-task-scheduler.svelte';
+	import { Scan } from '$lib/runes/scan.svelte';
+	import { TaskScheduler } from '$lib/runes/task-scheduler.svelte';
 
-	useScan();
-	useTaskScheduler();
+	new Scan();
+	new TaskScheduler();
 </script>
 
 <div class="h-screen bg-neutral-50 rounded-md flex overflow-hidden text-neutral-900 text-sm">

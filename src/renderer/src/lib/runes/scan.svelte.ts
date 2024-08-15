@@ -3,11 +3,11 @@ import { getCurrentConfig, getOutputPath, getTargetExtname, taskExists } from '$
 import { extname } from '$lib/shared/utils';
 import { taskStore } from '$lib/stores/task';
 
-export function useScan() {
-	const boxing = (fileInfoList: FileInfo[]) => {
+export class Scan {
+	private boxing = (fileInfoList: FileInfo[]) => {
 		const config = getCurrentConfig();
 		if (!config) return;
-		const processingTask = eachTask(config, fileInfoList);
+		const processingTask = this.eachTask(config, fileInfoList);
 		taskStore.setState((prev) => {
 			const taskMap = structuredClone(prev.task);
 			const list = taskMap.get(config.id) ?? [];
@@ -18,7 +18,7 @@ export function useScan() {
 		client.pushTask({ task: processingTask });
 	};
 
-	const eachTask = (config: Pixzip.Space, fileInfoList: FileInfo[]) => {
+	private eachTask = (config: Pixzip.Space, fileInfoList: FileInfo[]) => {
 		const processingTask: ProcessingTask[] = [];
 		for (let i = 0; i < fileInfoList.length; i++) {
 			const file = fileInfoList[i];
@@ -40,13 +40,15 @@ export function useScan() {
 		return processingTask;
 	};
 
-	$effect(() => {
-		const unlisten = handlers.scanned.listen((fileInfoList) => {
-			boxing(fileInfoList);
-		});
+	constructor() {
+		$effect(() => {
+			const unlisten = handlers.scanned.listen((fileInfoList) => {
+				this.boxing(fileInfoList);
+			});
 
-		return () => {
-			unlisten();
-		};
-	});
+			return () => {
+				unlisten();
+			};
+		});
+	}
 }

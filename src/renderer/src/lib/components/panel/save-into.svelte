@@ -1,19 +1,20 @@
 <script lang="ts">
-	import { useConfig } from '$lib/hooks/use-config.svelte';
 	import Radio from '../ui/radio.svelte';
 	import Fieldset from './fieldset.svelte';
 	import Input from '../ui/input.svelte';
 	import { client } from '$lib/client';
+	import { getSpaceConfig } from '$lib/runes/space-config.svelte';
 
-	const { getFormData, update } = useConfig();
-	const originalDir = $derived.by(() => !!getFormData()?.originalOutput);
-	const outputDir = $derived.by(() => getFormData()?.outputDir);
-	const suffix = $derived(getFormData()?.suffix ?? '');
+	const spaceConfig = getSpaceConfig();
+
+	const originalDir = $derived.by(() => !!spaceConfig.formData?.originalOutput);
+	const outputDir = $derived.by(() => spaceConfig.formData?.outputDir);
+	const suffix = $derived(spaceConfig.formData?.suffix ?? '');
 
 	const selectOutputDirectory = () => {
 		client.folderPicker().then(([path]) => {
 			if (path) {
-				update('outputDir', path);
+				spaceConfig.update('outputDir', path);
 			}
 		});
 	};
@@ -25,7 +26,7 @@
 		name="save into"
 		checked={originalDir}
 		onchange={(e) => {
-			update('originalOutput', true);
+			spaceConfig.update('originalOutput', true);
 		}}
 	/>
 	<Radio
@@ -34,7 +35,7 @@
 		name="save into"
 		checked={!originalDir}
 		onchange={(e) => {
-			update('originalOutput', false);
+			spaceConfig.update('originalOutput', false);
 			if (!outputDir) {
 				selectOutputDirectory();
 			}
@@ -52,7 +53,7 @@
 			class="w-28"
 			value={suffix}
 			oninput={(e) => {
-				update('suffix', (e.target as HTMLInputElement).value);
+				spaceConfig.update('suffix', (e.target as HTMLInputElement).value);
 			}}
 			spellcheck={false}
 		/>

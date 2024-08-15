@@ -2,17 +2,18 @@ import { client } from '$lib/client';
 import { defaultSpaceStore, spaceStore } from '$lib/stores/space';
 import { useStore } from '@tanstack/svelte-store';
 
-export function useDragFile() {
-	const ondragover = (e: DragEvent) => e.preventDefault();
-	const spaceId = useStore(defaultSpaceStore);
-	const spaces = useStore(spaceStore);
+export class DragFile {
+	private spaceId = useStore(defaultSpaceStore);
+	private spaces = useStore(spaceStore);
 
-	const space = $derived.by(() => {
-		return spaces.current.find((element) => element.id === spaceId.current);
+	private space = $derived.by(() => {
+		return this.spaces.current.find((element) => element.id === this.spaceId.current);
 	});
 
-	const ondrop = (e: DragEvent) => {
-		if (!space) return;
+	ondragover = (e: DragEvent) => e.preventDefault();
+
+	ondrop = (e: DragEvent) => {
+		if (!this.space) return;
 		e.preventDefault();
 		e.stopPropagation();
 
@@ -22,10 +23,5 @@ export function useDragFile() {
 			directory.push(files[i].path);
 		}
 		client.scan({ directory });
-	};
-
-	return {
-		ondragover,
-		ondrop
 	};
 }

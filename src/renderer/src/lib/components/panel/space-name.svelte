@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { useConfig } from '$lib/hooks/use-config.svelte';
+	import { getSpaceConfig } from '$lib/runes/space-config.svelte';
 	import Input from '../ui/input.svelte';
 	import Fieldset from './fieldset.svelte';
 
-	const { getFormData, update } = useConfig();
+	const spaceConfig = getSpaceConfig();
 
-	const name = $derived(getFormData()?.name);
+	const name = $derived(spaceConfig.formData?.name);
 </script>
 
 <Fieldset legend="Basic">
@@ -15,7 +15,7 @@
 			class="w-28"
 			value={name}
 			oninput={(e) => {
-				update('name', (e.target as HTMLInputElement).value);
+				spaceConfig.update('name', (e.target as HTMLInputElement).value);
 			}}
 			spellcheck={false}
 		/>

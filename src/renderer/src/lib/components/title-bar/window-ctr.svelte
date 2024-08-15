@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { cn } from '$lib/shared/utils';
 	import { type Snippet } from 'svelte';
 	import {
 		closeFn,
 		maximizeFn,
 		minimizeFn,
 		unmaximizeFn,
-		useWindowCtr
-	} from '$lib/hooks/use-window-ctr.svelte';
+		WindowCtr
+	} from '$lib/runes/window-ctr.svelte';
+	import { cn } from '$lib/shared/utils';
 
-	const isMax = useWindowCtr();
+	const windowCtr = new WindowCtr();
 </script>
 
 <div class="absolute right-0 top-0 bottom-0 flex items-center">
 	{@render button(minimizeIcon, minimizeFn)}
-	{#if isMax.current}
+	{#if windowCtr.isMax}
 		{@render button(unmaximizeIcon, unmaximizeFn)}
 	{:else}
 		{@render button(maximizeIcon, maximizeFn)}

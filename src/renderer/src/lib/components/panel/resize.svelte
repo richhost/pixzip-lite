@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { useConfig } from '$lib/hooks/use-config.svelte';
+	import { getSpaceConfig } from '$lib/runes/space-config.svelte';
 	import NumberInput from '../ui/number-input.svelte';
 	import Fieldset from './fieldset.svelte';
 
-	const { getFormData, update } = useConfig();
+	const spaceConfig = getSpaceConfig();
 
 	const width = $derived.by(() => {
-		const value = getFormData()?.width;
+		const value = spaceConfig.formData?.width;
 		return typeof value === 'number' ? value.toString() : '';
 	});
 	const height = $derived.by(() => {
-		const value = getFormData()?.height;
+		const value = spaceConfig.formData?.height;
 		return typeof value === 'number' ? value.toString() : '';
 	});
 
@@ -28,7 +28,7 @@
 		value={width}
 		placeholder="Auto"
 		onValueChange={({ valueAsNumber }) => {
-			update('width', transformValue(valueAsNumber));
+			spaceConfig.update('width', transformValue(valueAsNumber));
 		}}
 	/>
 	<NumberInput
@@ -38,7 +38,7 @@
 		value={height}
 		placeholder="Auto"
 		onValueChange={({ valueAsNumber }) => {
-			update('height', transformValue(valueAsNumber));
+			spaceConfig.update('height', transformValue(valueAsNumber));
 		}}
 	/>
 </Fieldset>
