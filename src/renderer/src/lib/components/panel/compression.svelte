@@ -1,12 +1,11 @@
 <script lang="ts">
-	import type { Selected } from 'bits-ui';
-	import Select from '../ui/select.svelte';
 	import Fieldset from './fieldset.svelte';
 	import Slider from '../ui/slider.svelte';
 	import Checkbox from '../ui/checkbox.svelte';
 	import { getSpaceConfig } from '$lib/runes/space-config.svelte';
+	import { Select } from '../ui/select';
 
-	const items: Selected<string>[] = [
+	const items = [
 		{ value: 'original', label: 'Original' },
 		{ value: 'avif', label: 'AVIF' },
 		{ value: 'webp', label: 'WebP' },
@@ -21,8 +20,7 @@
 	const keepEXIF = $derived(!!spaceConfig.formData?.keepExif);
 
 	const format = $derived.by(() => {
-		const value = spaceConfig.formData?.format ?? items[0].value;
-		return items.find((element) => element.value === value)!;
+		return spaceConfig.formData?.format ?? items[0].value;
 	});
 </script>
 
@@ -31,12 +29,9 @@
 		<span class="font-medium">Format</span>
 		<Select
 			{items}
-			class="w-28"
-			selected={format}
-			onSelectedChange={(value) => {
-				if (value !== undefined && !Array.isArray(value)) {
-					spaceConfig.update('format', value.value);
-				}
+			value={[format]}
+			onValueChange={({ value }) => {
+				spaceConfig.update('format', value[0]);
 			}}
 		></Select>
 	</div>

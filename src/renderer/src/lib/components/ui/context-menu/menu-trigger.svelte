@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { getApi } from './context.svelte';
+	import { getMenuContext } from './context';
 
 	const { children }: { children?: Snippet } = $props();
 
-	const api = getApi();
+	const menuContext = getMenuContext();
 </script>
 
-<div {...api.getContextTriggerProps()}>
+<div {...menuContext.api.getContextTriggerProps()}>
 	{@render children?.()}
 </div>

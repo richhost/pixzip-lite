@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import * as menu from '@zag-js/menu';
-	import { getApi } from './context.svelte';
 	import { cn } from '$lib/shared/utils';
+	import { getMenuContext } from './context';
 
 	type Props = {
 		children?: Snippet;
@@ -11,11 +11,11 @@
 
 	const { children, class: className, ...rest }: Props = $props();
 
-	const api = getApi();
+	const menuContext = getMenuContext();
 </script>
 
 <li
-	{...api.getItemProps(rest)}
+	{...menuContext.api.getItemProps(rest)}
 	class={cn(
 		'h-7 data-[highlighted]:bg-neutral-100 rounded flex items-center px-2 data-[disabled]:text-neutral-400',
 		className

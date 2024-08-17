@@ -1,16 +1,21 @@
 <script lang="ts">
 	import * as menu from '@zag-js/menu';
 
-	import { setApi } from './context.svelte';
+	import type { MenuProps } from './types';
+	import { normalizeProps, useMachine } from '@zag-js/svelte';
+	import { useId } from '$lib/shared/utils';
+	import { setMenuContext } from './context';
 
-	import type { Optional } from '$lib/types';
-	import type { Snippet } from 'svelte';
+	const { children, ...zagProps }: MenuProps = $props();
 
-	type Props = Optional<menu.Context, 'id'> & { children?: Snippet };
+	const [snapshot, send] = useMachine(menu.machine({ id: useId() }), { context: zagProps });
+	const api = $derived(menu.connect(snapshot, send, normalizeProps));
 
-	const { children, ...rest }: Props = $props();
-
-	setApi(rest);
+	setMenuContext({
+		get api() {
+			return api;
+		}
+	});
 </script>
 
 {@render children?.()}
