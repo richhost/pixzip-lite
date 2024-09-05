@@ -20,7 +20,8 @@ export class DragFile {
 		const files = e.dataTransfer?.files ?? [];
 		const directory: string[] = [];
 		for (let i = 0; i < files.length; i++) {
-			directory.push(files[i].path);
+			const path = window.pixzip.getPathForFile(files[i]);
+			directory.push(path);
 		}
 		client.scan({ directory });
 	};
