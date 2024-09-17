@@ -49,9 +49,6 @@ const getFormat = (task: BoxingTask) => {
 
 const getQuality = (format: keyof FormatEnum, level: number) => {
 	let quality = qualityMap[format] ?? 1;
-	if (format === 'gif') {
-		quality = 1;
-	}
 	return Math.floor((11 - level) * 10 * quality);
 };
 
@@ -76,8 +73,10 @@ export const zip = (task: BoxingTask) => {
 			height: task.height
 		})
 		.toFormat(format, {
-			quality: quality,
-			mozjpeg: format === 'jpeg' || format === 'jpg'
+			quality,
+			mozjpeg: format === 'jpeg' || format === 'jpg' ? true : undefined,
+			colors: format === 'gif' ? parseInt(((quality * 256) / 100).toString(), 10) : undefined,
+			dither: format === 'gif' ? 0 : undefined
 		})
 		.toBuffer();
 };

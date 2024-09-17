@@ -48,7 +48,7 @@
 			step={1}
 			min={1}
 			max={9}
-			onValueChangeEnd={({ value }) => {
+			onValueChange={({ value }) => {
 				spaceConfig.update('level', value[0]);
 			}}
 		/>

@@ -6,7 +6,8 @@ export const qualityMap: Partial<Record<FormatEnumKeys, number>> = {
 	jpeg: 0.85,
 	png: 1,
 	webp: 0.8,
-	avif: 0.7
+	avif: 0.7,
+	gif: 0.6,
 };
 
 export const delimiter = process.platform === 'win32' ? '\\' : '/';
