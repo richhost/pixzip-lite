@@ -12,7 +12,7 @@
 		"build:mac:intel": "npm run build && electron-builder --mac --x64 --config electron-builder.config.cjs"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.1",
+		"@biomejs/biome": "^1.9.2",
 		"@sveltejs/vite-plugin-svelte": "4.0.0-next.7",
 		"@tailwindcss/vite": "4.0.0-alpha.24",
 		"@tanstack/svelte-store": "^0.5.5",
@@ -24,7 +24,7 @@
 		"@zag-js/slider": "^0.65.1",
 		"@zag-js/svelte": "^0.65.1",
 		"clsx": "^2.1.1",
-		"electron": "^32.1.0",
+		"electron": "^32.1.2",
 		"electron-builder": "^24.13.3",
 		"electron-vite": "^2.3.0",
 		"gifuct-js": "^2.1.2",
@@ -33,7 +33,7 @@
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",
 		"runed": "^0.15.2",
-		"svelte": "5.0.0-next.247",
+		"svelte": "5.0.0-next.257",
 		"svelte-check": "^3.8.6",
 		"tailwind-merge": "^2.5.2",
 		"tailwindcss": "4.0.0-alpha.24",
