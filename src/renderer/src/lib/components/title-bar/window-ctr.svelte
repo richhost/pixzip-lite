@@ -59,7 +59,7 @@
 		onclick={() => fn()}
 		class={cn('w-10 h-full grid place-items-center transition', {
 			'hover:bg-red-600 hover:text-white': isClose,
-			'hover:bg-neutral-200 hover:text-neutral-600': !isClose
+			'hover:bg-neutral-200 hover:dark:bg-neutral-100/10': !isClose
 		})}
 	>
 		{@render icon()}

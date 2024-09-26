@@ -21,9 +21,9 @@
 	];
 </script>
 
-<div class="p-4 rounded-md shadow">
+<div class="p-4 dark:bg-neutral-700 dark:text-neutral-100 rounded-md shadow">
 	<h2 class="text-lg font-bold mb-1">Open Source</h2>
-	<p class="text-neutral-800">
+	<p class="">
 		PixZip's development is based on excellent open-source projects. Special thanks to the following
 		projects
 	</p>

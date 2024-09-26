@@ -44,8 +44,8 @@
 </script>
 
 <section
-	class={cn('p-1', {
-		'bg-sky-100/80': isOpen,
+	class={cn('p-1 px-2', {
+		'bg-sky-100/80 dark:bg-sky-800/20': isOpen,
 		'even:bg-neutral-100/80': !isOpen
 	})}
 >

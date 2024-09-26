@@ -11,26 +11,25 @@
 	new TaskScheduler();
 </script>
 
-<div class="h-screen bg-neutral-50 rounded-md flex overflow-hidden text-neutral-900 text-sm">
+<div class="h-screen flex overflow-hidden text-neutral-900 dark:text-neutral-300 text-sm">
 	<Sidebar />
-	<div class="grow flex flex-col">
-		<TitleBar />
+
+	<div
+		class="grow flex border-l border-neutral-900/10 dark:border-neutral-900 bg-neutral-50 dark:bg-neutral-800"
+	>
+		<section class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] shrink-0 flex flex-col">
+			<Panel />
+		</section>
 
 		<div
 			class={cn(
-				'border border-neutral-200/70 border-r-transparent overflow-hidden rounded-l-3xl grow flex',
+				'overflow-hidden grow flex flex-col border-l border-neutral-200 dark:border-neutral-100/10',
 				{}
 			)}
 		>
-			<section
-				class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] m-2 rounded-2xl border bg-white border-neutral-200/80 shrink-0"
-			>
-				<Panel />
-			</section>
+			<TitleBar />
 
-			<section
-				class="grow flex flex-col m-2 ml-0 border border-neutral-200/80 bg-white rounded-2xl overflow-y-auto"
-			>
+			<section class="grow flex flex-col overflow-y-auto">
 				<Stage />
 			</section>
 		</div>

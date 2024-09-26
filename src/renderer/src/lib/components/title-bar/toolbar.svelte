@@ -43,21 +43,21 @@
 <div class="flex items-center gap-0.5">
 	<button
 		onclick={client.openFolder}
-		class="h-7 w-7 transition hover:bg-neutral-200 grid place-items-center rounded text-neutral-600"
+		class="h-7 w-7 transition hover:bg-neutral-200 hover:dark:bg-neutral-100/10 grid place-items-center rounded"
 	>
 		<Plus class="w-5 h-5" strokeWidth="1.5" />
 	</button>
 
 	<button
 		onclick={start}
-		class="h-7 w-7 transition hover:bg-neutral-200 grid place-items-center rounded text-neutral-600"
+		class="h-7 w-7 transition hover:bg-neutral-200 hover:dark:bg-neutral-100/10 grid place-items-center rounded"
 	>
 		<Play class="w-4 h-4" strokeWidth="1.5" />
 	</button>
 
 	<button
 		onclick={emptyTask}
-		class="h-7 w-7 transition hover:bg-neutral-200 grid place-items-center rounded text-neutral-600"
+		class="h-7 w-7 transition hover:bg-neutral-200 hover:dark:bg-neutral-100/10 grid place-items-center rounded"
 	>
 		<Eraser class="w-4 h-4" strokeWidth="1.5" />
 	</button>

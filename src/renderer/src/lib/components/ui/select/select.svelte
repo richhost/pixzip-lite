@@ -30,7 +30,7 @@
 	<div {...api.getControlProps()}>
 		<button
 			{...api.getTriggerProps()}
-			class="flex items-center w-full h-7 border border-neutral-200 rounded focus:outline-1 focus:outline-neutral-400"
+			class="flex items-center w-full h-7 border border-neutral-200 dark:border-neutral-100/10 rounded focus:outline-1 focus:outline-neutral-400"
 		>
 			<span class="mr-auto px-2">{api.valueAsString || placeholder}</span>
 			<span {...api.getIndicatorProps()}><ChevronsUpDown size="16" class="shrink-0 mr-1" /></span>
@@ -40,12 +40,12 @@
 	<div use:portal {...api.getPositionerProps()}>
 		<ul
 			{...api.getContentProps()}
-			class="w-full border bg-white rounded shadow-lg border-neutral-200 p-1 min-w-32"
+			class="w-full border bg-neutral-50 dark:bg-neutral-700 dark:border-neutral-100/10 border-neutral-200 rounded shadow-lg p-1 min-w-32"
 		>
 			{#each items as item}
 				<li
 					{...api.getItemProps({ item })}
-					class="h-7 px-2 flex text-sm items-center hover:bg-neutral-100 transition rounded duration-100 data-[highlighted]:bg-neutral-100"
+					class="h-7 px-2 flex text-sm items-center transition rounded duration-100 data-[highlighted]:bg-neutral-200 dark:data-[highlighted]:bg-neutral-600 dark:data-[disabled]:text-neutral-500"
 				>
 					<span {...api.getItemTextProps({ item })}>{item.label}</span>
 					<span {...api.getItemIndicatorProps({ item })} class="ml-auto"><Check size="16" /></span>

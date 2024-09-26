@@ -4,11 +4,12 @@
 	import Toolbar from './toolbar.svelte';
 </script>
 
-<div class="draggable flex h-[var(--h-title-bar)] shrink-0">
+<div class="draggable flex h-[var(--h-title-bar)] shrink-0 bg-neutral-100 dark:bg-neutral-700">
 	<div class="relative grow flex items-center justify-center">
-		<div class="w-[clamp(var(--w-config-min),16vw,var(--w-config-max))] mr-4"></div>
 		<Toolbar />
 
-		{#if OS !== 'darwin'}<WindowCtr />{/if}
+		{#if OS !== 'darwin'}
+			<WindowCtr />
+		{/if}
 	</div>
 </div>

@@ -45,7 +45,7 @@
 		<Input readonly value={outputDir} onclick={selectOutputDirectory} />
 	{/if}
 
-	<hr class="border-neutral-200 my-4" />
+	<hr class="border-neutral-200 my-4 dark:border-neutral-100/10" />
 
 	<label class="flex items-center justify-between">
 		<span class="font-medium">Suffix</span>

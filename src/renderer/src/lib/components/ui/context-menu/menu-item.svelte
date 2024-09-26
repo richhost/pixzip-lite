@@ -17,7 +17,7 @@
 <li
 	{...menuContext.api.getItemProps(rest)}
 	class={cn(
-		'h-7 data-[highlighted]:bg-neutral-100 rounded flex items-center px-2 data-[disabled]:text-neutral-400',
+		'h-7 rounded flex items-center px-2 data-[highlighted]:bg-neutral-200 dark:data-[highlighted]:bg-neutral-600 dark:data-[disabled]:text-neutral-500',
 		className
 	)}
 >

@@ -9,7 +9,7 @@
 	--w-sidebar-max: 240px;
 	--w-config-min: 224px;
 	--w-config-max: 360px;
-	--h-title-bar: 30px;
+	--h-title-bar: 36px;
 
 	--polygon-avif: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 	--polygon-webp: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
@@ -25,7 +25,7 @@
 }
 
 body {
-	@apply antialiased bg-white;
+	@apply antialiased;
 	font-family:
 		'Rethink Sans',
 		system-ui,

@@ -6,7 +6,7 @@
 	const spaces = useStore(spaceStore);
 </script>
 
-<nav class="grow overflow-y-auto p-2">
+<nav class="grow overflow-y-auto px-2 pb-2 pt-0.5 space-y-0.5">
 	{#each spaces.current as space}
 		<NavigationItem {space} length={spaces.current.length} />
 	{/each}

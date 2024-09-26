@@ -13,7 +13,7 @@
 
 <fieldset>
 	<legend class="text-xs mb-1 text-neutral-600">{legend}</legend>
-	<div class={cn('border border-neutral-200 rounded-md p-2', className)}>
+	<div class={cn('border border-neutral-200 dark:border-neutral-100/10 rounded-md p-2', className)}>
 		{@render children?.()}
 	</div>
 </fieldset>

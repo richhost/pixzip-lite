@@ -36,7 +36,7 @@
 		></Select>
 	</div>
 
-	<hr class="border-neutral-200 mt-3 mb-2" />
+	<hr class="border-neutral-200 dark:border-neutral-100/10 mt-3 mb-2" />
 
 	<div>
 		<div class="flex items-center justify-between mb-2">
@@ -51,6 +51,7 @@
 			onValueChange={({ value }) => {
 				spaceConfig.update('level', value[0]);
 			}}
+			class="py-1"
 		/>
 		<div class="text-xs flex items-center justify-between mt-2 text-neutral-600">
 			<span>Best Quality</span>
@@ -58,7 +59,7 @@
 		</div>
 	</div>
 
-	<hr class="border-neutral-200 my-3" />
+	<hr class="border-neutral-200 dark:border-neutral-100/10 my-3" />
 
 	<Checkbox
 		label="Keep EXIF"

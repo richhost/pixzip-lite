@@ -22,16 +22,23 @@
 >
 	<MenuTrigger>
 		<button
-			class={cn('h-8 px-2 w-full border border-transparent flex items-center rounded-lg', {
-				'bg-white border-neutral-100 shadow-xs': defaultId.current === space.id,
-				outline: isOpen
-			})}
+			class={cn(
+				'h-8 px-2 w-full border border-transparent flex items-center rounded-lg outline-neutral-900/20 dark:outline-neutral-100/50',
+				{
+					'bg-neutral-900/10 dark:bg-neutral-100/10': defaultId.current === space.id,
+					outline: isOpen
+				}
+			)}
 			onclick={() => updateDefaultSpace(space.id)}
 		>
 			{space.name}
 		</button>
 	</MenuTrigger>
-	<MenuContent class="w-20">
-		<MenuItem value="delete" disabled={length === 1}>Delete</MenuItem>
+	<MenuContent class="w-28 dark:bg-neutral-700 dark:border-neutral-100/10">
+		<MenuItem
+			value="delete"
+			class="dark:data-[highlighted]:bg-neutral-600 dark:data-[disabled]:text-neutral-500"
+			disabled={length === 1}>Delete</MenuItem
+		>
 	</MenuContent>
 </MenuRoot>

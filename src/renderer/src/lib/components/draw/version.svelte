@@ -16,7 +16,7 @@
 	};
 </script>
 
-<div class="p-4 rounded-md bg-amber-200 shadow">
+<div class="p-4 rounded-md bg-amber-200 text-neutral-900 shadow">
 	<h2 class="font-bold text-lg mb-1">Version</h2>
 
 	<div>Current Version: {version}</div>

@@ -14,9 +14,9 @@
 	<div>
 		<input type="checkbox" class="hidden peer" {...rest} />
 		<div
-			class="w-4 aspect-square border rounded border-neutral-200 grid place-items-center peer-checked:bg-neutral-900"
+			class="w-4 aspect-square border rounded border-neutral-200 dark:border-neutral-100/10 grid place-items-center peer-checked:bg-neutral-900 dark:peer-checked:bg-neutral-200 dark:bg-neutral-900"
 		>
-			<Check class="w-3 h-3 text-white" />
+			<Check class="w-3 h-3 text-neutral-50 dark:text-neutral-900" />
 		</div>
 	</div>
 	<span>{label}</span>

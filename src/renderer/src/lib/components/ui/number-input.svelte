@@ -28,7 +28,7 @@
 	<div
 		{...api.getControlProps()}
 		class={cn(
-			'h-full flex border border-neutral-200 focus-within:outline-1 focus-within:outline-neutral-400 rounded pl-2 overflow-hidden',
+			'h-full flex border border-neutral-200 dark:border-neutral-100/10 focus-within:outline-1 focus-within:outline-neutral-400 rounded pl-2 overflow-hidden',
 			className
 		)}
 	>
@@ -39,11 +39,11 @@
 		/>
 		<div class="flex flex-col shrink-0">
 			<button
-				class="hover:bg-neutral-200 active:scale-95 scale-100 transition"
+				class="hover:bg-neutral-200 hover:dark:bg-neutral-100/10 active:scale-95 scale-100 transition"
 				{...api.getIncrementTriggerProps()}><ChevronUp size="13" /></button
 			>
 			<button
-				class="hover:bg-neutral-200 active:scale-95 scale-100 transition"
+				class="hover:bg-neutral-200 hover:dark:bg-neutral-100/10 active:scale-95 scale-100 transition"
 				{...api.getDecrementTriggerProps()}><ChevronDown size="13" /></button
 			>
 		</div>
