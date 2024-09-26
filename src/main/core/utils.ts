@@ -75,7 +75,7 @@ export const zip = (task: BoxingTask) => {
 		.toFormat(format, {
 			quality,
 			mozjpeg: format === 'jpeg' || format === 'jpg' ? true : undefined,
-			colors: format === 'gif' ? parseInt(((quality * 256) / 100).toString(), 10) : undefined,
+			colors: format === 'gif' ? Number.parseInt(((quality * 256) / 100).toString(), 10) : undefined,
 			dither: format === 'gif' ? 0 : undefined
 		})
 		.toBuffer();

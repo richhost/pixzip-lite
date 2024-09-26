@@ -26,14 +26,7 @@
 
 body {
 	@apply antialiased;
-	font-family:
-		'Rethink Sans',
-		system-ui,
-		—apple-system,
-		Segoe UI,
-		Helvetica,
-		Arial,
-		sans-serif;
+	font-family: 'Rethink Sans', system-ui, sans-serif;
 	font-optical-sizing: auto;
 }
 
