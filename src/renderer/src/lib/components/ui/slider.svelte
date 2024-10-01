@@ -28,7 +28,7 @@
 		{#each api.value as _, index}
 			<div
 				{...api.getThumbProps({ index })}
-				class="size-4 flex items-center justify-center rounded-full bg-neutral-50 dark:bg-neutral-200 shadow outline-1.5"
+				class="size-4 flex items-center justify-center rounded-full bg-neutral-50 dark:bg-neutral-200 shadow border border-neutral-800"
 			>
 				<input {...api.getHiddenInputProps({ index })} />
 			</div>

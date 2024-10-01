@@ -4,7 +4,7 @@
 	import Toolbar from './toolbar.svelte';
 </script>
 
-<div class="draggable flex h-[var(--h-title-bar)] shrink-0 bg-neutral-100 dark:bg-neutral-700">
+<div class="draggable flex h-[var(--h-title-bar)] shrink-0">
 	<div class="relative grow flex items-center justify-center">
 		<Toolbar />
 
