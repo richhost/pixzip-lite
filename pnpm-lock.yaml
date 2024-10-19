@@ -34,35 +34,35 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       '@sveltejs/vite-plugin-svelte':
-        specifier: 4.0.0-next.8
-        version: 4.0.0-next.8(svelte@5.0.0-next.269)(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))
+        specifier: ^4.0.0
+        version: 4.0.0(svelte@5.0.0)(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))
       '@tailwindcss/vite':
         specifier: 4.0.0-alpha.28
-        version: 4.0.0-alpha.28(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))
+        version: 4.0.0-alpha.28(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))
       '@tanstack/svelte-store':
         specifier: ^0.5.5
-        version: 0.5.5(svelte@5.0.0-next.269)
+        version: 0.5.5(svelte@5.0.0)
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
       '@types/node':
-        specifier: ^20.16.12
-        version: 20.16.12
+        specifier: ^20.16.13
+        version: 20.16.13
       '@zag-js/menu':
-        specifier: ^0.74.2
-        version: 0.74.2
+        specifier: ^0.75.0
+        version: 0.75.0
       '@zag-js/number-input':
-        specifier: ^0.74.2
-        version: 0.74.2
+        specifier: ^0.75.0
+        version: 0.75.0
       '@zag-js/select':
-        specifier: ^0.74.2
-        version: 0.74.2
+        specifier: ^0.75.0
+        version: 0.75.0
       '@zag-js/slider':
-        specifier: ^0.74.2
-        version: 0.74.2
+        specifier: ^0.75.0
+        version: 0.75.0
       '@zag-js/svelte':
-        specifier: ^0.74.2
-        version: 0.74.2(svelte@5.0.0-next.269)
+        specifier: ^0.75.0
+        version: 0.75.0(svelte@5.0.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -74,13 +74,13 @@ importers:
         version: 25.1.8(electron-builder-squirrel-windows@25.1.7)
       electron-vite:
         specifier: ^2.3.0
-        version: 2.3.0(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))
+        version: 2.3.0(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))
       gifuct-js:
         specifier: ^2.1.2
         version: 2.1.2
       lucide-svelte:
         specifier: ^0.453.0
-        version: 0.453.0(svelte@5.0.0-next.269)
+        version: 0.453.0(svelte@5.0.0)
       nanoid:
         specifier: ^5.0.7
         version: 5.0.7
@@ -89,13 +89,13 @@ importers:
         version: 3.3.3
       prettier-plugin-svelte:
         specifier: ^3.2.7
-        version: 3.2.7(prettier@3.3.3)(svelte@5.0.0-next.269)
+        version: 3.2.7(prettier@3.3.3)(svelte@5.0.0)
       svelte:
-        specifier: 5.0.0-next.269
-        version: 5.0.0-next.269
+        specifier: ^5.0.0
+        version: 5.0.0
       svelte-check:
         specifier: ^4.0.5
-        version: 4.0.5(svelte@5.0.0-next.269)(typescript@5.6.3)
+        version: 4.0.5(svelte@5.0.0)(typescript@5.6.3)
       tailwind-merge:
         specifier: ^2.5.4
         version: 2.5.4
@@ -110,10 +110,10 @@ importers:
         version: 5.6.3
       vaul-svelte:
         specifier: ^0.3.2
-        version: 0.3.2(svelte@5.0.0-next.269)
+        version: 0.3.2(svelte@5.0.0)
       vite:
         specifier: ^5.4.9
-        version: 5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)
+        version: 5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -563,8 +563,8 @@ packages:
   '@internationalized/date@3.5.6':
     resolution: {integrity: sha512-jLxQjefH9VI5P9UQuqB6qNKnvFt1Ky1TPIzHGsIlCi7sZZoMR8SdYbBGRvM0y+Jtb+ez4ieBzmiAUcpmPYpyOw==}
 
-  '@internationalized/number@3.5.3':
-    resolution: {integrity: sha512-rd1wA3ebzlp0Mehj5YTuTI50AQEx80gWFyHcQu+u91/5NgdwBecO8BH6ipPfE+lmQ9d63vpB3H9SHoIUiupllw==}
+  '@internationalized/number@3.5.4':
+    resolution: {integrity: sha512-h9huwWjNqYyE2FXZZewWqmCdkw1HeFds5q4Siuoms3hUQC5iPJK3aBmkFZoDSLN4UD0Bl8G22L/NdHpeOr+/7A==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -698,16 +698,16 @@ packages:
     resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
     engines: {node: '>=10'}
 
-  '@sveltejs/vite-plugin-svelte-inspector@3.0.0-next.4':
-    resolution: {integrity: sha512-Ct653z5kHM9goDyuOMfA1s9aPWffJUiKb80pOW6gVZt6+YAEesGj93uzhYtpFtVIN9PqkA7k2szqQbBrir+3oQ==}
+  '@sveltejs/vite-plugin-svelte-inspector@3.0.0':
+    resolution: {integrity: sha512-hBxSYW/66989cq9dN248omD/ziskSdIV1NqfuueuAI1z6jGcg14k9Zd98pDIEnoA6wC9kWUGuQ6adzBbWwQyRg==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22}
     peerDependencies:
       '@sveltejs/vite-plugin-svelte': ^4.0.0-next.0||^4.0.0
       svelte: ^5.0.0-next.96 || ^5.0.0
       vite: ^5.0.0
 
-  '@sveltejs/vite-plugin-svelte@4.0.0-next.8':
-    resolution: {integrity: sha512-gUw2Kb9x4PlaJuPoMqIiD5bShlO4mSKpAxZMix1pFOq9pt8vaPUIzmHaXN4xeDT4psbZZVh2aeubMPFzRCgIyA==}
+  '@sveltejs/vite-plugin-svelte@4.0.0':
+    resolution: {integrity: sha512-kpVJwF+gNiMEsoHaw+FJL76IYiwBikkxYU83+BpqQLdVMff19KeRKLd2wisS8niNBMJ2omv5gG+iGDDwd8jzag==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22}
     peerDependencies:
       svelte: ^5.0.0-next.96 || ^5.0.0
@@ -845,8 +845,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@20.16.12':
-    resolution: {integrity: sha512-LfPFB0zOeCeCNQV3i+67rcoVvoN5n0NVuR2vLG0O5ySQMgchuZlC4lgz546ZOJyDtj5KIgOxy+lacOimfqZAIA==}
+  '@types/node@20.16.13':
+    resolution: {integrity: sha512-GjQ7im10B0labo8ZGXDGROUl9k0BNyDgzfGpb4g/cl+4yYDWVKcozANF4FGr4/p0O/rAkQClM6Wiwkije++1Tg==}
 
   '@types/plist@3.0.5':
     resolution: {integrity: sha512-E6OCaRmAe4WDmWNsL/9RMqdkkzDCY1etutkflWk4c+AcjDU07Pcz1fQwTX0TQz+Pxqn9i4L1TU3UFpjnrcDgxA==}
@@ -864,73 +864,73 @@ packages:
     resolution: {integrity: sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==}
     engines: {node: '>=10.0.0'}
 
-  '@zag-js/anatomy@0.74.2':
-    resolution: {integrity: sha512-wIJQGBiSHYB94UA7k7o4a8xbyqDwIQ0dG52xcD7+eV1ypT+dP+BtxQKmS5w06aghNdHs8b4F2hVLDVSdyLqRkQ==}
+  '@zag-js/anatomy@0.75.0':
+    resolution: {integrity: sha512-YtVz2387Xy3cXeL86/jWtZ+NT9wojFsXZbOnRoXG5P5QaiD7tKeWYWJZBzxNBPYfWhSy1N93cAxhL65xJah1Qw==}
 
-  '@zag-js/collection@0.74.2':
-    resolution: {integrity: sha512-8Ls5TR1kKPLDucuJJ0kuwJ45jOEzhcVN4T/mbkShUrgRSB4FrcNzwdpMrKqidNz8OrtphgYYcn3xx/gGUIHLRQ==}
+  '@zag-js/collection@0.75.0':
+    resolution: {integrity: sha512-XcUzc7Dqy32CibI1T9Fwfcf3aJuvyD5eMIAnBMCY9ktgImCjbG3q9pvG+2G9wTmiPow+dJWbb0ZTTaevhY3asw==}
 
-  '@zag-js/core@0.74.2':
-    resolution: {integrity: sha512-UAnj9WJdFYeTxbwSCdX8zRYhtLvlJqfqy9cn2NEugpxf+9W/GA89JzH1ZdKLyVJUIuIPoqGd4ZaAgv2p64DZ1Q==}
+  '@zag-js/core@0.75.0':
+    resolution: {integrity: sha512-nkfHHWLTHiHW/hvk/O4y9sbtxE5Bxbj1vetElAlXqCDrQMgqNGOBEtxcjQVX65CJMjx1wHHcjG7lV0JOY6cpCw==}
 
-  '@zag-js/dismissable@0.74.2':
-    resolution: {integrity: sha512-Wl6n1lW1eTKKu5Kg+6jum9nZDXYGA86XL24Rip2aOScrAo2UGCA+nSIgg7GGO5qGs52iawITba38tAe6maZQLw==}
+  '@zag-js/dismissable@0.75.0':
+    resolution: {integrity: sha512-s+VK/9xtx7md7iKy/StrYCUUKegFwkecWIO/K/U52gQN3UdCQRX9bjvENI3LVzzme6XEBz91b3O8K83bfG4Ojw==}
 
-  '@zag-js/dom-event@0.74.2':
-    resolution: {integrity: sha512-duuwxowflkY7UUI+1vHr9ttzqn2JtJ+mgAS0cBeNmqtvK6XrNaHSrm0B4u4R/KIJ73Tx8TZGbmgN9Vwj/U2FrA==}
+  '@zag-js/dom-event@0.75.0':
+    resolution: {integrity: sha512-xPgalQ6fvVH9JKaCEdNCWJGp+0+AHM7DvTXe1PVgvuBb7//QBGzYaEUhhmdt3LXyG79o7RaIEVEgGTjwH2vDTg==}
 
-  '@zag-js/dom-query@0.74.2':
-    resolution: {integrity: sha512-g+7wIdhT1nlY5yhQWoMDzin8uYoBXeQk8TNUj3GZH/1dTX9YC0vs7vz7rotzunLkEA7nEGfLNzdO5CRQBhGp0w==}
+  '@zag-js/dom-query@0.75.0':
+    resolution: {integrity: sha512-PrCX29VbxKW4YQCAo6juttlwW563Os03dId/0V7WCN4daj+ocpI169mMm/XxgXfI9kgebZuYvY9ngIJeHdJHSA==}
 
-  '@zag-js/element-size@0.74.2':
-    resolution: {integrity: sha512-mqw0PLdPs17zrolZBlsYby5kUfo8+QpaU/HAVQavnHQZwNiX4CRBvG1YeqSP699Mvh6QDKc0JhchwAfh+eGGnA==}
+  '@zag-js/element-size@0.75.0':
+    resolution: {integrity: sha512-N1t36zdLvL5B+6aFU95cIlyw2HqxgP8Wq5dWAPZDn3ATH3r6/Yv8kYZFvf0ACfORDv/uInByEPXta1+QE418yg==}
 
-  '@zag-js/form-utils@0.74.2':
-    resolution: {integrity: sha512-LPaZfDhQmhyL4fMMKm4gZGUg6vwcSzaHOVlQHdAR8yoSqvO4yXEdxr2xz4civNNknD0crST2erfexGHEY6Oa/Q==}
+  '@zag-js/form-utils@0.75.0':
+    resolution: {integrity: sha512-IXyUzpY/e+80e6UWmBmtIS5wJ3elxWR6smO6Ot0FLcN5HWabfxdY7op1OLrd6czj/VVC0zD+UGwCG6yasUYTyw==}
 
-  '@zag-js/interact-outside@0.74.2':
-    resolution: {integrity: sha512-58ilkSC2UQw9PsFo4HKBrYcWC1+WRA8M6MqNf9MnxxOvAq+Y8APH0I6ExxAfUhLsk9v+6kPf0txM9MDoB0iNFA==}
+  '@zag-js/interact-outside@0.75.0':
+    resolution: {integrity: sha512-F3+BMMx57EaY1CPW7007MEJCBe3hgR1NJuDzvDmqPyjy+M0BwNzd7Tqg5YxaDSuvAA4r71AlxqRpBU5RNh44lA==}
 
-  '@zag-js/menu@0.74.2':
-    resolution: {integrity: sha512-dEBerxdgPH4dGWEbFM/aY8zYtUAQL7hopv4iWPHv1NMFhWu7IShmKe2xm/4ZSKaOkiWZ2CJyMI0oHr+qQ+ZhWg==}
+  '@zag-js/menu@0.75.0':
+    resolution: {integrity: sha512-RUResB0vOrPLreImLd+64JnU3HoUz8urT0BbybbONiJ+dal8MvVbK9TgID9NPO3Xo6vI+JxVqNtwqrYyYZcVKg==}
 
-  '@zag-js/number-input@0.74.2':
-    resolution: {integrity: sha512-I889jfoTiKX9gRbyZCgKDyBj1+VgFCKyELbFVJhgnWQhip4MLjzI0YjWWp/wgHs/ZwEBaxvy6CRq1KOtvGkQNg==}
+  '@zag-js/number-input@0.75.0':
+    resolution: {integrity: sha512-OotomVohXvUWUlAokdn7/KdOhXB3UZbeWcImEYRE91CjtzXx0v2xIHmkrSxtWKmBW4Gc5nJP6iU0C0rPjYDwVA==}
 
-  '@zag-js/number-utils@0.74.2':
-    resolution: {integrity: sha512-wNaixDQDotwUUKtpA524tfDvsiQQroDFZYFPZfnwKq89rPT0Zlh8LMKLL/Mfi32Zqp8UP9srdcMEy1XEGrIiNA==}
+  '@zag-js/number-utils@0.75.0':
+    resolution: {integrity: sha512-mGQ1wR6OnK3Ec2lDl0ZGGiQLbH4s8PMWsMWFg73Rcv3jAjMmBhACJ5GdjzvKJMq1X4Hx7yfA5BvFWvT5qvXi6g==}
 
-  '@zag-js/numeric-range@0.74.2':
-    resolution: {integrity: sha512-sm2xlc03Zy4DdCRNmr7jUgL9s34rK0bVDezn35TCq3QMPWQndIlsCbywcmxqxxtUymwnSwizWenZaWVlspFlgg==}
+  '@zag-js/numeric-range@0.75.0':
+    resolution: {integrity: sha512-8xbFhC1RIj5AwoZ2hr+E5H+/Jx9AoDAU8rPm1slD8eV+21ACqMqRCWtKwk+9lsueT4ZksBjnkTL+ou/ru5J0qQ==}
 
-  '@zag-js/popper@0.74.2':
-    resolution: {integrity: sha512-gsS32rxw+bSKOLOtF/VPNNafzO/fEU58OYIfM7yA4swrEupUqdfAF/ihNH+Uj/AZQKj2tnwLTR1fJ1w3czpY9w==}
+  '@zag-js/popper@0.75.0':
+    resolution: {integrity: sha512-B3Xlb+iH+Xux086XmWkpxG/tL4dyO9XbOFrQj1AuHkPC4Bgfc6DGPC1yGnHLdlYYm1Yyv8SR5LvPLyv4e1Ogcg==}
 
-  '@zag-js/rect-utils@0.74.2':
-    resolution: {integrity: sha512-bG48u1NsWBRx/fTQfDFskOkwKzpROVhuzJQi/OtnugHQj1nFfZ5CMpEX3BPv5PGwvOia2ZDm84+e12WucFhr0g==}
+  '@zag-js/rect-utils@0.75.0':
+    resolution: {integrity: sha512-560wPglB/oDFk2XXHJjpGCqaKuMpS5QcDvg8VLEbSGSHAdjOgtuVQNPVUGOuhoI92ZiXiqTHnrhlDBKDc0n2SQ==}
 
-  '@zag-js/select@0.74.2':
-    resolution: {integrity: sha512-Xl3CV1ONpQG3Ah0sriiuCFHXuiuzYz9KQkmEapcE+O5kzLADheIvgFRQYiMdLCltEfSBSBJvPrRM08aGyQgSpw==}
+  '@zag-js/select@0.75.0':
+    resolution: {integrity: sha512-HXFUi3X4WPHMqruqoBEtozgU91I8bN9kP6Niv/06TIOx4A6Og+pxiS9sAisMxohG1n1AIqVJDD22UW6U4mGqxw==}
 
-  '@zag-js/slider@0.74.2':
-    resolution: {integrity: sha512-aDuzKySgFOm/D0opDyQOo2KMWFN9ZHuF50rG5cfIgl9dzo447iJfLzObcpAwNpQJq5P7/q+23K+sh+/NRGoUbw==}
+  '@zag-js/slider@0.75.0':
+    resolution: {integrity: sha512-xW/SVaxcR4EisoMW0MImtiK8+DJWmpQ7dhb9kn+GwQ+heonUnIHh3ChvKboK+Nv/86J/sCIuUUcX8zz85FhXJg==}
 
-  '@zag-js/store@0.74.2':
-    resolution: {integrity: sha512-LXCSyIVf6G4SvoPojNxOUiK45Lg1Qo/I8NCIoWAgSh6WgthuyEP05oLlW0OdvfHWLsnSwUjJmfuoRQAQNS3M8Q==}
+  '@zag-js/store@0.75.0':
+    resolution: {integrity: sha512-kAzqLKfCLRIYfnsLuQdHOdrIwBdO4nqJ6kjCYlWvhSe81oDWCrC5MY2fv7mIYFjW+ZPpH3xmgGvj5ugqfAsqoA==}
 
-  '@zag-js/svelte@0.74.2':
-    resolution: {integrity: sha512-OA10Lmz0LJduOYWcrnbsT24c3yqkbXl9LxICrs6evRZP3rvGzWaL5HsbOPHUo+SEAHUGRYcDJxFU7qIjnUpG2w==}
+  '@zag-js/svelte@0.75.0':
+    resolution: {integrity: sha512-MK4TX4vTg04cLYv8f7a7waIS0FzWjXLMe8mHeTg8Je/Pj6BKRZdXVdv5wHy8le7l+To8vOZjOQKFo61yjAuzyQ==}
     peerDependencies:
       svelte: ^5.0.0-next.1
 
-  '@zag-js/text-selection@0.74.2':
-    resolution: {integrity: sha512-c7fLss1VyFnQzs5f5HNMD3qyJczH+SNzOgqMwU6apKpgYRLMMI0S4F03I/cyDQrCPZMcy6F/bl6zlQmdqb6WLQ==}
+  '@zag-js/text-selection@0.75.0':
+    resolution: {integrity: sha512-ZSbX6bb8b75DAg8zGPiEfHGn2d72991vAIvojqzCI1tRG7KpAL66XVurkR/m+MmPoH5fYESB7JstgBD8+n2MtA==}
 
-  '@zag-js/types@0.74.2':
-    resolution: {integrity: sha512-UYdHh5Jj2LZZwP8Amm9YEoj9f/zYNWuuw+HRGCLZew6moHvKj/HHKJHLooPPjGztFIeRsnicE1mJ9E2bDllBaw==}
+  '@zag-js/types@0.75.0':
+    resolution: {integrity: sha512-NG2wJeFzgSX7TKg015r1nxV3oSy9RJ94iQpoQLv66hH5XDvAJbV4jCf0yAo8awwK+5x8Opz3awJrGVnbo0B/eQ==}
 
-  '@zag-js/utils@0.74.2':
-    resolution: {integrity: sha512-WtIsNyDvnslCjtIIP/bRzx3bJMaT0cIgI3f+TgiFWhtQMlUZMpBkwkKVfvUwI5qcZ+ZOMeoonAWFqFECCb3h3g==}
+  '@zag-js/utils@0.75.0':
+    resolution: {integrity: sha512-68zu+3zBs5QtgYcdcoUOpYMdyf5tecoaNbttjAR3Xnmgva3PYnS/l08ZnV8wyGvixGFSRg1gJNZfWFm2WGCmIw==}
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -1095,6 +1095,7 @@ packages:
 
   boolean@3.2.0:
     resolution: {integrity: sha512-d0II/GO9uf9lfUHH2BQsjxzRJZBdsjgsBiW4BvhWk/3qoKwQFjIDVN19PfX8F2D/r9PCMTtLWjYVCFrpeYUzsw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -2041,8 +2042,8 @@ packages:
     engines: {node: ^18 || >=20}
     hasBin: true
 
-  negotiator@0.6.3:
-    resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
+  negotiator@0.6.4:
+    resolution: {integrity: sha512-myRT3DiWPHqho5PrJaIRyaMv2kgYf0mUVgBNOYMuCH5Ki1yEiQaf/ZJuQ62nvpc44wL5WDbTX7yGJi1Neevw8w==}
     engines: {node: '>= 0.6'}
 
   node-abi@3.71.0:
@@ -2394,8 +2395,8 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
 
-  svelte@5.0.0-next.269:
-    resolution: {integrity: sha512-TiC0JWP0OwPcJ+z6ysS9UsH6WDplJYsJR+y4ble9fmbW5OYFEQHJrIlktrO23O8p8EPU/olUpKdfIcugR++jbQ==}
+  svelte@5.0.0:
+    resolution: {integrity: sha512-jv2IvTtakG58DqZMo6fY3T6HFmGV4iDQH2lSUyfmCEYaoa+aCNcF+9rERbdDvT4XDF0nQBg6TEoJn0dirED8VQ==}
     engines: {node: '>=18'}
 
   tabbable@6.2.0:
@@ -3023,7 +3024,7 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.13
 
-  '@internationalized/number@3.5.3':
+  '@internationalized/number@3.5.4':
     dependencies:
       '@swc/helpers': 0.5.13
 
@@ -3066,7 +3067,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@melt-ui/svelte@0.76.2(svelte@5.0.0-next.269)':
+  '@melt-ui/svelte@0.76.2(svelte@5.0.0)':
     dependencies:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.11
@@ -3074,7 +3075,7 @@ snapshots:
       dequal: 2.0.3
       focus-trap: 7.6.0
       nanoid: 5.0.7
-      svelte: 5.0.0-next.269
+      svelte: 5.0.0
 
   '@npmcli/fs@2.1.2':
     dependencies:
@@ -3139,25 +3140,25 @@ snapshots:
 
   '@sindresorhus/is@4.6.0': {}
 
-  '@sveltejs/vite-plugin-svelte-inspector@3.0.0-next.4(@sveltejs/vite-plugin-svelte@4.0.0-next.8(svelte@5.0.0-next.269)(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)))(svelte@5.0.0-next.269)(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))':
+  '@sveltejs/vite-plugin-svelte-inspector@3.0.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.0)(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)))(svelte@5.0.0)(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 4.0.0-next.8(svelte@5.0.0-next.269)(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))
+      '@sveltejs/vite-plugin-svelte': 4.0.0(svelte@5.0.0)(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))
       debug: 4.3.7
-      svelte: 5.0.0-next.269
-      vite: 5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)
+      svelte: 5.0.0
+      vite: 5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@4.0.0-next.8(svelte@5.0.0-next.269)(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))':
+  '@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.0)(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 3.0.0-next.4(@sveltejs/vite-plugin-svelte@4.0.0-next.8(svelte@5.0.0-next.269)(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)))(svelte@5.0.0-next.269)(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))
+      '@sveltejs/vite-plugin-svelte-inspector': 3.0.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.0)(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)))(svelte@5.0.0)(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))
       debug: 4.3.7
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.12
-      svelte: 5.0.0-next.269
-      vite: 5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)
-      vitefu: 1.0.3(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))
+      svelte: 5.0.0
+      vite: 5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)
+      vitefu: 1.0.3(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -3217,13 +3218,13 @@ snapshots:
       '@tailwindcss/oxide-linux-x64-musl': 4.0.0-alpha.28
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.0-alpha.28
 
-  '@tailwindcss/vite@4.0.0-alpha.28(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0))':
+  '@tailwindcss/vite@4.0.0-alpha.28(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0))':
     dependencies:
       '@tailwindcss/node': 4.0.0-alpha.28
       '@tailwindcss/oxide': 4.0.0-alpha.28
       lightningcss: 1.27.0
       tailwindcss: 4.0.0-alpha.28
-      vite: 5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)
+      vite: 5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)
 
   '@tanstack/query-core@5.59.13':
     optional: true
@@ -3236,10 +3237,10 @@ snapshots:
 
   '@tanstack/store@0.5.5': {}
 
-  '@tanstack/svelte-store@0.5.5(svelte@5.0.0-next.269)':
+  '@tanstack/svelte-store@0.5.5(svelte@5.0.0)':
     dependencies:
       '@tanstack/store': 0.5.5
-      svelte: 5.0.0-next.269
+      svelte: 5.0.0
 
   '@tootallnate/once@2.0.0': {}
 
@@ -3247,7 +3248,7 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
       '@types/responselike': 1.0.3
 
   '@types/debug@4.1.12':
@@ -3259,172 +3260,172 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
 
   '@types/fs-extra@9.0.13':
     dependencies:
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
 
   '@types/http-cache-semantics@4.0.4': {}
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
 
   '@types/minimatch@5.1.2': {}
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@20.16.12':
+  '@types/node@20.16.13':
     dependencies:
       undici-types: 6.19.8
 
   '@types/plist@3.0.5':
     dependencies:
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
       xmlbuilder: 15.1.1
     optional: true
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
 
   '@types/verror@1.10.10':
     optional: true
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
     optional: true
 
   '@xmldom/xmldom@0.8.10': {}
 
-  '@zag-js/anatomy@0.74.2': {}
+  '@zag-js/anatomy@0.75.0': {}
 
-  '@zag-js/collection@0.74.2':
+  '@zag-js/collection@0.75.0':
     dependencies:
-      '@zag-js/utils': 0.74.2
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/core@0.74.2':
+  '@zag-js/core@0.75.0':
     dependencies:
-      '@zag-js/store': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@zag-js/store': 0.75.0
+      '@zag-js/utils': 0.75.0
       klona: 2.0.6
 
-  '@zag-js/dismissable@0.74.2':
+  '@zag-js/dismissable@0.75.0':
     dependencies:
-      '@zag-js/dom-event': 0.74.2
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/interact-outside': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@zag-js/dom-event': 0.75.0
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/interact-outside': 0.75.0
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/dom-event@0.74.2':
+  '@zag-js/dom-event@0.75.0':
     dependencies:
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/text-selection': 0.74.2
-      '@zag-js/types': 0.74.2
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/text-selection': 0.75.0
+      '@zag-js/types': 0.75.0
 
-  '@zag-js/dom-query@0.74.2': {}
+  '@zag-js/dom-query@0.75.0': {}
 
-  '@zag-js/element-size@0.74.2': {}
+  '@zag-js/element-size@0.75.0': {}
 
-  '@zag-js/form-utils@0.74.2': {}
+  '@zag-js/form-utils@0.75.0': {}
 
-  '@zag-js/interact-outside@0.74.2':
+  '@zag-js/interact-outside@0.75.0':
     dependencies:
-      '@zag-js/dom-event': 0.74.2
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@zag-js/dom-event': 0.75.0
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/menu@0.74.2':
+  '@zag-js/menu@0.75.0':
     dependencies:
-      '@zag-js/anatomy': 0.74.2
-      '@zag-js/core': 0.74.2
-      '@zag-js/dismissable': 0.74.2
-      '@zag-js/dom-event': 0.74.2
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/popper': 0.74.2
-      '@zag-js/rect-utils': 0.74.2
-      '@zag-js/types': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@zag-js/anatomy': 0.75.0
+      '@zag-js/core': 0.75.0
+      '@zag-js/dismissable': 0.75.0
+      '@zag-js/dom-event': 0.75.0
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/popper': 0.75.0
+      '@zag-js/rect-utils': 0.75.0
+      '@zag-js/types': 0.75.0
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/number-input@0.74.2':
+  '@zag-js/number-input@0.75.0':
     dependencies:
-      '@internationalized/number': 3.5.3
-      '@zag-js/anatomy': 0.74.2
-      '@zag-js/core': 0.74.2
-      '@zag-js/dom-event': 0.74.2
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/form-utils': 0.74.2
-      '@zag-js/number-utils': 0.74.2
-      '@zag-js/types': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@internationalized/number': 3.5.4
+      '@zag-js/anatomy': 0.75.0
+      '@zag-js/core': 0.75.0
+      '@zag-js/dom-event': 0.75.0
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/form-utils': 0.75.0
+      '@zag-js/number-utils': 0.75.0
+      '@zag-js/types': 0.75.0
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/number-utils@0.74.2': {}
+  '@zag-js/number-utils@0.75.0': {}
 
-  '@zag-js/numeric-range@0.74.2': {}
+  '@zag-js/numeric-range@0.75.0': {}
 
-  '@zag-js/popper@0.74.2':
+  '@zag-js/popper@0.75.0':
     dependencies:
       '@floating-ui/dom': 1.6.11
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/rect-utils@0.74.2': {}
+  '@zag-js/rect-utils@0.75.0': {}
 
-  '@zag-js/select@0.74.2':
+  '@zag-js/select@0.75.0':
     dependencies:
-      '@zag-js/anatomy': 0.74.2
-      '@zag-js/collection': 0.74.2
-      '@zag-js/core': 0.74.2
-      '@zag-js/dismissable': 0.74.2
-      '@zag-js/dom-event': 0.74.2
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/form-utils': 0.74.2
-      '@zag-js/popper': 0.74.2
-      '@zag-js/types': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@zag-js/anatomy': 0.75.0
+      '@zag-js/collection': 0.75.0
+      '@zag-js/core': 0.75.0
+      '@zag-js/dismissable': 0.75.0
+      '@zag-js/dom-event': 0.75.0
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/form-utils': 0.75.0
+      '@zag-js/popper': 0.75.0
+      '@zag-js/types': 0.75.0
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/slider@0.74.2':
+  '@zag-js/slider@0.75.0':
     dependencies:
-      '@zag-js/anatomy': 0.74.2
-      '@zag-js/core': 0.74.2
-      '@zag-js/dom-event': 0.74.2
-      '@zag-js/dom-query': 0.74.2
-      '@zag-js/element-size': 0.74.2
-      '@zag-js/form-utils': 0.74.2
-      '@zag-js/numeric-range': 0.74.2
-      '@zag-js/types': 0.74.2
-      '@zag-js/utils': 0.74.2
+      '@zag-js/anatomy': 0.75.0
+      '@zag-js/core': 0.75.0
+      '@zag-js/dom-event': 0.75.0
+      '@zag-js/dom-query': 0.75.0
+      '@zag-js/element-size': 0.75.0
+      '@zag-js/form-utils': 0.75.0
+      '@zag-js/numeric-range': 0.75.0
+      '@zag-js/types': 0.75.0
+      '@zag-js/utils': 0.75.0
 
-  '@zag-js/store@0.74.2':
+  '@zag-js/store@0.75.0':
     dependencies:
       proxy-compare: 3.0.0
 
-  '@zag-js/svelte@0.74.2(svelte@5.0.0-next.269)':
+  '@zag-js/svelte@0.75.0(svelte@5.0.0)':
     dependencies:
-      '@zag-js/core': 0.74.2
-      '@zag-js/types': 0.74.2
-      svelte: 5.0.0-next.269
+      '@zag-js/core': 0.75.0
+      '@zag-js/types': 0.75.0
+      svelte: 5.0.0
 
-  '@zag-js/text-selection@0.74.2':
+  '@zag-js/text-selection@0.75.0':
     dependencies:
-      '@zag-js/dom-query': 0.74.2
+      '@zag-js/dom-query': 0.75.0
 
-  '@zag-js/types@0.74.2':
+  '@zag-js/types@0.75.0':
     dependencies:
       csstype: 3.1.3
 
-  '@zag-js/utils@0.74.2': {}
+  '@zag-js/utils@0.75.0': {}
 
   abbrev@1.1.1: {}
 
@@ -3645,12 +3646,12 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  bits-ui@0.21.16(svelte@5.0.0-next.269):
+  bits-ui@0.21.16(svelte@5.0.0):
     dependencies:
       '@internationalized/date': 3.5.6
-      '@melt-ui/svelte': 0.76.2(svelte@5.0.0-next.269)
+      '@melt-ui/svelte': 0.76.2(svelte@5.0.0)
       nanoid: 5.0.7
-      svelte: 5.0.0-next.269
+      svelte: 5.0.0
 
   bl@4.1.0:
     dependencies:
@@ -4032,7 +4033,7 @@ snapshots:
 
   electron-to-chromium@1.5.41: {}
 
-  electron-vite@2.3.0(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)):
+  electron-vite@2.3.0(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)):
     dependencies:
       '@babel/core': 7.25.8
       '@babel/plugin-transform-arrow-functions': 7.25.7(@babel/core@7.25.8)
@@ -4040,7 +4041,7 @@ snapshots:
       esbuild: 0.21.5
       magic-string: 0.30.12
       picocolors: 1.1.1
-      vite: 5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)
+      vite: 5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -4052,7 +4053,7 @@ snapshots:
   electron@33.0.1:
     dependencies:
       '@electron/get': 2.0.3
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
       extract-zip: 2.0.1
     transitivePeerDependencies:
       - supports-color
@@ -4583,9 +4584,9 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  lucide-svelte@0.453.0(svelte@5.0.0-next.269):
+  lucide-svelte@0.453.0(svelte@5.0.0):
     dependencies:
-      svelte: 5.0.0-next.269
+      svelte: 5.0.0
 
   magic-string@0.30.12:
     dependencies:
@@ -4605,7 +4606,7 @@ snapshots:
       minipass-fetch: 2.1.2
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
-      negotiator: 0.6.3
+      negotiator: 0.6.4
       promise-retry: 2.0.1
       socks-proxy-agent: 7.0.0
       ssri: 9.0.1
@@ -4703,7 +4704,7 @@ snapshots:
 
   nanoid@5.0.7: {}
 
-  negotiator@0.6.3: {}
+  negotiator@0.6.4: {}
 
   node-abi@3.71.0:
     dependencies:
@@ -4812,10 +4813,10 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier-plugin-svelte@3.2.7(prettier@3.3.3)(svelte@5.0.0-next.269):
+  prettier-plugin-svelte@3.2.7(prettier@3.3.3)(svelte@5.0.0):
     dependencies:
       prettier: 3.3.3
-      svelte: 5.0.0-next.269
+      svelte: 5.0.0
 
   prettier@3.3.3: {}
 
@@ -5088,19 +5089,19 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  svelte-check@4.0.5(svelte@5.0.0-next.269)(typescript@5.6.3):
+  svelte-check@4.0.5(svelte@5.0.0)(typescript@5.6.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 4.0.1
       fdir: 6.4.2
       picocolors: 1.1.1
       sade: 1.8.1
-      svelte: 5.0.0-next.269
+      svelte: 5.0.0
       typescript: 5.6.3
     transitivePeerDependencies:
       - picomatch
 
-  svelte@5.0.0-next.269:
+  svelte@5.0.0:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -5199,10 +5200,10 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vaul-svelte@0.3.2(svelte@5.0.0-next.269):
+  vaul-svelte@0.3.2(svelte@5.0.0):
     dependencies:
-      bits-ui: 0.21.16(svelte@5.0.0-next.269)
-      svelte: 5.0.0-next.269
+      bits-ui: 0.21.16(svelte@5.0.0)
+      svelte: 5.0.0
 
   verror@1.10.1:
     dependencies:
@@ -5211,19 +5212,19 @@ snapshots:
       extsprintf: 1.4.1
     optional: true
 
-  vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0):
+  vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.24.0
     optionalDependencies:
-      '@types/node': 20.16.12
+      '@types/node': 20.16.13
       fsevents: 2.3.3
       lightningcss: 1.27.0
 
-  vitefu@1.0.3(vite@5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)):
+  vitefu@1.0.3(vite@5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)):
     optionalDependencies:
-      vite: 5.4.9(@types/node@20.16.12)(lightningcss@1.27.0)
+      vite: 5.4.9(@types/node@20.16.13)(lightningcss@1.27.0)
 
   wcwidth@1.0.1:
     dependencies:
