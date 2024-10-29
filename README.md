@@ -35,3 +35,9 @@ pnpm build:win
 ## Thanks JetBrains
 
 [![JetBrains](https://raw.githubusercontent.com/richhost/pixzip-lite/main/static/JetBrains.svg)](https://www.jetbrains.com/?from=pixzip)
+
+## Donate
+
+[![](https://storage.ko-fi.com/cdn/fullLogoKofi.png)](https://ko-fi.com/abieeyang)
+
+[![](https://static.afdiancdn.com/static/img/logo/logo.png)](https://afdian.com/a/abiee)
