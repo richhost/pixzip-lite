@@ -6,20 +6,20 @@
 </script>
 
 <section id="home" class="px-5 font-semibold py-10">
-	<div class="max-w-4xl mx-auto py-6">
-		<img src="/1.webp" alt="screenshot" class="aspect-[2000/1481]" />
-	</div>
-
-	<hgroup class="flex flex-col-reverse gap-1">
-		<h1 class="mx-auto text-[clamp(32px,4vw,48px)] text-center leading-10">
+	<hgroup class="flex flex-col gap-1 py-10">
+		<h1 class="mx-auto text-[clamp(32px,4vw,48px)] text-center leading-none">
 			{$t('home.h1')}
 		</h1>
-		<p class="text-center text-primary mb-2">{$t('home.descr')}</p>
+		<p class="text-center text-primary">{$t('home.descr')}</p>
 	</hgroup>
+
+	<div class="max-w-4xl mx-auto py-6">
+		<img src="/screenshot.webp" alt="screenshot" class="aspect-[2140/1334]" />
+	</div>
 
 	<div class="flex mt-10 items-center justify-center gap-5">
 		<a
-			href="https://github.com/richhost/pixzip/releases"
+			href="https://github.com/richhost/pixzip-lite/releases"
 			target="_blank"
 			class="rounded-full py-2 px-4 hover:shadow-lg bg-primary text-white active:bg-muted transition-all"
 			>{$t('home.download')}
