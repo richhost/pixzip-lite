@@ -23,10 +23,10 @@ PixZip Lite is a fast, free image compression software that supports mainstream 
 pnpm i
 
 # macOS Apple Silicon
-build:mac:apple
+pnpm build:mac:apple
 
 # macOS Intel
-build:mac:intel
+pnpm build:mac:intel
 
 # Windows
 pnpm build:win
