@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/richhost/pixzip/blob/main/resources/icons/linux/icon.png?raw=true" height="256">
+  <img src="https://github.com/richhost/pixzip-lite/blob/main/website/static/icon.webp?raw=true" height="256">
   <h1 align="center">PixZip Lite</h1>
   <h4 align="center">Easy to use batch image compression software.</h4>
 </div>
@@ -10,14 +10,28 @@
 
 PixZip Lite is a fast, free image compression software that supports mainstream formats such as JPG / PNG / WebP/ AVIF, and supports Windows 10+ and macOS 12+ operating systems.
 
-![Log](https://raw.githubusercontent.com/richhost/pixzip/main/website/static/1.webp)
+![Log](https://github.com/richhost/pixzip-lite/blob/main/website/static/screenshot.webp?raw=true)
 
 **If you think this app is pretty good, give it a [Star](https://github.com/richhost/pixzip) ⭐️ to show your support (^-^)**
 
 ## Install
 
-[download](https://github.com/richhost/pixzip-lite/releases)
+[Download](https://github.com/richhost/pixzip-lite/releases)
+
+## Build
+```bash
+pnpm i
+
+# macOS Apple Silicon
+build:mac:apple
+
+# macOS Intel
+build:mac:intel
+
+# Windows
+pnpm build:win
+```
 
 ## Thanks JetBrains
 
-[![JetBrains](https://raw.githubusercontent.com/richhost/pixzip/main/static/JetBrains.svg)](https://www.jetbrains.com/?from=pixzip)
+[![JetBrains](https://raw.githubusercontent.com/richhost/pixzip-lite/main/static/JetBrains.svg)](https://www.jetbrains.com/?from=pixzip)
