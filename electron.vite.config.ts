@@ -1,7 +1,7 @@
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import tailwindcss from '@tailwindcss/vite';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 export default defineConfig({
 	main: {
