@@ -14,7 +14,7 @@
 	</hgroup>
 
 	<div class="max-w-4xl mx-auto py-6">
-		<img src="/screenshot.webp" alt="screenshot" class="aspect-[2140/1334]" />
+		<img src="/screenshot.webp" alt="screenshot" class="aspect-2140/1334" />
 	</div>
 
 	<div class="flex mt-10 items-center justify-center gap-5">

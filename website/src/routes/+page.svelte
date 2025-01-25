@@ -35,4 +35,4 @@
 	<Showcase />
 </main>
 
-<footer class="py-10 text-xs text-center text-zinc-500">2024 ©️ CuteLabs</footer>
+<footer class="py-10 text-xs text-center text-zinc-500">2025 ©️ CuteLabs</footer>

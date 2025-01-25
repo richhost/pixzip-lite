@@ -1,4 +1,4 @@
-<header class="shadow sticky top-0 bg-white">
+<header class="shadow-sm sticky top-0 bg-white">
 	<nav class="h-14 mx-auto max-w-7xl px-5 w-full flex items-center justify-between">
 		<a href="#home" class="flex items-center justify-center gap-2 font-medium">
 			<img class="w-7 h-7 rounded-md" src="/icon.webp" alt="logo" />PixZip Lite
