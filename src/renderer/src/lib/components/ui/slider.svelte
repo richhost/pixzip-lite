@@ -1,37 +1,21 @@
 <script lang="ts">
-	import * as slider from '@zag-js/slider';
-	import { normalizeProps, useMachine } from '@zag-js/svelte';
-	import type { Optional } from '$lib/types';
-	import { useId } from '$lib/shared/utils';
+	import { Slider } from '@ark-ui/svelte/slider';
+	import type { SliderRootProps } from '@ark-ui/svelte/slider';
 
-	type Props = { class?: string } & Optional<slider.Context, 'id'>;
-
-	const { class: className, ...zagProps }: Props = $props();
-
-	const [snapshot, send] = useMachine(slider.machine({ id: useId() }), {
-		context: zagProps
-	});
-	const api = $derived(slider.connect(snapshot, send, normalizeProps));
+	const { ...props }: SliderRootProps = $props();
 </script>
 
-<div {...api.getRootProps()} class={className}>
-	<div {...api.getControlProps()} class="flex items-center">
-		<div
-			{...api.getTrackProps()}
-			class="bg-neutral-200 dark:bg-neutral-100/10 h-1 rounded-full grow"
+<Slider.Root {...props}>
+	<Slider.ValueText />
+	<Slider.Control class="flex items-center">
+		<Slider.Track class="bg-neutral-200 dark:bg-neutral-100/10 h-1 rounded-full grow">
+			<Slider.Range class="bg-neutral-800 dark:bg-neutral-200 h-1 rounded-full" />
+		</Slider.Track>
+		<Slider.Thumb
+			class="size-4 flex items-center justify-center rounded-full bg-neutral-50 dark:bg-neutral-200 shadow border border-neutral-800"
+			index={0}
 		>
-			<div
-				{...api.getRangeProps()}
-				class="bg-neutral-800 dark:bg-neutral-200 h-1 rounded-full"
-			></div>
-		</div>
-		{#each api.value as _, index}
-			<div
-				{...api.getThumbProps({ index })}
-				class="size-4 flex items-center justify-center rounded-full bg-neutral-50 dark:bg-neutral-200 shadow border border-neutral-800"
-			>
-				<input {...api.getHiddenInputProps({ index })} />
-			</div>
-		{/each}
-	</div>
-</div>
+			<Slider.HiddenInput />
+		</Slider.Thumb>
+	</Slider.Control>
+</Slider.Root>
