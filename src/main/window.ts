@@ -20,9 +20,11 @@ async function createWindow() {
 		frame: !(platform === 'linux'),
 		titleBarStyle: 'hidden',
 		trafficLightPosition: { x: 10, y: 11 },
-		vibrancy: "sidebar",
+		vibrancy: 'sidebar',
+		backgroundMaterial: 'acrylic',
 		visualEffectState: 'active',
 		transparent: platform === 'darwin',
+		maximizable: platform !== 'win32',
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
