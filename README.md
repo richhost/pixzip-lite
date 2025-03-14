@@ -18,6 +18,11 @@ PixZip Lite is a fast, free image compression software that supports mainstream 
 
 [Download](https://github.com/richhost/pixzip-lite/releases)
 
+## macOS
+![macOS can't open](https://raw.githubusercontent.com/richhost/pixzip-lite/refs/heads/main/static/macOS_damaged.webp)
+
+You can browser [https://ordonez.tv/2024/11/04/how-to-run-unsigned-apps-in-macos-15-1/](https://ordonez.tv/2024/11/04/how-to-run-unsigned-apps-in-macos-15-1/)
+
 ## Build
 ```bash
 pnpm i
