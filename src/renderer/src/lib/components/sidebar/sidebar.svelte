@@ -7,7 +7,7 @@
 <aside
 	class="w-[clamp(var(--w-sidebar-min),16vw,var(--w-sidebar-max))] h-full flex flex-col shrink-0 {OS ===
 	'win32'
-		? 'bg-white/80'
+		? 'bg-white/80 dark:bg-neutral-900/80'
 		: ''}"
 >
 	<div class="h-[var(--h-title-bar)] draggable shrink-0 flex items-center">

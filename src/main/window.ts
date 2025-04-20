@@ -24,7 +24,7 @@ async function createWindow() {
 		backgroundMaterial: 'acrylic',
 		visualEffectState: 'active',
 		transparent: platform === 'darwin',
-		maximizable: platform !== 'win32',
+		// maximizable: platform !== 'win32',
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
