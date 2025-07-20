@@ -43,7 +43,7 @@
 	const spaceId = useStore(defaultSpaceStore);
 </script>
 
-<section
+<div
 	class={cn('p-1 px-2', {
 		'bg-sky-100/80 dark:bg-sky-800/20': isOpen,
 		'even:bg-neutral-100/80': !isOpen
@@ -74,7 +74,9 @@
 		}}
 	>
 		<MenuTrigger>
-			{@render image()}
+			{#snippet asChild(props)}
+				<div {...props()}>{@render image()}</div>
+			{/snippet}
 		</MenuTrigger>
 		<MenuContent>
 			<MenuItem value="show">
@@ -94,10 +96,10 @@
 			</MenuItem>
 		</MenuContent>
 	</MenuRoot>
-</section>
+</div>
 
 {#snippet image()}
-	<div class="flex items-center gap-2 text-xs">
+	<div class="flex items-center gap-2 text-xs" title={file.filepath}>
 		<div class="w-8 h-8 shrink-0 grid place-items-center">
 			<img class="max-w-8 max-h-8 shadow" src={thumbImg(file.filepath)} alt="" />
 		</div>

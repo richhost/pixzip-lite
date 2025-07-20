@@ -7,8 +7,8 @@
 			url: 'https://github.com/sveltejs/svelte'
 		},
 		{
-			name: 'zag',
-			url: 'https://github.com/chakra-ui/zag'
+			name: 'Ark UI',
+			url: 'https://ark-ui.com'
 		},
 		{
 			name: 'sharp',

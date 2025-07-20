@@ -1,12 +1,7 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-	import { getMenuContext } from './context';
+	import { Menu } from '@ark-ui/svelte/menu';
 
-	const { children }: { children?: Snippet } = $props();
-
-	const menuContext = getMenuContext();
+	const { ...arkProps }: Menu.ContextTriggerProps = $props();
 </script>
 
-<div {...menuContext.api.getContextTriggerProps()}>
-	{@render children?.()}
-</div>
+<Menu.ContextTrigger {...arkProps} />

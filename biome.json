@@ -1,24 +1,22 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"formatter": {
-		"indentStyle": "space"
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true,
-			"style": {
-				"useImportType": "off",
-				"noNonNullAssertion": "off",
-				"useTemplate": "off",
-				"useConst": "off"
-			},
-			"complexity": {
-				"noForEach": "off"
-			}
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "style": {
+        "useImportType": "off",
+        "noNonNullAssertion": "off",
+        "useTemplate": "off",
+        "useConst": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
+      }
+    }
+  }
 }

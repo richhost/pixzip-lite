@@ -1,25 +1,17 @@
 <script lang="ts">
+	import { Menu } from '@ark-ui/svelte/menu';
 	import type { Snippet } from 'svelte';
-	import * as menu from '@zag-js/menu';
 	import { cn } from '$lib/shared/utils';
-	import { getMenuContext } from './context';
 
-	type Props = {
-		children?: Snippet;
-		class?: string;
-	} & menu.ItemProps;
+	type Props = {} & Menu.ItemProps;
 
-	const { children, class: className, ...rest }: Props = $props();
-
-	const menuContext = getMenuContext();
+	const { class: className, ...arkProps }: Props = $props();
 </script>
 
-<li
-	{...menuContext.api.getItemProps(rest)}
+<Menu.Item
 	class={cn(
 		'h-7 rounded flex items-center px-2 data-[highlighted]:bg-neutral-200 dark:data-[highlighted]:bg-neutral-600 dark:data-[disabled]:text-neutral-500',
 		className
 	)}
->
-	{@render children?.()}
-</li>
+	{...arkProps}
+/>

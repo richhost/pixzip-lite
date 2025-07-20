@@ -22,6 +22,8 @@
 	--bg-webp: #10b981;
 	--bg-jpg: #38bdf8;
 	--bg-png: #f97316;
+
+	text-autospace: normal;
 }
 
 body {
