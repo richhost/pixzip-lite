@@ -1,22 +1,22 @@
 <script lang="ts">
-	import { t } from '$lib/translations';
+	import { m } from '$lib/paraglide/messages.js';
 
 	const contents = [
 		{
-			title: $t('home.workspace.index'),
-			description: $t('home.workspace.descr')
+			title: m['workspace.index'](),
+			description: m['workspace.descr']()
 		},
 		{
-			title: $t('home.format.index'),
-			description: $t('home.format.descr')
+			title: m['format.index'](),
+			description: m['format.descr']()
 		},
 		{
-			title: $t('home.local.index'),
-			description: $t('home.local.descr')
+			title: m['local.index'](),
+			description: m['local.descr']()
 		},
 		{
-			title: $t('home.free.index'),
-			description: $t('home.free.descr')
+			title: m['free.index'](),
+			description: m['free.descr']()
 		}
 	];
 </script>

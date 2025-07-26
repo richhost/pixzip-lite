@@ -1,4 +1,5 @@
 {
+	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"h1": "快速且免费地压缩图片！",
 	"descr": "立即节省您的存储空间",
 	"download": "免费下载",
@@ -31,5 +32,9 @@
 		"file": "文件",
 		"save": "节省",
 		"storage": "存储空间"
+	},
+	"meta": {
+		"title": "PixZip Lite - 快速且免费地压缩图片",
+		"description": "快速且免费地压缩图片！"
 	}
 }

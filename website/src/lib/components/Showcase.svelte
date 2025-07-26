@@ -1,5 +1,5 @@
 <script>
-	import { t } from '$lib/translations';
+	import { m } from '$lib/paraglide/messages.js';
 	import Compare from './Compare.svelte';
 </script>
 
@@ -11,12 +11,12 @@
 		<Compare />
 	</div>
 	<div class="order-2">
-		<p class="text-primary mb-4 text-sm font-medium">{$t('home.showcase.descr')}</p>
+		<p class="text-primary mb-4 text-sm font-medium">{m['showcase.descr']()}</p>
 		<h3 class="text-[clamp(18px,4vw,40px)] font-medium leading-none">
-			{$t('home.showcase.title')}
+			{m['showcase.title']()}
 		</h3>
 		<p class="my-4">
-			{$t('home.showcase.content')}
+			{m['showcase.content']()}
 		</p>
 		<ol class="text-sm text-zinc-500 space-y-2">
 			<li class="flex gap-2 items-center">
@@ -34,9 +34,9 @@
 					></path></svg
 				>
 				<div>
-					{$t('home.showcase.original')}: <span class="text-primary">287KB</span>, {$t(
-						'home.showcase.compressed'
-					)}:
+					{m['showcase.original']()}: <span class="text-primary">287KB</span>, {m[
+						'showcase.compressed'
+					]()}:
 					<span class="text-primary">135KB</span>
 				</div>
 			</li>
@@ -55,9 +55,9 @@
 					></path></svg
 				>
 				<div>
-					{$t('home.showcase.both')}: <span class="text-primary">1920px * 1280px</span>,
+					{m['showcase.both']()}: <span class="text-primary">1920px * 1280px</span>,
 					<span class="text-primary">JPG </span>
-					{$t('home.showcase.file')}
+					{m['showcase.file']()}
 				</div>
 			</li>
 			<li class="flex items-center gap-2">
@@ -75,8 +75,8 @@
 					></path></svg
 				>
 				<div>
-					{$t('home.showcase.save')}: <span class="text-primary">53% </span>
-					{$t('home.showcase.storage')}
+					{m['showcase.save']()}: <span class="text-primary">53% </span>
+					{m['showcase.storage']()}
 				</div>
 			</li>
 		</ol>

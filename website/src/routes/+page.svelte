@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { MetaTags } from 'svelte-meta-tags';
 
-	import { t } from '$lib/translations';
+	import { m } from '$lib/paraglide/messages.js';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Home from '$lib/components/Home.svelte';
 	import Features from '$lib/components/Features.svelte';
@@ -9,8 +9,8 @@
 </script>
 
 <MetaTags
-	title={$t('meta.title')}
-	description={$t('meta.description')}
+	title={m['meta.title']()}
+	description={m['meta.description']()}
 	keywords={[
 		'pixzip',
 		'avif',

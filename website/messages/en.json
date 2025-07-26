@@ -1,4 +1,5 @@
 {
+	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"h1": "Compress images quickly & free!",
 	"descr": "Save your storage now",
 	"download": "Free Download",
@@ -31,5 +32,9 @@
 		"file": "File",
 		"save": "Save",
 		"storage": "storage"
+	},
+	"meta": {
+		"title": "PixZip Lite - Compress images quickly & free!",
+		"description": "Compress images quickly & free!"
 	}
 }
