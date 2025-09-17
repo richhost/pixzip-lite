@@ -12,17 +12,17 @@
 		"build:mac:intel": "npm run build && electron-builder --mac --x64 --config electron-builder.config.cjs"
 	},
 	"devDependencies": {
-		"@ark-ui/svelte": "^5.9.1",
+		"@ark-ui/svelte": "^5.10.0",
 		"@biomejs/biome": "^2.2.4",
 		"@sveltejs/vite-plugin-svelte": "^6.2.0",
 		"@tailwindcss/vite": "^4.1.13",
 		"@tanstack/svelte-store": "^0.7.5",
 		"@types/fs-extra": "^11.0.4",
 		"@types/glob": "^8.1.0",
-		"@types/node": "^22.18.4",
-		"bits-ui": "^2.9.8",
+		"@types/node": "^22.18.5",
+		"bits-ui": "^2.9.9",
 		"clsx": "^2.1.1",
-		"electron": "^38.1.0",
+		"electron": "^38.1.1",
 		"electron-builder": "^25.1.8",
 		"electron-vite": "^4.0.0",
 		"gifuct-js": "^2.1.2",
@@ -48,6 +48,6 @@
 		"electron-window-state": "^5.0.3",
 		"fs-extra": "^11.3.2",
 		"jsonfile": "^6.2.0",
-		"sharp": "^0.34.3"
+		"sharp": "^0.34.4"
 	}
 }
