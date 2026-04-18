@@ -2,28 +2,24 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"target": "ESNext",
-		"useDefineForClassFields": true,
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"resolveJsonModule": true,
 		"allowJs": true,
-		"checkJs": true,
+		"checkJs": false,
 		"isolatedModules": true,
 		"moduleDetection": "force",
 		"esModuleInterop": true,
-		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"lib": ["ESNext"],
 		"strict": true,
 		"skipLibCheck": true,
-		"paths": {
-			"$lib": ["./src/renderer/src/lib"],
-			"$lib/*": ["./src/renderer/src/lib/*"]
-		}
+		"types": ["bun-types"]
 	},
 	"include": [
-		"./src/renderer/src/**/*.ts",
-		"./src/renderer/src/**/*.svelte",
+		"./src/bun/**/*.ts",
 		"./src/shared/**/*.ts",
-		"./src/types/*.d.ts"
-	],
-	"references": [{ "path": "./tsconfig.node.json" }]
+		"./src/types/*.d.ts",
+		"./electrobun.config.ts",
+		"./scripts/**/*.ts"
+	]
 }

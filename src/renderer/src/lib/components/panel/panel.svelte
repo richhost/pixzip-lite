@@ -8,7 +8,9 @@
 	setSpaceConfig();
 </script>
 
-<h2 class="draggable h-[var(--h-title-bar)] shrink-0 px-3 font-semibold flex items-center gap-2">
+<h2
+	class="electrobun-webkit-app-region-drag draggable h-[var(--h-title-bar)] shrink-0 px-3 font-semibold flex items-center gap-2"
+>
 	Configuration
 </h2>
 

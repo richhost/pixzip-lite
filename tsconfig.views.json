@@ -2,28 +2,16 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"target": "ESNext",
-		"useDefineForClassFields": true,
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"resolveJsonModule": true,
-		"allowJs": true,
-		"checkJs": true,
 		"isolatedModules": true,
 		"moduleDetection": "force",
 		"esModuleInterop": true,
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"strict": true,
 		"skipLibCheck": true,
-		"paths": {
-			"$lib": ["./src/renderer/src/lib"],
-			"$lib/*": ["./src/renderer/src/lib/*"]
-		}
+		"noEmit": true
 	},
-	"include": [
-		"./src/renderer/src/**/*.ts",
-		"./src/renderer/src/**/*.svelte",
-		"./src/shared/**/*.ts",
-		"./src/types/*.d.ts"
-	],
-	"references": [{ "path": "./tsconfig.node.json" }]
+	"include": ["./src/views/**/*.ts", "./src/shared/**/*.ts", "./src/types/*.d.ts"]
 }

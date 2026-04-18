@@ -9,7 +9,13 @@
 		"build": "npm run check && electron-vite build",
 		"build:win": "npm run build && electron-builder --win --x64 --config electron-builder.config.cjs",
 		"build:mac:apple": "npm run build && electron-builder --mac --arm64 --config electron-builder.config.cjs",
-		"build:mac:intel": "npm run build && electron-builder --mac --x64 --config electron-builder.config.cjs"
+		"build:mac:intel": "npm run build && electron-builder --mac --x64 --config electron-builder.config.cjs",
+		"eb:start": "vite build --config vite.renderer.config.ts && electrobun dev",
+		"eb:dev": "electrobun dev --watch",
+		"eb:dev:hmr": "concurrently \"bun run eb:hmr\" \"bun run eb:start\"",
+		"eb:hmr": "vite --config vite.renderer.config.ts --port 5173",
+		"eb:build": "vite build --config vite.renderer.config.ts && electrobun build",
+		"eb:build:canary": "vite build --config vite.renderer.config.ts && electrobun build --env=canary"
 	},
 	"devDependencies": {
 		"@ark-ui/svelte": "^5.10.0",
@@ -22,6 +28,7 @@
 		"@types/node": "^22.18.6",
 		"bits-ui": "^2.10.0",
 		"clsx": "^2.1.1",
+		"concurrently": "^9.2.1",
 		"electron": "^38.1.2",
 		"electron-builder": "^25.1.8",
 		"electron-vite": "^4.0.0",
@@ -45,6 +52,7 @@
 		"@egoist/tipc": "^0.3.2",
 		"@electron-toolkit/preload": "^3.0.2",
 		"conf": "^14.0.0",
+		"electrobun": "^1.16.0",
 		"electron-window-state": "^5.0.3",
 		"fs-extra": "^11.3.2",
 		"jsonfile": "^6.2.0",

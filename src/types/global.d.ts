@@ -1,3 +1,6 @@
+// Stub for `three` used transitively by electrobun; not used in renderer.
+declare module 'three';
+
 declare namespace Pixzip {
 	type SafeNumber = `${number}` | number;
 	type Format = 'original' | 'jpg' | 'jpeg' | 'png' | 'webp' | 'avif';

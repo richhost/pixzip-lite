@@ -5,7 +5,11 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-export const OS = window.pixzip.process.platform;
+// Platform is injected by the bridge preload via `window.pixzip.process.platform`.
+// Falls back to 'darwin' for safety during SSR / tests.
+export const OS: string =
+	(window as Window & { pixzip?: { process?: { platform?: string } } }).pixzip?.process?.platform ??
+	'darwin';
 
 export const delimiter = OS === 'win32' ? '\\' : '/';
 
@@ -31,8 +35,22 @@ export function extname(path: string) {
 	return path.split('.').pop();
 }
 
-export function thumbImg(filepath: string) {
-	return `thumb:${delimiter}${delimiter}${filepath}`;
+/**
+ * Returns a URL that serves a 128-px WebP thumbnail for `filepath`.
+ *
+ * In the Electrobun version the old `thumb://` custom protocol is replaced
+ * by a local Bun HTTP server.  The port is fetched once at startup from bun
+ * via RPC and stored in a module-level variable.
+ */
+let _thumbPort: number | null = null;
+
+export async function initThumbPort(port: number) {
+	_thumbPort = port;
+}
+
+export function thumbImg(filepath: string): string {
+	const port = _thumbPort ?? 0;
+	return `http://localhost:${port}/?path=${encodeURIComponent(filepath)}`;
 }
 
 export function bytesToSize(bytes: number) {

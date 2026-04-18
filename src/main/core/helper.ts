@@ -1,11 +1,11 @@
-import { readFileSync } from "node:fs";
-import { decompressFrames, parseGIF } from "gifuct-js";
+import { readFileSync } from 'node:fs';
+import { decompressFrames, parseGIF } from 'gifuct-js';
 
 export function getGifFrameCount(filepath: string) {
-  const buffer = readFileSync(filepath);
+	const buffer = readFileSync(filepath);
 
-  const gif = parseGIF(buffer);
-  const frames = decompressFrames(gif, true);
+	const gif = parseGIF(buffer as unknown as ArrayBuffer);
+	const frames = decompressFrames(gif, true);
 
-  return frames.length;
+	return frames.length;
 }
