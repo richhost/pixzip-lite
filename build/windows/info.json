@@ -1,0 +1,15 @@
+{
+	"fixed": {
+		"file_version": "0.1.0"
+	},
+	"info": {
+		"0000": {
+			"ProductVersion": "0.1.0",
+			"CompanyName": "CuteLabs",
+			"FileDescription": "A pixzip-lite application",
+			"LegalCopyright": "© 2026, CuteLabs",
+			"ProductName": "My Product",
+			"Comments": "This is a comment"
+		}
+	}
+}
