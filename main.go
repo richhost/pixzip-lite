@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"runtime"
 	"strings"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
@@ -57,7 +58,7 @@ func main() {
 		Height:           760,
 		MinWidth:         860,
 		MinHeight:        560,
-		Frameless:        true,
+		Frameless:        runtime.GOOS != "darwin",
 		EnableFileDrop:   true,
 		DevToolsEnabled:  true,
 		BackgroundType:   application.BackgroundTypeSolid,
@@ -70,9 +71,8 @@ func main() {
 			NonClientRegionSupport:            true,
 		},
 		Mac: application.MacWindow{
-			InvisibleTitleBarHeight: 50,
-			Backdrop:                application.MacBackdropNormal,
-			TitleBar:                application.MacTitleBarHiddenInset,
+			Backdrop: application.MacBackdropNormal,
+			TitleBar: application.MacTitleBarHiddenInset,
 		},
 		URL: "/",
 	})

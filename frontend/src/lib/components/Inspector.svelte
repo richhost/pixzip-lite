@@ -87,7 +87,7 @@
 >
   <div class="w-76 sm:w-80 h-full flex flex-col min-w-0">
     <!-- 1. SidebarHeader (No collapse button, clean context display) -->
-    <div class="h-11 sm:h-12 px-4 shrink-0 flex items-center justify-between border-b border-black/[0.05] dark:border-white/[0.06]">
+    <div class="h-[44px] px-4 shrink-0 flex items-center justify-between border-b border-black/[0.05] dark:border-white/[0.06]">
       <div class="flex items-center gap-2 min-w-0">
         <span class="text-xs font-semibold text-neutral-800 dark:text-neutral-200">
           参数配置

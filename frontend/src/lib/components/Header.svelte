@@ -42,16 +42,56 @@
     isInspectorOpen,
   }: Props = $props();
 
+  function checkIsMac(): boolean {
+    if (typeof navigator !== 'undefined') {
+      const platform = (navigator as any).userAgentData?.platform || navigator.platform || '';
+      const ua = navigator.userAgent || '';
+      if (/Mac/i.test(platform) || /Macintosh|Mac OS X/i.test(ua)) {
+        return true;
+      }
+    }
+    try {
+      if (System.IsMac()) return true;
+    } catch {}
+    return false;
+  }
+
+  function checkIsWindows(): boolean {
+    if (typeof navigator !== 'undefined') {
+      const platform = (navigator as any).userAgentData?.platform || navigator.platform || '';
+      const ua = navigator.userAgent || '';
+      if (/Win/i.test(platform) || /Windows/i.test(ua)) {
+        return true;
+      }
+    }
+    try {
+      if (System.IsWindows()) return true;
+    } catch {}
+    return false;
+  }
+
+  let isMac = $state(checkIsMac());
+  let isWindows = $state(checkIsWindows());
+  let isFullscreen = $state(false);
   let isSpaceMenuOpen = $state(false);
   let isAddMenuOpen = $state(false);
   let isMaximised = $state(false);
-  let isWindows = $state(true);
 
   onMount(() => {
     try {
-      isWindows = !System.IsMac();
+      if (System.IsMac()) {
+        isMac = true;
+        isWindows = false;
+      } else if (System.IsWindows()) {
+        isWindows = true;
+        isMac = false;
+      }
+
       Window.IsMaximised().then((val) => {
         isMaximised = val;
+      });
+      Window.IsFullscreen().then((val) => {
+        isFullscreen = val;
       });
     } catch {
       // In standalone browser preview or dev mock
@@ -64,6 +104,8 @@
       Events.On('windows:WindowUnMaximise', () => { isMaximised = false; }),
       Events.On('common:WindowRestore', () => { isMaximised = false; }),
       Events.On('windows:WindowRestore', () => { isMaximised = false; }),
+      Events.On('common:WindowFullscreen', () => { isFullscreen = true; }),
+      Events.On('common:WindowUnFullscreen', () => { isFullscreen = false; }),
     ];
 
     return () => {
@@ -118,7 +160,8 @@
 <svelte:window ondblclick={onHeaderDblClick} />
 
 <header
-  class="drag-region h-11 sm:h-12 pl-3 sm:pl-4 pr-0 border-b border-black/[0.05] dark:border-white/[0.06] bg-white/75 dark:bg-[#0c0d10]/80 backdrop-blur-xl shrink-0 flex items-center justify-between z-40 transition-colors select-none"
+  class="relative drag-region {isMac ? 'h-[52px]' : 'h-[44px]'} {isWindows ? 'pr-0' : 'pr-3 sm:pr-4'} border-b border-black/[0.05] dark:border-white/[0.06] bg-white/75 dark:bg-[#0c0d10]/80 backdrop-blur-xl shrink-0 flex items-center justify-between z-40 transition-colors select-none"
+  style={isMac && !isFullscreen ? "padding-left: 96px;" : "padding-left: 14px;"}
 >
   <!-- Left Zone: navigation + primary source picker -->
   <div class="no-drag-region flex items-center gap-2">
@@ -128,7 +171,7 @@
       class="h-7 w-7 flex items-center justify-center rounded-lg transition-colors {isInspectorOpen
         ? 'bg-black/[0.07] dark:bg-white/[0.12] text-neutral-900 dark:text-neutral-100 font-semibold'
         : 'text-neutral-500 dark:text-neutral-400 hover:bg-black/[0.05] dark:hover:bg-white/[0.08] hover:text-neutral-800 dark:hover:text-neutral-200'}"
-      title="切换参数侧栏 (⌘I)"
+      title={isMac ? "切换参数侧栏 (⌘I)" : "切换参数侧栏 (Ctrl+I)"}
     >
       <Icon icon="keyline-icons:panel-left" height={15} />
     </button>
@@ -136,7 +179,7 @@
     <!-- "添加" opens a source picker: photos or folder -->
     <Menu.Root bind:open={isAddMenuOpen} onSelect={onAddSelect} positioning={{ placement: 'bottom-start', offset: { mainAxis: 6 } }}>
       <Menu.Trigger
-        class="group h-7 flex items-center gap-1.5 px-3 rounded-full border border-black/[0.07] dark:border-white/[0.1] bg-white dark:bg-white/[0.06] hover:bg-neutral-50 dark:hover:bg-white/[0.1] text-xs font-medium text-neutral-800 dark:text-neutral-200 active:scale-[0.98] transition"
+        class="group h-7 flex items-center gap-1.5 px-3 rounded-full border border-black/[0.07] dark:border-white/[0.1] bg-white dark:bg-white/[0.06] hover:bg-neutral-50 dark:hover:bg-white/[0.1] text-xs font-medium text-neutral-800 dark:text-neutral-200 active:scale-[0.98] transition shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
         title="添加照片或文件夹"
       >
         <Icon icon="keyline-icons:plus" height={13} />
@@ -156,7 +199,7 @@
             >
               <Icon icon="keyline-icons:image-plus" height={15} class="text-neutral-700 dark:text-neutral-200 shrink-0" />
               <span class="grow font-medium">选择照片</span>
-              <span class="text-[10px] font-mono text-neutral-400">⌘O</span>
+              <span class="text-[10px] font-mono text-neutral-400">{isMac ? '⌘O' : 'Ctrl+O'}</span>
             </Menu.Item>
             <Menu.Item
               value="folder"
@@ -171,11 +214,11 @@
     </Menu.Root>
   </div>
 
-  <!-- Centre Zone: Compact Space Switcher Pill -->
-  <div class="no-drag-region">
+  <!-- Centre Zone: Compact Space Switcher Pill (Always strictly centered in Titlebar) -->
+  <div class="no-drag-region absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center pointer-events-auto">
     <Menu.Root bind:open={isSpaceMenuOpen} onSelect={onSpaceMenuSelect} positioning={{ placement: 'bottom', offset: { mainAxis: 6 } }}>
       <Menu.Trigger
-        class="group h-7 flex items-center gap-1.5 px-3 rounded-full bg-black/[0.03] dark:bg-white/[0.06] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] border border-black/[0.05] dark:border-white/[0.08] text-xs font-medium text-neutral-600 dark:text-neutral-300 transition"
+        class="group h-7 flex items-center gap-1.5 px-3 rounded-full bg-black/[0.03] dark:bg-white/[0.06] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] border border-black/[0.05] dark:border-white/[0.08] text-xs font-medium text-neutral-600 dark:text-neutral-300 transition shadow-[0_1px_2px_rgba(0,0,0,0.02)] active:scale-[0.98]"
         title="当前预设方案"
       >
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
@@ -234,7 +277,7 @@
                 }}
                 class="py-1 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition text-[11px]"
               >
-                详细配置 (⌘I)
+                详细配置 ({isMac ? '⌘I' : 'Ctrl+I'})
               </button>
             </div>
           </Menu.Content>
@@ -244,9 +287,9 @@
   </div>
 
   <!-- Right Side: Compression Actions, About, Flush Window Controls -->
-  <div class="no-drag-region flex items-center h-full">
+  <div class="no-drag-region ml-auto flex items-center h-full">
     <!-- Action buttons group -->
-    <div class="flex items-center gap-2 pr-2 sm:pr-3">
+    <div class="flex items-center gap-2 {isWindows ? 'pr-2 sm:pr-3' : ''}">
       {#if taskCount > 0}
         {#if pendingCount > 0}
           <button
