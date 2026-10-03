@@ -160,7 +160,7 @@
 <svelte:window ondblclick={onHeaderDblClick} />
 
 <header
-  class="relative drag-region {isMac ? 'h-[52px]' : 'h-[44px]'} {isWindows ? 'pr-0' : 'pr-3 sm:pr-4'} border-b border-black/[0.05] dark:border-white/[0.06] bg-white/75 dark:bg-[#0c0d10]/80 backdrop-blur-xl shrink-0 flex items-center justify-between z-40 transition-colors select-none"
+  class="relative drag-region {isMac ? 'h-[52px]' : 'h-[44px]'} {!isMac ? 'pr-0' : 'pr-3 sm:pr-4'} border-b border-black/[0.05] dark:border-white/[0.06] bg-white/75 dark:bg-[#0c0d10]/80 backdrop-blur-xl shrink-0 flex items-center justify-between z-40 transition-colors select-none"
   style={isMac && !isFullscreen ? "padding-left: 96px;" : "padding-left: 14px;"}
 >
   <!-- Left Zone: navigation + primary source picker -->
@@ -289,7 +289,7 @@
   <!-- Right Side: Compression Actions, About, Flush Window Controls -->
   <div class="no-drag-region ml-auto flex items-center h-full">
     <!-- Action buttons group -->
-    <div class="flex items-center gap-2 {isWindows ? 'pr-2 sm:pr-3' : ''}">
+    <div class="flex items-center gap-2 {!isMac ? 'pr-2 sm:pr-3' : ''}">
       {#if taskCount > 0}
         {#if pendingCount > 0}
           <button
@@ -324,8 +324,8 @@
       </button>
     </div>
 
-    <!-- 1:1 Native Windows 11 Caption Controls (Flush right, full height, corner snap clickable) -->
-    {#if isWindows}
+    <!-- Flush Window Controls for non-Mac platforms (Windows & Linux) -->
+    {#if !isMac}
       <div class="flex items-stretch h-full">
         <!-- Minimise -->
         <button
