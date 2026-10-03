@@ -67,10 +67,10 @@
       </div>
       <div>
         <div class="font-medium text-xs sm:text-sm text-[#121316] dark:text-[#f4f4f6]">
-          拖拽更多照片或文件夹至此，继续批量添加
+          拖拽照片或文件夹至此
         </div>
         <div class="text-[11px] text-neutral-400 dark:text-neutral-500">
-          支持 JPG, WebP, AVIF, PNG · 多线程并发处理
+          支持 JPG, WebP, AVIF, PNG
         </div>
       </div>
     </div>
@@ -130,7 +130,7 @@
         >
           <!-- Subtle glowing spinner / status dot like reference -->
           <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] shrink-0"></span>
-          <span>选择照片...</span>
+          <span>选择照片</span>
         </button>
 
         <button
@@ -138,7 +138,7 @@
           class="pill-btn-secondary"
         >
           <Icon icon="keyline-icons:folder-open" height={15} class="text-neutral-500 dark:text-neutral-400" />
-          <span>选择文件夹...</span>
+          <span>选择文件夹</span>
         </button>
       </div>
 

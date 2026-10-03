@@ -14,10 +14,12 @@
     "allowJs": true,
     "checkJs": true,
     "isolatedModules": true,
+    "noEmit": true,
     /** TS ignores the ./offline sub-directory's package.json, so point at its type entry manually */
     "paths": {
       "@iconify/svelte/offline": ["./node_modules/@iconify/svelte/dist/offline.d.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "bindings"],
+  "exclude": ["src/locales/.wuchale"],
 }

@@ -6,6 +6,7 @@ import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { wuchale } from 'wuchale/vite'
 
 const require = createRequire(import.meta.url);
 const KEYLINE_PREFIX = "keyline-icons";
@@ -68,5 +69,5 @@ export default defineConfig({
     port: Number(process.env.WAILS_VITE_PORT) || 9245,
     strictPort: true,
   },
-  plugins: [tailwindcss(), keylineIcons(), svelte(), wails("./bindings")],
+  plugins: [tailwindcss(), wuchale(), keylineIcons(), svelte(), wails("./bindings")],
 });

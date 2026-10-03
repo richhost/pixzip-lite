@@ -5,6 +5,7 @@
   import { Portal } from '@ark-ui/svelte/portal';
   import type { CompressConfig } from '#lib/types';
   import Icon from '@iconify/svelte/offline';
+  import { currentLocale, selectLocale } from '#lib/locale.svelte';
 
   interface Props {
     spaces: CompressConfig[];
@@ -171,7 +172,7 @@
       class="h-7 w-7 flex items-center justify-center rounded-lg transition-colors {isInspectorOpen
         ? 'bg-black/[0.07] dark:bg-white/[0.12] text-neutral-900 dark:text-neutral-100 font-semibold'
         : 'text-neutral-500 dark:text-neutral-400 hover:bg-black/[0.05] dark:hover:bg-white/[0.08] hover:text-neutral-800 dark:hover:text-neutral-200'}"
-      title={isMac ? "切换参数侧栏 (⌘I)" : "切换参数侧栏 (Ctrl+I)"}
+      title="检查器"
     >
       <Icon icon="keyline-icons:panel-left" height={15} />
     </button>
@@ -180,7 +181,7 @@
     <Menu.Root bind:open={isAddMenuOpen} onSelect={onAddSelect} positioning={{ placement: 'bottom-start', offset: { mainAxis: 6 } }}>
       <Menu.Trigger
         class="group h-7 flex items-center gap-1.5 px-3 rounded-full border border-black/[0.07] dark:border-white/[0.1] bg-white dark:bg-white/[0.06] hover:bg-neutral-50 dark:hover:bg-white/[0.1] text-xs font-medium text-neutral-800 dark:text-neutral-200 active:scale-[0.98] transition shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
-        title="添加照片或文件夹"
+        title="添加"
       >
         <Icon icon="keyline-icons:plus" height={13} />
         <span>添加</span>
@@ -199,7 +200,6 @@
             >
               <Icon icon="keyline-icons:image-plus" height={15} class="text-neutral-700 dark:text-neutral-200 shrink-0" />
               <span class="grow font-medium">选择照片</span>
-              <span class="text-[10px] font-mono text-neutral-400">{isMac ? '⌘O' : 'Ctrl+O'}</span>
             </Menu.Item>
             <Menu.Item
               value="folder"
@@ -219,65 +219,59 @@
     <Menu.Root bind:open={isSpaceMenuOpen} onSelect={onSpaceMenuSelect} positioning={{ placement: 'bottom', offset: { mainAxis: 6 } }}>
       <Menu.Trigger
         class="group h-7 flex items-center gap-1.5 px-3 rounded-full bg-black/[0.03] dark:bg-white/[0.06] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] border border-black/[0.05] dark:border-white/[0.08] text-xs font-medium text-neutral-600 dark:text-neutral-300 transition shadow-[0_1px_2px_rgba(0,0,0,0.02)] active:scale-[0.98]"
-        title="当前预设方案"
+        title="预设"
       >
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-        <span class="max-w-[140px] truncate">{currentSpace.name}</span>
+        <span class="max-w-[220px] sm:max-w-[280px] truncate">{currentSpace.name}</span>
         <span class="text-[10px] font-mono text-neutral-400 uppercase font-semibold">({currentSpace.format})</span>
         <Icon icon="keyline-icons:chevron-down" height={11} class="text-neutral-400 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
       </Menu.Trigger>
 
       <Portal>
         <Menu.Positioner class="outline-none">
-          <Menu.Content class="apple-glass backdrop-blur-2xl z-[9999] w-72 p-2 rounded-2xl shadow-2xl animate-scale-in text-xs outline-none">
-            <div class="px-2.5 py-1 text-[11px] font-semibold text-neutral-400 flex items-center justify-between">
-              <span>预设方案 (Presets)</span>
-              <span class="font-mono text-[11px]">{spaces.length} 个方案</span>
+          <Menu.Content class="apple-glass backdrop-blur-2xl z-[9999] w-72 p-1.5 rounded-2xl shadow-2xl animate-scale-in text-xs outline-none">
+            <div class="px-2.5 pt-1.5 pb-1 text-[11px] font-medium text-neutral-400 dark:text-neutral-500 flex items-center justify-between select-none">
+              <span>预设</span>
+              <span class="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 tabular-nums">{spaces.length} 个预设</span>
             </div>
 
-            <div class="space-y-0.5 my-1 max-h-60 overflow-y-auto pr-0.5">
+            <div class="space-y-0.5 my-1 max-h-64 overflow-y-auto pr-0.5">
               {#each spaces as s (s.id)}
                 {@const isSelected = s.id === currentSpace.id}
                 <Menu.Item
                   value={s.id}
-                  class="w-full flex items-center justify-between p-2 rounded-xl text-left outline-none transition data-[highlighted]:bg-black/[0.05] dark:data-[highlighted]:bg-white/[0.08] {isSelected
-                    ? 'bg-black/[0.06] dark:bg-white/[0.12] text-neutral-900 dark:text-white font-semibold'
-                    : 'text-neutral-700 dark:text-neutral-200'}"
+                  class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-left outline-none cursor-pointer transition-colors duration-150 data-[highlighted]:bg-black/[0.06] dark:data-[highlighted]:bg-white/[0.1] {isSelected
+                    ? 'bg-black/[0.05] dark:bg-white/[0.08] text-neutral-900 dark:text-white font-medium'
+                    : 'text-neutral-700 dark:text-neutral-300'}"
                 >
-                  <div class="flex flex-col truncate pr-2">
-                    <span class="truncate">{s.name}</span>
-                    <span class="text-[11px] text-neutral-400 truncate font-normal">{s.description || '自定义参数'}</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 shrink-0">
-                    <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-neutral-500">
+                  <span class="truncate pr-2 text-xs {isSelected ? 'font-semibold text-neutral-900 dark:text-white' : 'font-normal text-neutral-700 dark:text-neutral-300'}">
+                    {s.name}
+                  </span>
+                  <div class="flex items-center gap-2 shrink-0">
+                    <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded-md bg-black/[0.04] dark:bg-white/[0.08] text-neutral-500 dark:text-neutral-400 font-medium">
                       {s.format}
                     </span>
-                    {#if isSelected}
-                      <Icon icon="keyline-icons:check" height={14} class="text-neutral-900 dark:text-white" />
-                    {/if}
+                    <span class="w-4 h-4 flex items-center justify-center shrink-0">
+                      {#if isSelected}
+                        <Icon icon="keyline-icons:check" height={13} class="text-neutral-900 dark:text-white" />
+                      {/if}
+                    </span>
                   </div>
                 </Menu.Item>
               {/each}
             </div>
 
-            <div class="border-t border-black/[0.06] dark:border-white/[0.08] pt-1.5 mt-1 flex items-center justify-between text-xs px-1">
+            <div class="border-t border-black/[0.06] dark:border-white/[0.08] pt-1 mt-1">
               <button
+                type="button"
                 onclick={() => {
                   isSpaceMenuOpen = false;
                   onOpenNewSpaceModal();
                 }}
-                class="py-1 rounded-md text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white font-medium transition text-[11px]"
+                class="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] font-medium transition text-xs active:scale-[0.99]"
               >
-                + 新建预设...
-              </button>
-              <button
-                onclick={() => {
-                  isSpaceMenuOpen = false;
-                  onToggleInspector();
-                }}
-                class="py-1 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition text-[11px]"
-              >
-                详细配置 ({isMac ? '⌘I' : 'Ctrl+I'})
+                <Icon icon="keyline-icons:plus" height={13} class="text-neutral-500 dark:text-neutral-400" />
+                <span>新建预设...</span>
               </button>
             </div>
           </Menu.Content>
@@ -298,7 +292,7 @@
             class="pill-btn-black !h-7 !py-0 !px-3 text-xs disabled:opacity-50"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            <span>开始压缩 ({pendingCount})</span>
+            <span>压缩 ({pendingCount})</span>
           </button>
         {/if}
 
@@ -306,7 +300,7 @@
           <button
             onclick={onExportZip}
             class="pill-btn-secondary !h-7 !py-0 !px-3 text-xs"
-            title="将已完成图片打包导出为 ZIP"
+            title="导出 ZIP"
           >
             <Icon icon="keyline-icons:download" height={13} />
             <span class="hidden md:inline">导出 ZIP</span>
@@ -314,11 +308,23 @@
         {/if}
       {/if}
 
+      <!-- Language Switch -->
+      <button
+        type="button"
+        onclick={() => selectLocale(currentLocale() === 'zh' ? 'en' : 'zh')}
+        class="h-7 px-2 flex items-center gap-1 rounded-full text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 hover:bg-black/5 dark:hover:bg-white/10 transition cursor-pointer"
+        title={currentLocale() === 'zh' ? '切换为 English' : 'Switch to 中文'}
+        aria-label={currentLocale() === 'zh' ? '切换为 English' : 'Switch to 中文'}
+      >
+        <Icon icon="keyline-icons:globe" height={13} />
+        <span class="font-mono text-[10px] uppercase font-semibold">{currentLocale() === 'zh' ? 'EN' : '中'}</span>
+      </button>
+
       <!-- About Modal Toggle -->
       <button
         onclick={onOpenAbout}
         class="h-7 w-7 flex items-center justify-center rounded-full text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 hover:bg-black/5 dark:hover:bg-white/10 transition"
-        title="关于 PixZip Lite"
+        title="关于"
       >
         <Icon icon="keyline-icons:info" height={15} />
       </button>

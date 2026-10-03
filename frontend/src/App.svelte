@@ -7,7 +7,6 @@
   import DropZone from "#lib/components/DropZone.svelte";
   import TaskList from "#lib/components/TaskList.svelte";
   import Inspector from "#lib/components/Inspector.svelte";
-  import CompareModal from "#lib/components/CompareModal.svelte";
   import SpaceModal from "#lib/components/SpaceModal.svelte";
   import AboutModal from "#lib/components/AboutModal.svelte";
 
@@ -35,21 +34,7 @@
       console.warn("Events.On files-dropped error:", err);
     }
   });
-
-  function onKeydown(event: KeyboardEvent) {
-    if (!(event.metaKey || event.ctrlKey)) return;
-    const key = event.key.toLowerCase();
-    if (key === "i") {
-      event.preventDefault();
-      app.toggleInspector();
-    } else if (key === "o") {
-      event.preventDefault();
-      void app.selectFiles();
-    }
-  }
 </script>
-
-<svelte:window onkeydown={onKeydown} />
 
 <div
   class="h-screen w-screen flex flex-col bg-(--apple-bg) text-[#1d1d1f] dark:text-[#f5f5f7] transition-colors overflow-hidden"
@@ -99,7 +84,6 @@
             onCompressSingle={app.compressOne}
             onRevealInFinder={app.reveal}
             onDeleteSingle={app.removeTask}
-            onCompare={app.openCompare}
             onBatchCompress={app.compressMany}
             onBatchDelete={app.removeTasks}
           />
@@ -107,16 +91,6 @@
       </div>
     </main>
   </div>
-
-  {#if app.compareTask}
-    {#key app.compareTask.id}
-      <CompareModal
-        task={app.compareTask}
-        onClose={app.closeCompare}
-        onRevealInFinder={app.reveal}
-      />
-    {/key}
-  {/if}
 
   <SpaceModal
     isOpen={app.isSpaceModalOpen}

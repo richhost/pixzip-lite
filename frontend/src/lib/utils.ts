@@ -1,19 +1,19 @@
-import type { FileTask, ImageFormat, ResizeMode } from '#lib/types';
+import type { FileTask } from '#lib/types';
 
-/* Shared so the sidebar and the new-preset modal cannot drift apart in wording. */
-export const FORMAT_OPTIONS: { id: ImageFormat; label: string }[] = [
-  { id: 'webp', label: 'WebP' },
-  { id: 'avif', label: 'AVIF' },
-  { id: 'jpeg', label: 'JPEG' },
-  { id: 'png', label: 'PNG' },
-  { id: 'original', label: '保持原格式' },
-];
-
-export const RESIZE_MODES: { id: ResizeMode; label: string }[] = [
-  { id: 'none', label: '原图尺寸' },
-  { id: 'width', label: '限制宽度' },
-  { id: 'height', label: '限制高度' },
-];
+export function cn(...inputs: (string | boolean | null | undefined | Record<string, boolean>)[]): string {
+  const classes: string[] = [];
+  for (const input of inputs) {
+    if (!input) continue;
+    if (typeof input === 'string') {
+      classes.push(input);
+    } else if (typeof input === 'object') {
+      for (const [key, value] of Object.entries(input)) {
+        if (value) classes.push(key);
+      }
+    }
+  }
+  return classes.join(' ');
+}
 
 export interface TaskSummary {
   total: number;

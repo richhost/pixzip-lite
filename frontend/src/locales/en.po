@@ -1,0 +1,847 @@
+msgid ""
+msgstr ""
+"Source-Language: zh\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2\n"
+"X-Plurals-Order: one, other\n"
+
+#: src/lib/app-state.svelte.ts
+msgid "默认配置"
+msgstr "Default"
+
+#: src/lib/app-state.svelte.ts
+msgid "来自旧版本的单一配置"
+msgstr "Migrated from an older version"
+
+#: src/lib/app-state.svelte.ts
+msgid "压缩失败"
+msgstr "Compression failed"
+
+#: src/lib/app-state.svelte.ts
+msgid "压缩处理异常"
+msgstr "Unexpected compression error"
+
+#: src/lib/components/AboutModal.svelte
+#: src/lib/components/AboutModal.svelte
+#: src/lib/components/SpaceModal.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "Escape"
+msgstr "Escape"
+
+#~ msgid "PixZip"
+#~ msgstr "PixZip"
+
+#~ msgid "Wails 3 + Svelte 5"
+#~ msgstr "Wails 3 + Svelte 5"
+
+#~ msgid "<0/> 原生并发 · 无 Canvas"
+#~ msgstr "<0/> Native concurrency · no Canvas"
+
+#: src/lib/components/AboutModal.svelte
+#: src/lib/components/AboutModal.svelte
+msgid "PixZip Lite"
+msgstr "PixZip Lite"
+
+#~ msgid "极速、克制、现代的原生跨平台批量图片压缩工具"
+#~ msgstr "A fast, restrained, modern native cross-platform batch image compressor"
+
+#~ msgid "<0/> Go 后端原生引擎"
+#~ msgstr "<0/> Native Go engine"
+
+#~ msgid "严格遵循无 Canvas 要求，由 Go + libwebp + Lanczos 算法并发极速压缩。"
+#~ msgstr "No Canvas anywhere: Go + libwebp + Lanczos compress in parallel for speed."
+
+#~ msgid "<0/> 双图画质滑块对比"
+#~ msgstr "<0/> Side-by-side slider"
+
+#~ msgid "前后对比滑块拖拽审视微观细节，支持无极放大缩小与透明棋盘格对比。"
+#~ msgstr "Drag the divider to inspect detail, with free zoom and a transparency checkerboard."
+
+#~ msgid "<0/> Svelte 5 Runes 驱动"
+#~ msgstr "<0/> Powered by Svelte 5 Runes"
+
+#~ msgid "现代化 Svelte 5 全新响应式核心，带来如丝般顺滑的桌面交互体验。"
+#~ msgstr "The Svelte 5 reactive core makes desktop interaction feel silky."
+
+#~ msgid "<0/> 多预设与批量导出"
+#~ msgstr "<0/> Presets and batch export"
+
+#~ msgid "灵活预设切换、递归目录扫描、一键导出整份 ZIP 归档包。"
+#~ msgstr "Switch presets, scan folders recursively, export everything as one ZIP."
+
+#~ msgid "核心架构与引擎"
+#~ msgstr "Architecture and engine"
+
+#: src/lib/components/AboutModal.svelte
+msgid "richhost/pixzip-lite"
+msgstr "richhost/pixzip-lite"
+
+#: src/lib/components/AboutModal.svelte
+msgid "开源仓库"
+msgstr "Source code"
+
+#~ msgid "致谢 JetBrains 开源许可支持"
+#~ msgstr "With a JetBrains open-source license"
+
+#~ msgid "JetBrains"
+#~ msgstr "JetBrains"
+
+#: src/lib/components/AboutModal.svelte
+msgid "Star 支持"
+msgstr "Star on GitHub"
+
+#: src/lib/components/AboutModal.svelte
+msgid "爱发电赞助"
+msgstr "Sponsor on Afdian"
+
+#: src/lib/components/CompareModal.svelte
+msgid "ArrowLeft"
+msgstr "ArrowLeft"
+
+#: src/lib/components/CompareModal.svelte
+msgid "ArrowRight"
+msgstr "ArrowRight"
+
+#~ msgid "关闭 (Esc)"
+#~ msgstr "Close (Esc)"
+
+#~ msgid "双图画质滑块对比 · 左右拖拽中线或使用方向键"
+#~ msgstr "Drag the divider, or use the arrow keys"
+
+#: src/lib/components/CompareModal.svelte
+msgid "缩小"
+msgstr "Zoom out"
+
+#: src/lib/components/CompareModal.svelte
+msgid "重置 100%"
+msgstr "Reset 100%"
+
+#: src/lib/components/CompareModal.svelte
+msgid "放大"
+msgstr "Zoom in"
+
+#~ msgid "在 Finder 中显示"
+#~ msgstr "Show in folder"
+
+#: src/lib/components/CompareModal.svelte
+msgid "双图对比画布"
+msgstr "Comparison canvas"
+
+#: src/lib/components/TaskList.svelte
+msgid "压缩后"
+msgstr "Compressed"
+
+#: src/lib/components/CompareModal.svelte
+#: src/lib/components/CompareModal.svelte
+msgid "原图"
+msgstr "Original"
+
+#~ msgid "原图 (Original)"
+#~ msgstr "Original"
+
+#~ msgid "减小体积 {0}% ({1})"
+#~ msgstr "{0}% smaller ({1})"
+
+#~ msgid "压缩后 (Compressed)"
+#~ msgstr "Compressed"
+
+#: src/lib/components/DropZone.svelte
+msgid "拖拽区域"
+msgstr "Drop zone"
+
+#~ msgid "拖拽更多照片或文件夹至此，继续批量添加"
+#~ msgstr "Drop more photos or folders here to keep adding"
+
+#~ msgid "支持 JPG, WebP, AVIF, PNG · 多线程并发处理"
+#~ msgstr "JPG, WebP, AVIF, PNG · processed in parallel"
+
+#: src/lib/components/DropZone.svelte
+#: src/lib/components/DropZone.svelte
+#: src/lib/components/Header.svelte
+msgid "选择照片"
+msgstr "Choose photos"
+
+#: src/lib/components/DropZone.svelte
+#: src/lib/components/DropZone.svelte
+#: src/lib/components/Header.svelte
+msgid "选择文件夹"
+msgstr "Choose folder"
+
+#: src/lib/components/DropZone.svelte
+msgid "Enter"
+msgstr "Enter"
+
+#: src/lib/components/DropZone.svelte
+msgid "Drop Files"
+msgstr "Drop Files"
+
+#~ msgid "选择照片..."
+#~ msgstr "Choose photos..."
+
+#~ msgid "选择文件夹..."
+#~ msgstr "Choose folder..."
+
+#: src/lib/components/DropZone.svelte
+msgid "支持 JPG / JPEG · PNG · WebP · AVIF · GIF"
+msgstr "Supports JPG / JPEG · PNG · WebP · AVIF · GIF"
+
+#~ msgid "切换参数侧栏 (⌘I)"
+#~ msgstr "Toggle inspector (⌘I)"
+
+#~ msgid "切换参数侧栏 (Ctrl+I)"
+#~ msgstr "Toggle inspector (Ctrl+I)"
+
+#~ msgid "添加照片或文件夹"
+#~ msgstr "Add photos or folder"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "添加"
+msgstr "Add"
+
+#~ msgid "Ctrl+O"
+#~ msgstr "Ctrl+O"
+
+#~ msgid "当前预设方案"
+#~ msgstr "Current preset"
+
+#~ msgid "预设方案"
+#~ msgstr "Presets"
+
+#~ msgid "{0} 个方案"
+#~ msgstr "{0} presets"
+
+#: src/lib/components/Header.svelte
+msgid "新建预设..."
+msgstr "New preset..."
+
+#~ msgid "开始压缩 ({0})"
+#~ msgstr "Compress ({0})"
+
+#~ msgid "将已完成图片打包导出为 ZIP"
+#~ msgstr "Export completed images as a ZIP"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "导出 ZIP"
+msgstr "Export ZIP"
+
+#~ msgid "关于 PixZip Lite"
+#~ msgstr "About PixZip Lite"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "最小化"
+msgstr "Minimize"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "向下还原"
+msgstr "Restore"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "最大化"
+msgstr "Maximize"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "关闭"
+msgstr "Close"
+
+#~ msgid "极佳画质"
+#~ msgstr "Excellent"
+
+#~ msgid "推荐平衡"
+#~ msgstr "Recommended"
+
+#~ msgid "高压缩比"
+#~ msgstr "Efficient"
+
+#~ msgid "极限体积"
+#~ msgstr "Smallest"
+
+#~ msgid "参数配置"
+#~ msgstr "Inspector"
+
+#~ msgid "收起侧栏 (Ctrl+I)"
+#~ msgstr "Collapse inspector (Ctrl+I)"
+
+#~ msgid "方案名称"
+#~ msgstr "Preset name"
+
+#~ msgid "当前编辑方案"
+#~ msgstr "Editing"
+
+#: src/lib/components/Inspector.svelte
+msgid "例如：电商主图 / 微信头像"
+msgstr "e.g. Product shot / Avatar"
+
+#~ msgid "目标格式"
+#~ msgstr "Output format"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/options.svelte.ts
+msgid "原格式"
+msgstr "Original"
+
+#~ msgid "压缩质量"
+#~ msgstr "Quality"
+
+#~ msgid "60% 极限"
+#~ msgstr "60% Max"
+
+#~ msgid "80% 平衡"
+#~ msgstr "80% Balanced"
+
+#~ msgid "90% 高清"
+#~ msgstr "90% HD"
+
+#~ msgid "保留 EXIF 摄影数据"
+#~ msgstr "Keep EXIF photo data"
+
+#~ msgid "包含相机型号、光圈快门、时间与 GPS 坐标"
+#~ msgstr "Camera model, aperture, shutter, time and GPS"
+
+#~ msgid "<0/> 等比缩放"
+#~ msgstr "<0/> Proportional"
+
+#~ msgid "尺寸缩放"
+#~ msgstr "Resize"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "px"
+msgstr "px"
+
+#: src/lib/components/Inspector.svelte
+msgid "指定最大宽度"
+msgstr "Max width"
+
+#~ msgid "{0}px"
+#~ msgstr "{0}px"
+
+#: src/lib/components/Inspector.svelte
+msgid "指定最大高度"
+msgstr "Max height"
+
+#~ msgid "保存在原目录"
+#~ msgstr "Save next to original"
+
+#~ msgid "自定义输出目录"
+#~ msgstr "Custom output folder"
+
+#~ msgid "点击选择保存目录"
+#~ msgstr "Click to choose where to save"
+
+#~ msgid "默认保存至桌面"
+#~ msgstr "Saves to the Desktop by default"
+
+#: src/lib/components/Inspector.svelte
+msgid "更改"
+msgstr "Change"
+
+#~ msgid "文件名后缀"
+#~ msgstr "Filename suffix"
+
+#. 0: format === 'original' ? 'jpg' \\: format
+#: src/lib/components/SpaceModal.svelte
+msgid "预览: photo<0/>.{0}"
+msgstr "Preview: photo<0/>.{0}"
+
+#~ msgid "清空后缀"
+#~ msgstr "Clear suffix"
+
+#~ msgid "无后缀"
+#~ msgstr "No suffix"
+
+#~ msgid "使用默认后缀"
+#~ msgstr "Use default suffix"
+
+#: src/lib/components/Inspector.svelte
+msgid "-min"
+msgstr "-min"
+
+#~ msgid "保存目录与命名"
+#~ msgstr "Output folder and naming"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "取消"
+msgstr "Cancel"
+
+#: src/lib/components/Inspector.svelte
+msgid "确认删除"
+msgstr "Confirm delete"
+
+#~ msgid "确定删除方案？"
+#~ msgstr "Delete this preset?"
+
+#~ msgid "至少保留一个预设方案，无法删除"
+#~ msgstr "At least one preset must stay"
+
+#~ msgid "删除当前预设方案"
+#~ msgstr "Delete current preset"
+
+#: src/lib/components/Inspector.svelte
+msgid "删除方案"
+msgstr "Delete preset"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "我的自定义方案"
+msgstr "My custom preset"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "选择格式"
+msgstr "Choose format"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "自定义方案"
+msgstr "Custom preset"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "用户自定义配置方案"
+msgstr "User-defined preset"
+
+#~ msgid "新建预设配置方案"
+#~ msgstr "New preset"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "例如：电商主图 800px / 微信封面"
+msgstr "e.g. Product shot 800px / Cover image"
+
+#~ msgid "选择目标格式"
+#~ msgstr "Choose output format"
+
+#~ msgid "等比缩放"
+#~ msgstr "Proportional"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "宽度"
+msgstr "width"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "高度"
+msgstr "height"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "缩放目标像素"
+msgstr "Target size in px"
+
+#. 0: resizeMode === 'width' ? '宽度' \\: '高度'
+#: src/lib/components/SpaceModal.svelte
+msgid "指定最大{0}"
+msgstr "Max {0}"
+
+#~ msgid "创建并应用"
+#~ msgstr "Create and apply"
+
+#: src/lib/components/TaskCard.svelte
+msgid "处理中"
+msgstr "Processing"
+
+#: src/lib/components/TaskCard.svelte
+#: src/lib/components/TaskItem.svelte
+msgid "失败"
+msgstr "Failed"
+
+#~ msgid "双图对比"
+#~ msgstr "Compare"
+
+#: src/lib/components/TaskCard.svelte
+#: src/lib/components/TaskItem.svelte
+msgid "重新压缩"
+msgstr "Recompress"
+
+#~ msgid "开始压缩"
+#~ msgstr "Compress"
+
+#~ msgid "移除任务"
+#~ msgstr "Remove task"
+
+#. 0: task.durationMs
+#: src/lib/components/TaskItem.svelte
+msgid "({0}ms)"
+msgstr "({0}ms)"
+
+#: src/lib/components/TaskItem.svelte
+#: src/lib/components/TaskList.svelte
+msgid "待处理"
+msgstr "Queued"
+
+#: src/lib/components/TaskItem.svelte
+msgid "压缩中..."
+msgstr "Compressing..."
+
+#~ msgid "双图前后对比滑块"
+#~ msgstr "Before and after slider"
+
+#~ msgid "在 Finder 中显示输出文件"
+#~ msgstr "Show output file in folder"
+
+#~ msgid "压缩此图片"
+#~ msgstr "Compress this image"
+
+#: src/lib/components/TaskList.svelte
+msgid "张"
+msgstr "photos"
+
+#~ msgid "任务总数"
+#~ msgstr "Total"
+
+#~ msgid "原始体积"
+#~ msgstr "Original size"
+
+#~ msgid "压缩后体积"
+#~ msgstr "Compressed size"
+
+#~ msgid "已节省空间"
+#~ msgstr "Saved"
+
+#: src/lib/components/TaskList.svelte
+msgid "全部"
+msgstr "All"
+
+#: src/lib/components/TaskList.svelte
+msgid "完成"
+msgstr "Done"
+
+#~ msgid "列表视图"
+#~ msgstr "List view"
+
+#~ msgid "网格画廊视图"
+#~ msgstr "Gallery view"
+
+#~ msgid "已勾选 {0} 项"
+#~ msgstr "{0} selected"
+
+#: src/lib/components/TaskList.svelte
+msgid "压缩所选"
+msgstr "Compress selected"
+
+#: src/lib/components/TaskCard.svelte
+#: src/lib/components/TaskItem.svelte
+#: src/lib/components/TaskList.svelte
+msgid "移除"
+msgstr "Remove"
+
+#~ msgid "全选当前筛选列表 ({0})"
+#~ msgstr "Select all shown ({0})"
+
+#~ msgid "点击图片可打开前后画质对比滑块"
+#~ msgstr "Click an image to open the comparison slider"
+
+#: src/lib/options.svelte.ts
+msgid "WebP"
+msgstr "WebP"
+
+#~ msgid "保持原格式"
+#~ msgstr "Keep original"
+
+#~ msgid "原图尺寸"
+#~ msgstr "Original size"
+
+#~ msgid "限制宽度"
+#~ msgstr "Limit width"
+
+#~ msgid "限制高度"
+#~ msgstr "Limit height"
+
+#: src/lib/options.svelte.ts
+msgid "标准 WebP"
+msgstr "Standard WebP"
+
+#: src/lib/options.svelte.ts
+msgid "均衡压缩比与画质，保留相机 EXIF"
+msgstr "Balances size and quality, keeps camera EXIF"
+
+#~ msgid "界面语言"
+#~ msgstr "Language"
+
+#: src/lib/components/AboutModal.svelte
+msgid "中文"
+msgstr "中文"
+
+#: src/lib/components/AboutModal.svelte
+msgid "English"
+msgstr "English"
+
+#: src/lib/components/Inspector.svelte
+msgid "默认保存在系统「文档」目录下的 pixzip-lite 文件夹"
+msgstr "Default: pixzip-lite folder in Documents"
+
+#: src/lib/components/Inspector.svelte
+msgid "文档/pixzip-lite (默认)"
+msgstr "Documents/pixzip-lite (Default)"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "切换为 English"
+msgstr "Switch to English"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "Switch to 中文"
+msgstr "Switch to Chinese"
+
+#: src/lib/components/Header.svelte
+msgid "中"
+msgstr "ZH"
+
+#: src/lib/components/Slider.svelte
+msgid "Slider"
+msgstr "Slider"
+
+#~ msgid "保持宽高比"
+#~ msgstr ""
+
+#: src/lib/components/Inspector.svelte
+msgid "保存目录"
+msgstr "Save folder"
+
+#. 0: config.format === 'original' ? 'jpg' \\: config.format
+#: src/lib/components/Inspector.svelte
+msgid "photo<0/>.{0}"
+msgstr "photo<0/>.{0}"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Inspector.svelte
+msgid "检查器"
+msgstr "Inspector"
+
+#: src/lib/components/Header.svelte
+#: src/lib/components/Header.svelte
+msgid "预设"
+msgstr "Presets"
+
+#. 0: spaces.length
+#. 0: spaces.length
+#: src/lib/components/Header.svelte
+#: src/lib/components/Inspector.svelte
+msgid "{0} 个预设"
+msgstr "{0} presets"
+
+#. 0: pendingCount
+#: src/lib/components/Header.svelte
+msgid "压缩 ({0})"
+msgstr "Compress ({0})"
+
+#: src/lib/components/Header.svelte
+msgid "关于"
+msgstr "About"
+
+#: src/lib/components/Inspector.svelte
+msgid "极佳"
+msgstr "Best"
+
+#: src/lib/components/Inspector.svelte
+msgid "平衡"
+msgstr "Balanced"
+
+#: src/lib/components/Inspector.svelte
+msgid "紧凑"
+msgstr "Compact"
+
+#: src/lib/components/Inspector.svelte
+msgid "极限"
+msgstr "Smallest"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "名称"
+msgstr "Name"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "格式"
+msgstr "Format"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "质量"
+msgstr "Quality"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "保留 EXIF"
+msgstr "Keep EXIF"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "等比"
+msgstr "Proportional"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "尺寸"
+msgstr "Resize"
+
+#: src/lib/components/Inspector.svelte
+msgid "原目录"
+msgstr "Same folder"
+
+#: src/lib/components/Inspector.svelte
+msgid "自定义"
+msgstr "Custom"
+
+#: src/lib/components/Inspector.svelte
+#: src/lib/components/SpaceModal.svelte
+msgid "后缀"
+msgstr "Suffix"
+
+#: src/lib/components/Inspector.svelte
+msgid "无"
+msgstr "None"
+
+#: src/lib/components/Inspector.svelte
+msgid "确定删除？"
+msgstr "Delete preset?"
+
+#: src/lib/components/Inspector.svelte
+msgid "至少保留一个预设，无法删除"
+msgstr "At least one preset must stay"
+
+#: src/lib/components/Inspector.svelte
+msgid "删除当前预设"
+msgstr "Delete preset"
+
+#: src/lib/options.svelte.ts
+msgid "原始"
+msgstr "Original"
+
+#: src/lib/options.svelte.ts
+msgid "限宽"
+msgstr "Fit width"
+
+#: src/lib/options.svelte.ts
+msgid "限高"
+msgstr "Fit height"
+
+#: src/lib/components/TaskList.svelte
+msgid "总计"
+msgstr "Total"
+
+#: src/lib/components/TaskList.svelte
+msgid "原大小"
+msgstr "Original size"
+
+#: src/lib/components/TaskList.svelte
+msgid "已节省"
+msgstr "Saved"
+
+#: src/lib/components/TaskList.svelte
+msgid "列表"
+msgstr "List"
+
+#: src/lib/components/TaskList.svelte
+msgid "网格"
+msgstr "Grid"
+
+#. 0: selectedExistingIds.length
+#: src/lib/components/TaskList.svelte
+msgid "已选 {0} 项"
+msgstr "{0} selected"
+
+#. 0: filteredTasks.length
+#: src/lib/components/TaskList.svelte
+msgid "全选 ({0})"
+msgstr "Select all ({0})"
+
+#~ msgid "点击图片对比画质"
+#~ msgstr "Click an image to compare"
+
+#~ msgid "对比"
+#~ msgstr "Compare"
+
+#: src/lib/components/TaskCard.svelte
+#: src/lib/components/TaskItem.svelte
+msgid "定位"
+msgstr "Reveal"
+
+#: src/lib/components/TaskCard.svelte
+#: src/lib/components/TaskItem.svelte
+msgid "压缩"
+msgstr "Compress"
+
+#: src/lib/components/CompareModal.svelte
+msgid "左右拖拽中线对比"
+msgstr "Drag the divider to compare"
+
+#: src/lib/components/DropZone.svelte
+msgid "拖拽照片或文件夹至此"
+msgstr "Drop photos or folders here"
+
+#: src/lib/components/DropZone.svelte
+msgid "支持 JPG, WebP, AVIF, PNG"
+msgstr "Supports JPG, WebP, AVIF, PNG"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "新建预设"
+msgstr "New preset"
+
+#: src/lib/components/SpaceModal.svelte
+msgid "创建"
+msgstr "Create"
+
+#: src/lib/components/AboutModal.svelte
+msgid "轻快、克制的原生图片压缩工具"
+msgstr "A fast, restrained native image compressor"
+
+#~ msgid "<0/> Go 原生引擎"
+#~ msgstr "<0/> Native Go engine"
+
+#~ msgid "基于 Go + libwebp 并发压缩，无 Canvas 损耗。"
+#~ msgstr "Go + libwebp compress in parallel with zero Canvas overhead."
+
+#~ msgid "<0/> 画质对比"
+#~ msgstr "<0/> Quality comparison"
+
+#~ msgid "拖拽滑块审视细节，支持自由缩放与棋盘格。"
+#~ msgstr "Drag the divider to inspect detail, with zoom and checkerboard."
+
+#~ msgid "<0/> Svelte 5 驱动"
+#~ msgstr "<0/> Powered by Svelte 5"
+
+#~ msgid "Runes 响应式核心，轻量、丝滑的桌面体验。"
+#~ msgstr "Runes reactivity for a lightweight, silky desktop experience."
+
+#: src/lib/components/AboutModal.svelte
+msgid "<0/> 预设与导出"
+msgstr "<0/> Presets and export"
+
+#: src/lib/components/AboutModal.svelte
+msgid "快速切换参数预设，一键打包导出 ZIP。"
+msgstr "Switch presets easily, export everything as one ZIP."
+
+#: src/lib/components/AboutModal.svelte
+msgid "特性"
+msgstr "Features"
+
+#: src/lib/components/AboutModal.svelte
+msgid "语言"
+msgstr "Language"
+
+#: src/lib/components/AboutModal.svelte
+msgid "<0/> 高效并发"
+msgstr "<0/> Fast batch processing"
+
+#: src/lib/components/AboutModal.svelte
+msgid "多图并行批量处理，兼顾高压缩率与清晰画质。"
+msgstr "Parallel batch compression with high ratio and crisp quality."
+
+#: src/lib/components/AboutModal.svelte
+msgid "<0/> 本地安全"
+msgstr "<0/> Local & private"
+
+#: src/lib/components/AboutModal.svelte
+msgid "全本地离线处理，无需上传网络，保护隐私。"
+msgstr "Everything runs locally offline with zero uploads for privacy."

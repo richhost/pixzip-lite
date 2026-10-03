@@ -1,7 +1,7 @@
 import { ImageService } from '../../bindings/changeme';
 import type { CompressTask, ImageItem } from '../../bindings/changeme';
 import type { FileTask, CompressConfig } from '#lib/types';
-import { DEFAULT_PRESETS } from '#lib/defaultConfig';
+import { defaultPresets } from '#lib/options.svelte';
 import { summarizeTasks } from '#lib/utils';
 
 const PRESETS_KEY = 'pixzip_presets_v1';
@@ -28,9 +28,10 @@ function readJson(key: string): unknown {
 }
 
 function loadPersisted(): { spaces: CompressConfig[]; activeId: string } {
-  const fallbackId = DEFAULT_PRESETS[0].id;
+  const defaults = defaultPresets();
+  const fallbackId = defaults[0].id;
   if (typeof localStorage === 'undefined') {
-    return { spaces: DEFAULT_PRESETS, activeId: fallbackId };
+    return { spaces: defaults, activeId: fallbackId };
   }
 
   let spaces: CompressConfig[] | null = null;
@@ -49,7 +50,7 @@ function loadPersisted(): { spaces: CompressConfig[]; activeId: string } {
     if (single && typeof single.format === 'string') {
       spaces = [
         normalizePreset({
-          ...DEFAULT_PRESETS[0],
+          ...defaults[0],
           ...single,
           id: 'default',
           name: '默认配置',
@@ -70,7 +71,7 @@ function loadPersisted(): { spaces: CompressConfig[]; activeId: string } {
     }
   }
 
-  return { spaces: spaces ?? DEFAULT_PRESETS, activeId: activeId ?? fallbackId };
+  return { spaces: spaces ?? defaults, activeId: activeId ?? fallbackId };
 }
 
 function asPaths(value: unknown): string[] {
@@ -98,21 +99,16 @@ export function pathsFromDrop(payload: unknown): string[] {
  * allows exporting across modules.
  */
 export class AppState {
-  spaces = $state<CompressConfig[]>(DEFAULT_PRESETS);
-  currentSpaceId = $state(DEFAULT_PRESETS[0].id);
+  spaces = $state<CompressConfig[]>(defaultPresets());
+  currentSpaceId = $state(defaultPresets()[0].id);
   // The queue is only ever replaced, never mutated in place.
   tasks = $state.raw<FileTask[]>([]);
   isInspectorOpen = $state(true);
   isSpaceModalOpen = $state(false);
   isAboutModalOpen = $state(false);
-  compareId = $state<string | null>(null);
 
   currentSpace = $derived(
-    this.spaces.find((space) => space.id === this.currentSpaceId) ?? this.spaces[0] ?? DEFAULT_PRESETS[0]
-  );
-
-  compareTask = $derived(
-    this.compareId === null ? null : (this.tasks.find((task) => task.id === this.compareId) ?? null)
+    this.spaces.find((space) => space.id === this.currentSpaceId) ?? this.spaces[0] ?? defaultPresets()[0]
   );
 
   summary = $derived(summarizeTasks(this.tasks));
@@ -160,7 +156,7 @@ export class AppState {
     if (this.spaces.length <= 1) return;
     const next = this.spaces.filter((space) => space.id !== id);
     this.spaces = next;
-    if (this.currentSpaceId === id) this.currentSpaceId = next[0]?.id ?? DEFAULT_PRESETS[0].id;
+    if (this.currentSpaceId === id) this.currentSpaceId = next[0]?.id ?? defaultPresets()[0].id;
   };
 
   saveSpace = (space: CompressConfig) => {
@@ -186,14 +182,6 @@ export class AppState {
 
   toggleInspector = () => {
     this.isInspectorOpen = !this.isInspectorOpen;
-  };
-
-  openCompare = (task: FileTask) => {
-    this.compareId = task.id;
-  };
-
-  closeCompare = () => {
-    this.compareId = null;
   };
 
   selectFiles = async () => {
@@ -296,13 +284,11 @@ export class AppState {
 
   removeTask = (id: string) => {
     this.tasks = this.tasks.filter((task) => task.id !== id);
-    if (this.compareId === id) this.compareId = null;
   };
 
   removeTasks = (ids: string[]) => {
     const idSet = new Set(ids);
     this.tasks = this.tasks.filter((task) => !idSet.has(task.id));
-    if (this.compareId && idSet.has(this.compareId)) this.compareId = null;
   };
 
   #toTask(item: ImageItem): FileTask {
@@ -365,6 +351,14 @@ export class AppState {
     return run;
   }
 
+  private defaultCompressError(): string {
+    return '压缩失败';
+  }
+
+  private defaultExceptionError(): string {
+    return '压缩处理异常';
+  }
+
   async #execute(task: FileTask, space: CompressConfig, generation: number) {
     if (this.#generation.get(task.id) !== generation) return;
     this.#patch(task.id, { status: 'processing', error: undefined });
@@ -373,7 +367,7 @@ export class AppState {
       const result = await ImageService.Compress(this.#payload(task, space));
       if (this.#generation.get(task.id) !== generation) return;
       if (!result.success) {
-        this.#patch(task.id, { status: 'error', error: result.error || '压缩失败' });
+        this.#patch(task.id, { status: 'error', error: result.error || this.defaultCompressError() });
         return;
       }
       this.#patch(task.id, {
@@ -388,7 +382,7 @@ export class AppState {
       if (this.#generation.get(task.id) !== generation) return;
       this.#patch(task.id, {
         status: 'error',
-        error: err instanceof Error ? err.message : '压缩处理异常',
+        error: err instanceof Error ? err.message : this.defaultExceptionError(),
       });
     }
   }

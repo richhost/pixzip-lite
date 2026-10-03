@@ -2,8 +2,15 @@ import './app.css'
 import { mount } from 'svelte'
 import { addCollection } from '@iconify/svelte/offline'
 import keylineIcons from 'virtual:keyline-icons'
-import App from './App.svelte'
+import { initLocale } from '#lib/locale.svelte'
 
 addCollection(keylineIcons)
 
-mount(App, { target: document.getElementById('app')! })
+async function start() {
+  await initLocale()
+  // App.svelte is imported late on purpose: its module builds translated state.
+  const { default: App } = await import('./App.svelte')
+  mount(App, { target: document.getElementById('app')! })
+}
+
+void start()

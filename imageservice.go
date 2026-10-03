@@ -104,6 +104,15 @@ func (s *ImageService) SelectDirectory() (string, error) {
 		CanChooseFiles(false).
 		CanChooseDirectories(true)
 
+	defaultDir := getDefaultOutputDir()
+	_ = os.MkdirAll(defaultDir, 0755)
+	if _, err := os.Stat(defaultDir); err == nil {
+		dialog.SetDirectory(defaultDir)
+	} else if home, err := os.UserHomeDir(); err == nil {
+		docs := filepath.Join(home, "Documents")
+		dialog.SetDirectory(docs)
+	}
+
 	dir, err := dialog.PromptForSingleSelection()
 	log.Printf("[SelectDirectory] dialog returned: %s (err: %v)", dir, err)
 	return dir, err
@@ -305,6 +314,14 @@ func determineTargetFormat(task CompressTask, origExt string) string {
 	return fmtLower
 }
 
+func getDefaultOutputDir() string {
+	home, err := os.UserHomeDir()
+	if err == nil {
+		return filepath.Join(home, "Documents", "pixzip-lite")
+	}
+	return filepath.Join(".", "pixzip-lite")
+}
+
 func getOutputFilePath(task CompressTask, targetExt string) string {
 	origDir := filepath.Dir(task.InputPath)
 	origName := filepath.Base(task.InputPath)
@@ -312,8 +329,12 @@ func getOutputFilePath(task CompressTask, targetExt string) string {
 	base := strings.TrimSuffix(origName, ext)
 
 	outDir := origDir
-	if !task.OriginalOutput && task.OutputDir != "" {
-		outDir = task.OutputDir
+	if !task.OriginalOutput {
+		if task.OutputDir != "" {
+			outDir = task.OutputDir
+		} else {
+			outDir = getDefaultOutputDir()
+		}
 	}
 
 	suffix := task.Suffix

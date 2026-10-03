@@ -2,8 +2,9 @@
   import { Menu } from '@ark-ui/svelte/menu';
   import { Portal } from '@ark-ui/svelte/portal';
   import type { CompressConfig, ImageFormat, ResizeMode } from '#lib/types';
-  import { FORMAT_OPTIONS, RESIZE_MODES } from '#lib/utils';
+  import { formatOptions, resizeModes } from '#lib/options.svelte';
   import Icon from '@iconify/svelte/offline';
+  import Slider from '#lib/components/Slider.svelte';
 
   interface Props {
     isOpen: boolean;
@@ -13,7 +14,7 @@
 
   let { isOpen, onClose, onSave }: Props = $props();
 
-  let name = $state('我的自定义方案');
+  let name = $state('');
   let format = $state<ImageFormat>('webp');
   let quality = $state(80);
   let resizeMode = $state<ResizeMode>('none');
@@ -27,10 +28,14 @@
   // The name field is what you are here to type; preselect the default so typing replaces it.
   $effect(() => {
     if (isOpen) {
+      name = '我的自定义方案';
       nameInput?.focus();
       nameInput?.select();
     }
   });
+
+  const FORMAT_OPTIONS = $derived(formatOptions());
+  const RESIZE_MODES = $derived(resizeModes());
 
   let formatLabel = $derived(
     FORMAT_OPTIONS.find((f) => f.id === format)?.label ?? '选择格式'
@@ -84,7 +89,7 @@
             <Icon icon="keyline-icons:sparkles" height={16} class="w-4 h-4" />
           </div>
           <h3 id="space-modal-title" class="font-semibold text-headline text-[#1d1d1f] dark:text-[#f5f5f7]">
-            新建预设配置方案
+            新建预设
           </h3>
         </div>
         <button
@@ -99,7 +104,7 @@
       <form onsubmit={handleSubmit} class="mt-4 flex flex-col gap-4 text-xs">
         <div class="space-y-1.5">
           <label class="block text-[11px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider" for="custom-name">
-            方案名称
+            名称
           </label>
           <input
             id="custom-name"
@@ -116,13 +121,13 @@
         <div class="grid grid-cols-2 gap-3">
           <div class="space-y-1.5">
             <span class="block text-[11px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
-              目标格式
+              格式
             </span>
             <Menu.Root bind:open={isFormatMenuOpen} positioning={{ placement: 'bottom-start', offset: { mainAxis: 4 } }}>
               <Menu.Trigger
                 type="button"
                 class="w-full h-8 flex items-center justify-between px-2.5 rounded-lg bg-black/[0.03] dark:bg-white/[0.05] hover:bg-black/[0.06] dark:hover:bg-white/[0.08] active:bg-black/[0.08] dark:active:bg-white/[0.1] border border-black/[0.08] dark:border-white/[0.1] text-left transition group cursor-pointer"
-                title="选择目标格式"
+                title="格式"
               >
                 <span class="text-xs font-medium text-neutral-800 dark:text-neutral-200">{formatLabel}</span>
                 <Icon icon="keyline-icons:chevron-down" height={12} class="text-neutral-400 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
@@ -161,20 +166,19 @@
           <div class="space-y-1.5">
             <div class="flex items-center justify-between">
               <span class="block text-[11px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
-                压缩质量
+                质量
               </span>
               <span class="font-mono font-bold text-xs tabular-nums text-neutral-800 dark:text-neutral-200">
                 {quality}%
               </span>
             </div>
-            <input
-              type="range"
-              min="10"
-              max="100"
-              step="1"
+            <Slider
+              min={10}
+              max={100}
+              step={1}
               bind:value={quality}
-              aria-label="压缩质量"
-              class="apple-slider w-full cursor-pointer"
+              label="质量"
+              class="w-full"
             />
           </div>
         </div>
@@ -182,10 +186,10 @@
         <div class="space-y-2">
           <div class="flex items-center justify-between">
             <span class="block text-[11px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
-              尺寸缩放
+              尺寸
             </span>
             {#if resizeMode !== 'none'}
-              <span class="text-[10px] font-mono text-accent font-medium">等比缩放</span>
+              <span class="text-[10px] font-mono text-accent font-medium">等比</span>
             {/if}
           </div>
 
@@ -232,7 +236,7 @@
         <div class="space-y-1.5">
           <div class="flex items-center justify-between">
             <label class="block text-[11px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider" for="custom-suffix">
-              文件名后缀
+              后缀
             </label>
             <span class="text-[10px] font-mono text-neutral-400">
               预览: photo<span class="text-accent font-semibold">{suffix}</span>.{format === 'original' ? 'jpg' : format}
@@ -249,12 +253,12 @@
         </div>
 
         <div class="flex items-center justify-between gap-3 pt-1">
-          <span class="text-xs font-medium text-neutral-800 dark:text-neutral-200">保留 EXIF 摄影数据</span>
+          <span class="text-xs font-medium text-neutral-800 dark:text-neutral-200">保留 EXIF</span>
           <button
             type="button"
             role="switch"
             aria-checked={keepExif}
-            aria-label="保留 EXIF 摄影数据"
+            aria-label="保留 EXIF"
             onclick={() => (keepExif = !keepExif)}
             class="w-8 h-4.5 rounded-full p-0.5 flex items-center shrink-0 cursor-pointer transition-colors {keepExif
               ? 'bg-emerald-500'
@@ -278,7 +282,7 @@
           </button>
           <button type="submit" class="pill-btn-black !h-8 !py-0 !px-3.5 text-xs">
             <Icon icon="keyline-icons:check" height={13} class="w-3.5 h-3.5" />
-            <span>创建并应用</span>
+            <span>创建</span>
           </button>
         </div>
       </form>

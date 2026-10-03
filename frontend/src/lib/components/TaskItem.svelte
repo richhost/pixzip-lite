@@ -10,7 +10,6 @@
     onCompressSingle: (task: FileTask) => void;
     onRevealInFinder: (path: string) => void;
     onDeleteSingle: (id: string) => void;
-    onCompare: (task: FileTask) => void;
   }
 
   let {
@@ -20,7 +19,6 @@
     onCompressSingle,
     onRevealInFinder,
     onDeleteSingle,
-    onCompare,
   }: Props = $props();
 
   let savings = $derived(
@@ -49,19 +47,7 @@
 
     <!-- Thumbnail Preview with Checkerboard -->
     <div
-      role="button"
-      tabindex="0"
-      onclick={() => {
-        if (task.status === 'completed') {
-          onCompare(task);
-        }
-      }}
-      onkeydown={(e) => {
-        if (e.key === 'Enter' && task.status === 'completed') {
-          onCompare(task);
-        }
-      }}
-      class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden shrink-0 bg-checkerboard border border-black/[0.08] dark:border-white/[0.1] cursor-pointer group-hover:shadow-md transition"
+      class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden shrink-0 bg-checkerboard border border-black/[0.08] dark:border-white/[0.1] transition"
     >
       <img
         src={thumbUrl}
@@ -69,12 +55,6 @@
         class="w-full h-full object-cover"
         loading="lazy"
       />
-
-      {#if task.status === 'completed'}
-        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition text-white">
-          <Icon icon="keyline-icons:eye" height={16} class="w-4 h-4" />
-        </div>
-      {/if}
     </div>
 
     <!-- Metadata Details -->
@@ -145,24 +125,13 @@
     <!-- Action Buttons -->
     <div class="flex items-center gap-1">
       {#if task.status === 'completed'}
-        <!-- Compare Button -->
-        <button
-          onclick={() => {
-            onCompare(task);
-          }}
-          class="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-100 hover:bg-black/[0.05] dark:hover:bg-white/[0.08] apple-pressable transition"
-          title="双图前后对比滑块"
-        >
-          <Icon icon="keyline-icons:eye" height={16} class="w-4 h-4" />
-        </button>
-
         <!-- Reveal in Finder -->
         <button
           onclick={() => {
             onRevealInFinder(task.outputPath || task.path);
           }}
           class="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-100 hover:bg-black/[0.05] dark:hover:bg-white/[0.08] apple-pressable transition"
-          title="在 Finder 中显示输出文件"
+          title="定位"
         >
           <Icon icon="keyline-icons:folder" height={16} class="w-4 h-4" />
         </button>
@@ -175,7 +144,7 @@
         }}
         disabled={task.status === 'processing'}
         class="p-1.5 rounded-lg text-neutral-500 hover:text-accent hover:bg-accent/10 disabled:opacity-30 apple-pressable transition"
-        title={task.status === 'completed' ? '重新压缩' : '压缩此图片'}
+        title={task.status === 'completed' ? '重新压缩' : '压缩'}
       >
         {#if task.status === 'completed'}
           <Icon icon="keyline-icons:refresh-cw" height={16} class="w-4 h-4" />
@@ -190,7 +159,7 @@
           onDeleteSingle(task.id);
         }}
         class="p-1.5 rounded-lg text-neutral-400 hover:text-red-500 hover:bg-red-500/10 apple-pressable transition"
-        title="移除任务"
+        title="移除"
       >
         <Icon icon="keyline-icons:bin" height={16} class="w-4 h-4" />
       </button>

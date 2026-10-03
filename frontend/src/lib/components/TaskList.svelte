@@ -11,7 +11,6 @@
     onCompressSingle: (task: FileTask) => void;
     onRevealInFinder: (path: string) => void;
     onDeleteSingle: (id: string) => void;
-    onCompare: (task: FileTask) => void;
     onBatchCompress: (ids: string[]) => void;
     onBatchDelete: (ids: string[]) => void;
   }
@@ -21,7 +20,6 @@
     onCompressSingle,
     onRevealInFinder,
     onDeleteSingle,
-    onCompare,
     onBatchCompress,
     onBatchDelete,
   }: Props = $props();
@@ -66,7 +64,7 @@
     <!-- Left Stats Numbers -->
     <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-xs">
       <div>
-        <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">任务总数</div>
+        <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">总计</div>
         <div class="font-bold text-sm sm:text-base text-[#121316] dark:text-[#f4f4f6] tabular-nums font-mono">
           {summary.total} <span class="text-xs font-normal text-neutral-400">张</span>
         </div>
@@ -75,7 +73,7 @@
       <div class="h-6 w-px bg-black/[0.06] dark:bg-white/[0.08] hidden sm:block"></div>
 
       <div>
-        <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">原始体积</div>
+        <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">原大小</div>
         <div class="font-bold text-sm sm:text-base text-[#121316] dark:text-[#f4f4f6] tabular-nums font-mono">
           {formatBytes(summary.originalBytes)}
         </div>
@@ -85,7 +83,7 @@
         <div class="h-6 w-px bg-black/[0.06] dark:bg-white/[0.08] hidden sm:block"></div>
 
         <div>
-          <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">压缩后体积</div>
+          <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">压缩后</div>
           <div class="font-bold text-sm sm:text-base text-emerald-600 dark:text-emerald-400 tabular-nums font-mono">
             {formatBytes(summary.compressedBytes)}
           </div>
@@ -95,7 +93,7 @@
 
         <div class="flex items-center gap-2">
           <div>
-            <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">已节省空间</div>
+            <div class="text-neutral-400 dark:text-neutral-500 text-[11px] font-medium">已节省</div>
             <div class="font-bold text-sm sm:text-base text-emerald-600 dark:text-emerald-400 tabular-nums font-mono flex items-center gap-1.5">
               <span>{formatBytes(summary.savedBytes)}</span>
               <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">-{summary.savingsPercent}%</span>
@@ -123,7 +121,7 @@
           class="p-1 rounded-full transition {viewMode === 'list'
             ? 'bg-white dark:bg-[#2c2c2e] text-[#121316] dark:text-[#f4f4f6] shadow-xs'
             : 'text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200'}"
-          title="列表视图"
+          title="列表"
         >
           <Icon icon="keyline-icons:list" height={15} />
         </button>
@@ -134,7 +132,7 @@
           class="p-1 rounded-full transition {viewMode === 'grid'
             ? 'bg-white dark:bg-[#2c2c2e] text-[#121316] dark:text-[#f4f4f6] shadow-xs'
             : 'text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200'}"
-          title="网格画廊视图"
+          title="网格"
         >
           <Icon icon="keyline-icons:grid-2x2" height={15} />
         </button>
@@ -147,7 +145,7 @@
     <div class="apple-card rounded-2xl px-4 py-2.5 border border-black/[0.08] dark:border-white/[0.1] shadow-lg flex items-center justify-between animate-fade-in text-xs">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span class="font-semibold text-neutral-800 dark:text-neutral-200">已勾选 {selectedExistingIds.length} 项</span>
+        <span class="font-semibold text-neutral-800 dark:text-neutral-200">已选 {selectedExistingIds.length} 项</span>
       </div>
 
       <div class="flex items-center gap-2">
@@ -178,10 +176,8 @@
         onchange={toggleSelectAll}
         class="w-3.5 h-3.5 cursor-pointer accent-accent"
       />
-      <span>全选当前筛选列表 ({filteredTasks.length})</span>
+      <span>全选 ({filteredTasks.length})</span>
     </label>
-
-    <span>点击图片可打开前后画质对比滑块</span>
   </div>
 
   <!-- Task Content: List or Grid -->
@@ -195,7 +191,6 @@
           {onCompressSingle}
           {onRevealInFinder}
           {onDeleteSingle}
-          {onCompare}
         />
       {/each}
     </div>
@@ -209,7 +204,6 @@
           {onCompressSingle}
           {onRevealInFinder}
           {onDeleteSingle}
-          {onCompare}
         />
       {/each}
     </div>
